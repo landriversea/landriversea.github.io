@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Land, River and Seascape Genomics"
+
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - Teachers.qmd
+      - Readings.qmd
+  
+
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - section: "Sunday"
+        contents:
+          - Basic-Population-Genetics.qmd
+          - Basic-R.qmd
+          - Basic-Bash.qmd
+      - section: "Monday"
+        contents:
+          - ScapeGenetics.qmd
+          - Spatial_RemoteSensing.qmd
+          
+       
+format:
+  html:
+    theme: yeti
+    css: styles.css
+    toc: true
+
+editor: visual
+
+sidebar:
+  contents: auto
+

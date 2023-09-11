@@ -1,0 +1,139 @@
+---
+title: "About the course"
+---
+
+## Overview
+
+How spatial data on properties of terrestrial and marine environments can be combined with genomic data to gain an understanding of population structure, dispersal routes and patterns. And how such can facilitate appropriate and sustainable land and seabottom use and management.
+
+## Teachers
+
+Cynthia Riginos (University of Queensland, guest professor at University of Gothenburg)
+
+Anna Runemark (Lund University)
+
+Mark Ravinet (University of Nottingham)
+
+Kerstin Johannesson (University of Gothenburg, main organiser)
+
+## Dates
+
+29th October to 4 November, 2023
+
+## Venue
+
+Tjärnö Marine Laboratory, Strömstad, Sweden
+
+## Credits
+
+2.5 hp
+
+# Course Schedule
+
+### Saturday 28th October
+
+Arrivals and light evening meal
+
+### Sunday 29th October
+
+08.00-09.00     Breakfast
+
+09.00-10.00     **Basic population genetics** (Kerstin)
+
+10.00-10.30     Coffea/Tea
+
+10.30-12.00     **Basic R** (Cynthia)
+
+12.00-13.00     Lunch
+
+13.00-15.00     **Basic bash** (Anna)
+
+15.00-15.30     Coffee/Tea
+
+15.30-16.30     **Tour de lab** (Kerstin)
+
+17.00-18.00     Dinner
+
+18.00-20.00     **Short project presentations by participants** (1-8)
+
+### Monday 30th October
+
+(meals and breaks same as Sunday)
+
+09.00-12.00     **Land/sea/river scape genetics** (Cynthia)
+
+12.00-14.00     Lunch + **walk & talk**
+
+14.00-17.00     **Spatial and remote sensing data** (Cynthia)
+
+17.00-18.00     Dinner
+
+18.00-20.00     **Short project presentations by participants** (9-16)
+
+### Tuesday 31th October
+
+(meals and breaks same as Sunday)
+
+09.00-12.00     **Describing genetic differentiation and genetic structuring** (Anna, Mark)
+
+12.00-14.00     Lunch + **visit snail beach**
+
+14.00-17.00     **RDA as a general toolkit** (Cynthia)
+
+17.00-18.00     Dinner
+
+18.00-20.00     **Short project presentations by participants** (17-24)
+
+### Wednesday 1st November
+
+(meals and breaks same schedule as Sunday)
+
+09.00-12.00     **Gene flow analyses** (Mark, Zachary, Simon)
+
+12.00-12.45     Lunch
+
+12.45-15.00     Boat excursion (ROV)
+
+15.00-17.00     **Gene flow analyses continued**
+
+17.00-18.00     Dinner
+
+18.00-19.00     Inspiring talks: Snail-scape project (James) + xxxxx (yyy)
+
+19.00-23.00     Inhouse pub
+
+### Thursday 2nd November
+
+(meals and breaks same schedule as Sunday)
+
+09.00-12.00     **Resistance surfaces** (Anna, Mark?)
+
+12.00-13.00     Lunch
+
+13.00-14.30     **GDA, gradient forests** (Cynthia)
+
+14.30-17.00     **Biophysical models of dispersal** (Per Jonsson)
+
+17.00-18.00     Dinner
+
+18.00-19.00     Inspiring talks: X + Y
+
+19.00-23.00     Inhouse pub
+
+## Friday 3rd November
+
+(meals and breaks same schedule as Sunday)
+
+09.00-12.00     **Genotype - environment association** (Cynthia)
+
+12.00-14.00     Lunch + walk & talk
+
+14.00-17.00     **GEA, cont.**
+
+17.00-18.00     Dinner
+
+19.00-23.00     Inhouse pub
+
+### Saturday 4th November
+
+Departures in the morning -sorry to see you go!
