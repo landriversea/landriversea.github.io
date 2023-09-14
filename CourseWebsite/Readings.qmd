@@ -3,4 +3,87 @@ title: "Readings"
 format: html
 ---
 
-Papers to read
+## Readings by day and topic
+
+For each topic, there will be a required reading (or pre-class activity) and several optional readings.
+
+We expect you to have read the required reading before the day. There will not be time during the week of the course to read new materials and therefore we *highly suggest* that you do these readings in advance of the course starting.
+
+### Sunday
+
+#### Basic R
+
+##### Required
+
+##### Optional
+
+#### Basic Bash
+
+##### Required
+
+##### Optional
+
+### Monday
+
+#### Land, river, sea
+
+##### Required
+
+##### Optional
+
+#### Maps & spatial data
+
+##### Required
+
+##### Optional
+
+
+### Tuesday
+
+#### Genetic differentiation
+
+##### Required
+
+##### Optional
+
+#### RDA as a general toolkit
+
+##### Required
+
+##### Optional
+
+### Wednesday
+
+#### Gene flow analyses
+
+##### Required
+
+##### Optional
+
+### Thursday
+
+#### Resistance surfaces
+
+##### Required
+
+##### Optional
+
+#### GDM & GFs
+
+##### Required
+
+##### Optional
+
+#### Biophysical models
+
+##### Required
+
+##### Optional
+
+### Friday
+
+#### GEA
+
+##### Required
+
+##### Optional

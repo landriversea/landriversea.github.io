@@ -22,12 +22,27 @@ website:
       - section: "Sunday"
         contents:
           - Basic-Population-Genetics.qmd
-          - Basic-R.qmd
-          - Basic-Bash.qmd
+          - basicR.qmd
+          - basic-bash.qmd
       - section: "Monday"
         contents:
-          - ScapeGenetics.qmd
-          - Spatial_RemoteSensing.qmd
+          - land-river-sea.qmd
+          - maps-spatial-data.qmd
+      - section: "Tuesday"
+        contents:   
+          - genetic-dif.qmd
+          - RDA.qmd
+      - section: "Wednesday"
+        contents:   
+          - geneflow.qmd
+      - section: "Thursday"
+        contents:  
+         - resistance.qmd
+         - GDM.qmd
+         - biophysical.qmd
+      - section: "Friday"
+        contents:  
+         - GEA.qmd
           
        
 format:
@@ -41,3 +56,6 @@ editor: visual
 sidebar:
   contents: auto
 
+# number-sections: true
+# crossref:
+#   chapters: true

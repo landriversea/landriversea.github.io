@@ -38,15 +38,15 @@ Arrivals and light evening meal
 
 08.00-09.00     Breakfast
 
-09.00-10.00     **Basic population genetics** (Kerstin)
+09.00-10.00     [Basic population genetics](basic-population-genetics.qmd) (Kerstin)
 
-10.00-10.30     Coffea/Tea
+10.00-10.30     Coffee/Tea
 
-10.30-12.00     **Basic R** (Cynthia)
+10.30-12.00     [Basic R](basicR.qmd) (Cynthia)
 
 12.00-13.00     Lunch
 
-13.00-15.00     **Basic bash** (Anna)
+13.00-15.00     [Basic bash](basic-bash) (Anna)
 
 15.00-15.30     Coffee/Tea
 
@@ -60,11 +60,11 @@ Arrivals and light evening meal
 
 (meals and breaks same as Sunday)
 
-09.00-12.00     **Land/sea/river scape genetics** (Cynthia)
+09.00-12.00     [Land/river/seascape genetics](land-river-sea.qmd) (Cynthia)
 
 12.00-14.00     Lunch + **walk & talk**
 
-14.00-17.00     **Spatial and remote sensing data** (Cynthia)
+14.00-17.00     [Making maps and using spatial data](maps-spatial-data.qmd) (Cynthia)
 
 17.00-18.00     Dinner
 
@@ -74,11 +74,11 @@ Arrivals and light evening meal
 
 (meals and breaks same as Sunday)
 
-09.00-12.00     **Describing genetic differentiation and genetic structuring** (Anna, Mark)
+09.00-12.00     [Describing genetic differentiation and genetic structuring](genetic-dif.qmd) (Anna, Mark)
 
 12.00-14.00     Lunch + **visit snail beach**
 
-14.00-17.00     **RDA as a general toolkit** (Cynthia)
+14.00-17.00     [RDA as a general toolkit](RDA.qmd) (Cynthia)
 
 17.00-18.00     Dinner
 
@@ -88,17 +88,17 @@ Arrivals and light evening meal
 
 (meals and breaks same schedule as Sunday)
 
-09.00-12.00     **Gene flow analyses** (Mark, Zachary, Simon)
+09.00-12.00     [Gene flow analyses](geneflow.qmd) (Mark, Zachary, Simon)
 
 12.00-12.45     Lunch
 
 12.45-15.00     Boat excursion (ROV)
 
-15.00-17.00     **Gene flow analyses continued**
+15.00-17.00     [Gene flow analyses, continued](geneflow.qmd)
 
 17.00-18.00     Dinner
 
-18.00-19.00     Inspiring talks: Snail-scape project (James) + xxxxx (yyy)
+18.00-19.00     Evening lecture (remote) - Landscape Resistance (Bill Peterman)
 
 19.00-23.00     Inhouse pub
 
@@ -106,17 +106,17 @@ Arrivals and light evening meal
 
 (meals and breaks same schedule as Sunday)
 
-09.00-12.00     **Resistance surfaces** (Anna, Mark?)
+09.00-12.00     [Resistance surfaces](resistance.qmd) (Joscha Beninde)
 
 12.00-13.00     Lunch
 
-13.00-14.30     **GDA, gradient forests** (Cynthia)
+13.00-14.30     [Generalised dissimilarity modelling, gradient forests](GDM.qmd) (Cynthia)
 
-14.30-17.00     **Biophysical models of dispersal** (Per Jonsson)
+14.30-17.00     [Biophysical models of dispersal](biophysical.qmd) (Per Jonsson)
 
 17.00-18.00     Dinner
 
-18.00-19.00     Inspiring talks: X + Y
+18.00-19.00     Inspiring talks: Marlene Jahnke
 
 19.00-23.00     Inhouse pub
 
@@ -124,11 +124,11 @@ Arrivals and light evening meal
 
 (meals and breaks same schedule as Sunday)
 
-09.00-12.00     **Genotype - environment association** (Cynthia)
+09.00-12.00     [Genotype-environment association](GEA.qmd) (Cynthia)
 
 12.00-14.00     Lunch + walk & talk
 
-14.00-17.00     **GEA, cont.**
+14.00-17.00     [GEA, genomic offsets, cont.](GEA.qmd)
 
 17.00-18.00     Dinner
 
