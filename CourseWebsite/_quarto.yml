@@ -43,6 +43,7 @@ website:
       - section: "Friday"
         contents:  
          - GEA.qmd
+         - g_architectures.qmd
           
        
 format:

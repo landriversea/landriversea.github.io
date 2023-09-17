@@ -78,7 +78,7 @@ Arrivals and light evening meal
 
 12.00-14.00     Lunch + **visit snail beach**
 
-14.00-17.00     [RDA as a general toolkit](RDA.qmd) (Cynthia)
+14.00-17.00     [Introduction to GEA and RDA as a general toolkit](RDA.qmd) (Cynthia)
 
 17.00-18.00     Dinner
 
@@ -110,7 +110,7 @@ Arrivals and light evening meal
 
 12.00-13.00     Lunch
 
-13.00-14.30     [Generalised dissimilarity modelling, gradient forests](GDM.qmd) (Cynthia)
+13.00-14.30     [Projecting into the future with generalised dissimilarity modelling, gradient forests](GDM.qmd) (Cynthia)
 
 14.30-17.00     [Biophysical models of dispersal](biophysical.qmd) (Per Jonsson)
 
@@ -124,11 +124,11 @@ Arrivals and light evening meal
 
 (meals and breaks same schedule as Sunday)
 
-09.00-12.00     [Genotype-environment association](GEA.qmd) (Cynthia)
+09.00-12.00     [More GEAs and genomic offsets](GEA.qmd) (Cynthia)
 
 12.00-14.00     Lunch + walk & talk
 
-14.00-17.00     [GEA, genomic offsets, cont.](GEA.qmd)
+14.00-17.00     [(Time permiting) Landscape genomics and genetic architectures](g_architectures.qmd)
 
 17.00-18.00     Dinner
 

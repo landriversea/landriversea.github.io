@@ -1,3 +1,3 @@
 ---
-title: "RDA as a general toolkit"
+title: "Intro to GEA & RDA as a general toolkit"
 ---
