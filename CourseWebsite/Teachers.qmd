@@ -2,15 +2,21 @@
 title: "Meet your teachers"
 ---
 
-## Cynthia Riginos 
+## Cynthia Riginos
 
 (University of Queensland, guest professor at University of Gothenburg)
 
-## Anna Runemark 
+## Anna Runemark
+
 (Lund University)
 
-## Mark Ravinet 
+## Mark Ravinet
+
 (University of Nottingham)
 
-## Kerstin Johannesson 
+## Kerstin Johannesson
+
 (University of Gothenburg, main organiser)
+
+## Per Jonsson 
+(University of Gothenburg)
