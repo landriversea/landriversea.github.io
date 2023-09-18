@@ -15,7 +15,14 @@ We expect you to have read the required reading before the day. There will not b
 
 ##### Required
 
-##### Optional
+If you are new to R, please attempt the following tutorials on your own. If you are experienced in R, skim through the tutorials and make sure that all the topics are familiar to you.
+
+- [Ravinet's introduction to R](https://evolutionarygenetics.github.io/Introduction.html)
+
+- [Going further with R](https://evolutionarygenetics.github.io/Chapter2.html)
+
+Through this course, most of the examples you are likely to encounter will predominately use base R. However, learning Tidyverse syntax will make your life easier in the long run, especially if you are going to be manipulating spatial data.
+
 
 #### Basic Bash
 
@@ -49,7 +56,7 @@ We expect you to have read the required reading before the day. There will not b
 
 ##### Required
 
-(none)
+No readings are required. 
 
 ##### Optional
 
