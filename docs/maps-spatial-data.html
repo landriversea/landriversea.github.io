@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -267,7 +301,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#where-on-earth-presenting-and-analysing-spatial-data-using-r" id="toc-where-on-earth-presenting-and-analysing-spatial-data-using-r" class="nav-link active" data-scroll-target="#where-on-earth-presenting-and-analysing-spatial-data-using-r">Where on earth? Presenting and analysing spatial data using R</a>
+  <ul class="collapse">
+  <li><a href="#in-this-lesson-you-will" id="toc-in-this-lesson-you-will" class="nav-link" data-scroll-target="#in-this-lesson-you-will">In this lesson you will:</a></li>
+  <li><a href="#by-the-end-of-this-lesson-you-should-be-able-to" id="toc-by-the-end-of-this-lesson-you-should-be-able-to" class="nav-link" data-scroll-target="#by-the-end-of-this-lesson-you-should-be-able-to">By the end of this lesson you should be able to:</a></li>
+  </ul></li>
+  <li><a href="#install-packages-and-load-libraries" id="toc-install-packages-and-load-libraries" class="nav-link" data-scroll-target="#install-packages-and-load-libraries">Install packages and load libraries</a></li>
+  <li><a href="#getting-oriented-with-spatial-data" id="toc-getting-oriented-with-spatial-data" class="nav-link" data-scroll-target="#getting-oriented-with-spatial-data">Getting oriented with spatial data</a>
+  <ul class="collapse">
+  <li><a href="#examining-and-creating-a-simple-features-objects" id="toc-examining-and-creating-a-simple-features-objects" class="nav-link" data-scroll-target="#examining-and-creating-a-simple-features-objects">Examining and creating a simple features objects</a></li>
+  <li><a href="#playing-with-some-real-spatial-data" id="toc-playing-with-some-real-spatial-data" class="nav-link" data-scroll-target="#playing-with-some-real-spatial-data">Playing with some real spatial data</a></li>
+  </ul></li>
+  <li><a href="#answers-to-challenge-questions" id="toc-answers-to-challenge-questions" class="nav-link" data-scroll-target="#answers-to-challenge-questions">Answers to challenge questions</a>
+  <ul class="collapse">
+  <li><a href="#challenge-1" id="toc-challenge-1" class="nav-link" data-scroll-target="#challenge-1">Challenge 1</a></li>
+  <li><a href="#challenge-2" id="toc-challenge-2" class="nav-link" data-scroll-target="#challenge-2">Challenge 2</a></li>
+  <li><a href="#challenge-3" id="toc-challenge-3" class="nav-link" data-scroll-target="#challenge-3">Challenge 3</a></li>
+  <li><a href="#challenge-4" id="toc-challenge-4" class="nav-link" data-scroll-target="#challenge-4">Challenge 4</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -289,8 +346,196 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p><em>Instructor: Riginos</em></p>
+<section id="where-on-earth-presenting-and-analysing-spatial-data-using-r" class="level1">
+<h1>Where on earth? Presenting and analysing spatial data using R</h1>
+<p>To undertake landscape genomics inherently requires working with spatial data. The individuals or populations that you have genotyped came from a specific location. It is likely that you will be interested in environmental attributes of that location. You might also want to calculate geographic distances between your sampling locations. And, undoubtedly you will want to plot your results on a map!</p>
+<p>Spatial data, however, have their own unique issues and can be challenging to work with. This lesson is constructed as a <em>basic</em> introduction to working with spatial data and maps. If you understand the basics, then you can figure out how to do specific things that are relevant for your study.</p>
+<p>At the end of this lesson, you will find a section on additional resources.</p>
+<section id="in-this-lesson-you-will" class="level3">
+<h3 class="anchored" data-anchor-id="in-this-lesson-you-will">In this lesson you will:</h3>
+<ul>
+<li>Become familiar with spatial data objects including points, lines, polygons, and rasters</li>
+<li>Obtain maps and manipulate them</li>
+<li>Start using coordinate reference systems</li>
+<li>Obtain and extract environmental information for georeferenced points</li>
+</ul>
+</section>
+<section id="by-the-end-of-this-lesson-you-should-be-able-to" class="level3">
+<h3 class="anchored" data-anchor-id="by-the-end-of-this-lesson-you-should-be-able-to">By the end of this lesson you should be able to:</h3>
+<ul>
+<li>Create various spatial objects from xy coordinates and plot those objects</li>
+<li>Obtain appropriate distance measures between locations</li>
+<li>Assign an appropriate CRS to your spatial data object</li>
+<li>Plot and map spatial data against various map projections</li>
+<li>Import data from a biodiversity database</li>
+<li>Extract and summarize (terrestrial) environmental data for a series of points</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="install-packages-and-load-libraries" class="level1">
+<h1>Install packages and load libraries</h1>
+<p>In this lesson, we will focus on some common spatial data packages and will be using a controlled space. When you want to repeat these procedures on your own computer, you will need to install many packages. Some package dependencies can be tricky to install as they rely GDAL binaries (= other programs) on your computer. Try loading the package <code>sf</code> - if no errors are returned, you are good to go! If you do have errors try the instructions <a href="https://r-spatial.github.io/sf/index.html">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="getting-oriented-with-spatial-data" class="level1">
+<h1>Getting oriented with spatial data</h1>
+<p><strong>Note:</strong> We will focus on spatial data structures as defined by packages <code>sf</code> and <code>terra</code>. <code>sf</code> stands for <em>simple features</em> is a newish package for <em>vector data</em> (points, lines, shapes: EPS is a common file format for vector data) that attempts to update older spatial tools (primarily from the package <code>sp</code>) but make formats and commands consistent with <code>Tidyverse</code> conventions and interfaces more readily with <code>ggplot</code> than the older <code>sp</code>.</p>
+<p><em>Rasters</em> are like picture images: the datasets are made up of equal sized cells, where each cell has a value and the smaller the cells, the more detailed the picture and the larger the file. JPGs and TIFs are raster formats, for example. Just as the above discussion on vector data, new packages are replacing old packages. We will use the new package, <code>terra</code>, that “plays well” with tidyverse and ggplot. Be aware, however, that many examples you find in the wild will have used the older <code>raster</code> package.</p>
+<section id="examining-and-creating-a-simple-features-objects" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="examining-and-creating-a-simple-features-objects">Examining and creating a simple features objects</h2>
+<p>To start getting familiar with spatial objects, we will download a simple map of Sweden from <a href="https://www.naturalearthdata.com">natural earth</a>. Take a quick look at this website to get a sense of all the wonderful data that are available here. (You are welcome to make a map of any country you like).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract information from natural earth</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Sweden<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Sweden) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Surprised? We will come back to this.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Examine your new object </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden) <span class="co">#sf and data.frame</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Sweden <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Checking spatial data using plots (often) is highly recommended. You should also check the class of the object. The challenge question below shows you how to handle data that are imported incorrectly.</p>
+<blockquote class="blockquote">
+<p>Challenge 1: Use subsetting commands to look at the first entry under the geometry column</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Instead of the command you used above, try <code>Sweden2&lt;- ne_countries(country = "sweden")</code>. Using <code>class()</code> look at how the object is described and compare to your original object. What has happened is that rather than create an <em>sf</em> object, the older format of <em>sp</em> has been created. See if you can convert <code>Sweden2</code> to the sf format using the function <code>st_as_sf()</code>.</p>
+</blockquote>
+<p>Notice that spatial features objects take the form of a tibble. This means that all your standard Tidyverse commands will work just fine (selecting, filtering, etc).</p>
+<p>You will also notice that there is information about a “bounding box” and “CRS” in your sf version of <code>Sweden</code> where in the sp version of <code>Sweden2</code> you saw “extent” and “crs”. We will come back to that! Otherwise this object mostly looks like a normal tibble with lots of columns, but there is one special column, labelled <strong><em>geometry</em></strong>. You will notice that for Sweden the geometry is described as a “MULTIPOLYGON”… more on this in a moment too.</p>
+<blockquote class="blockquote">
+<p>Challenge 2: Use subsetting commands to look at the first entry under the geometry column. <em>Answers at end of this document, but you should be able to figure out these bits of code yourself!</em> <em>Try doing this using either base or tidy syntax, or both.</em></p>
+</blockquote>
+<p>You should have an answer like this:</p>
+<blockquote class="blockquote">
+<p>POLYGON ((11.02737 58.85615, 11.46827 59.43239, 12.30037 60.11793, 12.63115 61.29357, 11.99206 61.80036, 11.93057 63.12832……</p>
+</blockquote>
+<p>Besides being an eyesore to look at, you might notice some patterns: the odd entries look a lot like longitude values and the even entries look like latitudes… because they are! This POLYGON is composed of a series of points that are connected to form the Swedish coastline.</p>
+<p>We can get a better feeling for this with a simple example where we construct a series of simple features (this example is borrowed from the <a href="https://r-spatial.github.io/sf/articles/sf1.html">sf vignette</a>). Try to understand what is going on with each bit of code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## multipoints</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">3.2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="fl">4.6</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">4.4</span>), <span class="fu">c</span>(<span class="fl">3.5</span>,<span class="fl">3.8</span>), <span class="fu">c</span>(<span class="fl">3.4</span>,<span class="fl">3.6</span>), <span class="fu">c</span>(<span class="fl">3.9</span>,<span class="fl">4.5</span>))  <span class="co">#makes a matrix of x &amp; y value </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">st_multipoint</span>(p)  <span class="co">#defining p as multipoint object</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp)  <span class="co">#you should see a series of points </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## linestring</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ls <span class="ot">&lt;-</span> <span class="fu">st_linestring</span>(s1) <span class="co"># defining the linestring</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ls) <span class="co">#you should see a series of lines</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## multilinestring</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.2</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">4.8</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="fl">4.8</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">4.4</span>), <span class="fu">c</span>(<span class="fl">0.6</span>,<span class="dv">5</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>mls <span class="ot">&lt;-</span> <span class="fu">st_multilinestring</span>(<span class="fu">list</span>(s1,s2,s3)) <span class="co">#notice the list function... #... applied to the matrices defining linestrings</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## multipolygon</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pol1 <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p1))  </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol1)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pol2 <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p2))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## What happens if we combine polygons?</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pol <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p1,p2))  <span class="co">#notice again the list function</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol)  <span class="co"># do you see 2 polygons?  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The second polygon is a "hole" in the outer polygon!</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Now make it really messy!</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.3</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">0.3</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">0.8</span>), <span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.8</span>), <span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.3</span>))[<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># What do you think the following will look like? </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your predictions using plot()</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>mpol <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p1,p2), <span class="fu">list</span>(p3,p4), <span class="fu">list</span>(p5))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Take a look again at your <code>mpol</code> object. As messy as this was to create, this is a pretty simple geometry and is captured by one MULTIPOLYGON entry. Go back now and look at <code>mpol</code> in its string form paying special attention to where the parentheses sit; their locations indicate if you have multiple polygons including holes within polygons.</p>
+<blockquote class="blockquote">
+<p>Challenge 3: Make a grey square with a square hole in the middle.</p>
+</blockquote>
+</section>
+<section id="playing-with-some-real-spatial-data" class="level2">
+<h2 class="anchored" data-anchor-id="playing-with-some-real-spatial-data">Playing with some real spatial data</h2>
+<p>Only rarely do we need to manually create spatial feature. More likely we have data pre-packaged or we need to convert data. Use this <a href="./data/BunyaMountainTrees.csv">link</a> to download a csv file that has data for trees from the Bunya Mountains National Park in Queensland (one of my favorite places to go for a long weekend). These data come from my friend <a href="https://environment.uq.edu.au/profile/21686/john-dwyer">John Dwyer</a> who is an awesome spatial ecologist (but is scared by genetics, sadly).</p>
+<p>Import this csv file making sure to fix the path and file name to match your set up. Before you convert the dataframe to a spatial features object take at look at how it is structured. Repeat this after you convert it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>BunyaMountainTrees<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"./data/BunyaMountainTrees.csv"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the tibble to a simple features object, with x and y coordinates</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Each row is a tree </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>BunyaMountainTrees<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainTrees, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What will <code>plot(BunyaMountainTrees)</code> look like? Surprised? (Does this remind you of what happened when you plotted Sweden?)</p>
+<p>Try <code>plot(BunyaMountainTrees, max.plot = 28)</code>. Although this might be confusing at first, this is really super cool… you are seeing the various column variables displayed in the appropriate location <em>by individual tree</em>. For now, we can concentrate on the species variable only. Try <code>plot(BunyaMountainTrees["species"])</code>. How cool is that! Let’s make this even better…</p>
+<p>We will focus on ggplot solutions now, because the look nicer and are a bit easier.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BunyaMountainTrees) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Challenge 4: Plot species identity for high-subplot 1, scaling the points by maximum tree diameter. <em>Hint: Think about what units max_diam is in. </em></p>
+</blockquote>
+<p>Notice which tree is the largest? It is a <em>Ficus obliqua</em>, the small leaf or strangler fig.&nbsp;Because they wrap around other trees and have buttressed roots, they can get quite wide around!</p>
+<p><img src="images/Ficus_obliqua.jpg" class="img-fluid" style="width:100.0%" alt="from https://www.flickr.com/photos/17674930@N07/31581050407"> _________</p>
+</section>
+</section>
+<section id="answers-to-challenge-questions" class="level1">
+<h1>Answers to challenge questions</h1>
+<section id="challenge-1" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
+<p>Use subsetting commands to look at the first entry under the geometry column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Sweden2<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>)  <span class="co">#extracts information from natural earth</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2)  <span class="co">#note that this is a SpatialPolygonsDataFrame... this is an sp object, but we want an sf object </span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#take a peak at the structure of this class object </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>Sweden2 <span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(Sweden2 ) <span class="co">#convert to an sf object </span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2 ) <span class="co">#sf and data.frame</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="challenge-2" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
+<p>Use subsetting commands to look at the first entry under the geometry column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Base solution</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Sweden[[<span class="dv">1</span>,<span class="st">"geometry"</span>]]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Tidy solution</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>Sweden <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="challenge-3" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-3">Challenge 3</h3>
+<p>Make a grey square with a square hole in the middle.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p_outer <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>p_inner<span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p_outer,p_inner)))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(square, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What happens if you use <code>square &lt;- st_multipolygon(list(list(p_outer), list(p_inner)))</code>? Why?</p>
+</section>
+<section id="challenge-4" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-4">Challenge 4</h3>
+<p>Plot species identity for high-subplot 1, scaling the points by maximum tree diameter.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BunyaMountainTrees) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species, <span class="at">size=</span> max_diam))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

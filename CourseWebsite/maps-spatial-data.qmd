@@ -1,3 +1,238 @@
 ---
 title: "Maps & spatial data"
+execute:
+  output: false
 ---
+
+*Instructor: Riginos*
+
+
+# Where on earth? Presenting and analysing spatial data using R 
+
+To undertake landscape genomics inherently requires working with spatial data. The individuals or populations that you have genotyped came from a specific location. It is likely that you will be interested in environmental attributes of that location. You might also want to calculate geographic distances between your sampling locations. And, undoubtedly you will want to plot your results on a map!
+
+Spatial data, however, have their own unique issues and can be challenging to work with. This lesson is constructed as a *basic* introduction to working with spatial data and maps. If you understand the basics, then you can figure out how to do specific things that are relevant for your study.
+
+At the end of this lesson, you will find a section on additional resources. 
+
+### In this lesson you will:
+
+- Become familiar with spatial data objects including points, lines, polygons, and rasters
+- Obtain maps and manipulate them
+- Start using coordinate reference systems
+- Obtain and extract environmental information for georeferenced points
+
+
+### By the end of this lesson you should be able to:
+ 
+ - Create various spatial objects from xy coordinates and plot those objects
+ - Obtain appropriate distance measures between locations
+ - Assign an appropriate CRS to your spatial data object
+ - Plot and map spatial data against various map projections
+ - Import data from a biodiversity database
+ - Extract and summarize (terrestrial) environmental data for a series of points
+
+ 
+***
+
+# Install packages and load libraries 
+
+In this lesson, we will focus on some common spatial data packages and will be using a controlled space. When you want to repeat these procedures on your own computer, you will need to install many packages. Some package dependencies can be tricky to install as they rely GDAL binaries (= other programs) on your computer. Try loading the package `sf` - if no errors are returned, you are good to go! If you do have errors try the instructions [here](https://r-spatial.github.io/sf/index.html).
+
+```{r Load libraries}
+#| warning: false
+
+library(tidyverse)
+library(ggplot2)
+library(sf)
+library(terra)
+library(rnaturalearth)
+
+```
+
+# Getting oriented with spatial data
+
+**Note:** We will focus on spatial data structures as defined by packages `sf` and `terra`. `sf` stands for *simple features* is a newish package for *vector data* (points, lines, shapes: EPS is a common file format for vector data) that attempts to update older spatial tools (primarily from the package `sp`) but make formats and commands consistent with `Tidyverse` conventions and interfaces more readily with `ggplot` than the older `sp`. 
+
+*Rasters* are like picture images: the datasets are made up of equal sized cells, where each cell has a value and the smaller the cells, the more detailed the picture and the larger the file. JPGs and TIFs are raster formats, for example. Just as the above discussion on vector data, new packages are replacing old packages. We will use the new package, `terra`, that "plays well" with tidyverse and ggplot. Be aware, however, that many examples you find in the wild will have used the older `raster` package.
+
+## Examining and creating a simple features objects {-}
+
+To start getting familiar with spatial objects, we will download a simple map of Sweden from [natural earth](https://www.naturalearthdata.com). Take a quick look at this website to get a sense of all the wonderful data that are available here. (You are welcome to make a map of any country you like).
+
+
+```{r map of Sweden}
+#| output: false
+
+#Extract information from natural earth
+Sweden<- ne_countries(country = "sweden", returnclass = "sf") 
+plot(Sweden) 
+#Surprised? We will come back to this.
+
+#Examine your new object 
+class(Sweden) #sf and data.frame
+Sweden #tibble-like format!
+```
+
+Checking spatial data using plots (often) is highly recommended. You should also check the class of the object. The challenge question below shows you how to handle data that are imported incorrectly.
+
+
+> Challenge 1: Use subsetting commands to look at the first entry under the geometry column
+
+> Instead of the command you used above, try `Sweden2<- ne_countries(country = "sweden")`. Using `class()` look at how the object is described and compare to your original object. What has happened is that rather than create an *sf* object, the older format of *sp* has been created. See if you can convert `Sweden2` to the sf format using the function `st_as_sf()`.
+
+Notice that spatial features objects take the form of a tibble. This means that all your standard Tidyverse commands will work just fine (selecting, filtering, etc).
+
+You will also notice that there is information about a "bounding box" and "CRS" in your sf version of `Sweden` where in the sp version of `Sweden2` you saw "extent" and "crs". We will come back to that! Otherwise this object mostly looks like a normal tibble with lots of columns, but there is one special column, labelled ***geometry***. You will notice that for Sweden the geometry is described as a "MULTIPOLYGON"... more on this in a moment too.
+
+> Challenge 2: Use subsetting commands to look at the first entry under the geometry column. 
+>*Answers at end of this document, but you should be able to figure out these bits of code yourself!*
+>*Try doing this using either base or tidy syntax, or both.*
+
+
+You should have an answer like this:
+
+> POLYGON ((11.02737 58.85615, 11.46827 59.43239, 12.30037 60.11793, 12.63115 61.29357, 11.99206 61.80036, 11.93057 63.12832......
+
+Besides being an eyesore to look at, you might notice some patterns: the odd entries look a lot like longitude values and the even entries look like latitudes... because they are! This POLYGON is composed of a series of points that are connected to form the Swedish coastline.
+
+We can get a better feeling for this with a simple example where we construct a series of simple features (this example is borrowed from the [sf vignette](https://r-spatial.github.io/sf/articles/sf1.html)). Try to understand what is going on with each bit of code.
+
+
+```{r examples of simple features}
+## multipoints
+p <- rbind(c(3.2,4), c(3,4.6), c(3.8,4.4), c(3.5,3.8), c(3.4,3.6), c(3.9,4.5))  #makes a matrix of x & y value 
+mp <- st_multipoint(p)  #defining p as multipoint object
+plot(mp)  #you should see a series of points 
+
+## linestring
+s1 <- rbind(c(0,3),c(0,4),c(1,5),c(2,5))
+ls <- st_linestring(s1) # defining the linestring
+plot(ls) #you should see a series of lines
+
+## multilinestring
+s2 <- rbind(c(0.2,3), c(0.2,4), c(1,4.8), c(2,4.8))
+s3 <- rbind(c(0,4.4), c(0.6,5))
+mls <- st_multilinestring(list(s1,s2,s3)) #notice the list function... #... applied to the matrices defining linestrings
+plot(mls)
+
+## multipolygon
+p1 <- rbind(c(0,0), c(1,0), c(3,2), c(2,4), c(1,4), c(0,0))
+pol1 <-st_polygon(list(p1))  
+plot(pol1)  
+p2 <- rbind(c(1,1), c(1,2), c(2,2), c(1,1))
+pol2 <-st_polygon(list(p2))
+plot(pol2)
+
+## What happens if we combine polygons?
+pol <-st_polygon(list(p1,p2))  #notice again the list function
+plot(pol)  # do you see 2 polygons?  
+# The second polygon is a "hole" in the outer polygon!
+
+## Now make it really messy!
+p3 <- rbind(c(3,0), c(4,0), c(4,1), c(3,1), c(3,0))
+p4 <- rbind(c(3.3,0.3), c(3.8,0.3), c(3.8,0.8), c(3.3,0.8), c(3.3,0.3))[5:1,]
+p5 <- rbind(c(3,3), c(4,2), c(4,3), c(3,3))
+# What do you think the following will look like? 
+# Test your predictions using plot()
+mpol <- st_multipolygon(list(list(p1,p2), list(p3,p4), list(p5))) 
+```
+
+Take a look again at your `mpol` object. As messy as this was to create, this is a pretty simple geometry and is captured by one MULTIPOLYGON entry. Go back now and look at `mpol` in its string form paying special attention to where the parentheses sit; their locations indicate if you have multiple polygons including holes within polygons.
+
+> Challenge 3: Make a grey square with a square hole in the middle. 
+
+
+## Playing with some real spatial data 
+
+Only rarely do we need to manually create spatial feature. More likely we have data pre-packaged or we need to convert data. Use this [link](./data/BunyaMountainTrees.csv) to download a csv file that has data for trees from the Bunya Mountains National Park in Queensland (one of my favorite places to go for a long weekend). These data come from my friend [John Dwyer](https://environment.uq.edu.au/profile/21686/john-dwyer) who is an awesome spatial ecologist (but is scared by genetics, sadly). 
+
+Import this csv file making sure to fix the path and file name to match your set up. Before you convert the dataframe to a spatial features object take at look at how it is structured. Repeat this after you convert it. 
+
+```{r read in bunyadata}
+
+#load data
+BunyaMountainTrees<-read_csv("./data/BunyaMountainTrees.csv")
+
+#Convert the tibble to a simple features object, with x and y coordinates
+# Each row is a tree 
+BunyaMountainTrees<-st_as_sf(BunyaMountainTrees, coords = c("x", "y")) 
+```
+
+What will `plot(BunyaMountainTrees)` look like?  Surprised? (Does this remind you of what happened when you plotted Sweden?)
+
+Try `plot(BunyaMountainTrees, max.plot = 28)`. Although this might be confusing at first, this is really super cool... you are seeing the various column variables displayed in the appropriate location *by individual tree*. For now, we can concentrate on the species variable only. Try `plot(BunyaMountainTrees["species"])`. How cool is that! Let's make this even better...
+
+We will focus on ggplot solutions now, because the look nicer and are a bit easier. 
+```{r plotting bunya subplot}
+#| output: false
+
+ggplot(data = BunyaMountainTrees) +
+        geom_sf(aes(col=species))
+```
+
+> Challenge 4: Plot species identity for high-subplot 1, scaling the points by maximum tree diameter. 
+> *Hint: Think about what units max_diam is in. *
+
+Notice which tree is the largest? It is a *Ficus obliqua*, the small leaf or strangler fig. Because they wrap around other trees and have buttressed roots, they can get quite wide around!
+
+![from https://www.flickr.com/photos/17674930@N07/31581050407](images/Ficus_obliqua.jpg){width=100%} 
+_________
+
+# Answers to challenge questions
+
+### Challenge 1
+
+Use subsetting commands to look at the first entry under the geometry column
+
+```{r Answer Challenge question 1}
+
+Sweden2<- ne_countries(country = "sweden")  #extracts information from natural earth
+class(Sweden2)  #note that this is a SpatialPolygonsDataFrame... this is an sp object, but we want an sf object 
+Sweden2  #take a peak at the structure of this class object 
+Sweden2 <-st_as_sf(Sweden2 ) #convert to an sf object 
+class(Sweden2 ) #sf and data.frame
+Sweden2  #tibble-like format!
+```
+
+### Challenge 2
+
+Use subsetting commands to look at the first entry under the geometry column
+
+```{r Answer Challenge question 2}
+
+#Base solution
+Sweden[[1,"geometry"]]
+
+#Tidy solution
+Sweden %>%
+  filter(row_number() == 1) %>%
+  select(geometry)
+
+```
+
+### Challenge 3
+Make a grey square with a square hole in the middle. 
+
+```{r Answer Challenge question 3}
+#| output: false
+
+p_outer <- rbind(c(0,0), c(1,0), c(1,1), c(0,1), c(0,0))
+p_inner<- rbind(c(0.25,0.25), c(0.75,0.25), c(0.75,0.75), c(0.25,0.75), c(0.25,0.25))
+
+square <- st_multipolygon(list(list(p_outer,p_inner)))
+plot(square, col="grey")
+```
+
+What happens if you use 
+`square <- st_multipolygon(list(list(p_outer), list(p_inner)))`? Why?
+
+### Challenge 4
+Plot species identity for high-subplot 1, scaling the points by maximum tree diameter. 
+
+```{r Answer Challenge question 4}
+#| output: false
+
+ggplot(BunyaMountainTrees) +
+     geom_sf(aes(col=species, size= max_diam))
+```

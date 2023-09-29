@@ -59,6 +59,10 @@ No readings are required.
 
 ##### Optional
 
+-   The best website explaining how to use spatial data in R is \[*Geocomputation with R*, a book on geographic data analysis, visualization and modeling\](https://r.geocompx.org)
+
+-   Leempoel, K., Duruz, S., Rochat, E., Widmer, I., Orozco-terWengel, P., & Joost, S. (2017). Simple rules for an efficient use of geographic information systems in molecular ecology. \_Frontiers in Ecology and Evolution, 5\_. doi:10.3389/fevo.2017.00033 \*Reviews various approaches and tools, good list of terrestrial environmental data sources included in appendix\*
+
 ### Tuesday
 
 #### Genetic differentiation
