@@ -1,3 +1,13 @@
 ---
 title: "More GEA: genetic offsets & maladaptation"
 ---
+
+## Offsets 
+
+Capblancq has some discussion
+
+genetic offset = genomic offset = risk of non-adaptedness = genomic vulnerability
+
+# Challenge is validating predictions 
+
+for lodgepole pine, common garden and GEA negatively correlated - Fitzpatrick et al 2021
