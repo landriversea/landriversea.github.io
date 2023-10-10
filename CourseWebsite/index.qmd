@@ -90,13 +90,13 @@ Arrivals and light evening meal
 
 (meals and breaks same schedule as Sunday)
 
-09.00-12.00     [Simulations & demographic analyses](geneflow.qmd) (Mark, Zachary, Simon)
+09.00-12.00     [Simulations & demographic analyses](sims_demo.qmd) (Mark, Zachary, Simon)
 
 12.00-12.45     Lunch
 
 12.45-15.00     Boat excursion (ROV)
 
-15.00-17.00     [Simulations & demographic analyses, continued](geneflow.qmd)
+15.00-17.00     [Simulations & demographic analyses, continued](sims_demo.qmd)
 
 17.00-18.00     Dinner
 

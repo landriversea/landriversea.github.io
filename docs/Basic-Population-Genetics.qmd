@@ -2,3 +2,7 @@
 title: "Basic pop gen"
 format: html
 ---
+
+The module is aimed to give a brief background in population genetics.
+
+This module will be taught by Kerstin Johannesson. No background reading is required for this module.
