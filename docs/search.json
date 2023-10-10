@@ -67,7 +67,7 @@
     "href": "basic-bash.html",
     "title": "Basic Bash",
     "section": "",
-    "text": "This module is an introduction to bash, covering the most basic concepts. For those that are new to bash, we recommend trying out an online tutorial for bash for beginners prior to the course in addition to this, for instance https://evomics.org/learning/unix-tutorial/Links to an external site.\nThe module will consist in a lecture and an exercise."
+    "text": "This module is an introduction to bash, covering the most basic concepts. For those that are new to bash, we recommend trying out an online tutorial for bash for beginners prior to the course in addition to this, for instance https://evomics.org/learning/unix-tutorial/Links\nThe module will consist in a lecture and an exercise.\n\n\n\nIntroduction to bash\n\n\n\n\n\nSome more bash"
   },
   {
     "objectID": "index.html",
