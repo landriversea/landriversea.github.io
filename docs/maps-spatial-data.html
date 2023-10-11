@@ -168,6 +168,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Basic-Population-Genetics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic pop gen</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./basicR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic R</span></a>
   </div>
@@ -305,7 +311,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#where-on-earth-presenting-and-analysing-spatial-data-using-r" id="toc-where-on-earth-presenting-and-analysing-spatial-data-using-r" class="nav-link active" data-scroll-target="#where-on-earth-presenting-and-analysing-spatial-data-using-r">Where on earth? Presenting and analysing spatial data using R</a>
+  <li><a href="#this-page-is-still-under-construction" id="toc-this-page-is-still-under-construction" class="nav-link active" data-scroll-target="#this-page-is-still-under-construction">This page is still under construction …</a></li>
+  <li><a href="#where-on-earth-presenting-and-analysing-spatial-data-using-r" id="toc-where-on-earth-presenting-and-analysing-spatial-data-using-r" class="nav-link" data-scroll-target="#where-on-earth-presenting-and-analysing-spatial-data-using-r">Where on earth? Presenting and analysing spatial data using R</a>
   <ul class="collapse">
   <li><a href="#in-this-lesson-you-will" id="toc-in-this-lesson-you-will" class="nav-link" data-scroll-target="#in-this-lesson-you-will">In this lesson you will:</a></li>
   <li><a href="#by-the-end-of-this-lesson-you-should-be-able-to" id="toc-by-the-end-of-this-lesson-you-should-be-able-to" class="nav-link" data-scroll-target="#by-the-end-of-this-lesson-you-should-be-able-to">By the end of this lesson you should be able to:</a></li>
@@ -316,12 +323,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#examining-and-creating-a-simple-features-objects" id="toc-examining-and-creating-a-simple-features-objects" class="nav-link" data-scroll-target="#examining-and-creating-a-simple-features-objects">Examining and creating a simple features objects</a></li>
   <li><a href="#playing-with-some-real-spatial-data" id="toc-playing-with-some-real-spatial-data" class="nav-link" data-scroll-target="#playing-with-some-real-spatial-data">Playing with some real spatial data</a></li>
   </ul></li>
+  <li><a href="#coordinate-reference-systems" id="toc-coordinate-reference-systems" class="nav-link" data-scroll-target="#coordinate-reference-systems">Coordinate Reference Systems</a>
+  <ul class="collapse">
+  <li><a href="#understanding-and-assigning-coordinate-reference-systems-crs" id="toc-understanding-and-assigning-coordinate-reference-systems-crs" class="nav-link" data-scroll-target="#understanding-and-assigning-coordinate-reference-systems-crs">Understanding and assigning Coordinate Reference Systems (CRS)</a></li>
+  <li><a href="#transforming-and-reprojecting-crss" id="toc-transforming-and-reprojecting-crss" class="nav-link" data-scroll-target="#transforming-and-reprojecting-crss">Transforming and reprojecting CRS’s</a></li>
+  </ul></li>
+  <li><a href="#raster-data" id="toc-raster-data" class="nav-link" data-scroll-target="#raster-data">Raster data</a></li>
+  <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further resources</a>
+  <ul class="collapse">
+  <li><a href="#working-with-spatial-data-generally" id="toc-working-with-spatial-data-generally" class="nav-link" data-scroll-target="#working-with-spatial-data-generally">Working with spatial data generally</a></li>
+  <li><a href="#specific-r-package-support" id="toc-specific-r-package-support" class="nav-link" data-scroll-target="#specific-r-package-support">Specific R package support</a></li>
+  </ul></li>
   <li><a href="#answers-to-challenge-questions" id="toc-answers-to-challenge-questions" class="nav-link" data-scroll-target="#answers-to-challenge-questions">Answers to challenge questions</a>
   <ul class="collapse">
   <li><a href="#challenge-1" id="toc-challenge-1" class="nav-link" data-scroll-target="#challenge-1">Challenge 1</a></li>
   <li><a href="#challenge-2" id="toc-challenge-2" class="nav-link" data-scroll-target="#challenge-2">Challenge 2</a></li>
   <li><a href="#challenge-3" id="toc-challenge-3" class="nav-link" data-scroll-target="#challenge-3">Challenge 3</a></li>
   <li><a href="#challenge-4" id="toc-challenge-4" class="nav-link" data-scroll-target="#challenge-4">Challenge 4</a></li>
+  <li><a href="#challenge-5" id="toc-challenge-5" class="nav-link" data-scroll-target="#challenge-5">Challenge 5</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -346,7 +365,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><img src="images/world_viridis.png" class="img-fluid" style="width:100.0%"></p>
 <p><em>Instructor: Riginos</em></p>
+<section id="this-page-is-still-under-construction" class="level1">
+<h1>This page is still under construction …</h1>
+</section>
 <section id="where-on-earth-presenting-and-analysing-spatial-data-using-r" class="level1">
 <h1>Where on earth? Presenting and analysing spatial data using R</h1>
 <p>To undertake landscape genomics inherently requires working with spatial data. The individuals or populations that you have genotyped came from a specific location. It is likely that you will be interested in environmental attributes of that location. You might also want to calculate geographic distances between your sampling locations. And, undoubtedly you will want to plot your results on a map!</p>
@@ -382,7 +405,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geodata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="getting-oriented-with-spatial-data" class="level1">
@@ -480,10 +504,170 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
-<p>Challenge 4: Plot species identity for high-subplot 1, scaling the points by maximum tree diameter. <em>Hint: Think about what units max_diam is in. </em></p>
+<p>Challenge 4: Plot species identity for high-subplot 1, scaling the points by maximum tree diameter. <em>Hint: Think about what units max_diam is in.</em></p>
 </blockquote>
-<p>Notice which tree is the largest? It is a <em>Ficus obliqua</em>, the small leaf or strangler fig.&nbsp;Because they wrap around other trees and have buttressed roots, they can get quite wide around!</p>
-<p><img src="images/Ficus_obliqua.jpg" class="img-fluid" style="width:100.0%" alt="from https://www.flickr.com/photos/17674930@N07/31581050407"> _________</p>
+<p>Notice which tree is the largest? It is a <em>Ficus obliqua</em>, the small leaf or strangler fig.&nbsp;Because they wrap around other trees and have buttressed roots, they can get quite wide around.</p>
+<p><img src="images/31581050407_0562c9e6c5_c.jpg" class="img-fluid" alt="Small leafed fig tree"> Now that your data in in the sf format, there are many other things you can do. For example, you could examine the distance between all pairs of trees.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>distances<span class="ot">&lt;-</span><span class="fu">st_distance</span>(BunyaMountainTrees, BunyaMountainTrees) <span class="co">#calculate distances, but this returns a symmetrical matrix</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>distances<span class="ot">&lt;-</span>distances[<span class="fu">lower.tri</span>(distances)] <span class="co">#lower.tri returns T/F values...see if you can follow the subsetting being used here</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">as.data.frame</span>(distances)) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> distances))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Keep in mind that the data are bounded by the size of the subplot. But it is interesting that you do not get too many trees very close together…why do you think that might be?</p>
+<p>This function is very useful - for example you might want to calculate distances between your sampling locations to look for patterns of isolation by distance. When your data are in an x-y plane, <code>st_distance</code> will return the Euclidean distance. When your data are projected (see next section), then <code>st_distance</code> will calculate the distance on Earth’s sphere. Most of the commands in <code>sf</code> will automatically adjust when your data are spherical. But, it is worth occasionally checking and when you see very odd results, keeping in mind that an inappropriate distance measure is being used.</p>
+</section>
+</section>
+<section id="coordinate-reference-systems" class="level1">
+<h1>Coordinate Reference Systems</h1>
+<p><strong>Coordinate Reference Systems can cause major headaches and unexpected results if not handled properly. Make sure you understand the concepts in this section as it will save you time in the long run!</strong></p>
+<p>You are probably familiar with longitude and latitude as giving information about where on earth something is located. (Quick check: look up your own longitude and latitude based on your current location and where you were born.)</p>
+<p>The problem with latitude is that if you compare two sets of points that sit on the same longitudes but at different latitudes, their distances will differ. The meridians (N-S lines on a globe) are farthest apart at the equator.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/theproblemwithlatitude2.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Consider the distance between C to D versus A to B to see how distance varies by latitude - from https://astronavigationdemystified.com/measuring-the-distance-between-meridians-of-longitude-along-a-parallel-of-latitude/</figcaption>
+</figure>
+</div>
+<p><em>Projections</em> involve taking the earth’s curvature into account are used to calculate relationships among spatial objects and to build 2D representative images. <strong>WGS 84</strong> projection system is the most commonly encountered and works well for the whole earth scale. You can read more on WGS 84 in <a href="https://en.wikipedia.org/wiki/World_Geodetic_System">wikipedia</a>. (Don’t worry if all this makes your head spin!)</p>
+<p>To summarise:</p>
+<ul>
+<li>The earth is a sphere but we humans are used to thinking and projecting things in two dimensions. There is no universal (2D) projection system that preserves all relationships (distances, angles, areas) among a collection of points.</li>
+<li>There are <em>many</em> different projection systems that try to optimise certain relationships for specific locations on the earth. <em>Conformal</em> projections try to accurately show shapes but are inaccurate in sizes and distances (for example, Mercator Projection); <em>equal-area</em> projections preserve relative areas (for example, Lambert Equal Area or Mollweide); and <em>equi-distant</em> projections preserve distances (typically to a specific point on the map: see below).</li>
+<li>If you have two objects that you are trying to <strong>match</strong> up (say species occurences and temperature records) you need to make sure that they are in the <strong>same CRS</strong>.</li>
+<li>Depending on your analysis, especially if you need calculate areas (think about looking at species range areas, for example) you will need an <strong>equal area</strong> projection.</li>
+<li>The bigger the extent of your study region (like the whole earth, for example) the more these issues become important. At small scales they are less important.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="images/AzimuthMap.pdf" class="img-fluid" style="width:50.0%"></p>
+<figcaption class="figure-caption">Azimuthal map centered on Tjärnö such that correct distances to Tjärnö are preserved. Created by https://ns6t.net/azimuth/azimuth.html</figcaption>
+</figure>
+</div>
+<section id="understanding-and-assigning-coordinate-reference-systems-crs" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-and-assigning-coordinate-reference-systems-crs">Understanding and assigning Coordinate Reference Systems (CRS)</h2>
+<p>To start a deeper dive into CRS’s, go back to your now familiar <code>Sweden</code> object. Enter <code>Sweden</code> and also <code>st_crs(Sweden)</code>.</p>
+<p>Here we can see that the projection is longlat (= longitude and latitude), with datum (starting point, or 0 value) at WGS84 (= equator with longitude set at the prime meridian or Greenwich, UK).</p>
+<p>We can also find the <em>bounding box</em> or <em>extent</em> of the spatial object, which represents the rectangular shape in which our map sits, where x &amp; y positions are reported using <em>decimal</em> longitude and latitude. Try <code>st_boundary(Sweden)</code>)</p>
+<p><strong>Note to your future self</strong> - longitude and latitude are very commonly reported incorrectly or in mixed formats. For example, rather than a decimal latitude of -38.2685, you might encounter 38° 16’ 6.6’’ S in degree-minute-second format. Or even worse you might get a mixture such as 38° 16.11’S ! Plot your data early on in any analysis to spot potential problems.</p>
+<p>What about <code>BunyaMountainTrees</code>? Try to see what CRS is assigned….nothing! And actually given that we were just using x and y coordinates in meters, that’s fine. But, if we wanted to plot the data on a map we would have problems.</p>
+<p>A file that accompanies <code>BunyaMountainTrees</code> is <a href="./data/BunyaMountainSites.csv">BunyaMountainSites</a>. Import this and examine it. You might notice some funny variables called “easting” and “northing”; these are the positions of the plot sites in <strong><em>meters</em></strong> distant from a datum, a format called <em>UTM</em> or <a href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">Universal Transverse Mercator</a>. (A negative northing is in the southern direction.)</p>
+<p>In order to attach the correct CRS details, however, we still need information on the projection…. Some further digging around on information provided by the authors gives us the following:</p>
+<blockquote class="blockquote">
+<p>Location: Bunya Mountain National Park, Queensland Australia. Five areas of rainfortest or vine thicket were surveyed along a topographic moisture gradient: ‘high’ (easting = 359342, northing = 7027160) ‘low_east’ (365676, 7028551) ‘low_west’ (350888, 7030875) ‘mid_east’ (360196, 7027612) ‘mid_west’ (354971, 7031460) All eastings and northings in WGS84, zone 56.</p>
+</blockquote>
+<p>Notice “WGS84, zone 56”. (Although N and S are not stated, we can guess that the projection is S since the Bunya Mountains are in the southern hemisphere!) Once you find the projection description, google it, and you will be likely directed to the relevant <a href="#0">EPSG site</a>. Here, we can use either the EPSG number or (scrolling down the page) copy the PROJ.4 text.</p>
+<p>Here is how we assign the correct CRS to `BunyaMountainSites` and also turn it into an sf object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"./data/BunyaMountainSites.csv"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites_sf<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainSites, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>))  <span class="co">#convert the tibble to an sf object </span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(BunyaMountainSites_sf) <span class="ot">&lt;-</span><span class="st">"EPSG:32756"</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(BunyaMountainSites_sf) <span class="ot">&lt;-</span><span class="st">"+proj=utm +zone=56 +south +datum=WGS84 +units=m +no_defs"</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#or we can convert and assign CRS in one step:</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites_sf<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainSites_sf, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs=</span><span class="st">"+proj=utm +zone=56 +south +datum=WGS84 +units=m +no_defs"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The website <a href="https://epsg.io">EPSG</a> has lots of searchable information about CRS’s and projections; spend some time looking through their website. (Random trivia: EPSG stands for European Petroleum Survey Group. They created standards that have been widely adopted. EPSG is no longer associated with any industry group but the name persists.)</p>
+</section>
+<section id="transforming-and-reprojecting-crss" class="level2">
+<h2 class="anchored" data-anchor-id="transforming-and-reprojecting-crss">Transforming and reprojecting CRS’s</h2>
+<p>We have succeeded in adding a CRS to our <code>BunyaMountainSites_sf</code> object…but is it correct? A handy quick check would be to plot it on our map of Australia. How can we do this? First, import a map of Australia as you did earlier for Sweden and use the <code>st_crs()</code> function to look at the CRS’s of each object…are they the same?</p>
+<p>To convert the CRS of <code>bunya_sites_sf</code> to match <code>Australia</code> is quite straightforward using the <code>st_transform()</code> function that undertakes a lot of serious geometric calculations for us. We can do this a number of ways:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import map of Australia from natural earth</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Australia<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"australia"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(Australia)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># transform CRS</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="at">crs=</span><span class="dv">4326</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="at">crs=</span><span class="st">"+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="fu">st_crs</span>(Australia))</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#All of these methods are equivalent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now to plot these points on the map…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Australia) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span>  <span class="co">#background map needs to be first argument </span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> BunyaMountainSites.wgs84, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">shape =</span> <span class="dv">23</span>, <span class="at">fill =</span> <span class="st">"darkred"</span>) <span class="co">#our sites plotted on top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Why have I had you play around with this dataset on Australian trees? Because this dataset presents some of the irregularities and problems you might face when finding spatial data. You will often have to do some detective work and guessing to find and assign the correct CRS. Always test by plotting your data!</p>
+<p>Consider three commonly used but different CRS’s:</p>
+<ul>
+<li><a href="https://epsg.io/4326">EPSG: 4326</a> = WGS84. For the whole earth, used by most GPS’s and Google Earth. Not equal area and technically not really projected. This one is an all-around compromise. It is centered on the equator and prime meridian</li>
+<li><a href="https://epsg.io/3006">EPSG:3006</a> = SWEREF99: This is for all of Sweden. It is a <em>conformal</em> projection that attempts to make both distances and area well represented. Good for making Swedish maps and Swedish focused analyses.</li>
+<li><a href="https://en.wikipedia.org/wiki/Lambert_azimuthal_equal-area_projection">Lambert Equal Area Azimuthal</a> = LAEA: <em>equal area</em> projection and can be centered where we choose.</li>
+</ul>
+<p>Our data is already in <em>WGS84</em> but if we needed to define it the code would be:</p>
+<p><code>WGS&lt;-"+proj=longlat +datum=WGS84 +no_defs"</code></p>
+<p>The code for <em>SWEREF99</em> is: <code>SWEREF99 &lt;- "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs"</code></p>
+<p>And for <em>LAEA</em> centered on the WGS84 datum: <code>LAEA &lt;- "+proj=laea  +lat_0=0 +lon_0=0"</code> (to center in Sweden: <code>laea &lt;- "+proj=laea  +lat_0=16.321998712 +lon_0=62.38583179"</code>)</p>
+<p>To see what those different projections look like, we can got back to our map of Sweden. We can reproject the CRS as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>WGS<span class="ot">&lt;-</span><span class="st">"+proj=longlat +datum=WGS84 +no_defs"</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>SWEREF99 <span class="ot">&lt;-</span> <span class="st">"+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>LAEA <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=16.321998712 +lon_0=62.38583179"</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>Sweden.SWEREF99 <span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, SWEREF99)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>Sweden.LAEA<span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, LAEA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Challenge 5: Plot your original Sweden WGS and two reprojected maps. Then, change the LAEA projection to be centred on the prime meridien and plot that map again.</p>
+</blockquote>
+<p><strong>Note to your future self</strong> Make sure that CRS are the same between objects that you are seeking to compare and map. It is easy to get caught out.</p>
+<p><strong>Add example of reading in river data</strong></p>
+</section>
+</section>
+<section id="raster-data" class="level1">
+<h1>Raster data</h1>
+<p>Points, lines, and polygon are <em>vector</em> objects: only a few points need to be specified to define them. In contrast, <em>rasters</em> are like picture images: each cell has a value and the smaller the cells, the more detailed the picture and the larger the file. Rasters are rectangular in shape and cells are ordered by row, whereby each cell can have a continuous or categorical value:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/raster_cells.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Example of raster data from <em>Geocomputation with R</em>: https://geocompr.robinlovelace.net</figcaption>
+</figure>
+</div>
+<p>To start exploring rasters, we are going download information on world topography (altitude). One the most widely used sources of weather data come from <a href="https://worldclim.org/">WorldClim.org</a> - these include historical and projected future climage data. They are especially useful for people working on terrestrial species and can be accessed using the <code>library(geodata)</code>.</p>
+<p>We can download elevation information for Sweden quite easily:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># elevation&lt;- elevation_30s(country="Sweden", path=tempdir() )</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot() +  </span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_raster(data = USA.df, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_gradient(low = "lightgray", high = "black") +</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_sf(data = rivers_crop$geometry, col="midnightblue", linewidth = log10(rivers_crop$DIS_AV_CMS+1)/4) +</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_void()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will take a few minutes to load. 30s is the coarser granularity of data. I recommend that you optimise your code and plotting with course resolution rasters and then for the final analyses (and graphics) use the finer resolution.</p>
+<hr>
+</section>
+<section id="further-resources" class="level1">
+<h1>Further resources</h1>
+<section id="working-with-spatial-data-generally" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="working-with-spatial-data-generally">Working with spatial data generally</h2>
+<p>Fantastic and comprehensive entry level open source book. <a href="https://geocompr.robinlovelace.net/spatial-class.html">Geocomputation with R</a></p>
+<p>General explanations on using R for biological spatial data including remote sensing <a href="https://rspatial.org/index.html">rspatial.org</a></p>
+<p>A series of well explained tutorials for making publication-ready maps:</p>
+<ul>
+<li><a href="https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html">Part 1: Basics</a></li>
+<li><a href="https://www.r-spatial.org/r/2018/10/25/ggplot2-sf-2.html">Part 2: Layers</a></li>
+<li><a href="https://www.r-spatial.org/r/2018/10/25/ggplot2-sf-3.html">Part 3: Layouts</a></li>
+</ul>
+<p>Another open source book: <a href="https://keen-swartz-3146c4.netlify.app">Spatial Data Science</a></p>
+</section>
+<section id="specific-r-package-support" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="specific-r-package-support">Specific R package support</h2>
+<p>sf package <a href="https://r-spatial.github.io/sf/articles/sf1.html">vignettes</a> - these are rather technical</p>
+<p><a href="https://cran.r-project.org/web/packages/marmap/index.html"><strong>marmap package</strong></a> with excellent vignettes - an essential resource if using marine data that allows you to draw bathymetric maps</p>
+<p><a href="https://www.bio-oracle.org/code.php"><strong>sdmpredictors package</strong></a> - an essential resource if using marine data that provide access to marine environmental layers in Bio-Oracle (analogous to BioClim)</p>
+<hr>
 </section>
 </section>
 <section id="answers-to-challenge-questions" class="level1">
@@ -492,36 +676,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
 <p>Use subsetting commands to look at the first entry under the geometry column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Sweden2<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>)  <span class="co">#extracts information from natural earth</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2)  <span class="co">#note that this is a SpatialPolygonsDataFrame... this is an sp object, but we want an sf object </span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#take a peak at the structure of this class object </span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>Sweden2 <span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(Sweden2 ) <span class="co">#convert to an sf object </span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2 ) <span class="co">#sf and data.frame</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Sweden2<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>)  <span class="co">#extracts information from natural earth</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2)  <span class="co">#note that this is a SpatialPolygonsDataFrame... this is an sp object, but we want an sf object </span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#take a peak at the structure of this class object </span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>Sweden2 <span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(Sweden2 ) <span class="co">#convert to an sf object </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2 ) <span class="co">#sf and data.frame</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="challenge-2" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
 <p>Use subsetting commands to look at the first entry under the geometry column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Base solution</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Sweden[[<span class="dv">1</span>,<span class="st">"geometry"</span>]]</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Tidy solution</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>Sweden <span class="sc">%&gt;%</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Base solution</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Sweden[[<span class="dv">1</span>,<span class="st">"geometry"</span>]]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Tidy solution</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>Sweden <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="challenge-3" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-3">Challenge 3</h3>
 <p>Make a grey square with a square hole in the middle.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p_outer <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>p_inner<span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>))</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p_outer,p_inner)))</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(square, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p_outer <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>p_inner<span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p_outer,p_inner)))</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(square, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What happens if you use <code>square &lt;- st_multipolygon(list(list(p_outer), list(p_inner)))</code>? Why?</p>
 </section>
@@ -529,8 +713,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="challenge-4">Challenge 4</h3>
 <p>Plot species identity for high-subplot 1, scaling the points by maximum tree diameter.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BunyaMountainTrees) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species, <span class="at">size=</span> max_diam))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BunyaMountainTrees) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species, <span class="at">size=</span> max_diam))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="challenge-5" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-5">Challenge 5</h3>
+<p>Plot your original Sweden WGS and two reprojected maps. Then, change the LAEA projection to be centred on the prime meridien and plot that map again.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting reprojections</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.SWEREF99) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#LAEA centered on 0,0</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>LAEA0 <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=0 +lon_0=0"</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>Sweden.LAEA0<span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, LAEA0)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA0) <span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Not as good as centering on the country. Try Australia with LAEA0 if you want to see something truly awful.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
