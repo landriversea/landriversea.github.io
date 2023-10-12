@@ -2,6 +2,8 @@
 title: "Intro to GEA & RDA as a general toolkit"
 ---
 
+# Under construction...
+
 # Genotype Environment Associations
 
 What are they
@@ -102,12 +104,10 @@ Capblancq has discussion on conditioning approaches
 
 -   genetic based index of adaptation based on Steane
 
--   predict geneotpyes and allele frequencies as a function of enviromental variation
+-   predict genotypes and allele frequencies as a function of environmental variation
 
 ## Extra topics
 
 MEMS
 
 AEMS
-
-

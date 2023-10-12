@@ -1,3 +1,11 @@
 ---
-title: "Land, river, sea"
+title: "Land, river, & seascape genomics"
 ---
+
+(Under construction)
+
+Lecture notes coming.
+
+There will be in class activities and discussion. Please be prepared to talk about
+
+-   Storfer, A., Patton, A., & Fraik, A. K. (2018). Navigating the interface between landscape genetics and landscape genomics. *Front Genet, 9*, 68. doi:10.3389/fgene.2018.00068
