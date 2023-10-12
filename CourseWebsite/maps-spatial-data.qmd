@@ -8,7 +8,6 @@ execute:
 
 *Instructor: Riginos*
 
-# This page is still under construction ...
 
 # Where on earth? Presenting and analysing spatial data using R
 
@@ -47,8 +46,10 @@ library(tidyverse)
 library(ggplot2)
 library(sf)
 library(terra)
+library(tidyterra)
 library(rnaturalearth)
 library(geodata)
+library(sdmpredictors)
 
 ```
 
@@ -206,7 +207,7 @@ To summarise:
 -   Depending on your analysis, especially if you need calculate areas (think about looking at species range areas, for example) you will need an **equal area** projection.
 -   The bigger the extent of your study region (like the whole earth, for example) the more these issues become important. At small scales they are less important.
 
-![Azimuthal map centered on Tjärnö such that correct distances to Tjärnö are preserved. Created by https://ns6t.net/azimuth/azimuth.html](images/AzimuthMap.pdf){width="50%"}
+![Azimuthal map centered on Tjärnö such that correct distances to Tjärnö are preserved. Created by https://ns6t.net/azimuth/azimuth.html](images/AzimuthMap.pdf)
 
 ## Understanding and assigning Coordinate Reference Systems (CRS)
 
@@ -324,23 +325,104 @@ Points, lines, and polygon are *vector* objects: only a few points need to be sp
 
 ![Example of raster data from *Geocomputation with R*: https://geocompr.robinlovelace.net ](images/raster_cells.jpeg){width=100%}
 
-To start exploring rasters, we are going download information on world topography (altitude). One the most widely used sources of weather data come from  [WorldClim.org](https://worldclim.org/) - these include historical and projected future climage data. They are especially useful for people working on terrestrial species and can be accessed using the `library(geodata)`. 
+To start exploring rasters, we are going download information on world topography (altitude). One the most widely used sources of weather data come from  [WorldClim.org](https://worldclim.org/) - these include historical and projected future climate data. They are especially useful for people working on terrestrial species and can be accessed using the `library(geodata)`. Elevation (altitude is also included).
 
 We can download elevation information for Sweden quite easily:
-```{r}
 
+```{r elevation from worldclim}
+
+#| eval: false 
+
+#This will take a few minutes to load.
 # elevation<- elevation_30s(country="Sweden", path=tempdir() )
 # 
 # 
-# ggplot() +  
-#   geom_raster(data = USA.df, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +
+# ggplot() +
+#   geom_raster(data = elevation, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +
 #   scale_fill_gradient(low = "lightgray", high = "black") +
-#   geom_sf(data = rivers_crop$geometry, col="midnightblue", linewidth = log10(rivers_crop$DIS_AV_CMS+1)/4) +
 #   theme_void()
 ```
 
-This will take a few minutes to load. 30s is the coarser granularity of data. I recommend that you optimise your code and plotting with course resolution rasters and then for the final analyses (and graphics) use the finer resolution. 
+In mid October the worldclim server was down for maintenance, so we will also explore a marine example. This example will extract Sea Surface Temperature (SST) from [bio-ORACLE](https://www.bio-oracle.org/)
+ 
+```{r SST}
+SST <- load_layers("BO_sstmax")
+SST<-terra::rast(SST) #now is terra compatible
 
+
+ggplot() +
+  geom_spatraster(data = SST)
+```
+ 
+ Which ever raster you have downloaded, examine the structure by calling the name, using `summary()` and any other tools you like. Do you see some similarity in structure to `sf` objects? All of these spatial objects include an extent (= maximum and minimal locations, sometimes called the bounding box) and CRS. Notice that the raster additionally includes information on dimensions and resolution. Sometimes the units can be a bit mysterious and may need to do some investigation to understand them. 
+
+## Cropping a raster
+
+Rasters can be manipulated in manners similar to `sf` objects. In the example that follows, we are going to crop the global SST data to match the spatial extent of our Sweden vector object. 
+
+```{r crop raster}
+
+#first check that both objects have the same crs
+same.crs(Sweden, SST)
+
+# crop based on the spatial extent of Sweden
+SST.sw<-terra::crop(SST, Sweden)
+
+# plot to check
+ggplot() +
+  geom_spatraster(data = SST.sw)
+```
+
+Obviously that crop is a bit too close. There are many solutions for how to do this, but I will show you a manual solution so you can understand the *spatialExtent* or *bounding box* of an spatial object. 
+
+```{r manual cropping}
+
+#diagnose the problem - look at the "bounding box" for the vector object
+st_bbox(Sweden)
+
+# and look at the "extent" for the raster
+ext(SST.sw)
+
+#Rounding error has resulted in ugliness!
+
+#manually set the extent to crop
+SST.sw<-terra::crop(SST, c(4, 24, 55, 70))
+
+# plot to check
+ggplot() +
+  geom_spatraster(data = SST.sw)
+
+```
+
+## Reprojecting a raster
+
+Like vector data, rasters can be reprojected. Try the following code to project `SST.sw` to the `LAEA0` projection. Then plot it. 
+
+```{r raster projection}
+
+LAEA0 <- "+proj=laea  +lat_0=0 +lon_0=0" 
+
+# raster reprojection
+SST.sw.laea<-project(SST.sw, LAEA0)
+
+```
+
+Surprised?  
+
+Each time you reproject, however, you alter your raster. Therefore you should try to **avoid doing this too much** and it is generally best practice to reproject your vector data to match your raster's CRS. (You can reproject vector objects back and forth endlessly without loosing information...why?)
+
+
+General tips in working with rasters 
+
+- Use a coarse granularity of data to optimise your code and plotting and then for the final analyses (and graphics) use the finer resolution. 
+- Reproject once only.
+- Project before cropping.
+ 
+___
+
+*To add if time - working with marmap, hydroatlas, download example*
+ 
+ Final words .... 
 ___
 
 # Further resources   
@@ -453,3 +535,5 @@ ggplot(data = Sweden.LAEA0) +
     geom_sf() 
 #Not as good as centering on the country. Try Australia with LAEA0 if you want to see something truly awful.
 ```
+
+

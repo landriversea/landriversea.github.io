@@ -311,8 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#this-page-is-still-under-construction" id="toc-this-page-is-still-under-construction" class="nav-link active" data-scroll-target="#this-page-is-still-under-construction">This page is still under construction …</a></li>
-  <li><a href="#where-on-earth-presenting-and-analysing-spatial-data-using-r" id="toc-where-on-earth-presenting-and-analysing-spatial-data-using-r" class="nav-link" data-scroll-target="#where-on-earth-presenting-and-analysing-spatial-data-using-r">Where on earth? Presenting and analysing spatial data using R</a>
+  <li><a href="#where-on-earth-presenting-and-analysing-spatial-data-using-r" id="toc-where-on-earth-presenting-and-analysing-spatial-data-using-r" class="nav-link active" data-scroll-target="#where-on-earth-presenting-and-analysing-spatial-data-using-r">Where on earth? Presenting and analysing spatial data using R</a>
   <ul class="collapse">
   <li><a href="#in-this-lesson-you-will" id="toc-in-this-lesson-you-will" class="nav-link" data-scroll-target="#in-this-lesson-you-will">In this lesson you will:</a></li>
   <li><a href="#by-the-end-of-this-lesson-you-should-be-able-to" id="toc-by-the-end-of-this-lesson-you-should-be-able-to" class="nav-link" data-scroll-target="#by-the-end-of-this-lesson-you-should-be-able-to">By the end of this lesson you should be able to:</a></li>
@@ -328,7 +327,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#understanding-and-assigning-coordinate-reference-systems-crs" id="toc-understanding-and-assigning-coordinate-reference-systems-crs" class="nav-link" data-scroll-target="#understanding-and-assigning-coordinate-reference-systems-crs">Understanding and assigning Coordinate Reference Systems (CRS)</a></li>
   <li><a href="#transforming-and-reprojecting-crss" id="toc-transforming-and-reprojecting-crss" class="nav-link" data-scroll-target="#transforming-and-reprojecting-crss">Transforming and reprojecting CRS’s</a></li>
   </ul></li>
-  <li><a href="#raster-data" id="toc-raster-data" class="nav-link" data-scroll-target="#raster-data">Raster data</a></li>
+  <li><a href="#raster-data" id="toc-raster-data" class="nav-link" data-scroll-target="#raster-data">Raster data</a>
+  <ul class="collapse">
+  <li><a href="#cropping-a-raster" id="toc-cropping-a-raster" class="nav-link" data-scroll-target="#cropping-a-raster">Cropping a raster</a></li>
+  <li><a href="#reprojecting-a-raster" id="toc-reprojecting-a-raster" class="nav-link" data-scroll-target="#reprojecting-a-raster">Reprojecting a raster</a></li>
+  </ul></li>
   <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further resources</a>
   <ul class="collapse">
   <li><a href="#working-with-spatial-data-generally" id="toc-working-with-spatial-data-generally" class="nav-link" data-scroll-target="#working-with-spatial-data-generally">Working with spatial data generally</a></li>
@@ -367,9 +370,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><img src="images/world_viridis.png" class="img-fluid" style="width:100.0%"></p>
 <p><em>Instructor: Riginos</em></p>
-<section id="this-page-is-still-under-construction" class="level1">
-<h1>This page is still under construction …</h1>
-</section>
 <section id="where-on-earth-presenting-and-analysing-spatial-data-using-r" class="level1">
 <h1>Where on earth? Presenting and analysing spatial data using R</h1>
 <p>To undertake landscape genomics inherently requires working with spatial data. The individuals or populations that you have genotyped came from a specific location. It is likely that you will be interested in environmental attributes of that location. You might also want to calculate geographic distances between your sampling locations. And, undoubtedly you will want to plot your results on a map!</p>
@@ -405,8 +405,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geodata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geodata)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="getting-oriented-with-spatial-data" class="level1">
@@ -541,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="images/AzimuthMap.pdf" class="img-fluid" style="width:50.0%"></p>
+<p><embed src="images/AzimuthMap.pdf" class="img-fluid"></p>
 <figcaption class="figure-caption">Azimuthal map centered on Tjärnö such that correct distances to Tjärnö are preserved. Created by https://ns6t.net/azimuth/azimuth.html</figcaption>
 </figure>
 </div>
@@ -633,20 +635,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption class="figure-caption">Example of raster data from <em>Geocomputation with R</em>: https://geocompr.robinlovelace.net</figcaption>
 </figure>
 </div>
-<p>To start exploring rasters, we are going download information on world topography (altitude). One the most widely used sources of weather data come from <a href="https://worldclim.org/">WorldClim.org</a> - these include historical and projected future climage data. They are especially useful for people working on terrestrial species and can be accessed using the <code>library(geodata)</code>.</p>
+<p>To start exploring rasters, we are going download information on world topography (altitude). One the most widely used sources of weather data come from <a href="https://worldclim.org/">WorldClim.org</a> - these include historical and projected future climate data. They are especially useful for people working on terrestrial species and can be accessed using the <code>library(geodata)</code>. Elevation (altitude is also included).</p>
 <p>We can download elevation information for Sweden quite easily:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># elevation&lt;- elevation_30s(country="Sweden", path=tempdir() )</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot() +  </span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_raster(data = USA.df, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_gradient(low = "lightgray", high = "black") +</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_sf(data = rivers_crop$geometry, col="midnightblue", linewidth = log10(rivers_crop$DIS_AV_CMS+1)/4) +</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_void()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#This will take a few minutes to load.</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># elevation&lt;- elevation_30s(country="Sweden", path=tempdir() )</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot() +</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_raster(data = elevation, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_gradient(low = "lightgray", high = "black") +</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_void()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This will take a few minutes to load. 30s is the coarser granularity of data. I recommend that you optimise your code and plotting with course resolution rasters and then for the final analyses (and graphics) use the finer resolution.</p>
+<p>In mid October the worldclim server was down for maintenance, so we will also explore a marine example. This example will extract Sea Surface Temperature (SST) from <a href="https://www.bio-oracle.org/">bio-ORACLE</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">load_layers</span>(<span class="st">"BO_sstmax"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>SST<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(SST) <span class="co">#now is terra compatible</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Which ever raster you have downloaded, examine the structure by calling the name, using <code>summary()</code> and any other tools you like. Do you see some similarity in structure to <code>sf</code> objects? All of these spatial objects include an extent (= maximum and minimal locations, sometimes called the bounding box) and CRS. Notice that the raster additionally includes information on dimensions and resolution. Sometimes the units can be a bit mysterious and may need to do some investigation to understand them.</p>
+<section id="cropping-a-raster" class="level2">
+<h2 class="anchored" data-anchor-id="cropping-a-raster">Cropping a raster</h2>
+<p>Rasters can be manipulated in manners similar to <code>sf</code> objects. In the example that follows, we are going to crop the global SST data to match the spatial extent of our Sweden vector object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first check that both objects have the same crs</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">same.crs</span>(Sweden, SST)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># crop based on the spatial extent of Sweden</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>SST.sw<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">crop</span>(SST, Sweden)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot to check</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST.sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Obviously that crop is a bit too close. There are many solutions for how to do this, but I will show you a manual solution so you can understand the <em>spatialExtent</em> or <em>bounding box</em> of an spatial object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#diagnose the problem - look at the "bounding box" for the vector object</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_bbox</span>(Sweden)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and look at the "extent" for the raster</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(SST.sw)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Rounding error has resulted in ugliness!</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#manually set the extent to crop</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>SST.sw<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">crop</span>(SST, <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">24</span>, <span class="dv">55</span>, <span class="dv">70</span>))</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot to check</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST.sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="reprojecting-a-raster" class="level2">
+<h2 class="anchored" data-anchor-id="reprojecting-a-raster">Reprojecting a raster</h2>
+<p>Like vector data, rasters can be reprojected. Try the following code to project <code>SST.sw</code> to the <code>LAEA0</code> projection. Then plot it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>LAEA0 <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=0 +lon_0=0"</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># raster reprojection</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>SST.sw.laea<span class="ot">&lt;-</span><span class="fu">project</span>(SST.sw, LAEA0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Surprised?</p>
+<p>Each time you reproject, however, you alter your raster. Therefore you should try to <strong>avoid doing this too much</strong> and it is generally best practice to reproject your vector data to match your raster’s CRS. (You can reproject vector objects back and forth endlessly without loosing information…why?)</p>
+<p>General tips in working with rasters</p>
+<ul>
+<li>Use a coarse granularity of data to optimise your code and plotting and then for the final analyses (and graphics) use the finer resolution.</li>
+<li>Reproject once only.</li>
+<li>Project before cropping.</li>
+</ul>
 <hr>
+<p><em>To add if time - working with marmap, hydroatlas, download example</em></p>
+<p>Final words …. ___</p>
+</section>
 </section>
 <section id="further-resources" class="level1">
 <h1>Further resources</h1>
@@ -676,36 +741,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
 <p>Use subsetting commands to look at the first entry under the geometry column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Sweden2<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>)  <span class="co">#extracts information from natural earth</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2)  <span class="co">#note that this is a SpatialPolygonsDataFrame... this is an sp object, but we want an sf object </span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#take a peak at the structure of this class object </span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>Sweden2 <span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(Sweden2 ) <span class="co">#convert to an sf object </span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2 ) <span class="co">#sf and data.frame</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Sweden2<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>)  <span class="co">#extracts information from natural earth</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2)  <span class="co">#note that this is a SpatialPolygonsDataFrame... this is an sp object, but we want an sf object </span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#take a peak at the structure of this class object </span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>Sweden2 <span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(Sweden2 ) <span class="co">#convert to an sf object </span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2 ) <span class="co">#sf and data.frame</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="challenge-2" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
 <p>Use subsetting commands to look at the first entry under the geometry column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Base solution</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Sweden[[<span class="dv">1</span>,<span class="st">"geometry"</span>]]</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Tidy solution</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>Sweden <span class="sc">%&gt;%</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Base solution</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>Sweden[[<span class="dv">1</span>,<span class="st">"geometry"</span>]]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Tidy solution</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>Sweden <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="challenge-3" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-3">Challenge 3</h3>
 <p>Make a grey square with a square hole in the middle.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p_outer <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>p_inner<span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>))</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p_outer,p_inner)))</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(square, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>p_outer <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>p_inner<span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p_outer,p_inner)))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(square, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What happens if you use <code>square &lt;- st_multipolygon(list(list(p_outer), list(p_inner)))</code>? Why?</p>
 </section>
@@ -713,27 +778,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="challenge-4">Challenge 4</h3>
 <p>Plot species identity for high-subplot 1, scaling the points by maximum tree diameter.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BunyaMountainTrees) <span class="sc">+</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species, <span class="at">size=</span> max_diam))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BunyaMountainTrees) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species, <span class="at">size=</span> max_diam))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="challenge-5" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-5">Challenge 5</h3>
 <p>Plot your original Sweden WGS and two reprojected maps. Then, change the LAEA projection to be centred on the prime meridien and plot that map again.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting reprojections</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.SWEREF99) <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#LAEA centered on 0,0</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>LAEA0 <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=0 +lon_0=0"</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>Sweden.LAEA0<span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, LAEA0)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA0) <span class="sc">+</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Not as good as centering on the country. Try Australia with LAEA0 if you want to see something truly awful.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting reprojections</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.SWEREF99) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#LAEA centered on 0,0</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>LAEA0 <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=0 +lon_0=0"</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>Sweden.LAEA0<span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, LAEA0)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA0) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Not as good as centering on the country. Try Australia with LAEA0 if you want to see something truly awful.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
