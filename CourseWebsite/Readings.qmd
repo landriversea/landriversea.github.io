@@ -11,9 +11,11 @@ We expect you to have read the required reading before the day. There will not b
 
 ### Sunday
 
-#### Basic R
+#### Basic Population Genetics
 
-##### Required
+*No background reading is required for this module.*
+
+#### Basic R
 
 If you are new to R, please attempt the following tutorials on your own. If you are experienced in R, skim through the tutorials and make sure that all the topics are familiar to you.
 
@@ -25,9 +27,9 @@ Through this course, most of the examples you are likely to encounter will predo
 
 #### Basic Bash
 
-##### Required
+As with R, you need to have some basic comfort and familiarity with bash. Either ensure you can complete the tutoirals on your own or attend this special Sunday session.
 
-##### Optional
+See activities and links on [bash tutorial webpage](basic-bash.qmd).
 
 ### Monday
 
@@ -53,11 +55,7 @@ Through this course, most of the examples you are likely to encounter will predo
 
 #### Maps & spatial data
 
-##### Required
-
-No readings are required.
-
-##### Optional
+*No readings are required.*
 
 -   The best website explaining how to use spatial data in R is \[*Geocomputation with R*, a book on geographic data analysis, visualization and modeling\](https://r.geocompx.org)
 
@@ -65,13 +63,16 @@ No readings are required.
 
 ### Tuesday
 
-#### Genetic differentiation
+#### Genetic differentiation and genetic structuring
 
 ##### Required
 
--   Meier, J.I., Sousa, V.C., Marques, D.A., Selz, O.M., Wagner, C.E., Excoffier, L. and Seehausen, O. (2017), Demographic modelling with whole-genome data reveals parallel origin of similar *Pundamilia* cichlid species after hybridization. Mol Ecol, 26: 123-141. <https://doi.org/10.1111/mec.13838>
+-   Waples, R. S., & Gaggiotti, O. E. (2006). What is a population? An empirical evaluation of some genetic methods for identifying the number of gene pools and their degree of connectivity. *Molecular Ecology, 15*(6), 1419-1439. doi:papers3://publication/doi/10.1111/j.1365-294X.2006.02890.x *This study gives a nice example of what a population is.*
+-   Leslie, S., Winney, B., Hellenthal, G., Davison, D., Boumertit, A., Day, T., Hutnik, K., Royrvik, E. C., Cunliffe, B., Wellcome Trust Case Control, C., International Multiple Sclerosis Genetics, C., Lawson, D. J., Falush, D., Freeman, C., Pirinen, M., Myers, S., Robinson, M., Donnelly, P., & Bodmer, W. (2015). The fine-scale genetic structure of the British population. *Nature, 519*(7543), 309-314. doi:10.1038/nature14230 *This study is a nice example of how clustering can be used to study population structure.*
 
 ##### Optional
+
+-   Linck, E., & Battey, C. J. (2019). Minor allele frequency thresholds strongly affect population structure inference with genomic data sets. *Molecular Ecology Resources, 19*(3), 639-647. doi:10.1111/1755-0998.12995
 
 #### RDA as a general toolkit
 
@@ -99,13 +100,17 @@ No readings are required.
 
 ##### Optional
 
+-   Meier, J.I., Sousa, V.C., Marques, D.A., Selz, O.M., Wagner, C.E., Excoffier, L. and Seehausen, O. (2017), Demographic modelling with whole-genome data reveals parallel origin of similar Pundamilia cichlid species after hybridization. Mol Ecol, 26: 123-141. https://doi.org/10.1111/mec.13838
+
 ### Thursday
 
 #### Resistance surfaces
 
 ##### Required
 
-##### Optional
+-   Beninde, J., Wittische, J., & Frantz, A. C. (2023). Quantifying uncertainty in inferences of landscape genetic resistance due to choice of individual-based genetic distance metric. *Molecular Ecology Resources*. doi:10.1111/1755-0998.13831
+
+-   Peterman, W. E. (2018). ResistanceGA: An R package for the optimization of resistance surfaces using genetic algorithms. *Methods in Ecology and Evolution, 9*(6), 1638-1647. doi:papers3://publication/doi/10.1111/2041-210X.12984
 
 #### Future projections with GDM & GFs
 
@@ -147,9 +152,7 @@ No readings are required.
 
 #### Landscape genomics and genetic architectures
 
-##### Required
-
-(None)
+*No readings are required.*
 
 ##### Optional
 

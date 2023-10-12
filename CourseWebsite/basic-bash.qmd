@@ -1,3 +1,11 @@
 ---
 title: "Basic Bash"
 ---
+
+This module is an introduction to bash, covering the most basic concepts. For those that are new to bash, we recommend trying out an online tutorial for bash for beginners prior to the course in addition to this, for instance [https://evomics.org/learning/unix-tutorial/Links](https://evomics.org/learning/unix-tutorial/)
+
+The module will consist in a lecture and an exercise.
+
+![Introduction to bash](pdfs/Intro_to_bash.pdf)
+
+![Some more bash](pdfs/Some_more_bash.pdf)
