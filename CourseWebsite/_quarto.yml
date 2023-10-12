@@ -34,7 +34,7 @@ website:
           - RDA.qmd
       - section: "Wednesday"
         contents:   
-          - geneflow.qmd
+          - genetic-dif.qmd
       - section: "Thursday"
         contents:  
          - resistance.qmd
