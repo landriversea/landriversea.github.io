@@ -1,3 +1,113 @@
 ---
 title: "Intro to GEA & RDA as a general toolkit"
 ---
+
+# Genotype Environment Associations
+
+What are they
+
+# Why RDA and other multivariate methods?
+
+| Predictive variables | Response variables | Appropriate family of methods \* |
+|---------------------|-------------------|--------------------------------|
+| One                  | One                | Univariate/Simple regression     |
+| Many                 | One                | Multiple regression              |
+| Many                 | Many               | Multivariate regression          |
+
+\* Note that your genetic data not conform to expectations of standard methods including independence
+
+Ordination allows
+
+-   Compression and visualisation of complex data
+
+-   Flexibility to move between distances (between populations or individuals) and Euclidean genetic distances
+
+-   Flexibility to use allele frequencies (populations) or genotypes (individuals)
+
+-   RDA performs well in genotype environment association analyses with low false positives and high true positives
+
+Pitfalls on using ordination with genetic data
+
+-   Missing observations need to be excluded or imputed
+
+-   Uneven sampling can skew results
+
+-   It is pattern description: many processes can yield the same patterns
+
+## Review of ordination, PCA & PCoA
+
+## Constrained ordination as implemented in RDA
+
+-   Flexible
+
+RDA can address the following questions (citing Capblancq et al. 2021):
+
+1.  What environmental/spatial processes drive patterns of genetic variation?
+
+2\. What is the genetic basis of local adaptation to the environment?
+
+3\. How is adaptive genetic variation distributed across landscapes?
+
+4\. What are the impacts of climate and/or landscape change on the distribution of adaptive genetic variation?
+
+RDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)
+
+-   Keep this linearity in mind: it might not be appropriate for your data
+
+![Conceptual overview of RDA - From Capblancq et al. 2021](images/RDA_overview_Capblancq_etal2021.png){fig-align="center"}
+
+## Data preparation
+
+get environmental variables
+
+standardize - mean of 0, SD = 1
+
+can include dummy predictors (0/1)
+
+-   explain when more than two categories
+
+look for colinearity - need to define and explain VIF
+
+### Variable selection with forward model building
+
+Builds up a predictive model and assists with variable reduction
+
+1.  Test significance of *global model* (= all variables)
+
+2.  Start with "empty" model (= intercept only) and sequentially add variables
+
+3.  Two stopping criteria to avoid overfitting - end with either criterion
+
+    -   permutation based significance test
+
+    -   adjusted $R^2$ from global model
+
+    -   
+
+### Variance partitioning using partial RDA
+
+Allows independent estimation of sets of variables together with confounded effects caused by collinearity
+
+![Reporting on partial RDA-From Capblancq et al. 2021](images/partialRDA__Capblancq_etal2021.png){fig-align="center"}
+
+Define the different proportions
+
+? make MCQ check
+
+### Adaptive loci - what are they, how to id
+
+Capblancq has discussion on conditioning approaches
+
+### Projecting adaptive landscapes in space
+
+-   genetic based index of adaptation based on Steane
+
+-   predict geneotpyes and allele frequencies as a function of enviromental variation
+
+## Extra topics
+
+MEMS
+
+AEMS
+
+
