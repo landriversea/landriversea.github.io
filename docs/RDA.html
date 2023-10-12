@@ -59,6 +59,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -132,6 +134,12 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Basic-Population-Genetics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic pop gen</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./basicR.html" class="sidebar-item-text sidebar-link">
@@ -264,7 +272,26 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#genotype-environment-associations" id="toc-genotype-environment-associations" class="nav-link active" data-scroll-target="#genotype-environment-associations">Genotype Environment Associations</a></li>
+  <li><a href="#why-rda-and-other-multivariate-methods" id="toc-why-rda-and-other-multivariate-methods" class="nav-link" data-scroll-target="#why-rda-and-other-multivariate-methods">Why RDA and other multivariate methods?</a>
+  <ul class="collapse">
+  <li><a href="#review-of-ordination-pca-pcoa" id="toc-review-of-ordination-pca-pcoa" class="nav-link" data-scroll-target="#review-of-ordination-pca-pcoa">Review of ordination, PCA &amp; PCoA</a></li>
+  <li><a href="#constrained-ordination-as-implemented-in-rda" id="toc-constrained-ordination-as-implemented-in-rda" class="nav-link" data-scroll-target="#constrained-ordination-as-implemented-in-rda">Constrained ordination as implemented in RDA</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data preparation</a>
+  <ul class="collapse">
+  <li><a href="#variable-selection-with-forward-model-building" id="toc-variable-selection-with-forward-model-building" class="nav-link" data-scroll-target="#variable-selection-with-forward-model-building">Variable selection with forward model building</a></li>
+  <li><a href="#variance-partitioning-using-partial-rda" id="toc-variance-partitioning-using-partial-rda" class="nav-link" data-scroll-target="#variance-partitioning-using-partial-rda">Variance partitioning using partial RDA</a></li>
+  <li><a href="#adaptive-loci---what-are-they-how-to-id" id="toc-adaptive-loci---what-are-they-how-to-id" class="nav-link" data-scroll-target="#adaptive-loci---what-are-they-how-to-id">Adaptive loci - what are they, how to id</a></li>
+  <li><a href="#projecting-adaptive-landscapes-in-space" id="toc-projecting-adaptive-landscapes-in-space" class="nav-link" data-scroll-target="#projecting-adaptive-landscapes-in-space">Projecting adaptive landscapes in space</a></li>
+  </ul></li>
+  <li><a href="#extra-topics" id="toc-extra-topics" class="nav-link" data-scroll-target="#extra-topics">Extra topics</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -286,8 +313,138 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="genotype-environment-associations" class="level1">
+<h1>Genotype Environment Associations</h1>
+<p>What are they</p>
+</section>
+<section id="why-rda-and-other-multivariate-methods" class="level1">
+<h1>Why RDA and other multivariate methods?</h1>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 26%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictive variables</th>
+<th>Response variables</th>
+<th>Appropriate family of methods *</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One</td>
+<td>One</td>
+<td>Univariate/Simple regression</td>
+</tr>
+<tr class="even">
+<td>Many</td>
+<td>One</td>
+<td>Multiple regression</td>
+</tr>
+<tr class="odd">
+<td>Many</td>
+<td>Many</td>
+<td>Multivariate regression</td>
+</tr>
+</tbody>
+</table>
+<p>* Note that your genetic data not conform to expectations of standard methods including independence</p>
+<p>Ordination allows</p>
+<ul>
+<li><p>Compression and visualisation of complex data</p></li>
+<li><p>Flexibility to move between distances (between populations or individuals) and Euclidean genetic distances</p></li>
+<li><p>Flexibility to use allele frequencies (populations) or genotypes (individuals)</p></li>
+<li><p>RDA performs well in genotype environment association analyses with low false positives and high true positives</p></li>
+</ul>
+<p>Pitfalls on using ordination with genetic data</p>
+<ul>
+<li><p>Missing observations need to be excluded or imputed</p></li>
+<li><p>Uneven sampling can skew results</p></li>
+<li><p>It is pattern description: many processes can yield the same patterns</p></li>
+</ul>
+<section id="review-of-ordination-pca-pcoa" class="level2">
+<h2 class="anchored" data-anchor-id="review-of-ordination-pca-pcoa">Review of ordination, PCA &amp; PCoA</h2>
+</section>
+<section id="constrained-ordination-as-implemented-in-rda" class="level2">
+<h2 class="anchored" data-anchor-id="constrained-ordination-as-implemented-in-rda">Constrained ordination as implemented in RDA</h2>
+<ul>
+<li>Flexible</li>
+</ul>
+<p>RDA can address the following questions (citing Capblancq et al.&nbsp;2021):</p>
+<ol type="1">
+<li>What environmental/spatial processes drive patterns of genetic variation?</li>
+</ol>
+<p>2. What is the genetic basis of local adaptation to the environment?</p>
+<p>3. How is adaptive genetic variation distributed across landscapes?</p>
+<p>4. What are the impacts of climate and/or landscape change on the distribution of adaptive genetic variation?</p>
+<p>RDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)</p>
+<ul>
+<li>Keep this linearity in mind: it might not be appropriate for your data</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RDA_overview_Capblancq_etal2021.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Conceptual overview of RDA - From Capblancq et al.&nbsp;2021</figcaption>
+</figure>
+</div>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
+<p>get environmental variables</p>
+<p>standardize - mean of 0, SD = 1</p>
+<p>can include dummy predictors (0/1)</p>
+<ul>
+<li>explain when more than two categories</li>
+</ul>
+<p>look for colinearity - need to define and explain VIF</p>
+<section id="variable-selection-with-forward-model-building" class="level3">
+<h3 class="anchored" data-anchor-id="variable-selection-with-forward-model-building">Variable selection with forward model building</h3>
+<p>Builds up a predictive model and assists with variable reduction</p>
+<ol type="1">
+<li><p>Test significance of <em>global model</em> (= all variables)</p></li>
+<li><p>Start with “empty” model (= intercept only) and sequentially add variables</p></li>
+<li><p>Two stopping criteria to avoid overfitting - end with either criterion</p>
+<ul>
+<li><p>permutation based significance test</p></li>
+<li><p>adjusted <span class="math inline">\(R^2\)</span> from global model</p></li>
+<li></li>
+</ul></li>
+</ol>
+</section>
+<section id="variance-partitioning-using-partial-rda" class="level3">
+<h3 class="anchored" data-anchor-id="variance-partitioning-using-partial-rda">Variance partitioning using partial RDA</h3>
+<p>Allows independent estimation of sets of variables together with confounded effects caused by collinearity</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/partialRDA__Capblancq_etal2021.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Reporting on partial RDA-From Capblancq et al.&nbsp;2021</figcaption>
+</figure>
+</div>
+<p>Define the different proportions</p>
+<p>? make MCQ check</p>
+</section>
+<section id="adaptive-loci---what-are-they-how-to-id" class="level3">
+<h3 class="anchored" data-anchor-id="adaptive-loci---what-are-they-how-to-id">Adaptive loci - what are they, how to id</h3>
+<p>Capblancq has discussion on conditioning approaches</p>
+</section>
+<section id="projecting-adaptive-landscapes-in-space" class="level3">
+<h3 class="anchored" data-anchor-id="projecting-adaptive-landscapes-in-space">Projecting adaptive landscapes in space</h3>
+<ul>
+<li><p>genetic based index of adaptation based on Steane</p></li>
+<li><p>predict geneotpyes and allele frequencies as a function of enviromental variation</p></li>
+</ul>
+</section>
+</section>
+<section id="extra-topics" class="level2">
+<h2 class="anchored" data-anchor-id="extra-topics">Extra topics</h2>
+<p>MEMS</p>
+<p>AEMS</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
