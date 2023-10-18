@@ -111,3 +111,5 @@ Capblancq has discussion on conditioning approaches
 MEMS
 
 AEMS
+
+show Zindben flowchart
