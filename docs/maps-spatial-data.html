@@ -198,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./land-river-sea.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Land, river, sea</span></a>
+ <span class="menu-text">Land, river, &amp; seascape genomics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -332,6 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cropping-a-raster" id="toc-cropping-a-raster" class="nav-link" data-scroll-target="#cropping-a-raster">Cropping a raster</a></li>
   <li><a href="#reprojecting-a-raster" id="toc-reprojecting-a-raster" class="nav-link" data-scroll-target="#reprojecting-a-raster">Reprojecting a raster</a></li>
   </ul></li>
+  <li><a href="#finding-suitable-environmental-data-layers" id="toc-finding-suitable-environmental-data-layers" class="nav-link" data-scroll-target="#finding-suitable-environmental-data-layers">Finding suitable environmental data layers</a></li>
   <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further resources</a>
   <ul class="collapse">
   <li><a href="#working-with-spatial-data-generally" id="toc-working-with-spatial-data-generally" class="nav-link" data-scroll-target="#working-with-spatial-data-generally">Working with spatial data generally</a></li>
@@ -372,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Instructor: Riginos</em></p>
 <section id="where-on-earth-presenting-and-analysing-spatial-data-using-r" class="level1">
 <h1>Where on earth? Presenting and analysing spatial data using R</h1>
-<p>To undertake landscape genomics inherently requires working with spatial data. The individuals or populations that you have genotyped came from a specific location. It is likely that you will be interested in environmental attributes of that location. You might also want to calculate geographic distances between your sampling locations. And, undoubtedly you will want to plot your results on a map!</p>
+<p>To undertake landscape genomics inherently requires working with spatial data. The individuals or populations that you have genotyped came from specific locations. It is likely that you will be interested in environmental attributes of that location. You might also want to calculate geographic distances between your sampling locations. And, undoubtedly you will want to plot your results on a map!</p>
 <p>Spatial data, however, have their own unique issues and can be challenging to work with. This lesson is constructed as a <em>basic</em> introduction to working with spatial data and maps. If you understand the basics, then you can figure out how to do specific things that are relevant for your study.</p>
 <p>At the end of this lesson, you will find a section on additional resources.</p>
 <section id="in-this-lesson-you-will" class="level3">
@@ -518,12 +519,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> distances))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Keep in mind that the data are bounded by the size of the subplot. But it is interesting that you do not get too many trees very close together…why do you think that might be?</p>
-<p>This function is very useful - for example you might want to calculate distances between your sampling locations to look for patterns of isolation by distance. When your data are in an x-y plane, <code>st_distance</code> will return the Euclidean distance. When your data are projected (see next section), then <code>st_distance</code> will calculate the distance on Earth’s sphere. Most of the commands in <code>sf</code> will automatically adjust when your data are spherical. But, it is worth occasionally checking and when you see very odd results, keeping in mind that an inappropriate distance measure is being used.</p>
+<p>This function is very useful - for example you might want to calculate distances between your sampling locations to look for patterns of isolation by distance. When your data are in an x-y plane, <code>st_distance</code> will return the Euclidean distance. When your data are projected (see next section), then <code>st_distance</code> will calculate the distance on Earth’s sphere. Most of the commands in <code>sf</code> will automatically adjust when your data are spherical. But, it is worth occasionally checking and when you see very odd results, keeping in mind that an inappropriate distance measure could be being used.</p>
 </section>
 </section>
 <section id="coordinate-reference-systems" class="level1">
 <h1>Coordinate Reference Systems</h1>
-<p><strong>Coordinate Reference Systems can cause major headaches and unexpected results if not handled properly. Make sure you understand the concepts in this section as it will save you time in the long run!</strong></p>
+<p><strong><em>Coordinate Reference Systems</em></strong> <strong>can cause major headaches and unexpected results if not handled properly. Make sure you understand the concepts in this section as it will save you time in the long run!</strong></p>
 <p>You are probably familiar with longitude and latitude as giving information about where on earth something is located. (Quick check: look up your own longitude and latitude based on your current location and where you were born.)</p>
 <p>The problem with latitude is that if you compare two sets of points that sit on the same longitudes but at different latitudes, their distances will differ. The meridians (N-S lines on a globe) are farthest apart at the equator.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -543,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="images/AzimuthMap.pdf" class="img-fluid"></p>
+<p><img src="images/AzimuthMap.jpg" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Azimuthal map centered on Tjärnö such that correct distances to Tjärnö are preserved. Created by https://ns6t.net/azimuth/azimuth.html</figcaption>
 </figure>
 </div>
@@ -622,7 +623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>Challenge 5: Plot your original Sweden WGS and two reprojected maps. Then, change the LAEA projection to be centred on the prime meridien and plot that map again.</p>
 </blockquote>
-<p><strong>Note to your future self</strong> Make sure that CRS are the same between objects that you are seeking to compare and map. It is easy to get caught out.</p>
+<p><strong>Note to your future self:</strong> Make sure that CRS are the same between objects that you are seeking to compare and map. It is easy to get caught out.</p>
 <p><strong>Add example of reading in river data</strong></p>
 </section>
 </section>
@@ -638,16 +639,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To start exploring rasters, we are going download information on world topography (altitude). One the most widely used sources of weather data come from <a href="https://worldclim.org/">WorldClim.org</a> - these include historical and projected future climate data. They are especially useful for people working on terrestrial species and can be accessed using the <code>library(geodata)</code>. Elevation (altitude is also included).</p>
 <p>We can download elevation information for Sweden quite easily:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#This will take a few minutes to load.</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># elevation&lt;- elevation_30s(country="Sweden", path=tempdir() )</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot() +</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_raster(data = elevation, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_gradient(low = "lightgray", high = "black") +</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_void()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This will take a few minutes to load.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>elevation<span class="ot">&lt;-</span> <span class="fu">elevation_30s</span>(<span class="at">country=</span><span class="st">"Sweden"</span>, <span class="at">path=</span><span class="fu">tempdir</span>() )</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data =</span> elevation, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> USA_elv_msk), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"lightgray"</span>, <span class="at">high =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In mid October the worldclim server was down for maintenance, so we will also explore a marine example. This example will extract Sea Surface Temperature (SST) from <a href="https://www.bio-oracle.org/">bio-ORACLE</a></p>
 <div class="cell">
@@ -708,10 +707,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Reproject once only.</li>
 <li>Project before cropping.</li>
 </ul>
-<hr>
-<p><em>To add if time - working with marmap, hydroatlas, download example</em></p>
-<p>Final words …. ___</p>
 </section>
+</section>
+<section id="finding-suitable-environmental-data-layers" class="level1">
+<h1>Finding suitable environmental data layers</h1>
+<p>A major challenge for any land/river/seascape analyses is finding appropriate environmental layers. Pre-compiled sources such as such as worldclim and bio-ORACLE are certainly popular. (Look at <a href="https://www.hydrosheds.org">Hydrosheds</a> for freshwater data). However, these ready to use packages might not be appropriate to your question and scale. The reality is that you will have to search for appropriate data sources and figure out how to import them, project them, etc. Often government agencies will have useful regional datasets. Each project is different and will involve its own challenges!</p>
+<p>Compilations of possible environmental data sources</p>
+<ul>
+<li><p>Terrestrial focused</p>
+<ul>
+<li>Leempoel, K., Duruz, S., Rochat, E., Widmer, I., Orozco-terWengel, P., &amp; Joost, S. (2017). Simple rules for an efficient use of geographic information systems in molecular ecology. Frontiers in Ecology and Evolution, 5. doi:10.3389/fevo.2017.00033 <strong>Table 1 and Appendix</strong></li>
+</ul></li>
+<li><p>Marine focused</p>
+<ul>
+<li>Riginos, C., Crandall, E. D., Liggins, L., Bongaerts, P., &amp; Treml, E. A. (2016). Navigating the currents of seascape genomics: how spatial analyses can augment population genomic studies. <em>Current Zoology, 62</em>(6), 581-601. doi:papers3://publication/doi/10.1093/cz/zow067 <strong>Table 1</strong></li>
+</ul></li>
+<li><p>Aquatic (marine and freshwater)</p>
+<ul>
+<li><p>Selkoe, K. A., Scribner, K. T., &amp; Galindo, H. M. (2016). Waterscape genetics – applications of landscape genetics to rivers, lakes, and seas. In N. Balkenhol, S. A. Cushman, A. Storfer, &amp; L. P. Waits (Eds.), <em>Landscape Genetics: Concepts, Methods, Applications</em> (pp.&nbsp;1-27): John Wiley &amp; Sons, Ltd.&nbsp;<strong>Box 13.1</strong></p></li>
+<li><p>Grummer, J. A., Beheregaray, L. B., Bernatchez, L., Hand, B. K., Luikart, G., Narum, S. R., &amp; Taylor, E. B. (2019). Aquatic landscape genomics and environmental effects on genetic variation. <em>Trends in Ecology and Evolution</em>, 1-14. doi:10.1016/j.tree.2019.02.013 <strong>Table 2</strong></p></li>
+</ul></li>
+</ul>
+<hr>
 </section>
 <section id="further-resources" class="level1">
 <h1>Further resources</h1>
@@ -731,7 +748,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="specific-r-package-support">Specific R package support</h2>
 <p>sf package <a href="https://r-spatial.github.io/sf/articles/sf1.html">vignettes</a> - these are rather technical</p>
 <p><a href="https://cran.r-project.org/web/packages/marmap/index.html"><strong>marmap package</strong></a> with excellent vignettes - an essential resource if using marine data that allows you to draw bathymetric maps</p>
-<p><a href="https://www.bio-oracle.org/code.php"><strong>sdmpredictors package</strong></a> - an essential resource if using marine data that provide access to marine environmental layers in Bio-Oracle (analogous to BioClim)</p>
 <hr>
 </section>
 </section>

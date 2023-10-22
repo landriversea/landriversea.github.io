@@ -11,7 +11,7 @@ What are they
 # Why RDA and other multivariate methods?
 
 | Predictive variables | Response variables | Appropriate family of methods \* |
-|---------------------|-------------------|--------------------------------|
+|----------------------|--------------------|----------------------------------|
 | One                  | One                | Univariate/Simple regression     |
 | Many                 | One                | Multiple regression              |
 | Many                 | Many               | Multivariate regression          |

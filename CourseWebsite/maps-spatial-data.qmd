@@ -2,7 +2,6 @@
 title: "Maps & spatial data"
 execute:
   output: false
----l
 ---
 
 ![](images/world_viridis.png){width="100%"}
@@ -11,7 +10,7 @@ execute:
 
 # Where on earth? Presenting and analysing spatial data using R
 
-To undertake landscape genomics inherently requires working with spatial data. The individuals or populations that you have genotyped came from a specific location. It is likely that you will be interested in environmental attributes of that location. You might also want to calculate geographic distances between your sampling locations. And, undoubtedly you will want to plot your results on a map!
+To undertake landscape genomics inherently requires working with spatial data. The individuals or populations that you have genotyped came from specific locations. It is likely that you will be interested in environmental attributes of that location. You might also want to calculate geographic distances between your sampling locations. And, undoubtedly you will want to plot your results on a map!
 
 Spatial data, however, have their own unique issues and can be challenging to work with. This lesson is constructed as a *basic* introduction to working with spatial data and maps. If you understand the basics, then you can figure out how to do specific things that are relevant for your study.
 
@@ -185,11 +184,11 @@ ggplot(data = as.data.frame(distances)) +
 
 Keep in mind that the data are bounded by the size of the subplot. But it is interesting that you do not get too many trees very close together...why do you think that might be?
 
-This function is very useful - for example you might want to calculate distances between your sampling locations to look for patterns of isolation by distance. When your data are in an x-y plane, `st_distance` will return the Euclidean distance. When your data are projected (see next section), then `st_distance` will calculate the distance on Earth's sphere. Most of the commands in `sf` will automatically adjust when your data are spherical. But, it is worth occasionally checking and when you see very odd results, keeping in mind that an inappropriate distance measure is being used.
+This function is very useful - for example you might want to calculate distances between your sampling locations to look for patterns of isolation by distance. When your data are in an x-y plane, `st_distance` will return the Euclidean distance. When your data are projected (see next section), then `st_distance` will calculate the distance on Earth's sphere. Most of the commands in `sf` will automatically adjust when your data are spherical. But, it is worth occasionally checking and when you see very odd results, keeping in mind that an inappropriate distance measure could be being used.
 
 # Coordinate Reference Systems
 
-**Coordinate Reference Systems can cause major headaches and unexpected results if not handled properly. Make sure you understand the concepts in this section as it will save you time in the long run!**
+***Coordinate Reference Systems*** **can cause major headaches and unexpected results if not handled properly. Make sure you understand the concepts in this section as it will save you time in the long run!**
 
 You are probably familiar with longitude and latitude as giving information about where on earth something is located. (Quick check: look up your own longitude and latitude based on your current location and where you were born.)
 
@@ -207,7 +206,7 @@ To summarise:
 -   Depending on your analysis, especially if you need calculate areas (think about looking at species range areas, for example) you will need an **equal area** projection.
 -   The bigger the extent of your study region (like the whole earth, for example) the more these issues become important. At small scales they are less important.
 
-![Azimuthal map centered on Tjärnö such that correct distances to Tjärnö are preserved. Created by https://ns6t.net/azimuth/azimuth.html](images/AzimuthMap.pdf)
+![Azimuthal map centered on Tjärnö such that correct distances to Tjärnö are preserved. Created by https://ns6t.net/azimuth/azimuth.html](images/AzimuthMap.jpg)
 
 ## Understanding and assigning Coordinate Reference Systems (CRS)
 
@@ -308,7 +307,7 @@ Sweden.LAEA<-st_transform(Sweden, LAEA)
 
 > Challenge 5: Plot your original Sweden WGS and two reprojected maps. Then, change the LAEA projection to be centred on the prime meridien and plot that map again.
 
-**Note to your future self** Make sure that CRS are the same between objects that you are seeking to compare and map. It is easy to get caught out.
+**Note to your future self:** Make sure that CRS are the same between objects that you are seeking to compare and map. It is easy to get caught out.
 
 **Add example of reading in river data**
 
@@ -323,17 +322,16 @@ To start exploring rasters, we are going download information on world topograph
 We can download elevation information for Sweden quite easily:
 
 ```{r elevation from worldclim}
-
 #| eval: false 
 
 #This will take a few minutes to load.
-# elevation<- elevation_30s(country="Sweden", path=tempdir() )
-# 
-# 
-# ggplot() +
-#   geom_raster(data = elevation, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +
-#   scale_fill_gradient(low = "lightgray", high = "black") +
-#   theme_void()
+elevation<- elevation_30s(country="Sweden", path=tempdir() )
+
+
+ggplot() +
+  geom_raster(data = elevation, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +
+  scale_fill_gradient(low = "lightgray", high = "black") +
+  theme_void()
 ```
 
 In mid October the worldclim server was down for maintenance, so we will also explore a marine example. This example will extract Sea Surface Temperature (SST) from [bio-ORACLE](https://www.bio-oracle.org/)
@@ -410,11 +408,27 @@ General tips in working with rasters
 -   Reproject once only.
 -   Project before cropping.
 
+# Finding suitable environmental data layers
+
+A major challenge for any land/river/seascape analyses is finding appropriate environmental layers. Pre-compiled sources such as such as worldclim and bio-ORACLE are certainly popular. (Look at [Hydrosheds](https://www.hydrosheds.org) for freshwater data). However, these ready to use packages might not be appropriate to your question and scale. The reality is that you will have to search for appropriate data sources and figure out how to import them, project them, etc. Often government agencies will have useful regional datasets. Each project is different and will involve its own challenges!
+
+Compilations of possible environmental data sources
+
+-   Terrestrial focused
+
+    -   Leempoel, K., Duruz, S., Rochat, E., Widmer, I., Orozco-terWengel, P., & Joost, S. (2017). Simple rules for an efficient use of geographic information systems in molecular ecology. Frontiers in Ecology and Evolution, 5. doi:10.3389/fevo.2017.00033 **Table 1 and Appendix**
+
+-   Marine focused
+
+    -   Riginos, C., Crandall, E. D., Liggins, L., Bongaerts, P., & Treml, E. A. (2016). Navigating the currents of seascape genomics: how spatial analyses can augment population genomic studies. *Current Zoology, 62*(6), 581-601. doi:papers3://publication/doi/10.1093/cz/zow067 **Table 1**
+
+-   Aquatic (marine and freshwater)
+
+    -   Selkoe, K. A., Scribner, K. T., & Galindo, H. M. (2016). Waterscape genetics -- applications of landscape genetics to rivers, lakes, and seas. In N. Balkenhol, S. A. Cushman, A. Storfer, & L. P. Waits (Eds.), *Landscape Genetics: Concepts, Methods, Applications* (pp. 1-27): John Wiley & Sons, Ltd. **Box 13.1**
+
+    -   Grummer, J. A., Beheregaray, L. B., Bernatchez, L., Hand, B. K., Luikart, G., Narum, S. R., & Taylor, E. B. (2019). Aquatic landscape genomics and environmental effects on genetic variation. *Trends in Ecology and Evolution*, 1-14. doi:10.1016/j.tree.2019.02.013 **Table 2**
+
 ------------------------------------------------------------------------
-
-*To add if time - working with marmap, hydroatlas, download example*
-
-Final words .... \_\_\_
 
 # Further resources
 
@@ -437,8 +451,6 @@ Another open source book: [Spatial Data Science](https://keen-swartz-3146c4.netl
 sf package [vignettes](https://r-spatial.github.io/sf/articles/sf1.html) - these are rather technical
 
 [**marmap package**](https://cran.r-project.org/web/packages/marmap/index.html) with excellent vignettes - an essential resource if using marine data that allows you to draw bathymetric maps
-
-[**sdmpredictors package**](https://www.bio-oracle.org/code.php) - an essential resource if using marine data that provide access to marine environmental layers in Bio-Oracle (analogous to BioClim)
 
 ------------------------------------------------------------------------
 
