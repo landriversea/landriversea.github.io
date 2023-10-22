@@ -32,13 +32,11 @@ Original comments by Capblancq & Forester will be indented
 
 These data have been compiled and projected into the WGS84 reference coordinate system following instructions from Capblancq & Forester and saved as a spatial raster.
 
--   `ras_6190.rast` = ?present day
+-   `ras_6190.rast` = present day
 
 #### Population allele frequencies
 
-Original genetic data and metadata from Mahony et al. 2019, available [here](https://datadryad.org/stash/dataset/doi:10.5061/dryad.56j8vq8).
-
-TODO - more info on genetic data - lodgepole pine from accessions?
+Original genetic data and metadata from Mahony et al. 2019, available [here](https://datadryad.org/stash/dataset/doi:10.5061/dryad.56j8vq8). SNP genotypes were derived for individual seedlings from 281 populations of lodgepole pine (*Pinus contorta*).
 
 Pre-processing:
 
@@ -71,6 +69,7 @@ Load libraries and data files
 ```{r load libraries and data files}
 library(terra)
 library(vegan)
+library(corrplot)
 
 #Climate data
 ras_6190<-terra::rast("./data/ras_6190.tif")
@@ -91,14 +90,13 @@ Coordinates[1:5,]
 
 ## Preparing data for RDA
 
-A series of RDAs will be the heart of the analyses. Before you can do an RDA, however, you need to have all your data prepared and organised. The genetic data is already largely prepared, but some extra work is needed for the environmental data and for estimating neutral population structure.
+A series of RDAs will be the heart of the analyses. Before you can do an RDA, however, you need to have all your data prepared and organised. The genetic data are already largely prepared, but some extra work is needed for the environmental data and for estimating neutral population structure.
 
 ### Extract environmental data from rasters and scale it
 
 ```{r Extract environmental data from rasters}
 
-#coord.spatVect<- vect(Coordinates[,3:2], geom = c("Longitude", "Latitude"))
-#Env<-terra::extract(ras_6190, coord.spatVect)
+#Extract environmental data from the sampling site locations
 Env<-extract(ras_6190, Coordinates[,3:2])
 
 # look at your extracted data
@@ -131,7 +129,7 @@ If this were my data and analysis, I would plot the PCA at this point and make s
 biplot(pca, choices=c(1,2), scaling = "symmetric", type= c("points", "text"))
 ```
 
-What I like to see in a pca is balanced clouds of points. If there is very little population structure, you might see one big cloud of points. If you have substantial structuring, there could be multiple clouds of points. Smears along a single axis (as we see here) are a bit worrisome especially if they do not make geographical sense. Another attribute to be aware of is that imputing allele frequencies can pull values to the middle. For the purposes of this tutorial, we will just continue, but in a real analysis I would try to understand my data at this point and make sure that there are no odd dynamics that might influence later analyeses.
+What I like to see in a pca is balanced clouds of points. If there is very little population structure, you might see one big cloud of points. If you have substantial structuring, there could be multiple clouds of points. Smears along a single axis (as we see here) are a bit worrisome especially if they do not make geographical sense. Another attribute to be aware of is that imputing allele frequencies can pull values to the middle. For the purposes of this tutorial, we will just continue, but in a real analysis I would try to understand my data at this point and make sure that there are no odd dynamics that might influence later analyses.
 
 People often use screeplots to look at variance and decide on the number of PCs to keep.
 
@@ -180,7 +178,7 @@ RDAfull <- rda(AllFreq ~ AHM + bFFP + CMD + DD_0 + DD_18 + DD18 + DD5 + eFFP + E
 
 Examine the structure of `RDA0` by just typing `RDA0` and also `summary(RDA0)`. There is a lot of information but the structure is essentially a PCA, since we did not define any explanatory variables. As before, the "Species scores" are your column variables, which are loci in this case. The "Site scores" are row variables or populations.
 
-Once you have looked at `RDA0`, take a look at `RDAfull`. Now you will see *constrained* inertia that represents the variance explained by your predictor variables. (Notice that most variance remains unconstrained, this is quite common). Remember that the predictor variables have now been ordinated as RDA eigenvectors where each RDA axis is orthogonal to the others. The eigenvalues represent how much variance in reponse variables (allele frequencies) is predicted by that eigenvector, e.g., RDA1 predicts 29.4/578 percent of the variance in allele frequencies.
+Once you have looked at `RDA0`, take a look at `RDAfull`. Now you will see *constrained* inertia that represents the variance explained by your predictor variables. (Notice that most variance remains unconstrained, this is quite common). Remember that the predictor variables have now been ordinated as RDA eigenvectors where each RDA axis is orthogonal to the others. The eigenvalues represent how much variance in response variables (allele frequencies) is predicted by that eigenvector, e.g., RDA1 predicts 29.4/578 percent of the variance in allele frequencies.
 
 The last table in `summary(RDAfull)` shows how the different environmental variables load onto each RDA axis.
 
@@ -204,16 +202,18 @@ mod <- ordiR2step(RDA0, RDAfull, Pin = 0.01, R2permutations = 1000, R2scope = T)
 #this takes a while to run - interruptt it after a few minutes 
 ```
 
-Load the output of the full ordiR2step
+Interupt the processing for the sake of time and load the output of the full ordiR2step:
 
 ```{r load mod}
 # load the output
 load("./data/mod.Rdata")
 ```
 
-As before, examine the `mod` object in detail.
+As before, examine the `mod` object in detail. How much variance does RDA1 explain? Is RDA1 dominated by a single environmental variable or spread among variables?
 
-TODO - relate back to paper
+`mod$anova` will give you most of the output shown in Table 1 from C & F. You would just need to do some subtraction to get the R2 for each term - for example, EMT = 0.044517-0.022167 = 0.02235.
+
+(And you don't need to report all those decimal places, IMO)
 
 From C & F:
 
@@ -224,6 +224,8 @@ From C & F:
 ## Variance partitioning of the RDA
 
 > Variance partitioning with partial RDA (pRDA) can identify the contribution of different factors to reducing gene flow and triggering genetic divergence among populations. We apply pRDA-based variance partitioning to the lodgepole pine data to decompose the contribution of climate, neutral population structure, and geography in explaining genetic variation. We used three sets of variables: 1) the nine selected bioclimate variables ('clim'); 2) three proxies of neutral genetic structure (population scores along the first three axes of a genetic PCA conducted on the 3,934 neutral loci; 'struct'); and 3) population coordinates (longitude and latitude) to characterize geographic variation ('geog').
+
+### Full model
 
 Build the full model with population structure, geography, and environmental variables
 
@@ -237,9 +239,13 @@ RsquareAdj(pRDAfull)
 anova(pRDAfull)
 ```
 
-Climate model
+These values and the subsequent models correspond to Table 2. (There might be some minor discrepancies due to data preparation and permutation based tests.) For some reason, in Table 2, R2 rather than adjusted R2 is reported. You should use adjusted R2: it is penalized by the number of predictor variables (somewhat analogous to AIC).
 
-discuss conditioning
+### Climate model
+
+The climate model is the first of a series of *conditioned* models. This structure estimates the variance of constrained variables, given conditioning on series of other variables. In this instance, the model is exploring the effect of environmental predictors conditioned upon geography and neutral population structure.
+
+Conditioned models are also called *partial RDAs*. The conditioned variables show up in the regression model following the "\|": Climate model is $F \sim clim | geog + struct)$
 
 ```{r climate model}
 ## Pure climate model
@@ -247,45 +253,80 @@ pRDAclim <- rda(AllFreq ~ MAR + EMT + MWMT + CMD + Tave_wt + DD_18 + MAP + Eref 
 
 RsquareAdj(pRDAclim)
 
-anova(pRDAclim)
+# can skip to save time 
+#anova(pRDAclim)
 ```
 
-population structure
+Take a look at `pRDAclim` and you will see how Inertia is partitioned among various categories. Information from this model is feeding into the second row of Table 2.
+
+- Conditional = the amount of variance explained by conditional variables and removed
+- Constrained = amount of variance uniquely explained by explanatory variables
+- Unconstrained = rest of the variance that is unexplained 
+
+### Population structure model
+
+Similarly a partial RDA can be undertaken for population structure...
 
 ```{r population structure}
 ## Pure neutral population structure model  
 pRDAstruct <- rda(AllFreq ~ PC1 + PC2 + PC3 + Condition(Longitude + Latitude + MAR + EMT + MWMT + CMD + Tave_wt + DD_18 + MAP + Eref + PAS),  Variables)
+
 RsquareAdj(pRDAstruct)
-anova(pRDAstruct)
+
+#anova(pRDAstruct)
 ```
 
-geogrpahy
+### Geogrpahy
+
+And another pRDA for geography
 
 ```{r geography }
 ##Pure geography model 
 pRDAgeog <- rda(AllFreq ~ Longitude + Latitude + Condition(MAR + EMT + MWMT + CMD + Tave_wt + DD_18 + MAP + Eref + PAS + PC1 + PC2 + PC3),  Variables)
+
 RsquareAdj(pRDAgeog)
-anova(pRDAgeog)
+
+#anova(pRDAgeog)
 ```
 
 > To replicate Table 2 in the manuscript, we extract the following from the above results:
 >
-> - Total inertia (aka variance)
-> - Constrained inertia
-> - Proportion of variance explained by constraints
-> - Model R\^2\^
-> - Model p-value
->
-> \*\*Note:\*\* It is interesting to look at the degree of correlation among variables using a correlogram:
+> -   Total inertia (aka variance)
+> -   Constrained inertia
+> -   Proportion of variance explained by constraints
+> -   Model R\^2\^
+> -   Model p-value
+
+For the "confounded"row, this should be the full model minus the sum of the partial models, for example, the proportion of explainable variance is 1 - (0.27+0.22+0.05).  You can dig into this further with the function `varpart()`.
+
+
+> **Note:** It is interesting to look at the degree of correlation among variables using a correlogram:
 
 ```{r}
-#exolore other options
-library(corrplot)
+#explore other options
 corrplot(cor(Variables[, c("PC1","PC2","PC3","Longitude","Latitude","MAR","EMT","MWMT","CMD","Tave_wt","DD_18","MAP","Eref","PAS")]), type="upper")
+
 ```
 
 > **Notes on interpretation and best practices:** In this case, the largest proportion of genetic variance could not be uniquely attributed to any of the three sets of predictors, a common occurrence given the ubiquitous nature of spatial autocorrelation in environmental and genetic data sets. This confounded effect reflects a high degree of collinearity among explanatory variables. This is critical information given that most landscape genomic studies look for correlation between climatic and genetic variation (i.e., GEA) and either assume no collinearity or, on the contrary, totally remove this commonly explained variation. In the first case, GEA detections could potentially be subject to high false positive rates, while in the latter case detections might show high false negative rates. Selecting an appropriate approach to account for demographic history and geographic distance is of major importance when searching for selection in the genome. Variance partitioning can be a useful step to explore the (statistical) association among available descriptors, to better understand the covariation of environmental and genetic gradients, and to determine how much overall genetic variation is shaped by environmental, geographic, and demographic factors before conducting further landscape genomics study.
 
+Another way to look for correlations is to use  variance inflation factors, where the square root of the value > 2 indicates multicollinearity. 
+```{r VIF}
+
+sqrt(vif.cca(pRDAfull))
+```
+
+(Not really a good sign!)
+
+# Other important topics (not from C&F tutorial)
+
+## The amazing flexibility of RDA
+
+In our standard 
+Principal coordinates analysis (PCoA) = metric multidimensional scaling
+Eigen decomposition of pairwise distances 
+
+PCoA on Euclidean distances = PCA
 
 TODO - add in mems, show how to use pcoa with geographic distances
 
@@ -300,3 +341,5 @@ TODO - discuss dbRDA
 3.  Notice that this tutorial does not look for correlations among environmental variables. What arguments can you make for or against reducing your environmental variables using approaches life *variance inflation factors*? Would you look at correlations across your whole landscape or across your study sites only?
 
 4.  Thoughts on exploring environmental variables and then building a model with population structure, geopositioning, and environmental variables?
+
+

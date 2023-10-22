@@ -33,7 +33,7 @@ Original comments by Capblancq & Forester will be indented
 
 These data have been compiled and projected into the WGS84 reference coordinate system following instructions from Capblancq & Forester and saved as a spatial raster.
 
--   `ras_6190.rast` = ?present day
+-   `ras_6190.rast` = present day
 
 #### Population allele frequencies
 

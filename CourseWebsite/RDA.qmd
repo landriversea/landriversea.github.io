@@ -11,7 +11,7 @@ What are they
 # Why RDA and other multivariate methods?
 
 | Predictive variables | Response variables | Appropriate family of methods \* |
-|----------------------|--------------------|----------------------------------|
+|---------------------|-------------------|--------------------------------|
 | One                  | One                | Univariate/Simple regression     |
 | Many                 | One                | Multiple regression              |
 | Many                 | Many               | Multivariate regression          |
@@ -20,7 +20,7 @@ What are they
 
 Ordination allows
 
--   Compression and visualisation of complex data
+-   Compression and visualization of complex data
 
 -   Flexibility to move between distances (between populations or individuals) and Euclidean genetic distances
 
@@ -113,3 +113,6 @@ MEMS
 AEMS
 
 show Zindben flowchart
+
+https://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/
+https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#30
