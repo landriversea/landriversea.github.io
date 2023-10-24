@@ -121,8 +121,13 @@ raster::plot(timePred, col=rgb.tables(1000))
 
 
 # Gradient forests --------------------------------------------------------
-
+# tutorial - Example analysis of biodiversity survey data with R package gradientForest 2011
 
 #install.packages("gradientForest", repos="http://R-Forge.R-project.org")
 
+
 library(gradientForest)
+#load("GZ.sps.mat.Rdata") # no data...
+
+
+

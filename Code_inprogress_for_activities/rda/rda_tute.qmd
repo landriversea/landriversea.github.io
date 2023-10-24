@@ -259,9 +259,9 @@ RsquareAdj(pRDAclim)
 
 Take a look at `pRDAclim` and you will see how Inertia is partitioned among various categories. Information from this model is feeding into the second row of Table 2.
 
-- Conditional = the amount of variance explained by conditional variables and removed
-- Constrained = amount of variance uniquely explained by explanatory variables
-- Unconstrained = rest of the variance that is unexplained 
+-   Conditional = the amount of variance explained by conditional variables and removed
+-   Constrained = amount of variance uniquely explained by explanatory variables
+-   Unconstrained = rest of the variance that is unexplained
 
 ### Population structure model
 
@@ -297,8 +297,7 @@ RsquareAdj(pRDAgeog)
 > -   Model R\^2\^
 > -   Model p-value
 
-For the "confounded"row, this should be the full model minus the sum of the partial models, for example, the proportion of explainable variance is 1 - (0.27+0.22+0.05).  You can dig into this further with the function `varpart()`.
-
+For the "confounded"row, this should be the full model minus the sum of the partial models, for example, the proportion of explainable variance is 1 - (0.27+0.22+0.05). You can dig into this further with the function `varpart()`.
 
 > **Note:** It is interesting to look at the degree of correlation among variables using a correlogram:
 
@@ -310,7 +309,8 @@ corrplot(cor(Variables[, c("PC1","PC2","PC3","Longitude","Latitude","MAR","EMT",
 
 > **Notes on interpretation and best practices:** In this case, the largest proportion of genetic variance could not be uniquely attributed to any of the three sets of predictors, a common occurrence given the ubiquitous nature of spatial autocorrelation in environmental and genetic data sets. This confounded effect reflects a high degree of collinearity among explanatory variables. This is critical information given that most landscape genomic studies look for correlation between climatic and genetic variation (i.e., GEA) and either assume no collinearity or, on the contrary, totally remove this commonly explained variation. In the first case, GEA detections could potentially be subject to high false positive rates, while in the latter case detections might show high false negative rates. Selecting an appropriate approach to account for demographic history and geographic distance is of major importance when searching for selection in the genome. Variance partitioning can be a useful step to explore the (statistical) association among available descriptors, to better understand the covariation of environmental and genetic gradients, and to determine how much overall genetic variation is shaped by environmental, geographic, and demographic factors before conducting further landscape genomics study.
 
-Another way to look for correlations is to use  variance inflation factors, where the square root of the value > 2 indicates multicollinearity. 
+Another way to look for correlations is to use variance inflation factors, where the square root of the value \> 2 indicates multicollinearity.
+
 ```{r VIF}
 
 sqrt(vif.cca(pRDAfull))
@@ -322,15 +322,55 @@ sqrt(vif.cca(pRDAfull))
 
 ## The amazing flexibility of RDA
 
-In our standard 
-Principal coordinates analysis (PCoA) = metric multidimensional scaling
-Eigen decomposition of pairwise distances 
+### Populations or individuals
 
-PCoA on Euclidean distances = PCA
+The above tutorial was conducted on populations, but if your sampling is at the individual level, you can use RDA for individual based analyses. Note that this assumes that each individual has a unique set of predictor variables. You would center and scale your genotype data as with population level analyses.
 
-TODO - add in mems, show how to use pcoa with geographic distances
+### Using link based predictors
 
-TODO - discuss dbRDA
+In a standard analyses as conducted in C&F's tutorial, the predictive variables have site or node based attributes - that is a one-to-one relationship between populations (or individuals) and predictors. Sometimes, however, you might be focused on link attributes such as the geographic distance between sites.
+
+If this is the case, you should organise your distances as a square matrix with dimensions equal to the number of populations. *Principal coordinates analysis* (PCoA) = metric multidimensional scaling can then be used to undertake ordination based on these pairwise distances. You will then need to decide how many axis of the PCoA to use as your predictors in the RDA. For example, say you wanted to get geographic distances based on projected locations. If this is the case, PCoA1 and PCoA2 are likely to be sufficient to capture most of the variation. Note that a PCoA on Euclidean distances is the same as a PCA.
+
+The procedure of incorporating PCoA axes from a distance matrix in RDA is sometimes called *distance-based redundancy analyses*, dbRDA.
+
+## Moran Eigenvector Maps
+
+As you are aware, spatial autocorrelation structures are common in spatial data and can arise through many processes. In the tutorial from C&F, spatial autocorrelation is dealt with (sort of) by using latitude and longitude as covariates. A more sophisticated way of allowing for spatial autocorrelation (and testing for it) is to use Moran Eigenvector Maps (MEMs). This approach derives orthogonal vectors of *possible* spatial autocorrelation structures. These can be included as predictors in an RDA (or other analyses).
+
+Some functions return both positive and negative MEMs. The total number of MEMs are equal to the number of popultions with the first half being positive - typically we only focus on the positive MEMs. The MEMs with lower numbers (1, 2, 3 etc) describe larger spatial patterns and higher numbers are more particulate.
+
+The code below draws upon `adespatial` and `spdep` that were developed by authors involved in the key theory related to MEMs. These packages, however, are a bit out of date and so in the future you will want to see if there are updates.
+
+The first bit of code shows MEMs for a simple spatial grid so you can build up your inference. The second bit of code shows how you would find MEMs for the irregular lodgepole pine data.
+
+```{r}
+library(ade4)
+library(adespatial)
+library(spdep)
+library(adegraphics)
+
+
+# Demonstration of MEMs on a grid
+xygrid <- expand.grid(x = 1:10, y = 1:8)
+plot(xygrid.nb, xygrid)
+xygrid.mem<-dbmem(xygrid,store.listw = TRUE)
+plot(xygrid.mem, SpORcoords = xygrid, nb = xygrid.nb)
+
+
+# Looking at MEMS for lodgepole pine data
+pine.mem<-dbmem(Coordinates[,c(2,3)], MEM.autocor = "positive", store.listw = TRUE)
+plot(pine.mem, SpORcoords = Coordinates[,c(2,3)])
+
+```
+
+TODO: https://psfaculty.plantsciences.ucdavis.edu/plant/additionaltopics_mesf.pdf. pg 19
+
+You could play with using the first few MEMs in modified RDAs of the pine data. Remove longitude and latitude if you do this.
+
+If you plan to use MEMs in your own research, you will want to investigate much further. Right now, this code demonstrate how you can make them so you have a basic understanding of what they are when you read about MEMs in paper. A good place to start would be by following the [adespatial tutorial](https://cran.r-project.org/web/packages/adespatial/vignettes/tutorial.html).
+
+------------------------------------------------------------------------
 
 # Points for class discussion
 
@@ -341,5 +381,3 @@ TODO - discuss dbRDA
 3.  Notice that this tutorial does not look for correlations among environmental variables. What arguments can you make for or against reducing your environmental variables using approaches life *variance inflation factors*? Would you look at correlations across your whole landscape or across your study sites only?
 
 4.  Thoughts on exploring environmental variables and then building a model with population structure, geopositioning, and environmental variables?
-
-

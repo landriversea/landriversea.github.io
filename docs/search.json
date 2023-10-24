@@ -130,7 +130,7 @@
     "href": "basic-bash.html",
     "title": "Basic Bash",
     "section": "",
-    "text": "This module is an introduction to bash, covering the most basic concepts. For those that are new to bash, we recommend trying out an online tutorial for bash for beginners prior to the course in addition to this, for instance https://evomics.org/learning/unix-tutorial/Links\nThe module will consist in a lecture and an exercise.\n\n\n\nIntroduction to bash\n\n\n\n\n\nSome more bash"
+    "text": "This module is an introduction to bash, covering the most basic concepts. For those that are new to bash, we recommend trying out an online tutorial for bash for beginners prior to the course in addition to this, for instance https://evomics.org/learning/unix-tutorial/Links\nThose with Windows computers will also need to prepare to be able to use a terminal on their computers, we provide background instructions [in the attached document].\nThe module will consist in a lecture and an exercise. We will also hand out IDs and give instructions for logging on to the Lund University server that will be used for all bash based teaching during this session."
   },
   {
     "objectID": "GEA.html",
@@ -205,37 +205,37 @@
   {
     "objectID": "RDA.html",
     "href": "RDA.html",
-    "title": "Intro to GEA & RDA as a general toolkit",
+    "title": "Intro to RDA as a general toolkit",
     "section": "",
     "text": "What are they"
   },
   {
     "objectID": "RDA.html#review-of-ordination-pca-pcoa",
     "href": "RDA.html#review-of-ordination-pca-pcoa",
-    "title": "Intro to GEA & RDA as a general toolkit",
+    "title": "Intro to RDA as a general toolkit",
     "section": "Review of ordination, PCA & PCoA",
     "text": "Review of ordination, PCA & PCoA"
   },
   {
     "objectID": "RDA.html#constrained-ordination-as-implemented-in-rda",
     "href": "RDA.html#constrained-ordination-as-implemented-in-rda",
-    "title": "Intro to GEA & RDA as a general toolkit",
+    "title": "Intro to RDA as a general toolkit",
     "section": "Constrained ordination as implemented in RDA",
     "text": "Constrained ordination as implemented in RDA\n\nFlexible\n\nRDA can address the following questions (citing Capblancq et al. 2021):\n\nWhat environmental/spatial processes drive patterns of genetic variation?\n\n2. What is the genetic basis of local adaptation to the environment?\n3. How is adaptive genetic variation distributed across landscapes?\n4. What are the impacts of climate and/or landscape change on the distribution of adaptive genetic variation?\nRDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)\n\nKeep this linearity in mind: it might not be appropriate for your data\n\n\n\n\nConceptual overview of RDA - From Capblancq et al. 2021"
   },
   {
     "objectID": "RDA.html#data-preparation",
     "href": "RDA.html#data-preparation",
-    "title": "Intro to GEA & RDA as a general toolkit",
+    "title": "Intro to RDA as a general toolkit",
     "section": "Data preparation",
     "text": "Data preparation\nget environmental variables\nstandardize - mean of 0, SD = 1\ncan include dummy predictors (0/1)\n\nexplain when more than two categories\n\nlook for colinearity - need to define and explain VIF\n\nVariable selection with forward model building\nBuilds up a predictive model and assists with variable reduction\n\nTest significance of global model (= all variables)\nStart with “empty” model (= intercept only) and sequentially add variables\nTwo stopping criteria to avoid overfitting - end with either criterion\n\npermutation based significance test\nadjusted \\(R^2\\) from global model\n\n\n\n\n\nVariance partitioning using partial RDA\nAllows independent estimation of sets of variables together with confounded effects caused by collinearity\n\n\n\nReporting on partial RDA-From Capblancq et al. 2021\n\n\nDefine the different proportions\n? make MCQ check\n\n\nAdaptive loci - what are they, how to id\nCapblancq has discussion on conditioning approaches\n\n\nProjecting adaptive landscapes in space\n\ngenetic based index of adaptation based on Steane\npredict genotypes and allele frequencies as a function of environmental variation"
   },
   {
     "objectID": "RDA.html#extra-topics",
     "href": "RDA.html#extra-topics",
-    "title": "Intro to GEA & RDA as a general toolkit",
+    "title": "Intro to RDA as a general toolkit",
     "section": "Extra topics",
-    "text": "Extra topics\nMEMS\nAEMS\nshow Zindben flowchart"
+    "text": "Extra topics\nMEMS\nAEMS\nshow Zindben flowchart\nhttps://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/ https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#30"
   },
   {
     "objectID": "sims_demo.html",

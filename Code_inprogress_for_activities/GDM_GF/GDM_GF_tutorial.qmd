@@ -1,0 +1,124 @@
+---
+title: "Generalised dissimilarity modelling and Grdient Forest"
+format: html
+editor: visual
+---
+
+# Overview
+
+This tutorial will provide the briefest introduction to GDMs and GF's and their usage in landscape genomics.
+
+These methods are included because the represent different ways of approaching landscape data and are often encountered in genomic prediction studies.
+
+The scripts support the analyses presented in Fitzpatrick and Keller 2015 on balsam poplar and are based on the scripts and data found on [Data Dryad]().
+
+Unfortunately the authors did not make their spatial data layers available (likely due to large file sizes) and therefore we cannot recapitulate their landscape projections to look at genomic offsets. We will do this later based on an RDA method.
+
+As we have encountered before, support for the packages `GDM` and `gradientForest` might not be fully up to date with developments in R spatial data handling.
+
+Fitzpatrick, M. C., & Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. Ecol Lett, 18(1), 1-16. doi:papers3://publication/doi/10.1111/ele.12376
+
+```{r load libraries}
+
+#install.packages("gradientForest", repos="http://R-Forge.R-project.org")
+library(gdm)
+library(gradientForest)
+library(raster)
+
+```
+
+# GDM
+
+Remember that GDM is based on distances between sites. If you examine the `gdmData` file you will see that each row contains information regarding the relationship between a pair of sites.
+
+-   Genetic data - Representing the genetic response variables are FST values for various sets of data (reference loci, candidate, GI5, etc.) These Fst values have been scaled and centered.
+
+-   Coordinates - The locations of each population pair are included as x and y coordinates.
+
+-   Environmental distances - The environmental variables are also represented as distances. It is not clear how these distances were calculated: they may be simple differences.
+
+## Fitting and examining the GDM model
+
+We will focus on the reference and GIGANTEA-5 (GI5) datasets. To fit the models, individual dataframes need to be constructed.
+
+```{r gdm}
+
+# import GDM ready table
+gdmData <- read.csv("poplarFst.ENV.data.4.GDM.csv")
+
+# build individual SNP datasets
+SNPs_ref <- gdmData[,c(1,6:24)] # reference
+GI5 <- gdmData[,c(3,6:24)] # GIGANTEA-5 (GI5)
+
+
+# fit and plot GDM for reference SNPs
+gdmRef <- gdm(SNPs_ref, geo=TRUE) #gives warning but works
+gdmRef$explained # From F&K2015: "GDM explained more than 63% of the deviance in turnover in genetic composition of reference"
+
+plot(gdmRef)
+refSplines <- isplineExtract(gdmRef) # extract spline data for custom plotting
+
+# fit and plot GDM for GI5 SNPs
+gdmGI5 <- gdm(GI5, geo=GEO)
+gdmGI5$explained
+plot(gdmGI5)
+
+```
+
+You will recognize some of the plots from Figure 3. Notice how variable the spline functions can be.
+
+## GF
+
+In contrast to GDM, GF is site based. Therefore each row in the dataframe corresponds to a site (population).
+
+-   Coordinates - The locations of each population are included as x and y coordinates.
+
+-   Environmental values - Appear to be raw values.
+
+-   MEMS - are included as additional spatial variables.
+
+-   Genetic data - Are allele frequencies. (Columns 14-373 are reference loci =360 loci, does not match the paper!)
+
+## Fitting and examining the GF model
+
+As before, we focus on the reference and GIGANTEA-5 (GI5) datasets. And make individual dataframes to feed into the analyses.
+
+```{r GF}
+gfData <- read.csv("poplarSNP.ENV.data.4.GF.csv")
+
+envGF <- gfData[,3:13] # get climate & MEM variables
+
+# build individual SNP datasets
+SNPs_ref <- gfData[,grep("REFERENCE",colnames(gfData))] # reference 360 loci
+GI5 <- gfData[,grep("GI5",colnames(gfData))] # GIGANTEA-5 (GI5)
+
+maxLevel <- log2(0.368*nrow(envGF)/2) #account for correlations, F&K set this flag but do not explain beyond saying "see ?gradientForest"
+
+# Fit gf models for reference SNPs 
+gfRef <- gradientForest(cbind(envGF, SNPs_ref), predictor.vars=colnames(envGF), response.vars=colnames(SNPs_ref), ntree=500, maxLevel=maxLevel, trace=T, corr.threshold=0.50)
+
+# Fit gf models for GI5 SNPs
+gfGI5 <- gradientForest(cbind(envGF, GI5), predictor.vars=colnames(envGF),
+                          response.vars=colnames(GI5), ntree=500, 
+                          maxLevel=maxLevel, trace=T, corr.threshold=0.50)
+
+# plot output, see ?plot.gradientForest
+
+plot(gfRef, plot.type="O") # values that feed into Fig1
+plot(gfRef, plot.type = "C")  # Fig2 
+plot(gfRef, plot.type = "S")
+
+     
+#can do the same for GI5
+
+```
+
+------------------------------------------------------------------------
+
+# Points for class discussion
+
+1.  What are the points of difference and similarity between GDM and GF? Which might you use in what context?
+
+2.  The GDM example used pairwise FST values. Does this seem like a reasonable choice? What implicit assumptions go into this choice?
+
+3.  There were major reproducibility issues in trying to reconstruct the analyses! Spatial data sets are missing, packages are old and not necessarily updated.... what best practices could we follow to mitigate such problems?

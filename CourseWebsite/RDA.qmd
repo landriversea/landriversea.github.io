@@ -1,10 +1,8 @@
 ---
-title: "Intro to GEA & RDA as a general toolkit"
+title: "Intro to RDA as a general toolkit"
 ---
 
 # Under construction...
-
-# Genotype Environment Associations
 
 What are they
 
@@ -114,5 +112,4 @@ AEMS
 
 show Zindben flowchart
 
-https://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/
-https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#30
+https://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/ https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#30
