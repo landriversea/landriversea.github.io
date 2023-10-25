@@ -50,12 +50,19 @@ Pkg.add("Circuitscape")
 Pkg.test("Circuitscape")
 # The test was successfull if the final line reports "Testing Circuitscape tests passed"
 
-# Now we need to get the path where Julia is by running:
+# Now we need to get the path where Julia is by running (for instructions for MAC, see below):
 ENV["PATH"]
 # Your computer probably answers with a long string with several paths to different locations on your computer, separated by semi-colons (;)
 # You need to look for the path ending with "Julia", the version number, and "bin". For me it was:
 C:\\Users\\Isolde\\AppData\\Local\\Programs\\Julia-1.9.3\\bin
 # Save this path somewhere so you can use it for the tutorial
+
+# And the path where Julia is for MAC users (thanks to Ernst Jonsson for solving this one):
+# use the shell (the mac terminal)
+sudo mkdir -p /usr/local/bin
+sudo rm -f /usr/local/bin/julia
+sudo ln -s /Applications/Julia-1.9.app/Contents/Resources/julia /usr/local/bin/julia
+# Use this first path here (/Applications/ ... /julia) for the optional test below and the tutorial!
 
 ## OPTIONAL: to test if your Julia installation was sucessfull, restart your computer, and run the following code in the R studio or the R terminal:
 # Replace the path here to the path you saved above, remember to replace the double backward slashes with single forward slashes
