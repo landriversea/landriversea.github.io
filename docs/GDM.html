@@ -285,14 +285,34 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#theorybackground-for-gdm" id="toc-theorybackground-for-gdm" class="nav-link" data-scroll-target="#theorybackground-for-gdm">Theory/Background for GDM</a></li>
   </ul></li>
-  <li><a href="#i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm" id="toc-i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm" class="nav-link" data-scroll-target="#i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm"><img src="images/I_splines_Mokany_etal_2022.png" class="img-fluid" alt="I-splines can show different rates of change - Mokany et al 2022">Uses of GDM</a></li>
-  <li><a href="#gdm-and-genomics" id="toc-gdm-and-genomics" class="nav-link" data-scroll-target="#gdm-and-genomics">GDM and genomics</a></li>
-  <li><a href="#limitations-of-gdm" id="toc-limitations-of-gdm" class="nav-link" data-scroll-target="#limitations-of-gdm">Limitations of GDM</a></li>
+  <li><a href="#gdm-applications-species-diversity" id="toc-gdm-applications-species-diversity" class="nav-link" data-scroll-target="#gdm-applications-species-diversity">GDM applications (species diversity)</a></li>
+  <li><a href="#advantages-and-limitations-of-gdm" id="toc-advantages-and-limitations-of-gdm" class="nav-link" data-scroll-target="#advantages-and-limitations-of-gdm">Advantages and limitations of GDM</a>
+  <ul class="collapse">
+  <li><a href="#positives" id="toc-positives" class="nav-link" data-scroll-target="#positives">Positives</a></li>
+  <li><a href="#drawbacks" id="toc-drawbacks" class="nav-link" data-scroll-target="#drawbacks">Drawbacks</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#gradient-forests" id="toc-gradient-forests" class="nav-link" data-scroll-target="#gradient-forests">Gradient forests</a>
   <ul class="collapse">
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a>
+  <ul class="collapse">
+  <li><a href="#random-forests" id="toc-random-forests" class="nav-link" data-scroll-target="#random-forests">Random forests</a></li>
+  <li><a href="#gradient-forests-1" id="toc-gradient-forests-1" class="nav-link" data-scroll-target="#gradient-forests-1">Gradient forests</a></li>
+  </ul></li>
+  <li><a href="#gf-applications-species-diversity" id="toc-gf-applications-species-diversity" class="nav-link" data-scroll-target="#gf-applications-species-diversity">GF applications (species diversity)</a></li>
+  <li><a href="#advantages-and-limitations-of-gf" id="toc-advantages-and-limitations-of-gf" class="nav-link" data-scroll-target="#advantages-and-limitations-of-gf">Advantages and limitations of GF</a>
+  <ul class="collapse">
+  <li><a href="#positives-1" id="toc-positives-1" class="nav-link" data-scroll-target="#positives-1">Positives</a></li>
+  <li><a href="#negatives" id="toc-negatives" class="nav-link" data-scroll-target="#negatives">Negatives</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#gdm-and-gf-applied-to-genomic-data" id="toc-gdm-and-gf-applied-to-genomic-data" class="nav-link" data-scroll-target="#gdm-and-gf-applied-to-genomic-data">GDM and GF applied to genomic data</a>
+  <ul class="collapse">
+  <li><a href="#the-data-set" id="toc-the-data-set" class="nav-link" data-scroll-target="#the-data-set">The data set</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#notes-developed-from" id="toc-notes-developed-from" class="nav-link" data-scroll-target="#notes-developed-from">Notes developed from:</a></li>
   </ul></li>
+  <li><a href="#computer-tutorial" id="toc-computer-tutorial" class="nav-link" data-scroll-target="#computer-tutorial">Computer tutorial</a></li>
   </ul>
 </nav>
     </div>
@@ -320,7 +340,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Generalized dissimilarity modeling &amp; Gradient forests</h1>
 <ul>
 <li><p>Developed for community ecology and adopted by landscape genetics (in community ecology, the biological data are species observations)</p></li>
-<li><p>Focus on beta-diversity or turnover</p></li>
+<li><p>Focus on beta-diversity or turnover, show rates of biological change in similar (non linear) manners</p></li>
 <li><p>Can predict genetic diversity across landscapes - environmental and geographic predictors can act as <em>surrogates</em> for turnover in genetic diversity (species distribution modeling makes the same assumption)</p></li>
 <li><p>Being used to estimate genetic match/mismatch to future climate conditions</p></li>
 </ul>
@@ -380,11 +400,12 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>Examining the I-splines</p>
+<p><img src="images/I_splines_Mokany_etal_2022.png" class="img-fluid" alt="I-splines can show different rates of change - Mokany et al 2022">Uses of GDM</p>
 </section>
 </section>
 </section>
-<section id="i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm" class="level2">
-<h2 class="anchored" data-anchor-id="i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm"><img src="images/I_splines_Mokany_etal_2022.png" class="img-fluid" alt="I-splines can show different rates of change - Mokany et al 2022">Uses of GDM</h2>
+<section id="gdm-applications-species-diversity" class="level2">
+<h2 class="anchored" data-anchor-id="gdm-applications-species-diversity">GDM applications (species diversity)</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/GDM_usage_present_climate.png" class="img-fluid figure-img"></p>
@@ -398,11 +419,19 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="gdm-and-genomics" class="level2">
-<h2 class="anchored" data-anchor-id="gdm-and-genomics">GDM and genomics</h2>
+<section id="advantages-and-limitations-of-gdm" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-and-limitations-of-gdm">Advantages and limitations of GDM</h2>
+<section id="positives" class="level3">
+<h3 class="anchored" data-anchor-id="positives">Positives</h3>
+<ul>
+<li><p>Very flexible on data types</p></li>
+<li><p>Computation (for genetic analyses) does not scale with number of loci</p></li>
+<li><p>Does not assume linearity</p></li>
+<li><p>Can yield predictions for gridded landscapes</p></li>
+</ul>
 </section>
-<section id="limitations-of-gdm" class="level2">
-<h2 class="anchored" data-anchor-id="limitations-of-gdm">Limitations of GDM</h2>
+<section id="drawbacks" class="level3">
+<h3 class="anchored" data-anchor-id="drawbacks">Drawbacks</h3>
 <ul>
 <li><p>Predictor distances are symmetric</p></li>
 <li><p>Predictions in a large gridded landscape: computationally challenging (grid cell number choose 2 combinations)</p></li>
@@ -412,19 +441,169 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
+</section>
 <section id="gradient-forests" class="level1">
 <h1>Gradient forests</h1>
+<p><em>Gradient forests</em> is a machine learning approach based on <em>random forests</em>. Random forests are suited to predicting one outcome (such as the presences or absence of a specific species). Gradient forests puts together outcomes from many random forests (building information on a community of species or many loci).</p>
+<section id="theory" class="level2">
+<h2 class="anchored" data-anchor-id="theory">Theory</h2>
+<section id="random-forests" class="level3">
+<h3 class="anchored" data-anchor-id="random-forests">Random forests</h3>
+<ul>
+<li><p>Creates an ensemble of trees per species, these trees are split into partitions</p></li>
+<li><p>Observations (sites for species, populations for genetics) are picked at random for each regression tree</p></li>
+<li><p>For each node in the regression tree, predictor variables are selected at random and evaluated</p></li>
+<li><p>Sites are split by a predictor value, s</p></li>
+<li><p>Splits are chosen to create homogenous groups (measured by the sum of squared deviations about the group mean, called the <em>impurity</em>); the <em>importance</em> of each split is the reduction in impurity introduced by the split</p></li>
+<li><p>Splitting occurs recursively until the tips are reached</p></li>
+<li><p>Random forest = ensemble of trees where each trees is a bootstrap partition</p></li>
+<li><p>Cross validation using “in bag” and “out of the bag” comparisons</p></li>
+</ul>
+<p>Confused? Me too! Let’s watch this video to get a better understanding…</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J4Wdy0Wc_xQ?si=69YRNj86wmMjuCl6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+</iframe>
+</section>
+<section id="gradient-forests-1" class="level3">
+<h3 class="anchored" data-anchor-id="gradient-forests-1">Gradient forests</h3>
+<p>Combines ensembles of random forests to summarize importance of predictors and compositional turnover rates by predictor values.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/gradientforest_Ellis_etal_2012.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">How gradient forests work - Ellis et al 2012</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="gf-applications-species-diversity" class="level2">
+<h2 class="anchored" data-anchor-id="gf-applications-species-diversity">GF applications (species diversity)</h2>
+<p>Example - outcomes for species abundance for species on the Great Barrier Reef</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GF_example1_Ellis_etal_2012.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GF outputs</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GF_example2_Ellis_etal_2012.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">More GF outputs</figcaption>
+</figure>
+</div>
+<p>Other applications</p>
+<ul>
+<li><p>Predicting biological turnover from environmental variables</p></li>
+<li><p>Gap analyses of surveys</p></li>
+<li><p>Identifying environmental thresholds to push community into a different state</p></li>
+</ul>
+</section>
+<section id="advantages-and-limitations-of-gf" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-and-limitations-of-gf">Advantages and limitations of GF</h2>
+<section id="positives-1" class="level3">
+<h3 class="anchored" data-anchor-id="positives-1">Positives</h3>
+<ul>
+<li>Summarizes complex relationships with high predictive power - no variable transformation required</li>
+<li>Species can be sampled in different ways and combined</li>
+<li>Compositional dissimilarity is not bounded at 1</li>
+<li>Correlated predictors should not affect results within the training region (but could if model is applied to new regions)</li>
+</ul>
+</section>
+<section id="negatives" class="level3">
+<h3 class="anchored" data-anchor-id="negatives">Negatives</h3>
+<ul>
+<li>Does not explicitly deal with spatial location (positions can be added as variables)</li>
+<li>Small scale autocorrelation could cause problems - sample at distances larger than local SA</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="gdm-and-gf-applied-to-genomic-data" class="level1">
+<h1>GDM and GF applied to genomic data</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Fitzpatrick_Keller.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Balsam-Poplar-300x225.jpg" class="img-fluid figure-img" alt="https://sierraclub.bc.ca/balsam-poplar/"></p>
+<figcaption class="figure-caption">Balsam Poplar</figcaption>
+</figure>
+</div>
+<p>Fitzpatrick &amp; Keller 2015 aimed to</p>
+<ul>
+<li><p>model how genetic diversity changes across a complex environmental landscape, especially for “adaptive” loci</p></li>
+<li><p>project gene-environment relationships in space and time to yield landscape predictions and infer how environmental change will affect gene-environment associations</p></li>
+</ul>
+<p>This publication coined the term <strong><em>“genetic offset”</em></strong></p>
+<blockquote class="blockquote">
+<p>“The future projection of genetic composition informs us about how much the genetic composition across the landscape would have to change to preserve the gene–environment relationships observed under current environmental conditions.”</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>“Of course, the actual evolutionary responses of populations to environmental change will be more complex than this simpliﬁed projection, and likely to involve interactions between selection, the effective population size, which determines the efﬁcacy of selection response, and the evolutionary processes shaping adaptive variation (e.g.&nbsp;migration, mutation, recombination).”</p>
+</blockquote>
+<section id="the-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="the-data-set">The data set</h2>
+<ul>
+<li>Reference SNPs
+<ul>
+<li>412 SNPs = genomically random</li>
+<li>31 populations</li>
+<li>474 individuals</li>
+</ul></li>
+<li>Candidate loci
+<ul>
+<li>335 SNPS from flowering genes</li>
+<li>443 individuals from 31 populations</li>
+</ul></li>
+<li>SNPs from specific candidate loci
+<ul>
+<li>previous outlier analyses identified GIGANTEA-5 (GI5), FRIGIDA (FRI) and LEAFY (LFY)</li>
+</ul></li>
+<li>Environmental variables: 6</li>
+<li>Spatial structure (population history) accounted for by using geographic distance for GDM and MEMs for GF</li>
+<li>GDM - response variables are pairwise Fst</li>
+<li>GF - response variables are allele frequencies</li>
+</ul>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GDM_ISplines_Fitzpatrick_Keller_2015.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GDM I-splines: Fitzpatrick &amp; Keller 2015</figcaption>
+</figure>
+</div>
+<p>See Figure 2 in the original paper for similar GF results as above.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GF_SNP_compositional_Turnover_Fitzpatrick_Keller_2015.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Turnover by SNP in response to summer temperature - Fitzpatrick &amp; Keller 2015</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Predicted _spatial_ Variation_Fitzpatrick_Keller_2015.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Predicted spatial variation - Fitzpatrick &amp; Keller 2015</figcaption>
+</figure>
+</div>
+</section>
 <section id="notes-developed-from" class="level2">
 <h2 class="anchored" data-anchor-id="notes-developed-from">Notes developed from:</h2>
 <blockquote class="blockquote">
 <ul>
-<li>Ferrier, S., Manion, G., Elith, J., &amp; Richardson, K. (2007). Using generalized dissimilarity modelling to analyse and predict patterns of beta diversity in regional biodiversity assessment. _Diversity and Distributions, 13_(3), 252-264. doi:papers3://publication/doi/10.1111/j.1472-4642.2007.00341.x</li>
-<li>Mokany, K., Ware, C., Woolley, S. N. C., Ferrier, S., Fitzpatrick, Matthew&nbsp;C., &amp; Bahn, V. (2022). A working guide to harnessing generalized dissimilarity modelling for biodiversity analysis and conservation assessment. _Global Ecology and Biogeography, 31_(4), 802-821. doi:10.1111/geb.13459</li>
+<li>Ellis, N., Smith, S. J., &amp; Pitcher, C. R. (2012). Gradient forests: calculating importance gradients on physical predictors. _Ecology, 93_(1), 156-168.</li>
+<li>Ferrier, S., Manion, G., Elith, J., &amp; Richardson, K. (2007). Using generalized dissimilarity modelling to analyse and predict patterns of beta diversity in regional biodiversity assessment. _Diversity and Distributions, 13_(3), 252-264.</li>
+<li>Fitzpatrick, M. C., &amp; Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. _Ecol Lett, 18_(1), 1-16.</li>
+<li>Mokany, K., Ware, C., Woolley, S. N. C., Ferrier, S., Fitzpatrick, Matthew&nbsp;C., &amp; Bahn, V. (2022). A working guide to harnessing generalized dissimilarity modelling for biodiversity analysis and conservation assessment. _Global Ecology and Biogeography, 31_(4), 802-821.</li>
 </ul>
 </blockquote>
-
-
+<hr>
 </section>
+</section>
+<section id="computer-tutorial" class="level1">
+<h1>Computer tutorial</h1>
+
+
 </section>
 
 </main> <!-- /main -->

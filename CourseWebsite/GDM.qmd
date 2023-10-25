@@ -6,7 +6,7 @@ title: "Future projections with GDM & GFs"
 
 -   Developed for community ecology and adopted by landscape genetics (in community ecology, the biological data are species observations)
 
--   Focus on beta-diversity or turnover
+-   Focus on beta-diversity or turnover, show rates of biological change in similar (non linear) manners
 
 -   Can predict genetic diversity across landscapes - environmental and geographic predictors can act as *surrogates* for turnover in genetic diversity (species distribution modeling makes the same assumption)
 
@@ -66,15 +66,27 @@ Modified to account for two aspects of non linearity:
 
 Examining the I-splines
 
-## ![I-splines can show different rates of change - Mokany et al 2022](images/I_splines_Mokany_etal_2022.png)Uses of GDM
+![I-splines can show different rates of change - Mokany et al 2022](images/I_splines_Mokany_etal_2022.png)Uses of GDM
+
+## GDM applications (species diversity)
 
 ![GDM usage examples for present climate](images/GDM_usage_present_climate.png)
 
 ![GDM usage examples for future climate](images/GDMuseage_futureclimate.png)
 
-## GDM and genomics
+## Advantages and limitations of GDM
 
-## Limitations of GDM
+### Positives
+
+-   Very flexible on data types
+
+-   Computation (for genetic analyses) does not scale with number of loci
+
+-   Does not assume linearity
+
+-   Can yield predictions for gridded landscapes
+
+### Drawbacks
 
 -   Predictor distances are symmetric
 
@@ -88,7 +100,121 @@ Examining the I-splines
 
 # Gradient forests
 
+*Gradient forests* is a machine learning approach based on *random forests*. Random forests are suited to predicting one outcome (such as the presences or absence of a specific species). Gradient forests puts together outcomes from many random forests (building information on a community of species or many loci).
+
+## Theory
+
+### Random forests
+
+-   Creates an ensemble of trees per species, these trees are split into partitions
+
+-   Observations (sites for species, populations for genetics) are picked at random for each regression tree
+
+-   For each node in the regression tree, predictor variables are selected at random and evaluated
+
+-   Sites are split by a predictor value, s
+
+-   Splits are chosen to create homogenous groups (measured by the sum of squared deviations about the group mean, called the *impurity*); the *importance* of each split is the reduction in impurity introduced by the split
+
+-   Splitting occurs recursively until the tips are reached
+
+-   Random forest = ensemble of trees where each trees is a bootstrap partition
+
+-   Cross validation using "in bag" and "out of the bag" comparisons
+
+Confused? Me too! Let's watch this video to get a better understanding...
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J4Wdy0Wc_xQ?si=69YRNj86wmMjuCl6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+</iframe>
+
+### Gradient forests
+
+Combines ensembles of random forests to summarize importance of predictors and compositional turnover rates by predictor values.
+
+![How gradient forests work - Ellis et al 2012](images/gradientforest_Ellis_etal_2012.png)
+
+## GF applications (species diversity)
+
+Example - outcomes for species abundance for species on the Great Barrier Reef
+
+![GF outputs](images/GF_example1_Ellis_etal_2012.png)
+
+![More GF outputs](images/GF_example2_Ellis_etal_2012.png)
+
+Other applications
+
+-   Predicting biological turnover from environmental variables
+
+-   Gap analyses of surveys
+
+-   Identifying environmental thresholds to push community into a different state
+
+## Advantages and limitations of GF
+
+### Positives
+
+-   Summarizes complex relationships with high predictive power - no variable transformation required
+-   Species can be sampled in different ways and combined
+-   Compositional dissimilarity is not bounded at 1
+-   Correlated predictors should not affect results within the training region (but could if model is applied to new regions)
+
+### Negatives
+
+-   Does not explicitly deal with spatial location (positions can be added as variables)
+-   Small scale autocorrelation could cause problems - sample at distances larger than local SA
+
+# GDM and GF applied to genomic data
+
+![](images/Fitzpatrick_Keller.png){fig-align="center"}
+
+![Balsam Poplar](images/Balsam-Poplar-300x225.jpg){fig-alt="https://sierraclub.bc.ca/balsam-poplar/" fig-align="center"}
+
+Fitzpatrick & Keller 2015 aimed to
+
+-   model how genetic diversity changes across a complex environmental landscape, especially for "adaptive" loci
+
+-   project gene-environment relationships in space and time to yield landscape predictions and infer how environmental change will affect gene-environment associations
+
+This publication coined the term ***"genetic offset"***
+
+> "The future projection of genetic composition informs us about how much the genetic composition across the landscape would have to change to preserve the gene--environment relationships observed under current environmental conditions."
+
+> "Of course, the actual evolutionary responses of populations to environmental change will be more complex than this simpliﬁed projection, and likely to involve interactions between selection, the effective population size, which determines the efﬁcacy of selection response, and the evolutionary processes shaping adaptive variation (e.g. migration, mutation, recombination)."
+
+## The data set
+
+-   Reference SNPs
+    -   412 SNPs = genomically random
+    -   31 populations
+    -   474 individuals
+-   Candidate loci
+    -   335 SNPS from flowering genes
+    -   443 individuals from 31 populations
+-   SNPs from specific candidate loci
+    -   previous outlier analyses identified GIGANTEA-5 (GI5), FRIGIDA (FRI) and LEAFY (LFY)
+-   Environmental variables: 6
+-   Spatial structure (population history) accounted for by using geographic distance for GDM and MEMs for GF
+-   GDM - response variables are pairwise Fst
+-   GF - response variables are allele frequencies
+
+## Results
+
+![GDM I-splines: Fitzpatrick & Keller 2015](images/GDM_ISplines_Fitzpatrick_Keller_2015.png)
+
+See Figure 2 in the original paper for similar GF results as above.
+
+![Turnover by SNP in response to summer temperature - Fitzpatrick & Keller 2015](images/GF_SNP_compositional_Turnover_Fitzpatrick_Keller_2015.png)
+
+![Predicted spatial variation - Fitzpatrick & Keller 2015](images/Predicted _spatial_ Variation_Fitzpatrick_Keller_2015.png)
+
 ## Notes developed from:
 
-> -   Ferrier, S., Manion, G., Elith, J., & Richardson, K. (2007). Using generalized dissimilarity modelling to analyse and predict patterns of beta diversity in regional biodiversity assessment. \_Diversity and Distributions, 13\_(3), 252-264. doi:papers3://publication/doi/10.1111/j.1472-4642.2007.00341.x
-> -   Mokany, K., Ware, C., Woolley, S. N. C., Ferrier, S., Fitzpatrick, Matthew C., & Bahn, V. (2022). A working guide to harnessing generalized dissimilarity modelling for biodiversity analysis and conservation assessment. \_Global Ecology and Biogeography, 31\_(4), 802-821. doi:10.1111/geb.13459
+> -   Ellis, N., Smith, S. J., & Pitcher, C. R. (2012). Gradient forests: calculating importance gradients on physical predictors. \_Ecology, 93\_(1), 156-168.
+> -   Ferrier, S., Manion, G., Elith, J., & Richardson, K. (2007). Using generalized dissimilarity modelling to analyse and predict patterns of beta diversity in regional biodiversity assessment. \_Diversity and Distributions, 13\_(3), 252-264.
+> -   Fitzpatrick, M. C., & Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. \_Ecol Lett, 18\_(1), 1-16.
+> -   Mokany, K., Ware, C., Woolley, S. N. C., Ferrier, S., Fitzpatrick, Matthew C., & Bahn, V. (2022). A working guide to harnessing generalized dissimilarity modelling for biodiversity analysis and conservation assessment. \_Global Ecology and Biogeography, 31\_(4), 802-821.
+
+------------------------------------------------------------------------
+
+# Computer tutorial
