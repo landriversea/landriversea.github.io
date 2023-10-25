@@ -1,3 +1,94 @@
 ---
-title: "Future projectsions with GDM & GFs"
+title: "Future projections with GDM & GFs"
 ---
+
+# Generalized dissimilarity modeling & Gradient forests
+
+-   Developed for community ecology and adopted by landscape genetics (in community ecology, the biological data are species observations)
+
+-   Focus on beta-diversity or turnover
+
+-   Can predict genetic diversity across landscapes - environmental and geographic predictors can act as *surrogates* for turnover in genetic diversity (species distribution modeling makes the same assumption)
+
+-   Being used to estimate genetic match/mismatch to future climate conditions
+
+## GDM
+
+### Theory/Background for GDM
+
+#### Managing non linearity
+
+GDM is *non* linear extension of matrix regression that uses dissimilarities in both predictor and response variables:
+
+-   Basic linear model: $d_{ij} = a_0 + \sum_{p=1}^na_p|x_{pi}-x_{pj}|$
+
+Modified to account for two aspects of non linearity:
+
+1.  Bounded compositional dissimilarity: $d_{ij} \sim (0,1)$
+
+2.  Variable rate of turnover
+
+![Two types of non linearity - Ferrier et al 2007](images/nonlinearity_Ferrier_etal_2007.png){fig-align="center"}
+
+**Solution for #1**, use a generalized linear model that defines relationship between predictor ($\eta$) and response ($\mu$)
+
+-   Link function: $\mu = 1 - e^{\eta}$
+
+-   Binomial variance: $V(\mu) = \frac{\mu(\mu-1)}{s_i+s_j}$
+
+**Solution for #2**: fit nonlinear functions to the environmental variables, not their distances
+
+-   GLM equation is now changed to include functions for x
+
+    -   $\eta = a_0 + \sum_{p=1}^n|f_p(x_{pi})-f_p(x_{pj})|$
+
+-   an I-spline basis function is used as a function
+
+    -   $f_p(x_p)= \sum_{k=1}^{m_p}a _{pk}I_{pk}(x_p)$ (k splines per predictor)
+
+-   So, GLM becomes: $\eta = a_0 + \sum_{p=1}^n\sum_{k=1}^{m_p}a_{pk}|I_{pk}(x_{pi})-I_{pk}(x_{pj})|$
+
+#### Fitting a GDM model
+
+1)  compute $d_{ij}$ between all sites (n x n matrix)
+
+2)  derive a set of $m_p$ I-spline basis functions for each environmental variable and calculate value ($I_{pk}(x_p)$)for each site
+
+3)  Calculate $\Delta I_{pk}$ for each pair of sites
+
+4)  For geographic and other distances, derive I-spline basis functions directly
+
+5)  Use maximum likelihood to fit coefficients
+
+6)  Contribution of each predictor evaluated by comparing *deviance* of model with and without the factor
+
+![Assembling a GDM - Mokany et al 2022](images/GDM_Mokany_etal_2022.png)
+
+Examining the I-splines
+
+## ![I-splines can show different rates of change - Mokany et al 2022](images/I_splines_Mokany_etal_2022.png)Uses of GDM
+
+![GDM usage examples for present climate](images/GDM_usage_present_climate.png)
+
+![GDM usage examples for future climate](images/GDMuseage_futureclimate.png)
+
+## GDM and genomics
+
+## Limitations of GDM
+
+-   Predictor distances are symmetric
+
+-   Predictions in a large gridded landscape: computationally challenging (grid cell number choose 2 combinations)
+
+-   Interactions between predictors are not modeled
+
+-   Non independence of sites not accounted for if all sites used (Mokany et al. 2022)
+
+-   Alternative link functions might be more appropriate
+
+# Gradient forests
+
+## Notes developed from:
+
+> -   Ferrier, S., Manion, G., Elith, J., & Richardson, K. (2007). Using generalized dissimilarity modelling to analyse and predict patterns of beta diversity in regional biodiversity assessment. \_Diversity and Distributions, 13\_(3), 252-264. doi:papers3://publication/doi/10.1111/j.1472-4642.2007.00341.x
+> -   Mokany, K., Ware, C., Woolley, S. N. C., Ferrier, S., Fitzpatrick, Matthew C., & Bahn, V. (2022). A working guide to harnessing generalized dissimilarity modelling for biodiversity analysis and conservation assessment. \_Global Ecology and Biogeography, 31\_(4), 802-821. doi:10.1111/geb.13459

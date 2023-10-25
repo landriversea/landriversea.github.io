@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Land, River and Seascape Genomics - Future projectsions with GDM &amp; GFs</title>
+<title>Land, River and Seascape Genomics - Future projections with GDM &amp; GFs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,6 +59,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -103,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./resistance.html">Thursday</a></li><li class="breadcrumb-item"><a href="./GDM.html">Future projectsions with GDM &amp; GFs</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./resistance.html">Thursday</a></li><li class="breadcrumb-item"><a href="./GDM.html">Future projections with GDM &amp; GFs</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -164,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./land-river-sea.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Land, river, sea</span></a>
+ <span class="menu-text">Land, river, &amp; seascape genomics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -193,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro to GEA &amp; RDA as a general toolkit</span></a>
+ <span class="menu-text">Intro to RDA as a general toolkit</span></a>
   </div>
 </li>
       </ul>
@@ -233,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./GDM.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Future projectsions with GDM &amp; GFs</span></a>
+ <span class="menu-text">Future projections with GDM &amp; GFs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -273,14 +275,33 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#generalized-dissimilarity-modeling-gradient-forests" id="toc-generalized-dissimilarity-modeling-gradient-forests" class="nav-link active" data-scroll-target="#generalized-dissimilarity-modeling-gradient-forests">Generalized dissimilarity modeling &amp; Gradient forests</a>
+  <ul class="collapse">
+  <li><a href="#gdm" id="toc-gdm" class="nav-link" data-scroll-target="#gdm">GDM</a>
+  <ul class="collapse">
+  <li><a href="#theorybackground-for-gdm" id="toc-theorybackground-for-gdm" class="nav-link" data-scroll-target="#theorybackground-for-gdm">Theory/Background for GDM</a></li>
+  </ul></li>
+  <li><a href="#i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm" id="toc-i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm" class="nav-link" data-scroll-target="#i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm"><img src="images/I_splines_Mokany_etal_2022.png" class="img-fluid" alt="I-splines can show different rates of change - Mokany et al 2022">Uses of GDM</a></li>
+  <li><a href="#gdm-and-genomics" id="toc-gdm-and-genomics" class="nav-link" data-scroll-target="#gdm-and-genomics">GDM and genomics</a></li>
+  <li><a href="#limitations-of-gdm" id="toc-limitations-of-gdm" class="nav-link" data-scroll-target="#limitations-of-gdm">Limitations of GDM</a></li>
+  </ul></li>
+  <li><a href="#gradient-forests" id="toc-gradient-forests" class="nav-link" data-scroll-target="#gradient-forests">Gradient forests</a>
+  <ul class="collapse">
+  <li><a href="#notes-developed-from" id="toc-notes-developed-from" class="nav-link" data-scroll-target="#notes-developed-from">Notes developed from:</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Future projectsions with GDM &amp; GFs</h1>
+<h1 class="title">Future projections with GDM &amp; GFs</h1>
 </div>
 
 
@@ -295,8 +316,116 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="generalized-dissimilarity-modeling-gradient-forests" class="level1">
+<h1>Generalized dissimilarity modeling &amp; Gradient forests</h1>
+<ul>
+<li><p>Developed for community ecology and adopted by landscape genetics (in community ecology, the biological data are species observations)</p></li>
+<li><p>Focus on beta-diversity or turnover</p></li>
+<li><p>Can predict genetic diversity across landscapes - environmental and geographic predictors can act as <em>surrogates</em> for turnover in genetic diversity (species distribution modeling makes the same assumption)</p></li>
+<li><p>Being used to estimate genetic match/mismatch to future climate conditions</p></li>
+</ul>
+<section id="gdm" class="level2">
+<h2 class="anchored" data-anchor-id="gdm">GDM</h2>
+<section id="theorybackground-for-gdm" class="level3">
+<h3 class="anchored" data-anchor-id="theorybackground-for-gdm">Theory/Background for GDM</h3>
+<section id="managing-non-linearity" class="level4">
+<h4 class="anchored" data-anchor-id="managing-non-linearity">Managing non linearity</h4>
+<p>GDM is <em>non</em> linear extension of matrix regression that uses dissimilarities in both predictor and response variables:</p>
+<ul>
+<li>Basic linear model: <span class="math inline">\(d_{ij} = a_0 + \sum_{p=1}^na_p|x_{pi}-x_{pj}|\)</span></li>
+</ul>
+<p>Modified to account for two aspects of non linearity:</p>
+<ol type="1">
+<li><p>Bounded compositional dissimilarity: <span class="math inline">\(d_{ij} \sim (0,1)\)</span></p></li>
+<li><p>Variable rate of turnover</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/nonlinearity_Ferrier_etal_2007.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Two types of non linearity - Ferrier et al 2007</figcaption>
+</figure>
+</div>
+<p><strong>Solution for #1</strong>, use a generalized linear model that defines relationship between predictor (<span class="math inline">\(\eta\)</span>) and response (<span class="math inline">\(\mu\)</span>)</p>
+<ul>
+<li><p>Link function: <span class="math inline">\(\mu = 1 - e^{\eta}\)</span></p></li>
+<li><p>Binomial variance: <span class="math inline">\(V(\mu) = \frac{\mu(\mu-1)}{s_i+s_j}\)</span></p></li>
+</ul>
+<p><strong>Solution for #2</strong>: fit nonlinear functions to the environmental variables, not their distances</p>
+<ul>
+<li><p>GLM equation is now changed to include functions for x</p>
+<ul>
+<li><span class="math inline">\(\eta = a_0 + \sum_{p=1}^n|f_p(x_{pi})-f_p(x_{pj})|\)</span></li>
+</ul></li>
+<li><p>an I-spline basis function is used as a function</p>
+<ul>
+<li><span class="math inline">\(f_p(x_p)= \sum_{k=1}^{m_p}a _{pk}I_{pk}(x_p)\)</span> (k splines per predictor)</li>
+</ul></li>
+<li><p>So, GLM becomes: <span class="math inline">\(\eta = a_0 + \sum_{p=1}^n\sum_{k=1}^{m_p}a_{pk}|I_{pk}(x_{pi})-I_{pk}(x_{pj})|\)</span></p></li>
+</ul>
+</section>
+<section id="fitting-a-gdm-model" class="level4">
+<h4 class="anchored" data-anchor-id="fitting-a-gdm-model">Fitting a GDM model</h4>
+<ol type="1">
+<li><p>compute <span class="math inline">\(d_{ij}\)</span> between all sites (n x n matrix)</p></li>
+<li><p>derive a set of <span class="math inline">\(m_p\)</span> I-spline basis functions for each environmental variable and calculate value (<span class="math inline">\(I_{pk}(x_p)\)</span>)for each site</p></li>
+<li><p>Calculate <span class="math inline">\(\Delta I_{pk}\)</span> for each pair of sites</p></li>
+<li><p>For geographic and other distances, derive I-spline basis functions directly</p></li>
+<li><p>Use maximum likelihood to fit coefficients</p></li>
+<li><p>Contribution of each predictor evaluated by comparing <em>deviance</em> of model with and without the factor</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GDM_Mokany_etal_2022.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Assembling a GDM - Mokany et al 2022</figcaption>
+</figure>
+</div>
+<p>Examining the I-splines</p>
+</section>
+</section>
+</section>
+<section id="i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm" class="level2">
+<h2 class="anchored" data-anchor-id="i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm"><img src="images/I_splines_Mokany_etal_2022.png" class="img-fluid" alt="I-splines can show different rates of change - Mokany et al 2022">Uses of GDM</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GDM_usage_present_climate.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GDM usage examples for present climate</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GDMuseage_futureclimate.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">GDM usage examples for future climate</figcaption>
+</figure>
+</div>
+</section>
+<section id="gdm-and-genomics" class="level2">
+<h2 class="anchored" data-anchor-id="gdm-and-genomics">GDM and genomics</h2>
+</section>
+<section id="limitations-of-gdm" class="level2">
+<h2 class="anchored" data-anchor-id="limitations-of-gdm">Limitations of GDM</h2>
+<ul>
+<li><p>Predictor distances are symmetric</p></li>
+<li><p>Predictions in a large gridded landscape: computationally challenging (grid cell number choose 2 combinations)</p></li>
+<li><p>Interactions between predictors are not modeled</p></li>
+<li><p>Non independence of sites not accounted for if all sites used (Mokany et al.&nbsp;2022)</p></li>
+<li><p>Alternative link functions might be more appropriate</p></li>
+</ul>
+</section>
+</section>
+<section id="gradient-forests" class="level1">
+<h1>Gradient forests</h1>
+<section id="notes-developed-from" class="level2">
+<h2 class="anchored" data-anchor-id="notes-developed-from">Notes developed from:</h2>
+<blockquote class="blockquote">
+<ul>
+<li>Ferrier, S., Manion, G., Elith, J., &amp; Richardson, K. (2007). Using generalized dissimilarity modelling to analyse and predict patterns of beta diversity in regional biodiversity assessment. _Diversity and Distributions, 13_(3), 252-264. doi:papers3://publication/doi/10.1111/j.1472-4642.2007.00341.x</li>
+<li>Mokany, K., Ware, C., Woolley, S. N. C., Ferrier, S., Fitzpatrick, Matthew&nbsp;C., &amp; Bahn, V. (2022). A working guide to harnessing generalized dissimilarity modelling for biodiversity analysis and conservation assessment. _Global Ecology and Biogeography, 31_(4), 802-821. doi:10.1111/geb.13459</li>
+</ul>
+</blockquote>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

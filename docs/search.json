@@ -130,7 +130,7 @@
     "href": "basic-bash.html",
     "title": "Basic Bash",
     "section": "",
-    "text": "This module is an introduction to bash, covering the most basic concepts. For those that are new to bash, we recommend trying out an online tutorial for bash for beginners prior to the course in addition to this, for instance https://evomics.org/learning/unix-tutorial/Links\nThose with Windows computers will also need to prepare to be able to use a terminal on their computers, we provide background instructions [in the attached document].\nThe module will consist in a lecture and an exercise. We will also hand out IDs and give instructions for logging on to the Lund University server that will be used for all bash based teaching during this session."
+    "text": "This module is an introduction to bash, covering the most basic concepts. For those that are new to bash, we recommend trying out an online tutorial for bash for beginners prior to the course in addition to this, for instance https://evomics.org/learning/unix-tutorial/Links\nThose with Windows computers will also need to prepare to be able to use a terminal on their computers, we provide background instructions.\nThe module will consist in a lecture and an exercise. We will also hand out IDs and give instructions for logging on to the Lund University server that will be used for all bash based teaching during this session.\nIf you encounter issues, please post questions on the course Slack channel"
   },
   {
     "objectID": "GEA.html",
@@ -252,18 +252,53 @@
     "text": "If you are new to R, please attempt the following tutorials on your own. If you are experienced in R, skim through the tutorials and make sure that all the topics are familiar to you.\n\nRavinet’s introduction to R\nGoing further with R\n\nThrough this course, most of the examples you are likely to encounter will predominately use base R. However, learning Tidyverse syntax will make your life easier in the long run, especially if you are going to be manipulating spatial data."
   },
   {
-    "objectID": "genetic-dif.html",
-    "href": "genetic-dif.html",
-    "title": "Genetic differentiation",
-    "section": "",
-    "text": "Describing genetic differentiation and genetic structuring"
-  },
-  {
     "objectID": "land-river-sea.html",
     "href": "land-river-sea.html",
     "title": "Land, river, & seascape genomics",
     "section": "",
     "text": "(Under construction)\nLecture notes coming.\nThere will be in class activities and discussion. Please be prepared to talk about\n\nStorfer, A., Patton, A., & Fraik, A. K. (2018). Navigating the interface between landscape genetics and landscape genomics. Front Genet, 9, 68. doi:10.3389/fgene.2018.00068"
+  },
+  {
+    "objectID": "GDM.html",
+    "href": "GDM.html",
+    "title": "Future projections with GDM & GFs",
+    "section": "",
+    "text": "Developed for community ecology and adopted by landscape genetics (in community ecology, the biological data are species observations)\nFocus on beta-diversity or turnover\nCan predict genetic diversity across landscapes - environmental and geographic predictors can act as surrogates for turnover in genetic diversity (species distribution modeling makes the same assumption)\nBeing used to estimate genetic match/mismatch to future climate conditions\n\n\n\n\n\n\n\nGDM is non linear extension of matrix regression that uses dissimilarities in both predictor and response variables:\n\nBasic linear model: \\(d_{ij} = a_0 + \\sum_{p=1}^na_p|x_{pi}-x_{pj}|\\)\n\nModified to account for two aspects of non linearity:\n\nBounded compositional dissimilarity: \\(d_{ij} \\sim (0,1)\\)\nVariable rate of turnover\n\n\n\n\nTwo types of non linearity - Ferrier et al 2007\n\n\nSolution for #1, use a generalized linear model that defines relationship between predictor (\\(\\eta\\)) and response (\\(\\mu\\))\n\nLink function: \\(\\mu = 1 - e^{\\eta}\\)\nBinomial variance: \\(V(\\mu) = \\frac{\\mu(\\mu-1)}{s_i+s_j}\\)\n\nSolution for #2: fit nonlinear functions to the environmental variables, not their distances\n\nGLM equation is now changed to include functions for x\n\n\\(\\eta = a_0 + \\sum_{p=1}^n|f_p(x_{pi})-f_p(x_{pj})|\\)\n\nan I-spline basis function is used as a function\n\n\\(f_p(x_p)= \\sum_{k=1}^{m_p}a _{pk}I_{pk}(x_p)\\) (k splines per predictor)\n\nSo, GLM becomes: \\(\\eta = a_0 + \\sum_{p=1}^n\\sum_{k=1}^{m_p}a_{pk}|I_{pk}(x_{pi})-I_{pk}(x_{pj})|\\)\n\n\n\n\n\ncompute \\(d_{ij}\\) between all sites (n x n matrix)\nderive a set of \\(m_p\\) I-spline basis functions for each environmental variable and calculate value (\\(I_{pk}(x_p)\\))for each site\nCalculate \\(\\Delta I_{pk}\\) for each pair of sites\nFor geographic and other distances, derive I-spline basis functions directly\nUse maximum likelihood to fit coefficients\nContribution of each predictor evaluated by comparing deviance of model with and without the factor\n\n\n\n\nAssembling a GDM - Mokany et al 2022\n\n\nExamining the I-splines\n\n\n\n\n\n\n\n\nGDM usage examples for present climate\n\n\n\n\n\nGDM usage examples for future climate\n\n\n\n\n\n\n\n\n\nPredictor distances are symmetric\nPredictions in a large gridded landscape: computationally challenging (grid cell number choose 2 combinations)\nInteractions between predictors are not modeled\nNon independence of sites not accounted for if all sites used (Mokany et al. 2022)\nAlternative link functions might be more appropriate"
+  },
+  {
+    "objectID": "GDM.html#gdm",
+    "href": "GDM.html#gdm",
+    "title": "Future projections with GDM & GFs",
+    "section": "",
+    "text": "GDM is non linear extension of matrix regression that uses dissimilarities in both predictor and response variables:\n\nBasic linear model: \\(d_{ij} = a_0 + \\sum_{p=1}^na_p|x_{pi}-x_{pj}|\\)\n\nModified to account for two aspects of non linearity:\n\nBounded compositional dissimilarity: \\(d_{ij} \\sim (0,1)\\)\nVariable rate of turnover\n\n\n\n\nTwo types of non linearity - Ferrier et al 2007\n\n\nSolution for #1, use a generalized linear model that defines relationship between predictor (\\(\\eta\\)) and response (\\(\\mu\\))\n\nLink function: \\(\\mu = 1 - e^{\\eta}\\)\nBinomial variance: \\(V(\\mu) = \\frac{\\mu(\\mu-1)}{s_i+s_j}\\)\n\nSolution for #2: fit nonlinear functions to the environmental variables, not their distances\n\nGLM equation is now changed to include functions for x\n\n\\(\\eta = a_0 + \\sum_{p=1}^n|f_p(x_{pi})-f_p(x_{pj})|\\)\n\nan I-spline basis function is used as a function\n\n\\(f_p(x_p)= \\sum_{k=1}^{m_p}a _{pk}I_{pk}(x_p)\\) (k splines per predictor)\n\nSo, GLM becomes: \\(\\eta = a_0 + \\sum_{p=1}^n\\sum_{k=1}^{m_p}a_{pk}|I_{pk}(x_{pi})-I_{pk}(x_{pj})|\\)\n\n\n\n\n\ncompute \\(d_{ij}\\) between all sites (n x n matrix)\nderive a set of \\(m_p\\) I-spline basis functions for each environmental variable and calculate value (\\(I_{pk}(x_p)\\))for each site\nCalculate \\(\\Delta I_{pk}\\) for each pair of sites\nFor geographic and other distances, derive I-spline basis functions directly\nUse maximum likelihood to fit coefficients\nContribution of each predictor evaluated by comparing deviance of model with and without the factor\n\n\n\n\nAssembling a GDM - Mokany et al 2022\n\n\nExamining the I-splines"
+  },
+  {
+    "objectID": "GDM.html#i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm",
+    "href": "GDM.html#i-splines-can-show-different-rates-of-change---mokany-et-al-2022uses-of-gdm",
+    "title": "Future projections with GDM & GFs",
+    "section": "",
+    "text": "GDM usage examples for present climate\n\n\n\n\n\nGDM usage examples for future climate"
+  },
+  {
+    "objectID": "GDM.html#limitations-of-gdm",
+    "href": "GDM.html#limitations-of-gdm",
+    "title": "Future projections with GDM & GFs",
+    "section": "",
+    "text": "Predictor distances are symmetric\nPredictions in a large gridded landscape: computationally challenging (grid cell number choose 2 combinations)\nInteractions between predictors are not modeled\nNon independence of sites not accounted for if all sites used (Mokany et al. 2022)\nAlternative link functions might be more appropriate"
+  },
+  {
+    "objectID": "GDM.html#notes-developed-from",
+    "href": "GDM.html#notes-developed-from",
+    "title": "Future projections with GDM & GFs",
+    "section": "Notes developed from:",
+    "text": "Notes developed from:\n\n\nFerrier, S., Manion, G., Elith, J., & Richardson, K. (2007). Using generalized dissimilarity modelling to analyse and predict patterns of beta diversity in regional biodiversity assessment. _Diversity and Distributions, 13_(3), 252-264. doi:papers3://publication/doi/10.1111/j.1472-4642.2007.00341.x\nMokany, K., Ware, C., Woolley, S. N. C., Ferrier, S., Fitzpatrick, Matthew C., & Bahn, V. (2022). A working guide to harnessing generalized dissimilarity modelling for biodiversity analysis and conservation assessment. _Global Ecology and Biogeography, 31_(4), 802-821. doi:10.1111/geb.13459"
+  },
+  {
+    "objectID": "genetic-dif.html",
+    "href": "genetic-dif.html",
+    "title": "Genetic differentiation",
+    "section": "",
+    "text": "Describing genetic differentiation and genetic structuring"
   },
   {
     "objectID": "resistance.html",
