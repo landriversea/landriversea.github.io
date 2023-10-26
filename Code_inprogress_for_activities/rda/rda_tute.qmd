@@ -8,7 +8,7 @@ execute:
 
 ### Tutorial based on "RDA applications in landscape genomics, by Thibaut Capblancq & Brenna Forester, 2021
 
-The original tutorial can be found on [GitHub](https%20cape-genomics) and shows how to locate and prepare original data files.
+The original tutorial can be found on [GitHub](https://github.com/Capblancq/RDA-landscape-genomics) and shows how to locate and prepare original data files.
 
 This 2023 update uses files that have been compiled and tidied. Much of the code is also updated to make use of `sf` and `terra` but some of the code is from the original tutorial.
 
@@ -92,7 +92,7 @@ Coordinates[1:5,]
 
 A series of RDAs will be the heart of the analyses. Before you can do an RDA, however, you need to have all your data prepared and organised. The genetic data are already largely prepared, but some extra work is needed for the environmental data and for estimating neutral population structure.
 
-### Extract environmental data from rasters and scale it
+### Extract environmental data from rasters and scale them
 
 ```{r Extract environmental data from rasters}
 
@@ -352,9 +352,9 @@ library(adegraphics)
 
 # Demonstration of MEMs on a grid
 xygrid <- expand.grid(x = 1:10, y = 1:8)
-plot(xygrid.nb, xygrid)
+plot(xygrid)
 xygrid.mem<-dbmem(xygrid,store.listw = TRUE)
-plot(xygrid.mem, SpORcoords = xygrid, nb = xygrid.nb)
+plot(xygrid.mem, SpORcoords = xygrid)
 
 
 # Looking at MEMS for lodgepole pine data
@@ -363,7 +363,7 @@ plot(pine.mem, SpORcoords = Coordinates[,c(2,3)])
 
 ```
 
-TODO: https://psfaculty.plantsciences.ucdavis.edu/plant/additionaltopics_mesf.pdf. pg 19
+<!-- TODO: https://psfaculty.plantsciences.ucdavis.edu/plant/additionaltopics_mesf.pdf. pg 19 -->
 
 You could play with using the first few MEMs in modified RDAs of the pine data. Remove longitude and latitude if you do this.
 

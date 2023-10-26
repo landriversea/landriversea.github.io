@@ -2,6 +2,7 @@
 title: "Maps & spatial data"
 execute:
   output: false
+  eval: false
 ---
 
 ![](images/world_viridis.png){width="100%"}

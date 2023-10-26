@@ -1,6 +1,11 @@
 ---
 title: "Future projections with GDM & GFs"
+execute:
+  output: false
+  eval: false
 ---
+
+*Instructor: Riginos*
 
 # GEAs with Generalized dissimilarity modeling & Gradient forests
 
