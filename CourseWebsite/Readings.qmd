@@ -43,8 +43,6 @@ See activities and links on [bash tutorial webpage](basic-bash.qmd).
 
 -   Manel, S., Schwartz, M. K., Luikart, G., & Taberlet, P. (2003). Landscape genetics: combining landscape ecology and population genetics. Trends in Ecology and Evolution, 18(4), 189-197. doi:papers3://publication/doi/10.1016/S0169-5347(03)00008-9 *This is the original paper defining landscape genetics as a field.*
 
--   Find a good terrestrial overview
-
 -   Riginos, C., & Liggins, L. (2013). Seascape genetics: populations, individuals, and genes marooned and adrift. *Geography Compass, 7*(3), 197-216. doi:papers3://publication/doi/10.1111/gec3.12032 *Discusses many ways that marine landscape genetics is distinct from terrestrial*
 
 -   Selkoe, K. A., Scribner, K. T., & Galindo, H. M. (2016). Waterscape genetics -- applications of landscape genetics to rivers, lakes, and seas. In N. Balkenhol, S. A. Cushman, A. Storfer, & L. P. Waits (Eds.), Landscape Genetics: Concepts, Methods, Applications (pp. 1-27): John Wiley & Sons, Ltd. *Includes overviews on some of the contrasting features of marine and freshwater environments*

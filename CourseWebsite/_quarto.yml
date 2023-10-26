@@ -34,7 +34,7 @@ website:
           - RDA.qmd
       - section: "Wednesday"
         contents:   
-          - genetic-dif.qmd
+          - sims_demo.qmd
       - section: "Thursday"
         contents:  
          - resistance.qmd

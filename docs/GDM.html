@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -211,8 +245,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./genetic-dif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Genetic differentiation</span></a>
+  <a href="./sims_demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sims &amp; demograph analyses</span></a>
   </div>
 </li>
       </ul>
@@ -312,7 +346,19 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#notes-developed-from" id="toc-notes-developed-from" class="nav-link" data-scroll-target="#notes-developed-from">Notes developed from:</a></li>
   </ul></li>
-  <li><a href="#computer-tutorial" id="toc-computer-tutorial" class="nav-link" data-scroll-target="#computer-tutorial">Computer tutorial</a></li>
+  <li><a href="#computer-tutorial" id="toc-computer-tutorial" class="nav-link" data-scroll-target="#computer-tutorial">Computer tutorial</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#gdm-1" id="toc-gdm-1" class="nav-link" data-scroll-target="#gdm-1">GDM</a>
+  <ul class="collapse">
+  <li><a href="#fitting-and-examining-the-gdm-model" id="toc-fitting-and-examining-the-gdm-model" class="nav-link" data-scroll-target="#fitting-and-examining-the-gdm-model">Fitting and examining the GDM model</a></li>
+  </ul></li>
+  <li><a href="#gf" id="toc-gf" class="nav-link" data-scroll-target="#gf">GF</a>
+  <ul class="collapse">
+  <li><a href="#fitting-and-examining-the-gf-model" id="toc-fitting-and-examining-the-gf-model" class="nav-link" data-scroll-target="#fitting-and-examining-the-gf-model">Fitting and examining the GF model</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#points-for-class-discussion" id="toc-points-for-class-discussion" class="nav-link" data-scroll-target="#points-for-class-discussion">Points for class discussion</a></li>
   </ul>
 </nav>
     </div>
@@ -602,6 +648,108 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="computer-tutorial" class="level1">
 <h1>Computer tutorial</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This tutorial will provide the briefest introduction to GDMs and GF’s and their usage in landscape genomics.</p>
+<p>These methods are included because the represent different ways of approaching landscape data and are often encountered in genomic prediction studies.</p>
+<p>The scripts support the analyses presented in Fitzpatrick and Keller 2015 on balsam poplar and are based on the scripts and data found on <a href="">Data Dryad</a>.</p>
+<p>Unfortunately the authors did not make their spatial data layers available (likely due to large file sizes) and therefore we cannot recapitulate their landscape projections to look at genomic offsets. We will do this later based on an RDA method.</p>
+<p>As we have encountered before, support for the packages <code>GDM</code> and <code>gradientForest</code> might not be fully up to date with developments in R spatial data handling.</p>
+<p>All data from: Fitzpatrick, M. C., &amp; Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. Ecol Lett, 18(1), 1-16.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("gradientForest", repos="http://R-Forge.R-project.org")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdm) <span class="co">#notice the warnings, we can talk about this</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gradientForest)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="gdm-1" class="level2">
+<h2 class="anchored" data-anchor-id="gdm-1">GDM</h2>
+<p>Remember that GDM is based on distances between sites. If you examine the <code>gdmData</code> file you will see that each row contains information regarding the relationship between a pair of sites.</p>
+<ul>
+<li><p>Genetic data - Representing the genetic response variables are FST values for various sets of data (reference loci, candidate, GI5, etc.) These Fst values have been scaled and centered.</p></li>
+<li><p>Coordinates - The locations of each population pair are included as x and y coordinates.</p></li>
+<li><p>Environmental distances - expressed as <span class="math inline">\(\Delta I_{pk}\)</span> values - these have been calculated already by running the function <code>formatsitepair()</code>. If you were preparing your own data, you would need to run this function to fit the splines.</p></li>
+</ul>
+<section id="fitting-and-examining-the-gdm-model" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-and-examining-the-gdm-model">Fitting and examining the GDM model</h3>
+<p>We will focus on the reference and GIGANTEA-5 (GI5) datasets. To fit the models, individual dataframes need to be constructed.</p>
+<p>The datafile should be preloaded, otherwise download from <a href="data/poplarFst.ENV.data.4.GDM.csv">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import GDM ready table</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gdmData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/poplarFst.ENV.data.4.GDM.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># build individual SNP datasets</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>SNPs_ref <span class="ot">&lt;-</span> gdmData[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)] <span class="co"># reference</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>GI5 <span class="ot">&lt;-</span> gdmData[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">24</span>)] <span class="co"># GIGANTEA-5 (GI5)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot GDM for reference SNPs</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>gdmRef <span class="ot">&lt;-</span> <span class="fu">gdm</span>(SNPs_ref, <span class="at">geo=</span><span class="cn">TRUE</span>) <span class="co">#gives warning but works</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>gdmRef<span class="sc">$</span>explained <span class="co"># From F&amp;K2015: "GDM explained more than 63% of the deviance in turnover in genetic composition of reference"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmRef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>refSplines <span class="ot">&lt;-</span> <span class="fu">isplineExtract</span>(gdmRef) <span class="co"># extract spline data for custom plotting</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot GDM for GI5 SNPs</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>gdmGI5 <span class="ot">&lt;-</span> <span class="fu">gdm</span>(GI5, <span class="at">geo=</span><span class="cn">TRUE</span>) <span class="co">#ignore warning</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>gdmGI5<span class="sc">$</span>explained</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmGI5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You will recognize some of the plots from Figure 3. Notice how variable the spline functions can be.</p>
+</section>
+</section>
+<section id="gf" class="level2">
+<h2 class="anchored" data-anchor-id="gf">GF</h2>
+<p>In contrast to GDM, GF is site based. Therefore each row in the dataframe corresponds to a site (population).</p>
+<ul>
+<li><p>Coordinates - The locations of each population are included as x and y coordinates.</p></li>
+<li><p>Environmental values - Appear to be raw values.</p></li>
+<li><p>MEMS - are included as additional spatial variables.</p></li>
+<li><p>Genetic data - Are allele frequencies. (Columns 14-373 are reference loci =360 loci, does not match the paper!)</p></li>
+</ul>
+<section id="fitting-and-examining-the-gf-model" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-and-examining-the-gf-model">Fitting and examining the GF model</h3>
+<p>As before, we focus on the reference and GIGANTEA-5 (GI5) datasets. And make individual dataframes to feed into the analyses.</p>
+<p>The datafile should be preloaded, otherwise download from <a href="data/poplarSNP.ENV.data.4.GF.csv">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gfData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/poplarSNP.ENV.data.4.GF.csv"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>envGF <span class="ot">&lt;-</span> gfData[,<span class="dv">3</span><span class="sc">:</span><span class="dv">13</span>] <span class="co"># get climate &amp; MEM variables</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># build individual SNP datasets</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>SNPs_ref <span class="ot">&lt;-</span> gfData[,<span class="fu">grep</span>(<span class="st">"REFERENCE"</span>,<span class="fu">colnames</span>(gfData))] <span class="co"># reference 360 loci</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>GI5 <span class="ot">&lt;-</span> gfData[,<span class="fu">grep</span>(<span class="st">"GI5"</span>,<span class="fu">colnames</span>(gfData))] <span class="co"># GIGANTEA-5 (GI5)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>maxLevel <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fl">0.368</span><span class="sc">*</span><span class="fu">nrow</span>(envGF)<span class="sc">/</span><span class="dv">2</span>) <span class="co">#account for correlations, F&amp;K set this flag but do not explain beyond saying "see ?gradientForest"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit gf models for reference SNPs </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>gfRef <span class="ot">&lt;-</span> <span class="fu">gradientForest</span>(<span class="fu">cbind</span>(envGF, SNPs_ref), <span class="at">predictor.vars=</span><span class="fu">colnames</span>(envGF), <span class="at">response.vars=</span><span class="fu">colnames</span>(SNPs_ref), <span class="at">ntree=</span><span class="dv">500</span>, <span class="at">maxLevel=</span>maxLevel, <span class="at">trace=</span>T, <span class="at">corr.threshold=</span><span class="fl">0.50</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit gf models for GI5 SNPs</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>gfGI5 <span class="ot">&lt;-</span> <span class="fu">gradientForest</span>(<span class="fu">cbind</span>(envGF, GI5), <span class="at">predictor.vars=</span><span class="fu">colnames</span>(envGF),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">response.vars=</span><span class="fu">colnames</span>(GI5), <span class="at">ntree=</span><span class="dv">500</span>, </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                          <span class="at">maxLevel=</span>maxLevel, <span class="at">trace=</span>T, <span class="at">corr.threshold=</span><span class="fl">0.50</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plot output, see ?plot.gradientForest</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type=</span><span class="st">"O"</span>) <span class="co"># values that feed into Fig1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"C"</span>)  <span class="co"># Fig2 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"S"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#can do the same for GI5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section id="points-for-class-discussion" class="level1">
+<h1>Points for class discussion</h1>
+<ol type="1">
+<li><p>What are the points of difference and similarity between GDM and GF? Which might you use in what context?</p></li>
+<li><p>The GDM example used pairwise FST values. Does this seem like a reasonable choice? What implicit assumptions go into this choice?</p></li>
+<li><p>There were major reproducibility issues in trying to reconstruct the analyses! Spatial data sets are missing, packages are old and not necessarily updated…. what best practices could we follow to mitigate such problems?</p></li>
+</ol>
 
 
 </section>
