@@ -160,7 +160,6 @@ Variables[1:5,]
 
 Note that PC eigenvectors will already be scaled. You can test this using `sum(PopStruct$PC1)`. There might be a small value due to rounding error but it will be very small.
 
-### To add - MEMS
 
 ## Building a full RDA model for environmental variables with forward selection
 

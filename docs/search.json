@@ -133,20 +133,6 @@
     "text": "This module is an introduction to bash, covering the most basic concepts. For those that are new to bash, we recommend trying out an online tutorial for bash for beginners prior to the course in addition to this, for instance https://evomics.org/learning/unix-tutorial/Links\nThose with Windows computers will also need to prepare to be able to use a terminal on their computers, we provide background instructions.\nThe module will consist in a lecture and an exercise. We will also hand out IDs and give instructions for logging on to the Lund University server that will be used for all bash based teaching during this session.\nIf you encounter issues, please post questions on the course Slack channel"
   },
   {
-    "objectID": "GEA.html",
-    "href": "GEA.html",
-    "title": "More GEA: genetic offsets & maladaptation",
-    "section": "",
-    "text": "Capblancq has some discussion\ngenetic offset = genomic offset = risk of non-adaptedness = genomic vulnerability"
-  },
-  {
-    "objectID": "GEA.html#offsets",
-    "href": "GEA.html#offsets",
-    "title": "More GEA: genetic offsets & maladaptation",
-    "section": "",
-    "text": "Capblancq has some discussion\ngenetic offset = genomic offset = risk of non-adaptedness = genomic vulnerability"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "About the course",
@@ -207,35 +193,63 @@
     "href": "RDA.html",
     "title": "Intro to RDA as a general toolkit",
     "section": "",
-    "text": "What are they"
+    "text": "( = environmental associations)\n\nGenome-wide: related to demographic history, ecological speciation/diversification, isolation by environment\n\n\n\n\nProcesses leading to IBE - Wang & Bradburd 2014\n\n\n\n\n\nIBE signals - Wang & Bradburd 2014\n\n\nWe will focus on this aspect today\n\nFinding loci contribute to heritable genetic variation of selected traits\n\n\n\n\nRellstab et al 2015 (Image modified from Sork et al 2013)\n\n\nThere is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as outlier tests or genomic scans are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al. 2015 is a good review of the various methods if you are looking for further reading on this topic.)"
   },
   {
-    "objectID": "RDA.html#review-of-ordination-pca-pcoa",
-    "href": "RDA.html#review-of-ordination-pca-pcoa",
+    "objectID": "RDA.html#geas-genotype-by-environment-associations",
+    "href": "RDA.html#geas-genotype-by-environment-associations",
     "title": "Intro to RDA as a general toolkit",
-    "section": "Review of ordination, PCA & PCoA",
-    "text": "Review of ordination, PCA & PCoA"
+    "section": "",
+    "text": "( = environmental associations)\n\nGenome-wide: related to demographic history, ecological speciation/diversification, isolation by environment\n\n\n\n\nProcesses leading to IBE - Wang & Bradburd 2014\n\n\n\n\n\nIBE signals - Wang & Bradburd 2014\n\n\nWe will focus on this aspect today\n\nFinding loci contribute to heritable genetic variation of selected traits\n\n\n\n\nRellstab et al 2015 (Image modified from Sork et al 2013)\n\n\nThere is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as outlier tests or genomic scans are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al. 2015 is a good review of the various methods if you are looking for further reading on this topic.)"
   },
   {
-    "objectID": "RDA.html#constrained-ordination-as-implemented-in-rda",
-    "href": "RDA.html#constrained-ordination-as-implemented-in-rda",
+    "objectID": "RDA.html#pca---principal-components-analysis",
+    "href": "RDA.html#pca---principal-components-analysis",
     "title": "Intro to RDA as a general toolkit",
-    "section": "Constrained ordination as implemented in RDA",
-    "text": "Constrained ordination as implemented in RDA\n\nFlexible\n\nRDA can address the following questions (citing Capblancq et al. 2021):\n\nWhat environmental/spatial processes drive patterns of genetic variation?\n\n2. What is the genetic basis of local adaptation to the environment?\n3. How is adaptive genetic variation distributed across landscapes?\n4. What are the impacts of climate and/or landscape change on the distribution of adaptive genetic variation?\nRDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)\n\nKeep this linearity in mind: it might not be appropriate for your data\n\n\n\n\nConceptual overview of RDA - From Capblancq et al. 2021"
+    "section": "PCA - principal components analysis",
+    "text": "PCA - principal components analysis\n\nNo predictive variables: unconstrained.\nFits a line through the data along an axis that maximizes the variance described by the first PC axis (PC1).\nFits the next line to maximize the variance described for the second PC axis (PC2) where PC1 and PC2 are orthogonal (their variances are not correlated).\nAnd so on.\nNote that this is a linear procedure: lines are being fitted.\nEigenvalues (\\(\\lambda\\)) describe the amount of variance explained by each eigenvector (= line = PC axis)"
   },
   {
-    "objectID": "RDA.html#data-preparation",
-    "href": "RDA.html#data-preparation",
+    "objectID": "RDA.html#pcoa-or-pco-principal-coordinates-analysis",
+    "href": "RDA.html#pcoa-or-pco-principal-coordinates-analysis",
     "title": "Intro to RDA as a general toolkit",
-    "section": "Data preparation",
-    "text": "Data preparation\nget environmental variables\nstandardize - mean of 0, SD = 1\ncan include dummy predictors (0/1)\n\nexplain when more than two categories\n\nlook for colinearity - need to define and explain VIF\n\nVariable selection with forward model building\nBuilds up a predictive model and assists with variable reduction\n\nTest significance of global model (= all variables)\nStart with “empty” model (= intercept only) and sequentially add variables\nTwo stopping criteria to avoid overfitting - end with either criterion\n\npermutation based significance test\nadjusted \\(R^2\\) from global model\n\n\n\n\n\nVariance partitioning using partial RDA\nAllows independent estimation of sets of variables together with confounded effects caused by collinearity\n\n\n\nReporting on partial RDA-From Capblancq et al. 2021\n\n\nDefine the different proportions\n? make MCQ check\n\n\nAdaptive loci - what are they, how to id\nCapblancq has discussion on conditioning approaches\n\n\nProjecting adaptive landscapes in space\n\ngenetic based index of adaptation based on Steane\npredict genotypes and allele frequencies as a function of environmental variation"
+    "section": "PCoA or PCO: Principal coordinates analysis",
+    "text": "PCoA or PCO: Principal coordinates analysis\n\nsame as metric multidimensional scaling\ntakes pairwise distances (\\(d_{ij}\\), sometimes called dissimilarities) between points and uses ordination to find axes that maximally explain dissimilarities\nPCoA on Euclidean distances is the same as PCA\nSometimes you get negative eigenvalues and have to use a correction\n(non metric multidimensional scaling is similar but does not require linear data)"
   },
   {
-    "objectID": "RDA.html#extra-topics",
-    "href": "RDA.html#extra-topics",
+    "objectID": "RDA.html#example-from-capblancq-forester-2021---lodgepole-pine",
+    "href": "RDA.html#example-from-capblancq-forester-2021---lodgepole-pine",
     "title": "Intro to RDA as a general toolkit",
-    "section": "Extra topics",
-    "text": "Extra topics\nMEMS\nAEMS\nshow Zindben flowchart\nhttps://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/ https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#30"
+    "section": "Example from Capblancq & Forester 2021 - lodgepole pine",
+    "text": "Example from Capblancq & Forester 2021 - lodgepole pine\n\n\n\nCredit: Kevin Cass\n\n\n\nuse ~3000 “intergenic” SNPs as neutral loci (genotyped from 50K SNP chip)\ngeography, climate and neutral structure are all confounded\n\n\nGoals\n\nto undertake a GEA and ignore effect of geography+structure -&gt; possible false positives\nto undertake a GEA and remove geography+structure -&gt; possible false negatives\nThere is no clear solution to the problems of false positives and false negatives"
+  },
+  {
+    "objectID": "RDA.html#data-preparation-for-rda",
+    "href": "RDA.html#data-preparation-for-rda",
+    "title": "Intro to RDA as a general toolkit",
+    "section": "Data preparation for RDA",
+    "text": "Data preparation for RDA\n\nget environmental variables and scale them to a mean of 0, SD = 1\ncategorical predictors can be used as dummy variables (0/1)\nlook for colinearity among variables - might remove variables with variance inflation factor greater than ?"
+  },
+  {
+    "objectID": "RDA.html#variable-selection-with-forward-model-building",
+    "href": "RDA.html#variable-selection-with-forward-model-building",
+    "title": "Intro to RDA as a general toolkit",
+    "section": "Variable selection with forward model building",
+    "text": "Variable selection with forward model building\nBuild up a predictive model and assists with variable reduction\n\nTest significance of global model (= all variables)\nStart with “empty” model (= intercept only) and sequentially add variables\nTwo stopping criteria to avoid overfitting - end with either criterion\n\npermutation based significance test\nadjusted \\(R^2\\) from global model\n\n\n\n\n\nSimple RDA output - Capblancq & Forester 2021"
+  },
+  {
+    "objectID": "RDA.html#further-resources",
+    "href": "RDA.html#further-resources",
+    "title": "Intro to RDA as a general toolkit",
+    "section": "Further resources",
+    "text": "Further resources\n\nThe absolutely go-to package in R for all ecological eigenanalysis is vegan. It is very well documented and has excellent vignettes that are well-worth working through.\nReally nice slide deck that demonstrates some vegan functions with excellent illustrations Intro to vegan\nAnother great slide deck that runs through RDA and associated vegan functions Redundancy Analysis"
+  },
+  {
+    "objectID": "RDA.html#notes-developed-from",
+    "href": "RDA.html#notes-developed-from",
+    "title": "Intro to RDA as a general toolkit",
+    "section": "Notes developed from:",
+    "text": "Notes developed from:\n\n\nCapblancq, T., & Forester, B. R. (2021). Redundancy analysis: A Swiss Army Knife for landscape genomics. Methods in Ecology and Evolution. doi:10.1111/2041-210x.13722\n\n\n\n\nRellstab, C., Gugerli, F., Eckert, A. J., Hancock, A. M., & Holderegger, R. (2015). A practical guide to environmental association analysis in landscape genomics. Molecular Ecology, 24 (17), 4348-4370.\n\n\n\n\nWang, I. J., & Bradburd, G. S. (2014). Isolation by environment. Molecular Ecology, 23(23), 5649-5662. doi:papers3://publication/doi/10.1111/mec.12938\n\n\n\n\nZbinden, Z. D., Douglas, M. R., Chafin, T. K., & Douglas, M. E. (2022). Riverscape community genomics: A comparative analytical approach to identify common drivers of spatial structure. Molecular Ecology, 32, XXX-XXX. doi:10.1111/mec.16806"
   },
   {
     "objectID": "sims_demo.html",

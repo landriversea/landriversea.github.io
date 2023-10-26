@@ -2,12 +2,22 @@
 title: "More GEA: genetic offsets & maladaptation"
 ---
 
-## Offsets 
+<!-- ## Offsets -->
 
-Capblancq has some discussion
+<!-- Capblancq has some discussion -->
 
-genetic offset = genomic offset = risk of non-adaptedness = genomic vulnerability
+<!-- genetic offset = genomic offset = risk of non-adaptedness = genomic vulnerability -->
 
-# Challenge is validating predictions 
+<!-- # Challenge is validating predictions -->
 
-for lodgepole pine, common garden and GEA negatively correlated - Fitzpatrick et al 2021
+<!-- for lodgepole pine, common garden and GEA negatively correlated - Fitzpatrick et al 2021 -->
+
+<!-- \# Adaptive loci - what are they, how to id -->
+
+<!-- Capblancq has discussion on conditioning approaches -->
+
+<!-- ### Projecting adaptive landscapes in space -->
+
+<!-- - genetic based index of adaptation based on Steane -->
+
+<!-- - predict genotypes and allele frequencies as a function of environmental variation -->

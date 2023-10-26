@@ -16,7 +16,7 @@ Unfortunately the authors did not make their spatial data layers available (like
 
 As we have encountered before, support for the packages `GDM` and `gradientForest` might not be fully up to date with developments in R spatial data handling.
 
-Fitzpatrick, M. C., & Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. Ecol Lett, 18(1), 1-16. doi:papers3://publication/doi/10.1111/ele.12376
+All data from: Fitzpatrick, M. C., & Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. Ecol Lett, 18(1), 1-16. doi:papers3://publication/doi/10.1111/ele.12376
 
 ```{r load libraries}
 

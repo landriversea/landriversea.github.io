@@ -279,19 +279,31 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#under-construction" id="toc-under-construction" class="nav-link active" data-scroll-target="#under-construction">Under construction…</a></li>
-  <li><a href="#why-rda-and-other-multivariate-methods" id="toc-why-rda-and-other-multivariate-methods" class="nav-link" data-scroll-target="#why-rda-and-other-multivariate-methods">Why RDA and other multivariate methods?</a>
+  <li><a href="#geas-with-rda" id="toc-geas-with-rda" class="nav-link active" data-scroll-target="#geas-with-rda">GEAs with RDA</a>
   <ul class="collapse">
-  <li><a href="#review-of-ordination-pca-pcoa" id="toc-review-of-ordination-pca-pcoa" class="nav-link" data-scroll-target="#review-of-ordination-pca-pcoa">Review of ordination, PCA &amp; PCoA</a></li>
-  <li><a href="#constrained-ordination-as-implemented-in-rda" id="toc-constrained-ordination-as-implemented-in-rda" class="nav-link" data-scroll-target="#constrained-ordination-as-implemented-in-rda">Constrained ordination as implemented in RDA</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data preparation</a>
-  <ul class="collapse">
-  <li><a href="#variable-selection-with-forward-model-building" id="toc-variable-selection-with-forward-model-building" class="nav-link" data-scroll-target="#variable-selection-with-forward-model-building">Variable selection with forward model building</a></li>
-  <li><a href="#variance-partitioning-using-partial-rda" id="toc-variance-partitioning-using-partial-rda" class="nav-link" data-scroll-target="#variance-partitioning-using-partial-rda">Variance partitioning using partial RDA</a></li>
-  <li><a href="#adaptive-loci---what-are-they-how-to-id" id="toc-adaptive-loci---what-are-they-how-to-id" class="nav-link" data-scroll-target="#adaptive-loci---what-are-they-how-to-id">Adaptive loci - what are they, how to id</a></li>
-  <li><a href="#projecting-adaptive-landscapes-in-space" id="toc-projecting-adaptive-landscapes-in-space" class="nav-link" data-scroll-target="#projecting-adaptive-landscapes-in-space">Projecting adaptive landscapes in space</a></li>
+  <li><a href="#geas-genotype-by-environment-associations" id="toc-geas-genotype-by-environment-associations" class="nav-link" data-scroll-target="#geas-genotype-by-environment-associations">GEAs: Genotype-by-environment associations</a></li>
   </ul></li>
-  <li><a href="#extra-topics" id="toc-extra-topics" class="nav-link" data-scroll-target="#extra-topics">Extra topics</a></li>
+  <li><a href="#why-rda-and-other-multivariate-methods" id="toc-why-rda-and-other-multivariate-methods" class="nav-link" data-scroll-target="#why-rda-and-other-multivariate-methods">Why RDA (and other multivariate methods)?</a></li>
+  <li><a href="#review-of-unconstrained-ordination-pca-pcoa" id="toc-review-of-unconstrained-ordination-pca-pcoa" class="nav-link" data-scroll-target="#review-of-unconstrained-ordination-pca-pcoa">Review of unconstrained ordination (PCA &amp; PCoA)</a>
+  <ul class="collapse">
+  <li><a href="#pca---principal-components-analysis" id="toc-pca---principal-components-analysis" class="nav-link" data-scroll-target="#pca---principal-components-analysis">PCA - principal components analysis</a></li>
+  <li><a href="#pcoa-or-pco-principal-coordinates-analysis" id="toc-pcoa-or-pco-principal-coordinates-analysis" class="nav-link" data-scroll-target="#pcoa-or-pco-principal-coordinates-analysis">PCoA or PCO: Principal coordinates analysis</a></li>
+  </ul></li>
+  <li><a href="#simple-redundancy-analysis-constrained-ordination" id="toc-simple-redundancy-analysis-constrained-ordination" class="nav-link" data-scroll-target="#simple-redundancy-analysis-constrained-ordination">Simple redundancy analysis (constrained ordination)</a>
+  <ul class="collapse">
+  <li><a href="#example-from-capblancq-forester-2021---lodgepole-pine" id="toc-example-from-capblancq-forester-2021---lodgepole-pine" class="nav-link" data-scroll-target="#example-from-capblancq-forester-2021---lodgepole-pine">Example from Capblancq &amp; Forester 2021 - lodgepole pine</a>
+  <ul class="collapse">
+  <li><a href="#goals" id="toc-goals" class="nav-link" data-scroll-target="#goals">Goals</a></li>
+  </ul></li>
+  <li><a href="#data-preparation-for-rda" id="toc-data-preparation-for-rda" class="nav-link" data-scroll-target="#data-preparation-for-rda">Data preparation for RDA</a></li>
+  <li><a href="#variable-selection-with-forward-model-building" id="toc-variable-selection-with-forward-model-building" class="nav-link" data-scroll-target="#variable-selection-with-forward-model-building">Variable selection with forward model building</a></li>
+  </ul></li>
+  <li><a href="#partial-rda" id="toc-partial-rda" class="nav-link" data-scroll-target="#partial-rda">partial RDA</a></li>
+  <li><a href="#complex-models-and-variance-partitioning" id="toc-complex-models-and-variance-partitioning" class="nav-link" data-scroll-target="#complex-models-and-variance-partitioning">Complex models and variance partitioning</a></li>
+  <li><a href="#extra-topic---dealing-with-spatial-correlation-structures" id="toc-extra-topic---dealing-with-spatial-correlation-structures" class="nav-link" data-scroll-target="#extra-topic---dealing-with-spatial-correlation-structures">Extra topic - dealing with spatial correlation structures</a>
+  <ul class="collapse">
+  <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further resources</a></li>
+  <li><a href="#notes-developed-from" id="toc-notes-developed-from" class="nav-link" data-scroll-target="#notes-developed-from">Notes developed from:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -316,15 +328,45 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="under-construction" class="level1">
-<h1>Under construction…</h1>
-<p>What are they</p>
+<section id="geas-with-rda" class="level1">
+<h1>GEAs with RDA</h1>
+<section id="geas-genotype-by-environment-associations" class="level2">
+<h2 class="anchored" data-anchor-id="geas-genotype-by-environment-associations">GEAs: Genotype-by-environment associations</h2>
+<p>( = environmental associations)</p>
+<ol type="1">
+<li>Genome-wide: related to demographic history, ecological speciation/diversification, isolation by environment</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/IsolationByEnvironment1-Wang_and_Bradburd_2014.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Processes leading to IBE - Wang &amp; Bradburd 2014</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/IsolationByEnvironment2-Wang_and_Bradburd_2014.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">IBE signals - Wang &amp; Bradburd 2014</figcaption>
+</figure>
+</div>
+<p><em>We will focus on this aspect today</em></p>
+<ol start="2" type="1">
+<li>Finding loci contribute to heritable genetic variation of selected traits</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/environment_genotype_phenotype_Rellstab2015.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Rellstab et al 2015 (Image modified from Sork et al 2013)</figcaption>
+</figure>
+</div>
+<p>There is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as <em>outlier tests</em> or <em>genomic scans</em> are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al.&nbsp;2015 is a good review of the various methods if you are looking for further reading on this topic.)</p>
+</section>
 </section>
 <section id="why-rda-and-other-multivariate-methods" class="level1">
-<h1>Why RDA and other multivariate methods?</h1>
+<h1>Why RDA (and other multivariate methods)?</h1>
+<p>RDA allows you to have multiple response variables (loci) and multiple predictors (spatial or environmental attributes)</p>
 <table class="table">
 <colgroup>
-<col style="width: 29%">
+<col style="width: 28%">
 <col style="width: 26%">
 <col style="width: 44%">
 </colgroup>
@@ -353,36 +395,35 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>* Note that your genetic data not conform to expectations of standard methods including independence</p>
+<p>* Note that your genetic data not conform to expectations of parametric methods, including independence of data points</p>
+<p>RDA was developed for community ecology data and has been adopted for genetic analyses. In an ecological analysis, there will be various spatial and environmental predictive variables (<em>n</em> sites by <em>m</em> predictive varaibles) and biological response variables (typically, species abundance organised in <em>n</em> sites by <em>p</em> species). Much of the literature about using ordination and multivariate analyses for environmental analyses will be described as ecological communities).</p>
+<p>A key element of multivariate methods (including the RDA family) is <strong><em>ordination</em></strong> (which falls within the broader descriptor of eigenanalysis).</p>
 <p>Ordination allows</p>
 <ul>
 <li><p>Compression and visualization of complex data</p></li>
-<li><p>Flexibility to move between distances (between populations or individuals) and Euclidean genetic distances</p></li>
+<li><p>Flexibility to use distances to describe spatial and biological distances (between populations or individuals)</p></li>
 <li><p>Flexibility to use allele frequencies (populations) or genotypes (individuals)</p></li>
-<li><p>RDA performs well in genotype environment association analyses with low false positives and high true positives</p></li>
 </ul>
 <p>Pitfalls on using ordination with genetic data</p>
 <ul>
 <li><p>Missing observations need to be excluded or imputed</p></li>
 <li><p>Uneven sampling can skew results</p></li>
-<li><p>It is pattern description: many processes can yield the same patterns</p></li>
+<li><p>Ordination is pattern description: many processes can yield the same patterns</p></li>
 </ul>
-<section id="review-of-ordination-pca-pcoa" class="level2">
-<h2 class="anchored" data-anchor-id="review-of-ordination-pca-pcoa">Review of ordination, PCA &amp; PCoA</h2>
-</section>
-<section id="constrained-ordination-as-implemented-in-rda" class="level2">
-<h2 class="anchored" data-anchor-id="constrained-ordination-as-implemented-in-rda">Constrained ordination as implemented in RDA</h2>
+<p>We focus on RDA as a multivariate method because</p>
 <ul>
-<li>Flexible</li>
+<li>it is flexible structure is very useful for landscape genomic data</li>
+<li>it can describe genome-wide patterns</li>
+<li>RDA performs well in genotype-environment-association analyses with low false positives and high true positives</li>
+<li>The regression on one matrix on another.</li>
+<li>Uses a combination of linear regression and PCA.</li>
 </ul>
 <p>RDA can address the following questions (citing Capblancq et al.&nbsp;2021):</p>
-<ol type="1">
-<li>What environmental/spatial processes drive patterns of genetic variation?</li>
-</ol>
+<p>1. What environmental/spatial processes drive patterns of genetic variation?</p>
 <p>2. What is the genetic basis of local adaptation to the environment?</p>
 <p>3. How is adaptive genetic variation distributed across landscapes?</p>
 <p>4. What are the impacts of climate and/or landscape change on the distribution of adaptive genetic variation?</p>
-<p>RDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)</p>
+<p><em>RDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)</em></p>
 <ul>
 <li>Keep this linearity in mind: it might not be appropriate for your data</li>
 </ul>
@@ -393,18 +434,64 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="data-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
-<p>get environmental variables</p>
-<p>standardize - mean of 0, SD = 1</p>
-<p>can include dummy predictors (0/1)</p>
+<section id="review-of-unconstrained-ordination-pca-pcoa" class="level1">
+<h1>Review of unconstrained ordination (PCA &amp; PCoA)</h1>
+<section id="pca---principal-components-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="pca---principal-components-analysis">PCA - principal components analysis</h2>
 <ul>
-<li>explain when more than two categories</li>
+<li><p>No predictive variables: unconstrained.</p></li>
+<li><p>Fits a line through the data along an axis that maximizes the variance described by the first PC axis (PC1).</p></li>
+<li><p>Fits the next line to maximize the variance described for the second PC axis (PC2) where PC1 and PC2 are orthogonal (their variances are not correlated).</p></li>
+<li><p>And so on.</p></li>
+<li><p>Note that this is a linear procedure: lines are being fitted.</p></li>
+<li><p>Eigenvalues (<span class="math inline">\(\lambda\)</span>) describe the amount of variance explained by each eigenvector (= line = PC axis)</p></li>
 </ul>
-<p>look for colinearity - need to define and explain VIF</p>
-<section id="variable-selection-with-forward-model-building" class="level3">
-<h3 class="anchored" data-anchor-id="variable-selection-with-forward-model-building">Variable selection with forward model building</h3>
-<p>Builds up a predictive model and assists with variable reduction</p>
+</section>
+<section id="pcoa-or-pco-principal-coordinates-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="pcoa-or-pco-principal-coordinates-analysis">PCoA or PCO: Principal coordinates analysis</h2>
+<ul>
+<li><p>same as <em>metric multidimensional scaling</em></p></li>
+<li><p>takes pairwise distances (<span class="math inline">\(d_{ij}\)</span>, sometimes called dissimilarities) between points and uses ordination to find axes that maximally explain dissimilarities</p></li>
+<li><p>PCoA on Euclidean distances is the same as PCA</p></li>
+<li><p>Sometimes you get negative eigenvalues and have to use a correction</p></li>
+<li><p>(non metric multidimensional scaling is similar but does not require linear data)</p></li>
+</ul>
+</section>
+</section>
+<section id="simple-redundancy-analysis-constrained-ordination" class="level1">
+<h1>Simple redundancy analysis (constrained ordination)</h1>
+<section id="example-from-capblancq-forester-2021---lodgepole-pine" class="level2">
+<h2 class="anchored" data-anchor-id="example-from-capblancq-forester-2021---lodgepole-pine">Example from Capblancq &amp; Forester 2021 - lodgepole pine</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/istockphoto-149019996-612x612.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Credit: Kevin Cass</figcaption>
+</figure>
+</div>
+<ul>
+<li>use ~3000 “intergenic” SNPs as neutral loci (genotyped from 50K SNP chip)</li>
+<li>geography, climate and neutral structure are all confounded</li>
+</ul>
+<section id="goals" class="level3">
+<h3 class="anchored" data-anchor-id="goals">Goals</h3>
+<ul>
+<li>to undertake a GEA and ignore effect of geography+structure -&gt; possible false positives</li>
+<li>to undertake a GEA and remove geography+structure -&gt; possible false negatives</li>
+<li>There is no clear solution to the problems of false positives and false negatives</li>
+</ul>
+</section>
+</section>
+<section id="data-preparation-for-rda" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation-for-rda">Data preparation for RDA</h2>
+<ul>
+<li>get environmental variables and scale them to a mean of 0, SD = 1</li>
+<li>categorical predictors can be used as dummy variables (0/1)</li>
+<li>look for colinearity among variables - might remove variables with variance inflation factor greater than ?</li>
+</ul>
+</section>
+<section id="variable-selection-with-forward-model-building" class="level2">
+<h2 class="anchored" data-anchor-id="variable-selection-with-forward-model-building">Variable selection with forward model building</h2>
+<p>Build up a predictive model and assists with variable reduction</p>
 <ol type="1">
 <li><p>Test significance of <em>global model</em> (= all variables)</p></li>
 <li><p>Start with “empty” model (= intercept only) and sequentially add variables</p></li>
@@ -412,40 +499,85 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>permutation based significance test</p></li>
 <li><p>adjusted <span class="math inline">\(R^2\)</span> from global model</p></li>
-<li></li>
 </ul></li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/simpleRDA_Capblancq_and_Forester_2022.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Simple RDA output - Capblancq &amp; Forester 2021</figcaption>
+</figure>
+</div>
 </section>
-<section id="variance-partitioning-using-partial-rda" class="level3">
-<h3 class="anchored" data-anchor-id="variance-partitioning-using-partial-rda">Variance partitioning using partial RDA</h3>
-<p>Allows independent estimation of sets of variables together with confounded effects caused by collinearity</p>
+</section>
+<section id="partial-rda" class="level1">
+<h1>partial RDA</h1>
+<p>Allows independent estimation of sets of variables together with confounded effects caused by collinearity.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/partialRDA__Capblancq_etal2021.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Reporting on partial RDA-From Capblancq et al.&nbsp;2021</figcaption>
 </figure>
 </div>
-<p>Define the different proportions</p>
-<p>? make MCQ check</p>
 </section>
-<section id="adaptive-loci---what-are-they-how-to-id" class="level3">
-<h3 class="anchored" data-anchor-id="adaptive-loci---what-are-they-how-to-id">Adaptive loci - what are they, how to id</h3>
-<p>Capblancq has discussion on conditioning approaches</p>
+<section id="complex-models-and-variance-partitioning" class="level1">
+<h1>Complex models and variance partitioning</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/summarising_complex_models_Zbinden_etal_2023.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Models upon models - Zbinden et al.&nbsp;2023</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/partionedvariance1_Zbinden_etal_2023.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Variance partitioning - averages across species - Zbinden et al 2023</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/partionedvariance2_Zbinden_etal_2023.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Variance partitioning - species details - Zbinden et al 2023</figcaption>
+</figure>
+</div>
 </section>
-<section id="projecting-adaptive-landscapes-in-space" class="level3">
-<h3 class="anchored" data-anchor-id="projecting-adaptive-landscapes-in-space">Projecting adaptive landscapes in space</h3>
+<section id="extra-topic---dealing-with-spatial-correlation-structures" class="level1">
+<h1>Extra topic - dealing with spatial correlation structures</h1>
+<p>Variety of approaches (to be explored in the computer activities that follow)</p>
 <ul>
-<li><p>genetic based index of adaptation based on Steane</p></li>
-<li><p>predict genotypes and allele frequencies as a function of environmental variation</p></li>
+<li><p>Include spatial position as a covariate</p></li>
+<li><p>Use genetic distances and linearize with PCoA</p></li>
+<li><p>Use Moran Eigenvector Mapping</p></li>
+</ul>
+<section id="further-resources" class="level2">
+<h2 class="anchored" data-anchor-id="further-resources">Further resources</h2>
+<ul>
+<li><p>The absolutely go-to package in R for all ecological eigenanalysis is <code>vegan</code>. It is very well documented and has excellent <a href="https://cran.r-project.org/web/packages/vegan/index.html">vignettes</a> that are well-worth working through.</p></li>
+<li><p>Really nice slide deck that demonstrates some vegan functions with excellent illustrations <a href="https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#1">Intro to vegan</a></p></li>
+<li><p>Another great slide deck that runs through RDA and associated vegan functions <a href="https://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/">Redundancy Analysis</a></p></li>
 </ul>
 </section>
-</section>
-<section id="extra-topics" class="level2">
-<h2 class="anchored" data-anchor-id="extra-topics">Extra topics</h2>
-<p>MEMS</p>
-<p>AEMS</p>
-<p>show Zindben flowchart</p>
-<p>https://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/ https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#30</p>
+<section id="notes-developed-from" class="level2">
+<h2 class="anchored" data-anchor-id="notes-developed-from">Notes developed from:</h2>
+<blockquote class="blockquote">
+<ul>
+<li>Capblancq, T., &amp; Forester, B. R. (2021). Redundancy analysis: A Swiss Army Knife for landscape genomics. Methods in Ecology and Evolution. doi:10.1111/2041-210x.13722</li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>Rellstab, C., Gugerli, F., Eckert, A. J., Hancock, A. M., &amp; Holderegger, R. (2015). A practical guide to environmental association analysis in landscape genomics. Molecular Ecology, 24 (17), 4348-4370.</li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>Wang, I. J., &amp; Bradburd, G. S. (2014). Isolation by environment. Molecular Ecology, 23(23), 5649-5662. doi:papers3://publication/doi/10.1111/mec.12938</li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>Zbinden, Z. D., Douglas, M. R., Chafin, T. K., &amp; Douglas, M. E. (2022). Riverscape community genomics: A comparative analytical approach to identify common drivers of spatial structure. Molecular Ecology, 32, XXX-XXX. doi:10.1111/mec.16806</li>
+</ul>
+</blockquote>
 
 
 </section>

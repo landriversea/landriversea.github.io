@@ -2,7 +2,7 @@
 title: "Future projections with GDM & GFs"
 ---
 
-# Generalized dissimilarity modeling & Gradient forests
+# GEAs with Generalized dissimilarity modeling & Gradient forests
 
 -   Developed for community ecology and adopted by landscape genetics (in community ecology, the biological data are species observations)
 
@@ -257,7 +257,7 @@ Remember that GDM is based on distances between sites. If you examine the `gdmDa
 
 We will focus on the reference and GIGANTEA-5 (GI5) datasets. To fit the models, individual dataframes need to be constructed.
 
-The datafile should be preloaded, otherwise download from  [here](data/poplarFst.ENV.data.4.GDM.csv). 
+The datafile should be preloaded, otherwise download from [here](data/poplarFst.ENV.data.4.GDM.csv).
 
 ```{r gdm}
 #| output: false
@@ -302,7 +302,7 @@ In contrast to GDM, GF is site based. Therefore each row in the dataframe corres
 
 As before, we focus on the reference and GIGANTEA-5 (GI5) datasets. And make individual dataframes to feed into the analyses.
 
-The datafile should be preloaded, otherwise download from  [here](data/poplarSNP.ENV.data.4.GF.csv). 
+The datafile should be preloaded, otherwise download from [here](data/poplarSNP.ENV.data.4.GF.csv).
 
 ```{r GF}
 #| output: false

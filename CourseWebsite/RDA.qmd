@@ -2,29 +2,49 @@
 title: "Intro to RDA as a general toolkit"
 ---
 
-# Under construction...
+# GEAs with RDA
 
-What are they
+## GEAs: Genotype-by-environment associations
 
-# Why RDA and other multivariate methods?
+( = environmental associations)
+
+1.  Genome-wide: related to demographic history, ecological speciation/diversification, isolation by environment
+
+![Processes leading to IBE - Wang & Bradburd 2014](images/IsolationByEnvironment1-Wang_and_Bradburd_2014.png)
+
+![IBE signals - Wang & Bradburd 2014](images/IsolationByEnvironment2-Wang_and_Bradburd_2014.png)
+
+*We will focus on this aspect today*
+
+2.  Finding loci contribute to heritable genetic variation of selected traits
+
+![Rellstab et al 2015 (Image modified from Sork et al 2013)](images/environment_genotype_phenotype_Rellstab2015.png)
+
+There is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as *outlier tests* or *genomic scans* are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al. 2015 is a good review of the various methods if you are looking for further reading on this topic.)
+
+# Why RDA (and other multivariate methods)?
+
+RDA allows you to have multiple response variables (loci) and multiple predictors (spatial or environmental attributes)
 
 | Predictive variables | Response variables | Appropriate family of methods \* |
-|---------------------|-------------------|--------------------------------|
+|----------------------|--------------------|----------------------------------|
 | One                  | One                | Univariate/Simple regression     |
 | Many                 | One                | Multiple regression              |
 | Many                 | Many               | Multivariate regression          |
 
-\* Note that your genetic data not conform to expectations of standard methods including independence
+\* Note that your genetic data not conform to expectations of parametric methods, including independence of data points
+
+RDA was developed for community ecology data and has been adopted for genetic analyses. In an ecological analysis, there will be various spatial and environmental predictive variables (*n* sites by *m* predictive varaibles) and biological response variables (typically, species abundance organised in *n* sites by *p* species). Much of the literature about using ordination and multivariate analyses for environmental analyses will be described as ecological communities).
+
+A key element of multivariate methods (including the RDA family) is ***ordination*** (which falls within the broader descriptor of eigenanalysis).
 
 Ordination allows
 
 -   Compression and visualization of complex data
 
--   Flexibility to move between distances (between populations or individuals) and Euclidean genetic distances
+-   Flexibility to use distances to describe spatial and biological distances (between populations or individuals)
 
 -   Flexibility to use allele frequencies (populations) or genotypes (individuals)
-
--   RDA performs well in genotype environment association analyses with low false positives and high true positives
 
 Pitfalls on using ordination with genetic data
 
@@ -32,17 +52,19 @@ Pitfalls on using ordination with genetic data
 
 -   Uneven sampling can skew results
 
--   It is pattern description: many processes can yield the same patterns
+-   Ordination is pattern description: many processes can yield the same patterns
 
-## Review of ordination, PCA & PCoA
+We focus on RDA as a multivariate method because
 
-## Constrained ordination as implemented in RDA
-
--   Flexible
+-   it is flexible structure is very useful for landscape genomic data
+-   it can describe genome-wide patterns
+-   RDA performs well in genotype-environment-association analyses with low false positives and high true positives
+-   The regression on one matrix on another.
+-   Uses a combination of linear regression and PCA.
 
 RDA can address the following questions (citing Capblancq et al. 2021):
 
-1.  What environmental/spatial processes drive patterns of genetic variation?
+1\. What environmental/spatial processes drive patterns of genetic variation?
 
 2\. What is the genetic basis of local adaptation to the environment?
 
@@ -50,27 +72,64 @@ RDA can address the following questions (citing Capblancq et al. 2021):
 
 4\. What are the impacts of climate and/or landscape change on the distribution of adaptive genetic variation?
 
-RDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)
+*RDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)*
 
 -   Keep this linearity in mind: it might not be appropriate for your data
 
 ![Conceptual overview of RDA - From Capblancq et al. 2021](images/RDA_overview_Capblancq_etal2021.png){fig-align="center"}
 
-## Data preparation
+# Review of unconstrained ordination (PCA & PCoA)
 
-get environmental variables
+## PCA - principal components analysis
 
-standardize - mean of 0, SD = 1
+-   No predictive variables: unconstrained.
 
-can include dummy predictors (0/1)
+-   Fits a line through the data along an axis that maximizes the variance described by the first PC axis (PC1).
 
--   explain when more than two categories
+-   Fits the next line to maximize the variance described for the second PC axis (PC2) where PC1 and PC2 are orthogonal (their variances are not correlated).
 
-look for colinearity - need to define and explain VIF
+-   And so on.
 
-### Variable selection with forward model building
+-   Note that this is a linear procedure: lines are being fitted.
 
-Builds up a predictive model and assists with variable reduction
+-   Eigenvalues ($\lambda$) describe the amount of variance explained by each eigenvector (= line = PC axis)
+
+## PCoA or PCO: Principal coordinates analysis
+
+-   same as *metric multidimensional scaling*
+
+-   takes pairwise distances ($d_{ij}$, sometimes called dissimilarities) between points and uses ordination to find axes that maximally explain dissimilarities
+
+-   PCoA on Euclidean distances is the same as PCA
+
+-   Sometimes you get negative eigenvalues and have to use a correction
+
+-   (non metric multidimensional scaling is similar but does not require linear data)
+
+# Simple redundancy analysis (constrained ordination)
+
+## Example from Capblancq & Forester 2021 - lodgepole pine
+
+![Credit: Kevin Cass](images/istockphoto-149019996-612x612.jpg)
+
+-   use \~3000 "intergenic" SNPs as neutral loci (genotyped from 50K SNP chip)
+-   geography, climate and neutral structure are all confounded
+
+### Goals
+
+-   to undertake a GEA and ignore effect of geography+structure -\> possible false positives
+-   to undertake a GEA and remove geography+structure -\> possible false negatives
+-   There is no clear solution to the problems of false positives and false negatives
+
+## Data preparation for RDA
+
+-   get environmental variables and scale them to a mean of 0, SD = 1
+-   categorical predictors can be used as dummy variables (0/1)
+-   look for colinearity among variables - might remove variables with variance inflation factor greater than ?
+
+## Variable selection with forward model building
+
+Build up a predictive model and assists with variable reduction
 
 1.  Test significance of *global model* (= all variables)
 
@@ -82,34 +141,46 @@ Builds up a predictive model and assists with variable reduction
 
     -   adjusted $R^2$ from global model
 
-    -   
+![Simple RDA output - Capblancq & Forester 2021](images/simpleRDA_Capblancq_and_Forester_2022.png)
 
-### Variance partitioning using partial RDA
+# partial RDA
 
-Allows independent estimation of sets of variables together with confounded effects caused by collinearity
+Allows independent estimation of sets of variables together with confounded effects caused by collinearity.
 
 ![Reporting on partial RDA-From Capblancq et al. 2021](images/partialRDA__Capblancq_etal2021.png){fig-align="center"}
 
-Define the different proportions
+# Complex models and variance partitioning
 
-? make MCQ check
+![Models upon models - Zbinden et al. 2023](images/summarising_complex_models_Zbinden_etal_2023.png)
 
-### Adaptive loci - what are they, how to id
+![Variance partitioning - averages across species - Zbinden et al 2023](images/partionedvariance1_Zbinden_etal_2023.png)
 
-Capblancq has discussion on conditioning approaches
+![Variance partitioning - species details - Zbinden et al 2023](images/partionedvariance2_Zbinden_etal_2023.png)
 
-### Projecting adaptive landscapes in space
+# Extra topic - dealing with spatial correlation structures
 
--   genetic based index of adaptation based on Steane
+Variety of approaches (to be explored in the computer activities that follow)
 
--   predict genotypes and allele frequencies as a function of environmental variation
+-   Include spatial position as a covariate
 
-## Extra topics
+-   Use genetic distances and linearize with PCoA
 
-MEMS
+-   Use Moran Eigenvector Mapping
 
-AEMS
+## Further resources
 
-show Zindben flowchart
+-   The absolutely go-to package in R for all ecological eigenanalysis is `vegan`. It is very well documented and has excellent [vignettes](https://cran.r-project.org/web/packages/vegan/index.html) that are well-worth working through.
 
-https://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/ https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#30
+-   Really nice slide deck that demonstrates some vegan functions with excellent illustrations [Intro to vegan](https://fromthebottomoftheheap.net/slides/intro-vegan-webinar-2020/intro-to-vegan.html#1)
+
+-   Another great slide deck that runs through RDA and associated vegan functions [Redundancy Analysis](https://pmassicotte.github.io/stats-denmark-2019/07_rda.html#/)
+
+## Notes developed from:
+
+> -   Capblancq, T., & Forester, B. R. (2021). Redundancy analysis: A Swiss Army Knife for landscape genomics. Methods in Ecology and Evolution. doi:10.1111/2041-210x.13722
+
+> -   Rellstab, C., Gugerli, F., Eckert, A. J., Hancock, A. M., & Holderegger, R. (2015). A practical guide to environmental association analysis in landscape genomics. Molecular Ecology, 24 (17), 4348-4370.
+
+> -   Wang, I. J., & Bradburd, G. S. (2014). Isolation by environment. Molecular Ecology, 23(23), 5649-5662. doi:papers3://publication/doi/10.1111/mec.12938
+
+> -   Zbinden, Z. D., Douglas, M. R., Chafin, T. K., & Douglas, M. E. (2022). Riverscape community genomics: A comparative analytical approach to identify common drivers of spatial structure. Molecular Ecology, 32, XXX-XXX. doi:10.1111/mec.16806
