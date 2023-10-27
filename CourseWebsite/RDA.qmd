@@ -261,15 +261,15 @@ library(vegan)
 library(corrplot)
 
 #Climate data
-ras_6190<-terra::rast("./large_data_files/ras_6190.tif")
+ras_6190<-terra::rast("./home/data/ras_6190.tif")
 names(ras_6190) <- c("AHM","bFFP","CMD","DD_0","DD_18","DD18","DD5","eFFP","EMT", "Eref", "EXT", "FFP", "MAP", "MAR", "MAT", "MCMT", "MSP", "MWMT", "NFFD", "PAS", "PPT_sm", "PPT_wt", "RH", "SHM", "Tave_sm", "Tave_wt", "TD")
 
 # Genetic data
-load("./large_data_files/AllFreq.RData")
-load("./large_data_files/Neutral.RData")
+load("./home/data/AllFreq.RData")
+load("./home/data/Neutral.RData")
 
 #Sampling sites
-Coordinates <- read.table("./large_data_files/PlSeedlots.csv", sep = ",", header = T, row.names = 1)
+Coordinates <- read.table("./home/data/PlSeedlots.csv", sep = ",", header = T, row.names = 1)
 
 # Tidy up the coordinates data and check them
 Coordinates <- Coordinates[match(row.names(AllFreq), Coordinates$id2, nomatch = 0),]
@@ -384,7 +384,7 @@ Interrupt the processing for the sake of time and load the output of the full or
 
 ```{r load mod}
 # load the output
-load("./large_data_files/mod.Rdata")
+load("./home/data/mod.Rdata")
 ```
 
 As before, examine the `mod` object in detail. How much variance does RDA1 explain? Is RDA1 dominated by a single environmental variable or spread among variables?

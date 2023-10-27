@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -193,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro to RDA as a general toolkit</span></a>
+ <span class="menu-text">Intro to RDA as a flexible tool</span></a>
   </div>
 </li>
       </ul>
@@ -278,6 +312,20 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#simulations-and-demographic-inference" id="toc-simulations-and-demographic-inference" class="nav-link active" data-scroll-target="#simulations-and-demographic-inference">Simulations and demographic inference</a></li>
+  <li><a href="#fastsimcoal" id="toc-fastsimcoal" class="nav-link" data-scroll-target="#fastsimcoal">fastsimcoal</a>
+  <ul class="collapse">
+  <li><a href="#preparing-the-input-files" id="toc-preparing-the-input-files" class="nav-link" data-scroll-target="#preparing-the-input-files">Preparing the input files</a></li>
+  <li><a href="#observed-sfs" id="toc-observed-sfs" class="nav-link" data-scroll-target="#observed-sfs">Observed SFS</a></li>
+  <li><a href="#template-file" id="toc-template-file" class="nav-link" data-scroll-target="#template-file">Template file</a></li>
+  <li><a href="#estimation-file" id="toc-estimation-file" class="nav-link" data-scroll-target="#estimation-file">Estimation file</a></li>
+  <li><a href="#running-fastsimcoal2" id="toc-running-fastsimcoal2" class="nav-link" data-scroll-target="#running-fastsimcoal2">Running fastsimcoal2</a>
+  <ul class="collapse">
+  <li><a href="#finding-the-best-parameter-estimates" id="toc-finding-the-best-parameter-estimates" class="nav-link" data-scroll-target="#finding-the-best-parameter-estimates">Finding the best parameter estimates</a></li>
+  <li><a href="#model-comparison-with-aic" id="toc-model-comparison-with-aic" class="nav-link" data-scroll-target="#model-comparison-with-aic">Model comparison with AIC</a></li>
+  <li><a href="#visualize-the-model-fit" id="toc-visualize-the-model-fit" class="nav-link" data-scroll-target="#visualize-the-model-fit">Visualize the model fit</a></li>
+  <li><a href="#model-comparison-with-likelihood-distributions" id="toc-model-comparison-with-likelihood-distributions" class="nav-link" data-scroll-target="#model-comparison-with-likelihood-distributions">Model comparison with Likelihood distributions</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -303,8 +351,166 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="simulations-and-demographic-inference" class="level1">
 <h1>Simulations and demographic inference</h1>
+</section>
+<section id="fastsimcoal" class="level1">
+<h1>fastsimcoal</h1>
+<p>Firstly before proceeding I want make it clear that this tutorial was orginally designed by my colleague and friend, <a href="https://www.sanger.ac.uk/person/meier-joana/">Joana Meier</a> and has been adapted from <a href="https://speciationgenomics.github.io/fastsimcoal2/">here</a> for this course. The depth of this tutorial would not have been possible without her input!</p>
+<p><code>fastsimcoal2</code> is an extremely flexible demographic modelling software developed by <a href="http://www.cmpg.iee.unibe.ch/about_us/team/researchers/prof_dr_excoffier_laurent/index_eng.html">Laurent Excoffier and his group at University of Bern</a>. It uses the site frequency spectrum (SFS) to fit model parameters to the observed data by performing coalescent simulations. You can find the manual and more information <a href="http://cmpg.unibe.ch/software/fastsimcoal2/">here</a>.</p>
+<p>It is worth noting that this is a complex piece of software to run and it takes a lot of time to master. However it is really worth taking your time with it and exploring the manual. It is extremely well documented (which is rare for a program like this).</p>
+<section id="preparing-the-input-files" class="level3">
+<h3 class="anchored" data-anchor-id="preparing-the-input-files">Preparing the input files</h3>
+<p>To run <code>fastsimcoal2</code> we need three input files which are all named in a consistent way. They are all just plain text files.</p>
+<ul>
+<li>observed SFS - <code>${PREFIX}_jointDAFpop1_0.obs</code></li>
+<li>template file defining the demographic model - <code>${PREFIX}.tpl</code></li>
+<li>estimation file defining the parameters - <code>${PREFIX}.est</code></li>
+</ul>
+</section>
+<section id="observed-sfs" class="level3">
+<h3 class="anchored" data-anchor-id="observed-sfs">Observed SFS</h3>
+<p>The observed SFS can be a derived SFS (i.e.&nbsp;also known as DAF or an unfolded SFS) if the ancestral state is unknown or a minor allele frequency SFS (i.e.&nbsp;MAF or folded SFS) if you do know the ancestral state. <code>fastsimcoal2</code> will identify the kind of SFS by its name suffix and the command flag <code>-m</code> or <code>-d</code>. For a single population, it expects the name <code>${PREFIX}_DAFpop0.obs</code> or <code>${PREFIX}_MAFpop0.obs</code>.</p>
+<p>For two populations, the file names should end with <code>jointDAFpop1_0.obs</code> or <code>jointMAFpop1_0.obs</code>. If more than two observed populations are used, pairwise MAFs or DAFs can be provided following the naming scheme above or a multidimensional SFS can be used ending with <code>_DSFS.obs</code> or <code>_MSFS.obs</code> and specifying the <code>-multiSFS</code> flag when running the program. See the <a href="http://cmpg.unibe.ch/software/fastsimcoal2/">fastsimcoal2 manual</a> for further details. The <code>.obs</code> file can be generated with <code>Arlequin</code>, <code>angsd</code>, <code>easySFS</code> (as in this <a href="https://speciationgenomics.github.io/easysfs/">tutorial</a>) or several other tools.</p>
+</section>
+<section id="template-file" class="level3">
+<h3 class="anchored" data-anchor-id="template-file">Template file</h3>
+<p>The template file describes the demographic model and the parameters of interest. Values that should be estimated (i.e.&nbsp;model parameters such as migration rate, splitting time etc) are given as different keywords. It is best practise to use capital letters for parameter names and it is important to avoid any names that are part of another parameter name or a function (e.g.&nbsp;<code>log</code>, <code>min</code>, <code>FREQ</code>).</p>
+<p>As fastsimcoal2 is a coalescent simulator, all models need to be specified <strong>backwards in time</strong>. This means that the most recent event is specified first. The template file is best produced by modifying an example <code>tpl</code> file in a text editor.</p>
+<p>In this tutorial, we will first write a model of two species that diverged in the face of gene flow and then evolved complete reproductive isolation. Unfortunately, we do not have a good estimate for the mutation rate, but we have an estimate for the (maximum possible) splitting time. So here we will set the split between the populations to 6000 generations.</p>
+<p><strong>Question:</strong> Why do we need to fix a parameter (e.g.&nbsp;splitting time) if we do not have a reliable mutation rate estimate?</p>
+</section>
+<section id="estimation-file" class="level3">
+<h3 class="anchored" data-anchor-id="estimation-file">Estimation file</h3>
+<p>All keywords introduced in the template file need to be defined in the estimation file. For each keyword, the parameter distribution (uniform or log-uniform) and search range (min and max) are given on a single line. Each parameter can be an integer or a float, as specified by a first indicator variable.</p>
+<p>Lastly, complex parameters can be used to compute parameter values with simple operations such as computing the ratio between two simple parameters or specifying a parameter as the minimum of two parameters. In addition, for each simple or complex parameter, you need to specify if the parameter value should be written into an output file or not.</p>
+<p>As with the template file, the estimation file is best produced by modifying an example <code>est</code> file in a text editor.</p>
+</section>
+<section id="running-fastsimcoal2" class="level2">
+<h2 class="anchored" data-anchor-id="running-fastsimcoal2">Running fastsimcoal2</h2>
+<p>Once we have all input files ready, it is time to run <code>fastsimcoal2</code>. In addition to the input files, we need to specify how many simulations and iterations <code>fastsimcoal2</code> should perform, when to stop and how many threads (i.e.&nbsp;CPUs) can be used in parallel.</p>
+<p>Let’s run <code>fastsimcoal2</code> with our model of two populations. First we make a <code>fastsimcoal2</code> directory and within that a directory, an additional one for our model of <code>early_geneflow</code>:</p>
+<pre class="shell"><code>cd ~
+mkdir fastsimcoal2
+cd fastsimcoal2
+mkdir early_geneflow</code></pre>
+<p>Next, we will move inside this directory and copy over the files we need</p>
+<pre class="shell"><code>cd ~/fastsimcoal2/early_geneflow
+cp /resources/riverlandsea/exercise_data/fastsimcoal2/early_geneflow/* .</code></pre>
+<p>This should mean we have our observed SFS, our template file and our estimation file. We are now ready to run <code>fastsimcoal2</code> - we will set a <code>PREFIX</code> variable to make our command here a bit easier to write. This will help downstream too!</p>
+<pre class="shell"><code>PREFIX="early_geneflow"
+fastsimcoal2 -t ${PREFIX}.tpl -e ${PREFIX}.est -m -0 -C 10 -n 10000 -L 40 -s 0 -M</code></pre>
+<p>This command runs <code>fastsimcoal2</code> using a MAF (<code>-m</code>) while ignoring monomorphic sites (<code>-0</code>) and SFS entries with less than 10 SNPs (<code>-C</code>). This means that entries with less than 10 SNPs are pooled together. This option is useful when there are many entries in the observed SFS with few SNPs and with a limited number of SNPS to avoid overfitting.</p>
+<p><code>fastsimcoal2</code> will also perform (<code>-n</code>) 10,000 coalescent simulations to approximate the expected SFS in each cycle and will run (<code>-L</code>) 40 optimization (ECM) cycles to estimate the parameters. The number of ECM cycles should be at least 20, better between 50 and 100. The number of coalescent simulations should ideally be something between 200,000 and 1,000,000 but to make it faster, we are now only running 10,000 simulations. We also specify (<code>-M</code>) that we want to perform parameter estimation. With <code>-s 0</code>, we can tell <code>fastsimcoal2</code> to output SNPs.</p>
+<p>Once <code>fastsimcoal2</code> is finished, we can have a look at the output files. It produced a folder called <code>${PREFIX}</code> which contains a number of new files. The most relevant files are the following:</p>
+<ul>
+<li><code>${PREFIX}.bestlhoods:</code> a file with the Maximum likelihood estimates for each parameter specified “output” in the <code>est</code> file and the model likelihoods.</li>
+<li><code>${PREFIX}._jointMAFpop1_0.txt</code>: a file with the expected SFS obtained with the parameters that maximized the likelihood during optimization. This is needed to visually check the fit of the expected SFS to the observed SFS. This file has the same suffix as the observed SFS provided.</li>
+<li><code>${PREFIX}.simparam</code>: a file with an example of the settings to run the simulations. This is useful to check when you have errors. Many times errors in specification of models can be detected in this file.</li>
+<li><code>${PREFIX}_maxL.par</code>: The model specification file with the best parameter estimates. It is basically the tpl file with the keywords replaced by estimated values. This file is useful if you want to simulate data under the best model using Arlequin.</li>
+</ul>
+<p>Note, the bestlhoods file contains two different likelihoods: <code>MaxObsLhood</code> is the maximum possible value for the likelihood if there was a perfect fit of the expected to the observed SFS, i.e.&nbsp;if the expected SFS was the relative observed SFS. <code>MaxEstLhood</code> is the maximum likelihood estimated according to the model parameters. It is obtained by using the observed SFS as the expected SFS when computing the likelihood, i.e., returning the value of the likelihood if there was a perfect fit between the expected and observed SFS.</p>
+<p>The better the fit, the smaller the difference between <code>MaxObsLhood</code> and <code>MaxEstLhood</code>.</p>
+<section id="finding-the-best-parameter-estimates" class="level3">
+<h3 class="anchored" data-anchor-id="finding-the-best-parameter-estimates">Finding the best parameter estimates</h3>
+<p><code>fastsimcoal2</code> should not just be run once because it might not find the global optimum of the best combination of parameter estimates right away. It is better to run it 100 times or more. Of these runs, we then go on to select the one with the highest likelihood which is the run with the best fitting parameter estimates for this model.</p>
+<p>Due to time constraints, we will only run this model 5 times and we will do so within a <code>for</code> loop. Note, that here we have added the flag <code>-q</code> for “quiet” which reduces the amount of information <code>fastsimcoal2</code> writes to stdout. Pay attention the <code>cd</code> commands here as they ensure that the analyses are done in the correct directory.</p>
+<pre class="shell"><code> for i in {1..5}
+ do
+   mkdir run$i
+   cp ${PREFIX}.tpl ${PREFIX}.est ${PREFIX}_jointMAFpop1_0.obs run$i"/"
+   cd run$i
+   fastsimcoal2 -t ${PREFIX}.tpl -e ${PREFIX}.est -m -0 -C 10 -n 10000 -L 40 -s0 -M -q
+   cd ..
+ done</code></pre>
+<p>To find the best run, i.e.&nbsp;the run with the highest likelihood, or better the smallest difference between the maximum possible likelihood (<code>MaxObsLhood</code>) and the obtained likelihood (<code>MaxEstLhood</code>), we can check the <code>.bestlhoods</code> files.</p>
+<pre class="shell"><code>cat run{1..5}/${PREFIX}/${PREFIX}.bestlhoods | grep -v MaxObsLhood | awk '{print NR,$8}' | sort -k 2</code></pre>
+<p>Note that <code>NR</code> in awk prints out the line number which here corresponds to the run number. <code>$8</code> is the <code>MaxEstLhood</code> column and thus the likelihood we want to compare across different runs.</p>
+<p>[Joana Meier](https://www.sanger.ac.uk/person/meier-joana/ has written a <a href="https://github.com/speciationgenomics/scripts/raw/master/fsc-selectbestrun.sh">script</a> for you that automatically extracts the files of the best run and copies them into a new folder which it calls <code>bestrun</code>. A copy of that script is available in the course resources directory so we will copy it to our run folder directory and run it like so:</p>
+<p>Just run it in the directory where all the folders run are located and run it:</p>
+<pre class="shell"><code>cd ~/fastsimcoal2/early_geneflow
+cp /resources/riverlandsea/exercise_data/fastsimcoal2/fsc-selectbestrun.sh
+./fsc-selectbestrun.sh</code></pre>
+<p>Now modify the <code>$PREFIX.tpl</code> and <code>$PREFIX.est</code> files to specify different models and also rename the SFS to <code>${PREFIX}_jointDAFpop1_0.txt</code>. Then run <code>fastsimcoal2</code>for all models to see which one shows the best fit to the observed SFS.</p>
+<p><img src="./images/modeling/models.png" class="img-fluid"></p>
+<details>
+<summary>
+Click here to see a possible solution.
+</summary>
+<p>
+</p><p>Early Geneflow (this is the model expalined in the example, gene flow right after the split and then no gene flow anymore, e.g.&nbsp;speciation with gene flow and then no gene flow anymore as reproductive isolation becomes strong): <a href="https://github.com/speciationgenomics/data/blob/master/early_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/early_geneflow.est"> est</a> <br> <br> No geneflow: <a href="https://github.com/speciationgenomics/data/blob/master/no_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/no_geneflow.est"> est</a> <br> <br> Recent geneflow (no gene flow intially after the split but gene flow in recent times, e.g.&nbsp;secondary contact scenario) <a href="https://github.com/speciationgenomics/data/blob/master/recent_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/recent_geneflow.est"> est</a> <br> <br> Different gene flow matrices (higher or lower gene flow right after the split than recently, e.g.&nbsp;initially higher gene flow then lower gene flow as reproductive isolation accumulates): <a href="https://github.com/speciationgenomics/data/blob/master/diff_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/diff_geneflow.est"> est</a> <br> <br> Constant gene flow (same gene flow strengths since the split until now): <a href="https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.est"> est</a></p>
+<p></p>
+</details>
+</section>
+<section id="model-comparison-with-aic" class="level3">
+<h3 class="anchored" data-anchor-id="model-comparison-with-aic">Model comparison with AIC</h3>
+<p>In order to find the best model, the likelihoods of the best run of each model should be compared. Comparing raw likelihoods is problematic, because a model with more parameters will always tend to result in a better fit to the data. Therefore, the <a href="https://en.wikipedia.org/wiki/Akaike_information_criterion">Akaike information criterium</a> or AIC is typically calculated to determine if the models differ in their likelihoods accounting for the number of parameters in each model. To perform, this, we can use a <a href="https://github.com/speciationgenomics/scripts/blob/master/calculateAIC.sh">script</a> that is mostly based on R code by <a href="http://ce3c.ciencias.ulisboa.pt/member/vitorsousa">Vitor Sousa</a>. We will move into our <code>bestrun</code> directory and run this script</p>
+<pre class="shell"><code>cd bestrun/
+cp /resources/riverlandsea/exercise_data/fastsimcoal2/calculateAIC.sh .
+./calculateAIC.sh early_geneflow</code></pre>
+<p>This script generates a file <code>${PREFIX}.AIC</code> which contains the delta likelihood and the AIC value for that run.</p>
+</section>
+<section id="visualize-the-model-fit" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-the-model-fit">Visualize the model fit</h3>
+<p>To visualize the fit of the simulated SFS to the data, we can use an <code>R</code> script that David Marques wrote - <code>SFStools.r</code> - which you can download <a href="https://github.com/marqueda/SFS-scripts/">here</a>.</p>
+<p>To visualize the model with the best parameter estimates, we can use one of Joana Meier’s R scripts - <a href="https://github.com/speciationgenomics/scripts/blob/master/plotModel.r">plotModel.r</a>. There are also other options <a href="http://cmpg.unibe.ch/software/fastsimcoal27/additionalScripts.html">here</a>. However for the ease of this practical, both are available in the resources directory. We will copy them over and then run them.</p>
+<pre class="shell"><code>cp /resources/riverlandsea/exercise_data/fastsimcoal2/*.r .
+SFStools.r -t print2D -i early_geneflow
+plotModel.r -p early_geneflow -l NyerMak,PundMak</code></pre>
+<p>Now, we will download the PDFs genertated and take a look at them.</p>
+</section>
+<section id="model-comparison-with-likelihood-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="model-comparison-with-likelihood-distributions">Model comparison with Likelihood distributions</h3>
+<p>One drawback of the composite likelihoods in model tests based on AIC is that it can overestimate the support for the most likely model if the SNPs are not independent (here they are not LD-pruned). Another way to infer if the models are really different and do not just differ because of stochasticity in the likelihood approximation, is to get likelihood distributions for each model. This is done by running each model with the best parameter values multple times (ideally about 100 times). The likelihoods will differ because <code>fastsimcoal2</code> does not compute the likelihood but rather approximates it with simulations. If the ranges of likelihoods of two models overlap, it means that they do not differ significantly, i.e.&nbsp;provide an equally good fit to the observed data.</p>
+<p>Let’s recompute the likelihood for the best run for the <code>early_geneflow</code> model.</p>
+<pre class="shell"><code>
+PREFIX="early_geneflow"
+cd ~/fastsimcoal/$PREFIX/bestrun
+
+# create temporary obs file with name _maxL_MSFS.obs
+cp ${PREFIX}_jointMAFpop1_0.obs ${PREFIX}_maxL_jointMAFpop1_0.obs
+
+# Run fastsimcoal 20 times (in reality better 100 times) to get the likelihood of the observed SFS under the best parameter values with 1 mio simulated SFS.
+for i in {1..20}
+do
+ fastsimcoal2 -i ${PREFIX}_maxL.par -n1000000 -m -q -0
+ # Fastsimcoal will generate a new folder called ${model}_maxL and write files in there
+
+ # collect the lhood values (Note that &gt;&gt; appends to the file, whereas &gt; would overwrite it)
+ sed -n '2,3p' ${PREFIX}_maxL/${PREFIX}_maxL.lhoods  &gt;&gt; ${PREFIX}.lhoods
+
+ # delete the folder with results
+ rm -r ${PREFIX}_maxL/
+done
+</code></pre>
+<p>We would now repeat this for different models: ongoing gene flow, a model without gene flow, a model of secondary contact (recent gene flow) and a model with different amounts of gene flow in the past and in recent times.</p>
+<p>Due to time constraints, we will give you the results of these models. They are in the same format as the folder we generated for the model with early gene flow. Load them into your own directory. Note, the <code>-r</code> flag stands for “recursive” and allows to also copy directories and their contents.</p>
+<pre class="shell"><code>cd ~/fastsimcoal2/
+cp -r /resources/riverlandsea/exercise_data/fastsimcoal2/extramodels</code></pre>
+<p>Now, let’s access the R Studio sderver and plot the likelihoods.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the likelihoods</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>early_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"early_geneflow.lhoods"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ongoing_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"ongoing_geneflow.lhoods"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>diff_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"diff_geneflow.lhoods"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>recent_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"recent_geneflow.lhoods"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>no_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"no_geneflow.lhoods"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the likelihoods</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="at">range =</span> <span class="dv">0</span>,diff_geneflow,recent_geneflow,early_geneflow,ongoing_geneflow,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        no_geneflow, <span class="at">ylab=</span><span class="st">"Likelihood"</span>,<span class="at">xaxt=</span><span class="st">"n"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"early+recent"</span>,<span class="st">"recent"</span>,<span class="st">"early"</span>,<span class="st">"constant"</span>,<span class="st">"no"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Similarly, we should compare the AIC values and see if AIC suggests that the second-best model is significantly less good than the best model. Given that we already used the calculateAIC.r script to compute AIC values, this can easily be done.</p>
+<pre class="shell"><code>for i in */bestrun/*AIC
+do
+echo -e `basename $i`"\t"`tail -n $i` &gt;&gt; allmodels.AIC
+done</code></pre>
+<p>And we’re done for this tutorial! It is worth noting that linkage among SNPs can actually distort the AIC and likelihood calculations. As a result it is best practice to perform block-bootstrapping to account for this. We don’t have time to implement that here but you can refer to the <a href="https://speciationgenomics.github.io/fastsimcoal2/">original version</a> of this tutorial which does have a guide for how to achieve this.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

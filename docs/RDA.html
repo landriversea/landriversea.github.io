@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Land, River and Seascape Genomics - Intro to RDA as a general toolkit</title>
+<title>Land, River and Seascape Genomics - Intro to RDA as a flexible tool</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./genetic-dif.html">Tuesday</a></li><li class="breadcrumb-item"><a href="./RDA.html">Intro to RDA as a general toolkit</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./genetic-dif.html">Tuesday</a></li><li class="breadcrumb-item"><a href="./RDA.html">Intro to RDA as a flexible tool</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RDA.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Intro to RDA as a general toolkit</span></a>
+ <span class="menu-text">Intro to RDA as a flexible tool</span></a>
   </div>
 </li>
       </ul>
@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#geas-with-rda" id="toc-geas-with-rda" class="nav-link active" data-scroll-target="#geas-with-rda">GEAs with RDA</a>
+  <li><a href="#rda-as-a-flexible-tool" id="toc-rda-as-a-flexible-tool" class="nav-link active" data-scroll-target="#rda-as-a-flexible-tool">RDA as a flexible tool</a>
   <ul class="collapse">
   <li><a href="#geas-genotype-by-environment-associations" id="toc-geas-genotype-by-environment-associations" class="nav-link" data-scroll-target="#geas-genotype-by-environment-associations">GEAs: Genotype-by-environment associations</a></li>
   </ul></li>
@@ -379,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro to RDA as a general toolkit</h1>
+<h1 class="title">Intro to RDA as a flexible tool</h1>
 </div>
 
 
@@ -395,20 +395,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p><em>Instructor: Riginos</em></p>
-<section id="geas-with-rda" class="level1">
-<h1>GEAs with RDA</h1>
+<section id="rda-as-a-flexible-tool" class="level1">
+<h1>RDA as a flexible tool</h1>
 <section id="geas-genotype-by-environment-associations" class="level2">
 <h2 class="anchored" data-anchor-id="geas-genotype-by-environment-associations">GEAs: Genotype-by-environment associations</h2>
 <p>( = environmental associations)</p>
+<p>From Monday:</p>
 <ol type="1">
 <li>Genome-wide: related to demographic history, ecological speciation/diversification, isolation by environment</li>
 </ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/IsolationByEnvironment1-Wang_and_Bradburd_2014.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Processes leading to IBE - Wang &amp; Bradburd 2014</figcaption>
-</figure>
-</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/IsolationByEnvironment2-Wang_and_Bradburd_2014.png" class="img-fluid figure-img"></p>
@@ -425,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption class="figure-caption">Rellstab et al 2015 (Image modified from Sork et al 2013)</figcaption>
 </figure>
 </div>
-<p>There is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as <em>outlier tests</em> or <em>genomic scans</em> are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al.&nbsp;2015 is a good review of the various methods if you are looking for further reading on this topic.)</p>
+<p>We will come back to this topic on Friday.</p>
 </section>
 </section>
 <section id="why-rda-and-other-multivariate-methods" class="level1">
@@ -725,15 +720,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Climate data</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ras_6190<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(<span class="st">"./large_data_files/ras_6190.tif"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ras_6190<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(<span class="st">"./home/data/ras_6190.tif"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ras_6190) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AHM"</span>,<span class="st">"bFFP"</span>,<span class="st">"CMD"</span>,<span class="st">"DD_0"</span>,<span class="st">"DD_18"</span>,<span class="st">"DD18"</span>,<span class="st">"DD5"</span>,<span class="st">"eFFP"</span>,<span class="st">"EMT"</span>, <span class="st">"Eref"</span>, <span class="st">"EXT"</span>, <span class="st">"FFP"</span>, <span class="st">"MAP"</span>, <span class="st">"MAR"</span>, <span class="st">"MAT"</span>, <span class="st">"MCMT"</span>, <span class="st">"MSP"</span>, <span class="st">"MWMT"</span>, <span class="st">"NFFD"</span>, <span class="st">"PAS"</span>, <span class="st">"PPT_sm"</span>, <span class="st">"PPT_wt"</span>, <span class="st">"RH"</span>, <span class="st">"SHM"</span>, <span class="st">"Tave_sm"</span>, <span class="st">"Tave_wt"</span>, <span class="st">"TD"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic data</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./large_data_files/AllFreq.RData"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./large_data_files/Neutral.RData"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./home/data/AllFreq.RData"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./home/data/Neutral.RData"</span>)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Sampling sites</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"./large_data_files/PlSeedlots.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> T, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"./home/data/PlSeedlots.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> T, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidy up the coordinates data and check them</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> Coordinates[<span class="fu">match</span>(<span class="fu">row.names</span>(AllFreq), Coordinates<span class="sc">$</span>id2, <span class="at">nomatch =</span> <span class="dv">0</span>),]</span>
@@ -828,7 +823,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Interrupt the processing for the sake of time and load the output of the full ordiR2step:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the output</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./large_data_files/mod.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./home/data/mod.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As before, examine the <code>mod</code> object in detail. How much variance does RDA1 explain? Is RDA1 dominated by a single environmental variable or spread among variables?</p>
 <p><code>mod$anova</code> will give you most of the output shown in Table 1 from C &amp; F. You would just need to do some subtraction to get the R2 for each term - for example, EMT = 0.044517-0.022167 = 0.02235.</p>

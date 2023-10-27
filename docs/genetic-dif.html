@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -193,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RDA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro to RDA as a general toolkit</span></a>
+ <span class="menu-text">Intro to RDA as a flexible tool</span></a>
   </div>
 </li>
       </ul>
@@ -277,7 +311,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#describing-genetic-differentiation-and-genetic-structuring" id="toc-describing-genetic-differentiation-and-genetic-structuring" class="nav-link active" data-scroll-target="#describing-genetic-differentiation-and-genetic-structuring"><strong>Describing genetic differentiation and genetic structuring</strong></a></li>
+  <li><a href="#investigating-population-structure-with-pca" id="toc-investigating-population-structure-with-pca" class="nav-link active" data-scroll-target="#investigating-population-structure-with-pca">Investigating population structure with PCA</a>
+  <ul class="collapse">
+  <li><a href="#linkage-pruning" id="toc-linkage-pruning" class="nav-link" data-scroll-target="#linkage-pruning">Linkage pruning</a></li>
+  <li><a href="#perform-a-pca" id="toc-perform-a-pca" class="nav-link" data-scroll-target="#perform-a-pca">Perform a PCA</a></li>
+  <li><a href="#plotting-the-pca-output" id="toc-plotting-the-pca-output" class="nav-link" data-scroll-target="#plotting-the-pca-output">Plotting the PCA output</a></li>
+  </ul></li>
+  <li><a href="#admixture" id="toc-admixture" class="nav-link" data-scroll-target="#admixture">Admixture</a>
+  <ul class="collapse">
+  <li><a href="#generating-the-input-file" id="toc-generating-the-input-file" class="nav-link" data-scroll-target="#generating-the-input-file">Generating the input file</a></li>
+  <li><a href="#running-admixture" id="toc-running-admixture" class="nav-link" data-scroll-target="#running-admixture">Running <code>ADMIXTURE</code></a></li>
+  <li><a href="#some-points-to-keep-in-mind" id="toc-some-points-to-keep-in-mind" class="nav-link" data-scroll-target="#some-points-to-keep-in-mind">Some points to keep in mind</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -301,10 +346,215 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="describing-genetic-differentiation-and-genetic-structuring" class="level1">
-<h1><strong>Describing genetic differentiation and genetic structuring</strong></h1>
+<p><strong>Describing genetic differentiation and genetic structuring</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="investigating-population-structure-with-pca" class="level1">
+<h1>Investigating population structure with PCA</h1>
+<p>The first thing we will do is investigate population structure using <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">principal components analysis</a>. Examining population structure can give us a great deal of insight into the history and origin of populations. Model-free methods for examining population structure and ancestry, such as principal components analysis are extremely popular in population genomic research. This is because it is typically simple to apply and relatively easy to interpret.</p>
+<p>Essentially, PCA aims to identify the main axes of variation in a dataset with each axis being independent of the next (i.e.&nbsp;there should be no correlation between them). The first component summarizes the major axis variation and the second the next largest and so on, until cumulatively all the available variation is explained. In the context of genetic data, PCA summarizes the major axes of variation in allele frequencies and then produces the coordinates of individuals along these axes.</p>
+<p>To perform a PCA on our cichlid data, we will use <code>plink</code> - specifically <a href="https://www.cog-genomics.org/plink/1.9/">version 1.9</a> (although be aware <a href="http://zzz.bwh.harvard.edu/plink/">older</a> and <a href="https://www.cog-genomics.org/plink/2.0/">newer</a> versions are available). Note that <code>plink</code> was originally written with human data in mind and has also subsequently been extended to include some model species. As a result, we need to provide a bit of extra info to get it to work on our dataset.</p>
+<section id="linkage-pruning" class="level3">
+<h3 class="anchored" data-anchor-id="linkage-pruning">Linkage pruning</h3>
+<p>One of the major assumptions of PCA is that the data we use is indpendent - i.e.&nbsp;there are no spurious correlations among the measured variables. This is obviously not the case for most genomic data as allele frequencies are correlated due to physical linkage and linkage disequilibrium. So as a first step, we need to prune our dataset of variants that are in linkage.</p>
+<p>First things first, we will make a directory called <code>pca</code></p>
+<pre class="shell"><code># move to your home directory
+cd ~
+# make a pca directory
+mkdir pca
+# move into it
+cd pca</code></pre>
+<p>Next we need to get our data, which we can do like so:</p>
+<pre class="shell"><code>cp /resources/riverlandsea/exercise_data/pca/Pundamilia_subset.vcf.gz .</code></pre>
+<p>We will also simplify our code using some environmental variables. Primarily we set one for our filtered VCF.</p>
+<pre class="shell"><code>VCF=~/pca/Pundamilia_subset.vcf.gz</code></pre>
+<p>This will make it very easy for <code>plink</code> to read in our data. Next we run the linkage pruning. Run the command and we will breakdown what all the arguments mean.</p>
+<pre class="shell"><code># perform linkage pruning - i.e. identify prune sites
+plink --vcf $VCF --double-id --allow-extra-chr \
+--set-missing-var-ids @:# \
+--indep-pairwise 50 10 0.1 --out cichlids</code></pre>
+<p>So for our plink command, we did the following:</p>
+<ul>
+<li><code>--vcf</code> - specified the location of our VCF file.</li>
+<li><code>--double-id</code> - told <code>plink</code> to duplicate the id of our samples (this is because plink typically expects a family and individual id - i.e.&nbsp;for pedigree data - this is not necessary for us.</li>
+<li><code>--allow-extra-chr</code> - allow additional chromosomes beyond the human chromosome set. This is necessary as otherwise plink expects chromosomes 1-22 and the human X chromosome.</li>
+<li><code>--set-missing-var-ids</code> - also necessary to set a variant ID for our SNPs. Human and model organisms often have annotated SNP names and so <code>plink</code> will look for these. We do not have them so instead we set ours to default to <code>chromosome:position</code> which can be achieved in <code>plink</code> by setting the option <code>@:#</code> - <a href="https://www.cog-genomics.org/plink/1.9/data#set_missing_var_ids">see here</a> for more info.</li>
+<li><code>--indep-pairwise</code> - finally we are actually on the command that performs our linkage pruning! The first argument, <code>50</code> denotes we have set a window of 50 Kb. The second argument, <code>10</code> is our window step size - meaning we move 10 bp each time we calculate linkage. Finally, we set an r<sup>2</sup> threshold - i.e.&nbsp;the threshold of linkage we are willing to tolerate. Here we prune any variables that show an r<sup>2</sup> of greater than 0.1.</li>
+<li><code>--out</code> Produce the prefix for the output data.</li>
+</ul>
+<p>As well as being versatile, <code>plink</code> is very fast. It will quickly produce a linkage analysis for all our data and write plenty of information to the screen. When complete, it will write out two files <code>cichlids.prune.in</code> and <code>cichlids.prune.out</code>. The first of these is a list of sites which fell below our linkage threshold - i.e.&nbsp;those we should retain. The other file is the opposite of this. In the next step, we will produce a PCA from these linkage-pruned sites.</p>
+</section>
+<section id="perform-a-pca" class="level3">
+<h3 class="anchored" data-anchor-id="perform-a-pca">Perform a PCA</h3>
+<p>Next we rerun plink with a few additional arguments to get it to conduct a PCA. We will run the command and then break it down as it is running.</p>
+<pre class="shell"><code># prune and create pca
+plink --vcf $VCF --double-id --allow-extra-chr --set-missing-var-ids @:# \
+--extract cichlids.prune.in \
+--make-bed --pca --out cichlids</code></pre>
+<p>This is very similar to our previous command. What did we do here?</p>
+<ul>
+<li><code>--extract</code> - this just lets <code>plink</code> know we want to extract only these positions from our VCF - in other words, the analysis will only be conducted on these.</li>
+<li><code>--make-bed</code> - this is necessary to write out some additional files for another type of population structure analysis - a model based approach with <code>admixture</code>.</li>
+<li><code>--pca</code> - fairly self explanatory, this tells <code>plink</code> to calculate a principal components analysis.</li>
+</ul>
+<p>Once the command is run, we will see a series of new files. We will break these down too:</p>
+<p>PCA output:</p>
+<ul>
+<li><code>cichlids.eigenval</code> - the eigenvalues from our analysis</li>
+<li><code>cichlids.eigenvec</code>- the eigenvectors from our analysis</li>
+</ul>
+<p><code>plink</code> binary output</p>
+<ul>
+<li><code>cichlids.bed</code> - the cichlids bed file - this is a binary file necessary for admixture analysis. It is essentially the genotypes of the pruned dataset recoded as 1s and 0s.</li>
+<li><code>cichlids.bim</code> - a map file (i.e.&nbsp;information file) of the variants contained in the bed file.<br>
+</li>
+<li><code>cichlids.fam</code> - a map file for the individuals contained in the bed file.</li>
+</ul>
+</section>
+<section id="plotting-the-pca-output" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-the-pca-output">Plotting the PCA output</h3>
+<p>Next we turn to R to plot the analysis we have produced!</p>
+<section id="setting-up-the-r-environment" class="level4">
+<h4 class="anchored" data-anchor-id="setting-up-the-r-environment">Setting up the R environment</h4>
+<p>First load the <code>tidyverse</code> package and ensure you have moved the <code>plink</code> output into the working directory you are operating in. You may want to set up an RStudio Project to manage this analysis. See <a href="https://speciationgenomics.github.io/more_advanced_R/">here</a> for a guide on how to do this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load tidyverse package</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we will use a combination of <code>readr</code> and the standard <code>scan</code> function to read in the data. <strong>NB - you will need to edit the path to the files if you are writing your own R scripts.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="st">"./data/cichlids.eigenvec"</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>eigenval <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"./data/cichlids.eigenval"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cleaning-up-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="cleaning-up-the-data">Cleaning up the data</h4>
+<p>Unfortunately, we need to do a bit of legwork to get our data into reasonable shape. First we will remove a nuisance column (<code>plink</code> outputs the individual ID twice). We will also give our <code>pca</code> data.frame proper column names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort out the pca data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remove nuisance column</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> pca[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set names</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pca)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"ind"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pca)[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(pca)] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"PC"</span>, <span class="dv">1</span><span class="sc">:</span>(<span class="fu">ncol</span>(pca)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we can add a species, location and if required, a species x location vector. We will do this using the R version of <code>grep</code>. We then use <code>paste0</code> to combine the columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sort out the individual species and pops</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spp</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>spp <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(pca<span class="sc">$</span>ind))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>spp[<span class="fu">grep</span>(<span class="st">"PunPund"</span>, pca<span class="sc">$</span>ind)] <span class="ot">&lt;-</span> <span class="st">"pundamilia"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>spp[<span class="fu">grep</span>(<span class="st">"PunNyer"</span>, pca<span class="sc">$</span>ind)] <span class="ot">&lt;-</span> <span class="st">"nyererei"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># location</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>loc <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(pca<span class="sc">$</span>ind))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>loc[<span class="fu">grep</span>(<span class="st">"Mak"</span>, pca<span class="sc">$</span>ind)] <span class="ot">&lt;-</span> <span class="st">"makobe"</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>loc[<span class="fu">grep</span>(<span class="st">"Pyt"</span>, pca<span class="sc">$</span>ind)] <span class="ot">&lt;-</span> <span class="st">"python"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># combine - if you want to plot each in different colours</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>spp_loc <span class="ot">&lt;-</span> <span class="fu">paste0</span>(spp, <span class="st">"_"</span>, loc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With these variables created, we can remake our data.frame like so. Note the use of <code>as.tibble</code> to ensure that we make a tibble for easy summaries etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remake data.frame</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">data.frame</span>(pca, spp, loc, spp_loc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plotting-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="plotting-the-data">Plotting the data</h4>
+<p>Now that we have done our housekeeping, we have everything in place to actually visualise the data properly. First we will plot the eigenvalues. It is quite straightforward to translate these into percentage variance explained (although note, you could just plot these raw if you wished).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first convert to percentage variance explained</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pve <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">PC =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">pve =</span> eigenval<span class="sc">/</span><span class="fu">sum</span>(eigenval)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With that done, it is very simple to create a bar plot showing the percentage of variance each principal component explains.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make plot</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pve, <span class="fu">aes</span>(PC, pve)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Percentage variance explained"</span>) <span class="sc">+</span> <span class="fu">theme_light</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Cumulatively, they explain 100% of the variance but PC1, PC2 and possible PC3 together explain about 30% of the variance. We could calculate this with the <code>cumsum</code> function, like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the cumulative sum of the percentage variance explained</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(pve<span class="sc">$</span>pve)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we move on to actually plotting our PCA. Given the work we did earlier to get our data into shape, this doesn’t take much effort at all.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot pca</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pca, <span class="fu">aes</span>(PC1, PC2, <span class="at">col =</span> spp, <span class="at">shape =</span> loc)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> b <span class="sc">+</span> <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> b <span class="sc">+</span> <span class="fu">coord_equal</span>() <span class="sc">+</span> <span class="fu">theme_light</span>()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> <span class="fu">xlab</span>(<span class="fu">paste0</span>(<span class="st">"PC1 ("</span>, <span class="fu">signif</span>(pve<span class="sc">$</span>pve[<span class="dv">1</span>], <span class="dv">3</span>), <span class="st">"%)"</span>)) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="fu">paste0</span>(<span class="st">"PC2 ("</span>, <span class="fu">signif</span>(pve<span class="sc">$</span>pve[<span class="dv">2</span>], <span class="dv">3</span>), <span class="st">"%)"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that this R code block also includes arguments to display the percentage of variance explained on each axis. Here we only plot PC1 and PC2. From this figure, we can see PC1 separates out the geographical locations and PC2 separates out the species.</p>
+</section>
+</section>
+</section>
+<section id="admixture" class="level1">
+<h1>Admixture</h1>
+<p><code>ADMIXTURE</code> is a clustering software similar to <code>STRUCTURE</code> with the aim of inferring populations and individual ancestries. It was developed by <a href="https://genome.cshlp.org/content/19/9/1655.short">David Alexander, John Novembre and Kenneth Lange</a>. You can find the manual <a href="http://software.genetics.ucla.edu/admixture/admixture-manual.pdf">here</a>.</p>
+<section id="generating-the-input-file" class="level3">
+<h3 class="anchored" data-anchor-id="generating-the-input-file">Generating the input file</h3>
+<p><code>ADMIXTURE</code> requires unlinked (i.e.&nbsp;LD-pruned) SNPs in the format that <code>plink</code> writes out. As we saw in the last practical, this is very easy to produce from a VCF. However when we were producing a PCA, we used a vcf with only whole-genome resequenced individuals (i.e.&nbsp;a much smaller sample size). So for this practical we will use a RAD dataset from the same <em>Pundamilia</em> species which includes more than 4 individuals per population and some putative hybrid individuals.</p>
+<p>Linked sites, monomorphic or multiallelic sites, or sites with more than 25% missing data have already been filtered out. Also sites with MAF smaller than 0.05 or Phred quality lower than 30 were removed. So there is no need to redo the filtering or linkage-pruning we learned about earlier. We proceed to uisng <code>plink</code> to generate the <code>.bed</code> file which can be read by <code>ADMIXTURE</code> (<strong>nb</strong> it will also produce other files we do not need).</p>
+<p>First we will make a directory specific for this analysis in our home directory and move into it:</p>
+<pre class="shell"><code># move to your home directory
+cd ~
+# make a pca directory
+mkdir admixture
+# move into it
+cd admixture</code></pre>
+<p>Next we need to get our data, which we can do like so:</p>
+<pre class="shell"><code>cp /resources/riverlandsea/exercise_data/admixture/Pundamilia.RAD.vcf.gz .</code></pre>
+<p>As before, we will simplify our code using some environmental variables. Primarily we set one for our filtered VCF.</p>
+<pre class="shell"><code>VCF=~/admixture/Pundamilia.RAD.vcf.gz</code></pre>
+<p>We can also create one to make it easier to create an output file from <code>plink</code> and to perform our downstream tweaks to the file to get it to work with <code>ADMIXTURE</code></p>
+<pre class="shell"><code>FILE=Pundamilia.RAD</code></pre>
+<p>Now we are ready to use plink to generate the input file that we will use in our analysis.</p>
+<pre class="shell"><code># Generate the input file in plink format
+plink --vcf $VCF --make-bed --out $FILE --allow-extra-chr</code></pre>
+<p>Once we’ve run this, use <code>ls</code> to have a look at the files written out. An important note. The <a href="https://www.cog-genomics.org/plink/1.9/formats#bed">PLINK bed file</a> is a binary biallelic genotype table (not to be confused with <a href="https://genome.ucsc.edu/FAQ/FAQformat.html#format1">UCSC bed files</a>).</p>
+<p>Like with many tools, we have to do a bit of coding in order to get a file in a suitable shape for a downstream analysis. ADMIXTURE does not accept chromosome names that are not human chromosomes. We therefore need to change the first column with 0. We can do this relatively easily with <code>awk</code>. We make a temporary file and when we’re sure it is how we want it to look, we can move it to become our new input file.</p>
+<pre class="shell"><code>awk '{$1="0";print $0}' $FILE.bim &gt; $FILE.bim.tmp
+mv $FILE.bim.tmp $FILE.bim</code></pre>
+</section>
+<section id="running-admixture" class="level3">
+<h3 class="anchored" data-anchor-id="running-admixture">Running <code>ADMIXTURE</code></h3>
+<p>Now, we are ready to run <code>ADMIXTURE</code>. An important step is to run the program with cross-validation. This allows us to determine the error in our estimates of <code>K</code>, providing insight into what the ‘true’ value of K might be. We will first run the program to test a <code>K</code> of 2.</p>
+<pre class="shell"><code>admixture --cv $FILE.bed 2 &gt; log2.out</code></pre>
+<p>Note that here we just the default CV option, which is for 5 times cross validation. IF you want to increase this, you can set an option like so <code>cv=10</code>.</p>
+<p>Looking at our directory, we can see that <code>ADMIXTURE</code> produced 2 files: <code>.Q</code> which contains cluster assignments for each individual and <code>.P</code> which contains for each SNP the population allele frequencies.</p>
+<p>Let’s now run it in a for loop with <code>K=3</code> to <code>K=5</code> and direct the output into log files.</p>
+<pre class="shell"><code>for i in {3..5}
+do
+ admixture --cv $FILE.bed $i &gt; log${i}.out
+done</code></pre>
+<p>To identify the best value of <code>K</code> clusters which is the value with lowest cross-validation error, we need to collect the cv error output into a single files. Combining <code>awk</code> and <code>cut</code>, we can easily extract them like so:</p>
+<pre class="shell"><code>
+grep "CV" *out | awk '{print $3,$4}' | cut -c 4,7-20 &gt; $FILE.cv.error</code></pre>
+<p>To make plotting easier, we can also make a file with the individual names in one column and the species names in the second column. As the species name is in the individual name, it is very straightforward to extract the species name from the individual name using <code>awk</code>:</p>
+<pre class="shell"><code>awk '{split($1,name,"."); print $1,name[2]}' $FILE.nosex &gt; $FILE.list</code></pre>
+<p>Now we’ve performed our analyses, we are ready to visualise the results.</p>
+<section id="visualising-results-using-r" class="level4">
+<h4 class="anchored" data-anchor-id="visualising-results-using-r">Visualising results using R</h4>
+<p>There are many different ways to plot ADMIXTURE output and other tutorials go into this in more detail (e.g., this is <a href="https://devonderaad.github.io/aph.rad/admixture/plot.admixture.results.html">nice and clear</a>). There are also specific programs i.e.<a href="https://github.com/ramachandran-lab/pong/blob/master/pong-manual.pdf">pong</a>. However, to make things easy for today’s practical, we will use an <code>R</code> written by <a href="https://www.sanger.ac.uk/person/meier-joana/">Joana Meier</a>.</p>
+<p>This script can be used via the command line and takes four arguments: 1. the prefix for the <code>ADMIXTURE</code> output files (-p <prefix>) 2. the file with the species information (-i &lt;file.list&gt;) 3. the maximum number of K to be plotted (-k 5) 4. a list with the populations or species separated by commas (-l &lt;pop1,pop2…&gt;)</prefix></p>
+<p>This last option, i.e.&nbsp;the list of populations provided with -l gives the order in which the populations or species will be plotted. The script is available <a href="https://github.com/speciationgenomics/scripts/blob/master/plotADMIXTURE.r">here</a> but for today, we can also get it from the data directory:</p>
+<pre class="shell"><code>cp /resources/riverlandsea/exercise_data/admixture/plotADMIXTURE.r .</code></pre>
+<p>Now, we can run it like below. Remember our <code>$FILE</code> variable makes it much easier to run without inputting the full filenames.</p>
+<pre class="shell"><code>Rscript plotADMIXTURE.r -p $FILE -i $FILE.list -k 5 -l PunNyerMak,PunPundMak,PunNyerPyt,PunHybrPyt,PunPundPyt</code></pre>
+<p>By default, the script generates a tiff file that uses the same prefix as the one provided with -p.&nbsp;In our case <code>$FILE.tiff</code>. This can be changed with -o</p>
+<output prefix="">
+<p>if necessary, but for now we will keep it as it is.</p>
+<p>To examine the file, you need to download it to your local machine using either <code>scp</code> (Mac OS, Linux) or an scp client such as <a href="https://filezilla-project.org/">filezilla</a>.</p>
+</output></section>
+</section>
+<section id="some-points-to-keep-in-mind" class="level3">
+<h3 class="anchored" data-anchor-id="some-points-to-keep-in-mind">Some points to keep in mind</h3>
+<p>Remember that ADMIXTURE/STRUCTURE plots can be quite misleading as different demographic histories can lead to the same results (see. e.g.&nbsp;<a href="https://www.nature.com/articles/s41467-018-05257-7">Lawson et al, 2018</a>) These plots are great to detect recent hybrids but they are not ideal to infer complex demographic histories with hybrid origins of entire populations</p>
+<p>To evaluate if the ADMIXTURE plot is a good fit, you can use <a href="http://www.popgen.dk/software/index.php/EvalAdmix">evaladmix</a> and we highly recommend to also use other methods to help infer the demographic history and evidence of hybridisation such as independent tests of gene flow or demographic analyses.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
