@@ -80,7 +80,7 @@ Arrivals and light evening meal
 
 12.00-14.00     Lunch + **visit snail beach**
 
-14.00-17.00     [Introduction to GEA and RDA as a general toolkit](RDA.qmd) (Cynthia)
+14.00-17.00     [RDA as a flexible tool](RDA.qmd) (Cynthia)
 
 17.00-18.00     Dinner
 

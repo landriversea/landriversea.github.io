@@ -330,7 +330,7 @@ elevation<- elevation_30s(country="Sweden", path=tempdir() )
 
 
 ggplot() +
-  geom_raster(data = elevation, aes(x = x, y = y, fill = USA_elv_msk), show.legend = FALSE) +
+  geom_raster(data = elevation, aes(x = x, y = y, fill = SWE_elv_msk), show.legend = FALSE) +
   scale_fill_gradient(low = "lightgray", high = "black") +
   theme_void()
 ```

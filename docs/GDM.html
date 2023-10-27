@@ -382,6 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><em>Instructor: Riginos</em></p>
 <section id="geas-with-generalized-dissimilarity-modeling-gradient-forests" class="level1">
 <h1>GEAs with Generalized dissimilarity modeling &amp; Gradient forests</h1>
 <ul>
@@ -689,13 +690,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>gdmRef <span class="ot">&lt;-</span> <span class="fu">gdm</span>(SNPs_ref, <span class="at">geo=</span><span class="cn">TRUE</span>) <span class="co">#gives warning but works</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>gdmRef<span class="sc">$</span>explained <span class="co"># From F&amp;K2015: "GDM explained more than 63% of the deviance in turnover in genetic composition of reference"</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmRef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>refSplines <span class="ot">&lt;-</span> <span class="fu">isplineExtract</span>(gdmRef) <span class="co"># extract spline data for custom plotting</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot GDM for GI5 SNPs</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>gdmGI5 <span class="ot">&lt;-</span> <span class="fu">gdm</span>(GI5, <span class="at">geo=</span><span class="cn">TRUE</span>) <span class="co">#ignore warning</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>gdmGI5<span class="sc">$</span>explained</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmGI5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmRef)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>refSplines <span class="ot">&lt;-</span> <span class="fu">isplineExtract</span>(gdmRef) <span class="co"># extract spline data for custom plotting</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot GDM for GI5 SNPs</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>gdmGI5 <span class="ot">&lt;-</span> <span class="fu">gdm</span>(GI5, <span class="at">geo=</span><span class="cn">TRUE</span>) <span class="co">#ignore warning</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>gdmGI5<span class="sc">$</span>explained</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmGI5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You will recognize some of the plots from Figure 3. Notice how variable the spline functions can be.</p>
 </section>
@@ -714,30 +715,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As before, we focus on the reference and GIGANTEA-5 (GI5) datasets. And make individual dataframes to feed into the analyses.</p>
 <p>The datafile should be preloaded, otherwise download from <a href="data/poplarSNP.ENV.data.4.GF.csv">here</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gfData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/poplarSNP.ENV.data.4.GF.csv"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>envGF <span class="ot">&lt;-</span> gfData[,<span class="dv">3</span><span class="sc">:</span><span class="dv">13</span>] <span class="co"># get climate &amp; MEM variables</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># build individual SNP datasets</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>SNPs_ref <span class="ot">&lt;-</span> gfData[,<span class="fu">grep</span>(<span class="st">"REFERENCE"</span>,<span class="fu">colnames</span>(gfData))] <span class="co"># reference 360 loci</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>GI5 <span class="ot">&lt;-</span> gfData[,<span class="fu">grep</span>(<span class="st">"GI5"</span>,<span class="fu">colnames</span>(gfData))] <span class="co"># GIGANTEA-5 (GI5)</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>maxLevel <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fl">0.368</span><span class="sc">*</span><span class="fu">nrow</span>(envGF)<span class="sc">/</span><span class="dv">2</span>) <span class="co">#account for correlations, F&amp;K set this flag but do not explain beyond saying "see ?gradientForest"</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit gf models for reference SNPs </span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>gfRef <span class="ot">&lt;-</span> <span class="fu">gradientForest</span>(<span class="fu">cbind</span>(envGF, SNPs_ref), <span class="at">predictor.vars=</span><span class="fu">colnames</span>(envGF), <span class="at">response.vars=</span><span class="fu">colnames</span>(SNPs_ref), <span class="at">ntree=</span><span class="dv">500</span>, <span class="at">maxLevel=</span>maxLevel, <span class="at">trace=</span>T, <span class="at">corr.threshold=</span><span class="fl">0.50</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit gf models for GI5 SNPs</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>gfGI5 <span class="ot">&lt;-</span> <span class="fu">gradientForest</span>(<span class="fu">cbind</span>(envGF, GI5), <span class="at">predictor.vars=</span><span class="fu">colnames</span>(envGF),</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">response.vars=</span><span class="fu">colnames</span>(GI5), <span class="at">ntree=</span><span class="dv">500</span>, </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                          <span class="at">maxLevel=</span>maxLevel, <span class="at">trace=</span>T, <span class="at">corr.threshold=</span><span class="fl">0.50</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plot output, see ?plot.gradientForest</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type=</span><span class="st">"O"</span>) <span class="co"># values that feed into Fig1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"C"</span>)  <span class="co"># Fig2 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"S"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#can do the same for GI5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gfData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/poplarSNP.ENV.data.4.GF.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>envGF <span class="ot">&lt;-</span> gfData[,<span class="dv">3</span><span class="sc">:</span><span class="dv">13</span>] <span class="co"># get climate &amp; MEM variables</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># build individual SNP datasets</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>SNPs_ref <span class="ot">&lt;-</span> gfData[,<span class="fu">grep</span>(<span class="st">"REFERENCE"</span>,<span class="fu">colnames</span>(gfData))] <span class="co"># reference 360 loci</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>GI5 <span class="ot">&lt;-</span> gfData[,<span class="fu">grep</span>(<span class="st">"GI5"</span>,<span class="fu">colnames</span>(gfData))] <span class="co"># GIGANTEA-5 (GI5)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>maxLevel <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fl">0.368</span><span class="sc">*</span><span class="fu">nrow</span>(envGF)<span class="sc">/</span><span class="dv">2</span>) <span class="co">#account for correlations, F&amp;K set this flag but do not explain beyond saying "see ?gradientForest"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit gf models for reference SNPs </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>gfRef <span class="ot">&lt;-</span> <span class="fu">gradientForest</span>(<span class="fu">cbind</span>(envGF, SNPs_ref), <span class="at">predictor.vars=</span><span class="fu">colnames</span>(envGF), <span class="at">response.vars=</span><span class="fu">colnames</span>(SNPs_ref), <span class="at">ntree=</span><span class="dv">500</span>, <span class="at">maxLevel=</span>maxLevel, <span class="at">trace=</span>T, <span class="at">corr.threshold=</span><span class="fl">0.50</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit gf models for GI5 SNPs</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>gfGI5 <span class="ot">&lt;-</span> <span class="fu">gradientForest</span>(<span class="fu">cbind</span>(envGF, GI5), <span class="at">predictor.vars=</span><span class="fu">colnames</span>(envGF),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">response.vars=</span><span class="fu">colnames</span>(GI5), <span class="at">ntree=</span><span class="dv">500</span>, </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                          <span class="at">maxLevel=</span>maxLevel, <span class="at">trace=</span>T, <span class="at">corr.threshold=</span><span class="fl">0.50</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># plot output, see ?plot.gradientForest</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type=</span><span class="st">"O"</span>) <span class="co"># values that feed into Fig1</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"C"</span>)  <span class="co"># Fig2 </span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"S"</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#can do the same for GI5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>

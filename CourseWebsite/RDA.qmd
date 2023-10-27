@@ -1,5 +1,5 @@
 ---
-title: "Intro to RDA as a general toolkit"
+title: "Intro to RDA as a flexible tool"
 execute:
   output: false
   eval: false
@@ -7,15 +7,15 @@ execute:
 
 *Instructor: Riginos*
 
-# GEAs with RDA
+# RDA as a flexible tool
 
 ## GEAs: Genotype-by-environment associations
 
 ( = environmental associations)
 
-1.  Genome-wide: related to demographic history, ecological speciation/diversification, isolation by environment
+From Monday:
 
-![Processes leading to IBE - Wang & Bradburd 2014](images/IsolationByEnvironment1-Wang_and_Bradburd_2014.png)
+1.  Genome-wide: related to demographic history, ecological speciation/diversification, isolation by environment
 
 ![IBE signals - Wang & Bradburd 2014](images/IsolationByEnvironment2-Wang_and_Bradburd_2014.png)
 
@@ -25,7 +25,7 @@ execute:
 
 ![Rellstab et al 2015 (Image modified from Sork et al 2013)](images/environment_genotype_phenotype_Rellstab2015.png)
 
-There is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as *outlier tests* or *genomic scans* are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al. 2015 is a good review of the various methods if you are looking for further reading on this topic.)
+We will come back to this topic on Friday.
 
 # Why RDA (and other multivariate methods)?
 
@@ -98,6 +98,8 @@ RDA can address the following questions (citing Capblancq et al. 2021):
 -   Note that this is a linear procedure: lines are being fitted.
 
 -   Eigenvalues ($\lambda$) describe the amount of variance explained by each eigenvector (= line = PC axis)
+
+![PCA - Wagner & Fortin 2016](images/PCA_Wagner_Fortin_2016.png)
 
 ## PCoA or PCO: Principal coordinates analysis
 
