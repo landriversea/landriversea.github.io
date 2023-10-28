@@ -3,6 +3,9 @@ title: "Maps & spatial data"
 execute:
   output: false
   eval: false
+format: 
+  html: default
+  pdf: default
 ---
 
 ![](images/world_viridis.png){width="100%"}
@@ -50,6 +53,8 @@ library(tidyterra)
 library(rnaturalearth)
 library(geodata)
 library(sdmpredictors)
+
+path<-"./home/data/spatial/"
 
 ```
 
@@ -148,7 +153,7 @@ Import this csv file making sure to fix the path and file name to match your set
 ```{r read in bunyadata}
 
 #load data
-BunyaMountainTrees<-read_csv("./data/BunyaMountainTrees.csv")
+BunyaMountainTrees<-read_csv(paste0(path, "BunyaMountainTrees.csv"))
 
 #Convert the tibble to a simple features object, with x and y coordinates
 # Each row is a tree 
@@ -232,7 +237,7 @@ Notice "WGS84, zone 56". (Although N and S are not stated, we can guess that the
 Here is how we assign the correct CRS to \`BunyaMountainSites\` and also turn it into an sf object.
 
 ```{r Attach CRS}
-BunyaMountainSites <-read_csv("./data/BunyaMountainSites.csv")
+BunyaMountainSites <-read_csv(paste0(path, "BunyaMountainSites.csv"))
 
 BunyaMountainSites_sf<-st_as_sf(BunyaMountainSites, coords = c("easting", "northing"))  #convert the tibble to an sf object 
 st_crs(BunyaMountainSites_sf) <-"EPSG:32756"

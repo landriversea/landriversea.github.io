@@ -1,5 +1,8 @@
 ---
 title: "Land, river, & seascape genomics"
+format: 
+  html: default
+  pdf: default
 ---
 
 # What is landscape genomics?
@@ -12,7 +15,7 @@ title: "Land, river, & seascape genomics"
 
 > Landscape genetics tests the model that $G \sim f(E)$ - Dyer 2015, Molecular Ecology
 
-## Is *landscape genomics* fundamentally different from *landscape genetics*?
+## Is landscape *genomics* fundamentally different from landscape *genetics*?
 
 No, just swap "genetics" for "genomics" - Balkenhol et al 2016
 
@@ -20,7 +23,9 @@ Yes - "Whereas landscape genetics studies primarily focus on testing the effects
 
 ![Comparing landscape genetics and genomics - Storfer et al 2018](images/landscapegenetics_vs_genomics_Storfer_etal_2018.png.png)
 
-In this course, we will focus on a few topics in landscape genomics aiming to give you a solid foundation in the field. We will not be comprehensive but will try to point out important topics when we encounter them. There is a stronger emphasis on population genomics and various landscapes (especially marine) than might be found in other landscape genomic courses.
+**What do *you* think?**
+
+In this course, we will focus on a few topics in landscape genomics aiming to give you a solid foundation in the field. We will not be comprehensive but will try to point out important topics when we encounter them. There is a stronger emphasis on population genomics and various landscapes (especially marine) in this course than might be found in other landscape genomic courses. Look at the optional readings as suggestions on how to learn more about various topics.
 
 **What are we covering and why?**
 
@@ -38,7 +43,7 @@ In this course, we will focus on a few topics in landscape genomics aiming to gi
 
 -   Biophysical models of dispersal
 
--   More GEAs and genomic offsets
+-   More genotype-environmenta asociations and genomic offsets
 
 -   (Time permitting) Landscape genomics and genetic architectures
 
@@ -52,7 +57,7 @@ In this course, we will focus on a few topics in landscape genomics aiming to gi
 
 # Activity 1
 
-Make a poster of your study system - no one will be judged for their artistry.
+Make a poster of your study system - no one will be judged for their artistry!
 
 Your poster needs to include information on your organism and your landscape.
 
@@ -60,7 +65,7 @@ Your poster needs to include information on your organism and your landscape.
 
 -   Are there critical genomic elements to your study?
 
--   What is the overarching question or hypothesis
+-   What is the overarching question or hypothesis?
 
 -   (Don't forget to add your name!)
 
@@ -76,7 +81,7 @@ Fundamentally there are three main steps to any landscape genetic/genomic study:
 
 3.  Use statistics to look for correlations between spatial and genetic attributes.
 
-(Recommended by rarely done - independent corroboration/validation)
+(Recommended by rarely done: independent corroboration/validation)
 
 (Optional - very popular recently, predict adaptive matching to future environments, genomic offsets)
 
@@ -88,10 +93,18 @@ Fundamentally there are three main steps to any landscape genetic/genomic study:
 
 ![Attributes of spatial variables - Riginos et al. 2016](images/spatial_attribute_Riginos_etal_2016.png)
 
+![Various spatial variables for Northern Europe - Riginos et al 2016](images/Europe_variables_Riginos_etal_2016.png)
+
+![Scales of autocorrelation with Moran's I - Riginos et al 2016](images/Autocorrelation_scales_Riginos_etal_2016.png)
+
+![Using PCA biplot to visualise correlations - Riginos et al 2016](images/Corellations_Riginos_etal_2016.png)
+
 Other factors to consider -
 
 -   What is the grain size of your spatial variables?
--   Are spatial variables site specific or gridded (remote sensing)
+-   Are spatial variables site specific or gridded (remote sensing)?
+
+![Remote sensing products may have a biologically irrelevant grain size](images/Spatial_grain_size.png)
 
 ------------------------------------------------------------------------
 
@@ -103,25 +116,35 @@ Consider three basic habitat types: terrestrial, marine, freshwater
 
 -   What spatial factors affect population sizes?
 
--   What environmental factors are likely to have been important agents of selection within species' ranges over evolutionary time?
+-   What environmental factors are likely to have been important agents of selection within species' ranges over [evolutionary time]{.underline}?
 
 -   Under historical conditions, what is the time frame of the above spatial factors? (thousands of years, tens of years, months, days...)
 
--   How have human activities modified any of the above factors?
+-   How have human activities modified any of the above factors (spatially, temporally)?
 
 -   (For all of these questions you might decide to break their effects down by different taxonomic groups)
 
-Further reading on this topic for aquatic habitats:
+Further reading on related ideas for aquatic habitats:
 
--   Blanchet, S., Prunier, J. G., Paz-Vinas, I., Saint-Pe, K., Rey, O., Raffard, A., Mathieu-Begne, E., Loot, G., Fourtune, L., & Dubut, V. (2020). A river runs through it: The causes, consequences, and management of intraspecific diversity in river networks. Evolutionary Applications, 13(6), 1195-1213. doi:10.1111/eva.12941
+-   Blanchet, S., Prunier, J. G., Paz-Vinas, I., Saint-Pe, K., Rey, O., Raffard, A., Mathieu-Begne, E., Loot, G., Fourtune, L., & Dubut, V. (2020). A river runs through it: The causes, consequences, and management of intraspecific diversity in river networks. Evolutionary Applications, 13(6), 1195-1213.
 
--   Grummer, J. A., Beheregaray, L. B., Bernatchez, L., Hand, B. K., Luikart, G., Narum, S. R., & Taylor, E. B. (2019). Aquatic landscape genomics and environmental effects on genetic variation. Trends in Ecology and Evolution, 1-14. doi:10.1016/j.tree.2019.02.013
+-   Grummer, J. A., Beheregaray, L. B., Bernatchez, L., Hand, B. K., Luikart, G., Narum, S. R., & Taylor, E. B. (2019). Aquatic landscape genomics and environmental effects on genetic variation. Trends in Ecology and Evolution, 1-14.
 
--   Riginos, C., & Liggins, L. (2013). Seascape genetics: populations, individuals, and genes marooned and adrift. Geography Compass, 7(3), 197-216. doi:papers3://publication/doi/10.1111/gec3.12032
+-   Riginos, C., & Liggins, L. (2013). Seascape genetics: populations, individuals, and genes marooned and adrift. Geography Compass, 7(3), 197-216.
 
--   Selkoe, K. A., Henzler, C. M., & Gaines, S. D. (2008). Seascape genetics and the spatial ecology of marine populations. Fish and Fisheries, 9(4), 363-377. doi:papers3://publication/doi/10.1111/j.1467-2979.2008.00300.x
+-   Selkoe, K. A., Henzler, C. M., & Gaines, S. D. (2008). Seascape genetics and the spatial ecology of marine populations. Fish and Fisheries, 9(4), 363-377.
 
 ------------------------------------------------------------------------
+
+## The "Matrix" and how it differs on land and in the sea
+
+McRae 2006 -- Isolation by resistance:
+
+![Static terrestrial matrix - McRae 2003](images/Matrix_McRae_2003.png)
+
+Temporal variability in planktonic dispersal - Watson et al 2012
+
+![Temporally variable dispersal through the marine matrix](images/dispersal_variability_Watson_etal_2012.png)
 
 # Describing relationships between sampling sites
 
@@ -135,7 +158,7 @@ Many of the methods used in landscape genetics/genomics have their origins in sp
 
 -   Also, get used to thinking about genetic diversity in terms of alpha and beta diversity
 
--   Methodological inspirations for landscape genomics often come from landscape genetics, especially for describing spatial structure
+-   Methodological inspirations for landscape genomics often come from landscape genetics, especially for describing spatial structure. Searching this literature for solutions and inspiration can be fruitful.
 
 -   Tools borrowed from landscape ecology help move between different types of data and analyses
 
@@ -177,7 +200,7 @@ Exploratory
 
     -   Random
 
-    -   Stratified random (break up spatial correlations among environmental variables)
+    -   Stratified (break up spatial correlations among environmental variables)
 
     -   Across "hotspots" of environmental turnover
 
@@ -185,19 +208,33 @@ Hypothesis testing
 
 -   Interested in one environmental variable?
 
-    -   Pairs or gradients (but look at co-varying environmental factors)
+    -   Pairs or gradients (but look at co-varying environmental factors, apply stratification concepts)
 
 -   Candidate loci have been independently identified?
 
-    -   What is the relevant environmental variable and can you design sampling to break up correlations with other variables?
+    -   What is the relevant environmental variable and can you design sampling to break up correlations with other variables (stratification, again)?
 
-(In reality, most landscape genomic studies sample opportunistically)
+(In reality, most landscape genomic studies sample opportunistically and try to deal with spatial correlations at the analytical stage.)
+
+![Sampling for different purposes - Rellstab et al 2015](images/Detail_Rellstab_etal_2015.png)
+
+**Only 3.4% of studies have used paired sampling!** (Dauphin et al 2023)
+
+## Conceptual example of stratified sampling
+
+![Stratified sampling - Liggins et al 2019](images/StratifiedSampling1_Liggins_etal_2019.png)
+
+![Stratified sampling - Liggins et al 2019](images/StratifiedSampling2_Liggins_etal_2019.png)
+
+## Sampling across shifts in multidimensional environments for exploratory studies
+
+!["Hotspots" of environmental change - Riginos et al 2016](images/Environmental_shifting_hotspots_Riginos_etal_2016.png)
 
 # Ubiquitous problems in LG
 
--   methods are biased to find few genes of large effect and yet most traits are likely polygenic
--   outlier methods are biased to find false positives when there is underlying population structure
--   collinearity of environmental variables makes moving from association to causation impossible
+-   Methods are biased to find few genes of large effect and yet most traits are likely polygenic
+-   Outlier methods are biased to find false positives when there is underlying population structure
+-   Collinearity of environmental variables makes moving from association to causation impossible without experiments
 
 A more detailed workflow:
 
@@ -215,18 +252,32 @@ Could you modify your study design to align to your goals?
 
 ------------------------------------------------------------------------
 
-# References from tutorial
+# References cited in this tutorial
 
 -   Balkenhol, N., Dudaniec, R. Y., Krutovsky, K. V., Johnson, J. S., Cairns, D. M., Segelbacher, G., Selkoe, K. A., von der Heyden, S., Wang, I. J., Selmoni, O., & Joost, S. (2016). Landscape Genomics: Understanding Relationships Between Environmental Heterogeneity and Genomic Characteristics of Populations. In *Population Genomics* (Vol. 54, pp. 261-322). Cham: Springer International Publishing.
+
+-   Dauphin, B., Rellstab, C., Wuest, R. O., Karger, D. N., Holderegger, R., Gugerli, F., & Manel, S. (2023). Re-thinking the environment in landscape genomics. Trends Ecol Evol, 38(3), 261-274. doi:10.1016/j.tree.2022.10.010
 
 -   Dyer, R. J. (2015). Is there such a thing as landscape genetics? *Molecular Ecology, 24*(14), 3518-3528.
 
 -   Epperson, B.K. (2003) Geographical Genetics, Princeton University Press as origin of landscape genetics
 
+-   Liggins, L., Treml, E. A., & Riginos, C. (2019). Seascape genomics: contextualizing adaptive and neutral genomic variation in the ocean environment.
+
 -   Manel, S., Schwartz, M. K., Luikart, G., & Taberlet, P. (2003). Landscape genetics: combining landscape ecology and population genetics. *Trends in ecology & evolution, 18*(4), 189-197.
+
+-   Riginos, C., Crandall, E. D., Liggins, L., Bongaerts, P., & Treml, E. A. (2016). Navigating the currents of seascape genomics: how spatial analyses can augment population genomic studies. Current Zoology, 62(6), 581-601.
 
 -   Rellstab, C., Gugerli, F., Eckert, A. J., Hancock, A. M., & Holderegger, R. (2015). A practical guide to environmental association analysis in landscape genomics. Molecular Ecology, 24(17), 4348-4370.
 
 -   Storfer, A., Patton, A., & Fraik, A. K. (2018). Navigating the interface between landscape genetics and landscape genomics. *Front Genet, 9*, 68.
 
 -   Wagner, H. H., & Fortin, P. D. M.-J. (2016). Basics of spatial data analysis: linking landscape and genetic data for landscape genetic studies. In N. Balkenhol, S. A. Cushman, A. Storfer, & L. P. Waits (Eds.), Landscape Genetics: Concepts, Methods, Applications (pp. 1-22): John Wiley & Sons, Ltd.
+
+-   Wang, I. J., & Bradburd, G. S. (2014). Isolation by environment. Molecular Ecology, 23(23), 5649-5662.
+
+# Further readings - books
+
+-   Landscape Genetics: Concepts, Methods and Applications, 2016. Edited by Balkenhol, Cushman, Storfer & Waits. Wiley Blackwell.
+
+-   Population genomics: Marine organisms. 2020. Oleksiak, Marjorie F., and Om P. Rajora, eds. Springer.

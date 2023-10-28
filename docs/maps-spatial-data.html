@@ -347,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#challenge-5" id="toc-challenge-5" class="nav-link" data-scroll-target="#challenge-5">Challenge 5</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="maps-spatial-data.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -409,7 +409,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geodata)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"./home/data/spatial/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="getting-oriented-with-spatial-data" class="level1">
@@ -496,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Import this csv file making sure to fix the path and file name to match your set up. Before you convert the dataframe to a spatial features object take at look at how it is structured. Repeat this after you convert it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>BunyaMountainTrees<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"./data/BunyaMountainTrees.csv"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>BunyaMountainTrees<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(path, <span class="st">"BunyaMountainTrees.csv"</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the tibble to a simple features object, with x and y coordinates</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Each row is a tree </span></span>
@@ -566,7 +568,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Notice “WGS84, zone 56”. (Although N and S are not stated, we can guess that the projection is S since the Bunya Mountains are in the southern hemisphere!) Once you find the projection description, google it, and you will be likely directed to the relevant <a href="#0">EPSG site</a>. Here, we can use either the EPSG number or (scrolling down the page) copy the PROJ.4 text.</p>
 <p>Here is how we assign the correct CRS to `BunyaMountainSites` and also turn it into an sf object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"./data/BunyaMountainSites.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(path, <span class="st">"BunyaMountainSites.csv"</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites_sf<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainSites, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>))  <span class="co">#convert the tibble to an sf object </span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(BunyaMountainSites_sf) <span class="ot">&lt;-</span><span class="st">"EPSG:32756"</span></span>
