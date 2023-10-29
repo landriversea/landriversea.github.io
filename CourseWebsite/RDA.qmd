@@ -3,6 +3,9 @@ title: "Intro to RDA as a flexible tool"
 execute:
   output: false
   eval: false
+format: 
+  html: default
+  pdf: default
 ---
 
 *Instructor: Riginos*
@@ -200,7 +203,7 @@ Variety of approaches (to be explored in the computer activities that follow)
 
 The original tutorial can be found on [GitHub](https://github.com/Capblancq/RDA-landscape-genomics) and shows how to locate and prepare original data files.
 
-This 2023 update uses files that have been compiled and tidied. Much of the code is also updated to make use of `sf` and `terra` but some of the code is from the original tutorial.
+This 2023 update uses files that have been compiled and tidied. Much of the code is also updated to make use of `sf` and `terra` but some of the code is from the original tutorial. The original code is likely to break soon as support for older spatial packages is removed - you will likely see some warnings.
 
 Original comments by Capblancq & Forester will be indented
 
@@ -222,7 +225,7 @@ Original comments by Capblancq & Forester will be indented
 
 These data have been compiled and projected into the WGS84 reference coordinate system following instructions from Capblancq & Forester and saved as a spatial raster.
 
--   `ras_6190.rast` = present day
+-   `ras_6190.tif` = present day
 
 #### Population allele frequencies
 
@@ -243,7 +246,7 @@ Datafiles
 -   `AllFreq_neutral`: 281 populations, 3936 loci
 -   `PlSeedlots.csv`: the geographic coordinates of each source population.
 
-Look at all these files using tools and techniques that you have learned. What is in the `ras_6190.rast` object? (try plotting it)
+Look at all these files using tools and techniques that you have learned. What is in the `ras_6190.tif` object? (try plotting it)
 
 Some comments from C & F:
 
@@ -260,16 +263,18 @@ library(terra)
 library(vegan)
 library(corrplot)
 
+path<-"./home/data/rda/"
+
 #Climate data
-ras_6190<-terra::rast("./home/data/ras_6190.tif")
+ras_6190<-terra::rast(paste0(path, "ras_6190.tif"))
 names(ras_6190) <- c("AHM","bFFP","CMD","DD_0","DD_18","DD18","DD5","eFFP","EMT", "Eref", "EXT", "FFP", "MAP", "MAR", "MAT", "MCMT", "MSP", "MWMT", "NFFD", "PAS", "PPT_sm", "PPT_wt", "RH", "SHM", "Tave_sm", "Tave_wt", "TD")
 
 # Genetic data
-load("./home/data/AllFreq.RData")
-load("./home/data/Neutral.RData")
+load(paste0(path, "AllFreq.RData"))
+load(paste0(path, "Neutral.RData"))
 
 #Sampling sites
-Coordinates <- read.table("./home/data/PlSeedlots.csv", sep = ",", header = T, row.names = 1)
+Coordinates <- read.table(paste0(path, "PlSeedlots.csv"), sep = ",", header = T, row.names = 1)
 
 # Tidy up the coordinates data and check them
 Coordinates <- Coordinates[match(row.names(AllFreq), Coordinates$id2, nomatch = 0),]
@@ -384,7 +389,7 @@ Interrupt the processing for the sake of time and load the output of the full or
 
 ```{r load mod}
 # load the output
-load("./home/data/mod.Rdata")
+load(paste0(path, "mod.Rdata"))
 ```
 
 As before, examine the `mod` object in detail. How much variance does RDA1 explain? Is RDA1 dominated by a single environmental variable or spread among variables?
@@ -454,7 +459,7 @@ RsquareAdj(pRDAstruct)
 #anova(pRDAstruct)
 ```
 
-### Geogrpahy
+### Geography
 
 And another pRDA for geography
 
@@ -475,7 +480,7 @@ RsquareAdj(pRDAgeog)
 > -   Model R\^2\^
 > -   Model p-value
 
-For the "confounded"row, this should be the full model minus the sum of the partial models, for example, the proportion of explainable variance is 1 - (0.27+0.22+0.05). You can dig into this further with the function `varpart()`.
+For the "confounded" row, this should be the full model minus the sum of the partial models, for example, the proportion of explainable variance is 1 - (0.27+0.22+0.05). You can dig into this further with the function `varpart()`.
 
 > **Note:** It is interesting to look at the degree of correlation among variables using a correlogram:
 
@@ -545,6 +550,19 @@ plot(pine.mem, SpORcoords = Coordinates[,c(2,3)])
 You could play with using the first few MEMs in modified RDAs of the pine data. Remove longitude and latitude if you do this.
 
 If you plan to use MEMs in your own research, you will want to investigate much further. Right now, this code demonstrate how you can make them so you have a basic understanding of what they are when you read about MEMs in paper. A good place to start would be by following the [adespatial tutorial](https://cran.r-project.org/web/packages/adespatial/vignettes/tutorial.html).
+
+```{r save key files}
+#|: echo: false
+
+library(raster)  
+
+export_path<-"./home/data/gea/"
+write.csv(Coordinates, paste0(export_path, "Coordinates.csv"))
+write.csv(Variables, paste0(export_path, "Variables.csv"))
+write.csv(Env, paste0(export_path, "Env.csv"))
+
+
+```
 
 ------------------------------------------------------------------------
 

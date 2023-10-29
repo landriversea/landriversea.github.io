@@ -55,11 +55,11 @@ Arrivals and light evening meal
 
 15.00-15.30     Coffee/Tea
 
-15.30-16.30     **Tour de lab** (Kerstin)
+15.30-16.30     **Walk and talk**
 
 17.00-18.00     Dinner
 
-18.00-20.00     **Short project presentations by participants** (1-8)
+18.00-20.00     **Free time, catch up on readings**
 
 ### Monday 30th October
 
@@ -67,13 +67,13 @@ Arrivals and light evening meal
 
 09.00-12.00     [Land/river/seascape genetics](land-river-sea.qmd) (Cynthia)
 
-12.00-14.00     Lunch + **walk & talk**
+12.00-14.00     Lunch + **Tour de Lab**
 
 14.00-17.00     [Making maps and using spatial data](maps-spatial-data.qmd) (Cynthia)
 
 17.00-18.00     Dinner
 
-18.00-20.00     **Short project presentations by participants** (9-16)
+18.00-20.00     **Short project presentations by participants**
 
 ### Tuesday 31th October
 
@@ -87,7 +87,7 @@ Arrivals and light evening meal
 
 17.00-18.00     Dinner
 
-18.00-20.00     **Short project presentations by participants** (17-24)
+18.00-20.00     **Short project presentations by participants**
 
 ### Wednesday 1st November
 
