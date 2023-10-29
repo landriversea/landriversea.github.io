@@ -1,0 +1,45 @@
+---
+title: "server connections"
+---
+
+# Accessing the course server
+
+In this course, many analyses will be performed on a remote server. You will access the server in two ways, using Rstudio in your web browser, and through the command line using a terminal on your local machine.
+
+Each of you will be given a user account and password by the instructors. You will use this for both the Rstudio web page and to ssh into the server in the terminal.
+
+## Rstudio access
+
+To access the Rstudio instance, you can connect directly through your web browser. A link to this will be pinned in the #connections-and-installations Slack channel, as well as written on the board.
+
+You may see a warning that the connection is not safe, it is safe to bypass this message and continue to Rstudio. Here you can log in with your Rstudio credentials.
+
+**IMPORTANT**: If this is your first time logging into Rstudio on the server for this course, you will need to do the following:
+
+In the lower left pane of the Rstudio webpage, click on the 'Terminal' tab. Here, you will see the command line for the server. Run the following command:
+
+``` bash
+echo "R_LIBS='/resources/riverlandsea/envs/r-landriversea/lib/R/library'" >> ~/.Renviron
+```
+
+This will make it so you can use packages we have installed for this course. You may need to restart the R session after this step, you can do that by going to the menu bar at the top, and choosing 'Session \> Restart R'. You shouldn't need to install any packages, as we have prepared the ones used in the course, but please tell us if something is missing so we can install it where everyone can use it.
+
+## Terminal access
+
+For bash exercises, you will utilize a terminal application that you've installed on your computer. If you have trouble with this, you can use the Rstudio webpage, and utilize the 'Terminal' tab we used in the initial setup.
+
+If you're using your own terminal, you will ssh into the server to run commands there. You can do so with the following command:
+
+``` bash
+ssh user@server-address
+```
+
+`user` will be the username given to you by the instructors and `server-address` will be pinned in the #connections-and-installations channel on Slack. You'll be prompted to trust the connection, and fill in your password. Afterwards, you should see that you are now in your home directory on the server!
+
+## Directories
+
+There are a few main directories you'll need on the server:
+
+`~/` is your home directory, you can keep your working files here.
+
+`/resources/riverlandsea/exercise_data` contains the input data files for the exercises.

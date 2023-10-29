@@ -5,9 +5,12 @@ format:
   pdf: default
 ---
 
+## [Link for instructions to connect to servers](servers.qmd)
+
 ## Overview
 
 How spatial data on properties of terrestrial and marine environments can be combined with genomic data to gain an understanding of population structure, dispersal routes and patterns. And how such can facilitate appropriate and sustainable land and seabottom use and management.
+
 
 ## Teachers
 

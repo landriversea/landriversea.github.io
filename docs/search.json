@@ -168,18 +168,11 @@
     "text": "Simple RDA for outlier identification\n\nIn this example, we accounted for population structure, as is commonly recommended when conducting genome scans; however, there are cases where this approach can be overly conservative. To investigate this issue in the lodgepole pine data, we compared the candidates identified with the partial RDA to those identified using a simple RDA.\n\n\n## Running a simple RDA model\nRDA_env_unconstrained &lt;- rda(AllFreq ~ MAR + EMT + MWMT + CMD + Tave_wt + DD_18 + MAP + Eref + PAS,  Variables)\n \n## Running the rdadapt function\nrdadapt_env_unconstrained &lt;- rdadapt(RDA_env_unconstrained, 2)\n\n## Setting the p-value threshold \nthres_env &lt;- 0.01/length(rdadapt_env_unconstrained$p.values)\n\n## Identifying the outliers for the simple RDA\noutliers_unconstrained &lt;- data.frame(Loci = colnames(AllFreq)[which(rdadapt_env_unconstrained$p.values&lt;thres_env)], p.value = rdadapt_env_unconstrained$p.values[which(rdadapt_env_unconstrained$p.values&lt;thres_env)], contig = unlist(lapply(strsplit(colnames(AllFreq)[which(rdadapt_env_unconstrained$p.values&lt;thres_env)], split = \"_\"), function(x) x[1])))\noutliers_unconstrained &lt;- outliers_unconstrained[order(outliers_unconstrained$contig, outliers_unconstrained$p.value),]\noutliers_rdadapt_env_unconstrained &lt;- as.character(outliers_unconstrained$Loci[!duplicated(outliers_unconstrained$contig)])\n\n\nOverlap among all outliers with and without conditioning on population structure\n\n## For all the outliers\nlist_outliers_RDA_all &lt;- list(RDA_constrained = as.character(outliers$Loci), RDA_unconstrained = as.character(outliers_unconstrained$Loci))\n\n#plot Venn diagram\nggVennDiagram(list_outliers_RDA_all, category.names = c(\"partial RDA\", \"simple RDA\"), lty=\"solid\", size=0.2) + \n  scale_fill_gradient2(low = \"white\", high = 'gray40') + scale_color_manual(values = c(\"grey\", \"grey\", \"grey\", \"grey\")) + guides(fill = \"none\") + theme(text = element_text(size=16, family = \"Times\"))\n\n(Numbers don’t quite match the publication….)\n\n\nOverlap among RDA (“top”) outliers with and without conditioning on population structure\n\n## Only for the top hit locus per contig\nlist_outliers_RDA_top &lt;- list(RDA_constrained = outliers_rdadapt_env, RDA_unconstrained = outliers_rdadapt_env_unconstrained)\nggVennDiagram(list_outliers_RDA_top, category.names = c(\"partial RDA\", \"simple RDA\"), lty=\"solid\", size=0.2) + \n  scale_fill_gradient2(low = \"white\", high = 'gray40') + scale_color_manual(values = c(\"grey\", \"grey\", \"grey\", \"grey\")) + guides(fill = \"none\") + theme(text = element_text(size=16, family = \"Times\"))\n\n\nFor all of the following RDA-based analyses we decided to retain only the 91 loci that were detected by both the partial RDA that accounted for population structure and by the simple RDA that did not account for population structure.\n\n\ncommon_outliers_RDA_top &lt;- Reduce(intersect, list_outliers_RDA_top)\n\n\nNotes on interpretation and best practices: We emphasize that there is no correct answer to the common dilemma of confounded variation in GEA, differentiation-based, and genome-wide association analyses. Instead, researchers must balance their tolerance for false negative and false positive rates, and use an analytical approach that best matches the objectives of the study as well as the potential ability to validate candidate loci. More generally, awareness of the tradeoffs associated with decisions such as population structure correction will allow users to appropriately interpret their results, both statistically and biologically. Decisions about if and how to correct for population structure, how to set outlier thresholds, and how to finalize a set of candidate adaptive markers will depend upon the objectives of the study and the data available (if any) for validation. The approach presented here is not meant to be applied without modification; modeling parameters (including what environmental predictors are used and how they are selected, see variable selection above) and other decisions should be determined based on the ecology of the organism, characteristics of the data set, and goals of the study."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About the course",
-    "section": "",
-    "text": "How spatial data on properties of terrestrial and marine environments can be combined with genomic data to gain an understanding of population structure, dispersal routes and patterns. And how such can facilitate appropriate and sustainable land and seabottom use and management."
-  },
-  {
     "objectID": "index.html#overview",
     "href": "index.html#overview",
     "title": "About the course",
-    "section": "",
-    "text": "How spatial data on properties of terrestrial and marine environments can be combined with genomic data to gain an understanding of population structure, dispersal routes and patterns. And how such can facilitate appropriate and sustainable land and seabottom use and management."
+    "section": "Overview",
+    "text": "Overview\nHow spatial data on properties of terrestrial and marine environments can be combined with genomic data to gain an understanding of population structure, dispersal routes and patterns. And how such can facilitate appropriate and sustainable land and seabottom use and management."
   },
   {
     "objectID": "index.html#teachers",
@@ -215,6 +208,34 @@
     "title": "About the course",
     "section": "Friday 3rd November",
     "text": "Friday 3rd November\n(meals and breaks same schedule as Sunday)\n09.00-12.00     More GEAs and genomic offsets (Cynthia)\n12.00-14.00     Lunch + walk & talk\n14.00-17.00     (Time permiting) Landscape genomics and genetic architectures\n17.00-18.00     Dinner\n19.00-23.00     Inhouse pub\n\nSaturday 4th November\nDepartures in the morning -sorry to see you go!"
+  },
+  {
+    "objectID": "servers.html",
+    "href": "servers.html",
+    "title": "server connections",
+    "section": "",
+    "text": "In this course, many analyses will be performed on a remote server. You will access the server in two ways, using Rstudio in your web browser, and through the command line using a terminal on your local machine.\nEach of you will be given a user account and password by the instructors. You will use this for both the Rstudio web page and to ssh into the server in the terminal.\n\n\nTo access the Rstudio instance, you can connect directly through your web browser. A link to this will be pinned in the #connections-and-installations Slack channel, as well as written on the board.\nYou may see a warning that the connection is not safe, it is safe to bypass this message and continue to Rstudio. Here you can log in with your Rstudio credentials.\nIMPORTANT: If this is your first time logging into Rstudio on the server for this course, you will need to do the following:\nIn the lower left pane of the Rstudio webpage, click on the ‘Terminal’ tab. Here, you will see the command line for the server. Run the following command:\necho \"R_LIBS='/resources/riverlandsea/envs/r-landriversea/lib/R/library'\" &gt;&gt; ~/.Renviron\nThis will make it so you can use packages we have installed for this course. You may need to restart the R session after this step, you can do that by going to the menu bar at the top, and choosing ‘Session &gt; Restart R’. You shouldn’t need to install any packages, as we have prepared the ones used in the course, but please tell us if something is missing so we can install it where everyone can use it.\n\n\n\nFor bash exercises, you will utilize a terminal application that you’ve installed on your computer. If you have trouble with this, you can use the Rstudio webpage, and utilize the ‘Terminal’ tab we used in the initial setup.\nIf you’re using your own terminal, you will ssh into the server to run commands there. You can do so with the following command:\nssh user@server-address\nuser will be the username given to you by the instructors and server-address will be pinned in the #connections-and-installations channel on Slack. You’ll be prompted to trust the connection, and fill in your password. Afterwards, you should see that you are now in your home directory on the server!\n\n\n\nThere are a few main directories you’ll need on the server:\n~/ is your home directory, you can keep your working files here.\n/resources/riverlandsea/exercise_data contains the input data files for the exercises."
+  },
+  {
+    "objectID": "servers.html#rstudio-access",
+    "href": "servers.html#rstudio-access",
+    "title": "server connections",
+    "section": "",
+    "text": "To access the Rstudio instance, you can connect directly through your web browser. A link to this will be pinned in the #connections-and-installations Slack channel, as well as written on the board.\nYou may see a warning that the connection is not safe, it is safe to bypass this message and continue to Rstudio. Here you can log in with your Rstudio credentials.\nIMPORTANT: If this is your first time logging into Rstudio on the server for this course, you will need to do the following:\nIn the lower left pane of the Rstudio webpage, click on the ‘Terminal’ tab. Here, you will see the command line for the server. Run the following command:\necho \"R_LIBS='/resources/riverlandsea/envs/r-landriversea/lib/R/library'\" &gt;&gt; ~/.Renviron\nThis will make it so you can use packages we have installed for this course. You may need to restart the R session after this step, you can do that by going to the menu bar at the top, and choosing ‘Session &gt; Restart R’. You shouldn’t need to install any packages, as we have prepared the ones used in the course, but please tell us if something is missing so we can install it where everyone can use it."
+  },
+  {
+    "objectID": "servers.html#terminal-access",
+    "href": "servers.html#terminal-access",
+    "title": "server connections",
+    "section": "",
+    "text": "For bash exercises, you will utilize a terminal application that you’ve installed on your computer. If you have trouble with this, you can use the Rstudio webpage, and utilize the ‘Terminal’ tab we used in the initial setup.\nIf you’re using your own terminal, you will ssh into the server to run commands there. You can do so with the following command:\nssh user@server-address\nuser will be the username given to you by the instructors and server-address will be pinned in the #connections-and-installations channel on Slack. You’ll be prompted to trust the connection, and fill in your password. Afterwards, you should see that you are now in your home directory on the server!"
+  },
+  {
+    "objectID": "servers.html#directories",
+    "href": "servers.html#directories",
+    "title": "server connections",
+    "section": "",
+    "text": "There are a few main directories you’ll need on the server:\n~/ is your home directory, you can keep your working files here.\n/resources/riverlandsea/exercise_data contains the input data files for the exercises."
   },
   {
     "objectID": "about.html",
