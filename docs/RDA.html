@@ -358,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#full-model" id="toc-full-model" class="nav-link" data-scroll-target="#full-model">Full model</a></li>
   <li><a href="#climate-model" id="toc-climate-model" class="nav-link" data-scroll-target="#climate-model">Climate model</a></li>
   <li><a href="#population-structure-model" id="toc-population-structure-model" class="nav-link" data-scroll-target="#population-structure-model">Population structure model</a></li>
-  <li><a href="#geogrpahy" id="toc-geogrpahy" class="nav-link" data-scroll-target="#geogrpahy">Geogrpahy</a></li>
+  <li><a href="#geography" id="toc-geography" class="nav-link" data-scroll-target="#geography">Geography</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#other-important-topics-not-from-cf-tutorial" id="toc-other-important-topics-not-from-cf-tutorial" class="nav-link" data-scroll-target="#other-important-topics-not-from-cf-tutorial">Other important topics (not from C&amp;F tutorial)</a>
@@ -372,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#points-for-class-discussion" id="toc-points-for-class-discussion" class="nav-link" data-scroll-target="#points-for-class-discussion">Points for class discussion</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="RDA.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -654,7 +654,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tutorial-based-on-rda-applications-in-landscape-genomics-by-thibaut-capblancq-brenna-forester-2021" class="level3">
 <h3 class="anchored" data-anchor-id="tutorial-based-on-rda-applications-in-landscape-genomics-by-thibaut-capblancq-brenna-forester-2021">Tutorial based on “RDA applications in landscape genomics, by Thibaut Capblancq &amp; Brenna Forester, 2021</h3>
 <p>The original tutorial can be found on <a href="https://github.com/Capblancq/RDA-landscape-genomics">GitHub</a> and shows how to locate and prepare original data files.</p>
-<p>This 2023 update uses files that have been compiled and tidied. Much of the code is also updated to make use of <code>sf</code> and <code>terra</code> but some of the code is from the original tutorial.</p>
+<p>This 2023 update uses files that have been compiled and tidied. Much of the code is also updated to make use of <code>sf</code> and <code>terra</code> but some of the code is from the original tutorial. The original code is likely to break soon as support for older spatial packages is removed - you will likely see some warnings.</p>
 <p>Original comments by Capblancq &amp; Forester will be indented</p>
 <blockquote class="blockquote">
 <p>like this!</p>
@@ -678,7 +678,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>These data have been compiled and projected into the WGS84 reference coordinate system following instructions from Capblancq &amp; Forester and saved as a spatial raster.</p>
 <ul>
-<li><code>ras_6190.rast</code> = present day</li>
+<li><code>ras_6190.tif</code> = present day</li>
 </ul>
 </section>
 <section id="population-allele-frequencies" class="level4">
@@ -699,7 +699,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>AllFreq_neutral</code>: 281 populations, 3936 loci</li>
 <li><code>PlSeedlots.csv</code>: the geographic coordinates of each source population.</li>
 </ul>
-<p>Look at all these files using tools and techniques that you have learned. What is in the <code>ras_6190.rast</code> object? (try plotting it)</p>
+<p>Look at all these files using tools and techniques that you have learned. What is in the <code>ras_6190.tif</code> object? (try plotting it)</p>
 <p>Some comments from C &amp; F:</p>
 <blockquote class="blockquote">
 <p>An RDA model can either be conducted with individual-based genotypes (0, 1, 2 format) or population-based allele frequencies (ranging from 0 to 1). We decided here to work with allele frequencies for the main reason that several individuals were genotyped at each sampling site (i.e., source population) and experienced the exact same climatic conditions. Plus, the sample sizes varied across populations.</p>
@@ -719,21 +719,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Climate data</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ras_6190<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(<span class="st">"./home/data/ras_6190.tif"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ras_6190) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AHM"</span>,<span class="st">"bFFP"</span>,<span class="st">"CMD"</span>,<span class="st">"DD_0"</span>,<span class="st">"DD_18"</span>,<span class="st">"DD18"</span>,<span class="st">"DD5"</span>,<span class="st">"eFFP"</span>,<span class="st">"EMT"</span>, <span class="st">"Eref"</span>, <span class="st">"EXT"</span>, <span class="st">"FFP"</span>, <span class="st">"MAP"</span>, <span class="st">"MAR"</span>, <span class="st">"MAT"</span>, <span class="st">"MCMT"</span>, <span class="st">"MSP"</span>, <span class="st">"MWMT"</span>, <span class="st">"NFFD"</span>, <span class="st">"PAS"</span>, <span class="st">"PPT_sm"</span>, <span class="st">"PPT_wt"</span>, <span class="st">"RH"</span>, <span class="st">"SHM"</span>, <span class="st">"Tave_sm"</span>, <span class="st">"Tave_wt"</span>, <span class="st">"TD"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic data</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./home/data/AllFreq.RData"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./home/data/Neutral.RData"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Sampling sites</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"./home/data/PlSeedlots.csv"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> T, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidy up the coordinates data and check them</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> Coordinates[<span class="fu">match</span>(<span class="fu">row.names</span>(AllFreq), Coordinates<span class="sc">$</span>id2, <span class="at">nomatch =</span> <span class="dv">0</span>),]</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Coordinates) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Population"</span>, <span class="st">"Latitude"</span>, <span class="st">"Longitude"</span>, <span class="st">"Elevation"</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Coordinates[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"./home/data/rda/"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Climate data</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ras_6190<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(<span class="fu">paste0</span>(path, <span class="st">"ras_6190.tif"</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ras_6190) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AHM"</span>,<span class="st">"bFFP"</span>,<span class="st">"CMD"</span>,<span class="st">"DD_0"</span>,<span class="st">"DD_18"</span>,<span class="st">"DD18"</span>,<span class="st">"DD5"</span>,<span class="st">"eFFP"</span>,<span class="st">"EMT"</span>, <span class="st">"Eref"</span>, <span class="st">"EXT"</span>, <span class="st">"FFP"</span>, <span class="st">"MAP"</span>, <span class="st">"MAR"</span>, <span class="st">"MAT"</span>, <span class="st">"MCMT"</span>, <span class="st">"MSP"</span>, <span class="st">"MWMT"</span>, <span class="st">"NFFD"</span>, <span class="st">"PAS"</span>, <span class="st">"PPT_sm"</span>, <span class="st">"PPT_wt"</span>, <span class="st">"RH"</span>, <span class="st">"SHM"</span>, <span class="st">"Tave_sm"</span>, <span class="st">"Tave_wt"</span>, <span class="st">"TD"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic data</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"AllFreq.RData"</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"Neutral.RData"</span>))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Sampling sites</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">paste0</span>(path, <span class="st">"PlSeedlots.csv"</span>), <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> T, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidy up the coordinates data and check them</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> Coordinates[<span class="fu">match</span>(<span class="fu">row.names</span>(AllFreq), Coordinates<span class="sc">$</span>id2, <span class="at">nomatch =</span> <span class="dv">0</span>),]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Coordinates) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Population"</span>, <span class="st">"Latitude"</span>, <span class="st">"Longitude"</span>, <span class="st">"Elevation"</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Coordinates[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -823,7 +825,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Interrupt the processing for the sake of time and load the output of the full ordiR2step:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the output</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"./home/data/mod.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"mod.Rdata"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As before, examine the <code>mod</code> object in detail. How much variance does RDA1 explain? Is RDA1 dominated by a single environmental variable or spread among variables?</p>
 <p><code>mod$anova</code> will give you most of the output shown in Table 1 from C &amp; F. You would just need to do some subtraction to get the R2 for each term - for example, EMT = 0.044517-0.022167 = 0.02235.</p>
@@ -886,8 +888,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#anova(pRDAstruct)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="geogrpahy" class="level3">
-<h3 class="anchored" data-anchor-id="geogrpahy">Geogrpahy</h3>
+<section id="geography" class="level3">
+<h3 class="anchored" data-anchor-id="geography">Geography</h3>
 <p>And another pRDA for geography</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Pure geography model </span></span>
@@ -907,7 +909,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Model p-value</li>
 </ul>
 </blockquote>
-<p>For the “confounded”row, this should be the full model minus the sum of the partial models, for example, the proportion of explainable variance is 1 - (0.27+0.22+0.05). You can dig into this further with the function <code>varpart()</code>.</p>
+<p>For the “confounded” row, this should be the full model minus the sum of the partial models, for example, the proportion of explainable variance is 1 - (0.27+0.22+0.05). You can dig into this further with the function <code>varpart()</code>.</p>
 <blockquote class="blockquote">
 <p><strong>Note:</strong> It is interesting to look at the degree of correlation among variables using a correlogram:</p>
 </blockquote>

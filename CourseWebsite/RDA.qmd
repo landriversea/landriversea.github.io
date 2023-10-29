@@ -552,7 +552,7 @@ You could play with using the first few MEMs in modified RDAs of the pine data. 
 If you plan to use MEMs in your own research, you will want to investigate much further. Right now, this code demonstrate how you can make them so you have a basic understanding of what they are when you read about MEMs in paper. A good place to start would be by following the [adespatial tutorial](https://cran.r-project.org/web/packages/adespatial/vignettes/tutorial.html).
 
 ```{r save key files}
-#|: echo: false
+#| echo: false
 
 library(raster)  
 

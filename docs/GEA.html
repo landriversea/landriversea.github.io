@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -273,7 +307,38 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructor-riginos" id="toc-instructor-riginos" class="nav-link active" data-scroll-target="#instructor-riginos"><em>Instructor: Riginos</em></a></li>
+  <li><a href="#under-contruction" id="toc-under-contruction" class="nav-link" data-scroll-target="#under-contruction">Under contruction!!</a>
+  <ul class="collapse">
+  <li><a href="#offsets" id="toc-offsets" class="nav-link" data-scroll-target="#offsets">Offsets</a></li>
+  </ul></li>
+  <li><a href="#challenge-is-validating-predictions" id="toc-challenge-is-validating-predictions" class="nav-link" data-scroll-target="#challenge-is-validating-predictions">Challenge is validating predictions</a>
+  <ul class="collapse">
+  <li><a href="#projecting-adaptive-landscapes-in-space" id="toc-projecting-adaptive-landscapes-in-space" class="nav-link" data-scroll-target="#projecting-adaptive-landscapes-in-space">Projecting adaptive landscapes in space</a></li>
+  </ul></li>
+  <li><a href="#refereneces-for-this-tutorial" id="toc-refereneces-for-this-tutorial" class="nav-link" data-scroll-target="#refereneces-for-this-tutorial">Refereneces for this tutorial</a></li>
+  <li><a href="#computer-tutorial---geas-from-rdas" id="toc-computer-tutorial---geas-from-rdas" class="nav-link" data-scroll-target="#computer-tutorial---geas-from-rdas">Computer tutorial - GEAs from RDAs</a>
+  <ul class="collapse">
+  <li><a href="#identifying-loci-under-selection" id="toc-identifying-loci-under-selection" class="nav-link" data-scroll-target="#identifying-loci-under-selection">Identifying loci under selection</a>
+  <ul class="collapse">
+  <li><a href="#load-libraries-and-data-files" id="toc-load-libraries-and-data-files" class="nav-link" data-scroll-target="#load-libraries-and-data-files">Load libraries and data files</a></li>
+  <li><a href="#parial-rda-for-indentfied-environmental-variables" id="toc-parial-rda-for-indentfied-environmental-variables" class="nav-link" data-scroll-target="#parial-rda-for-indentfied-environmental-variables">Parial RDA for indentfied environmental variables</a></li>
+  <li><a href="#identifying-outliers-based-on-mahalanobis-distances-from-center-of-rda-space" id="toc-identifying-outliers-based-on-mahalanobis-distances-from-center-of-rda-space" class="nav-link" data-scroll-target="#identifying-outliers-based-on-mahalanobis-distances-from-center-of-rda-space">Identifying outliers based on Mahalanobis distances from center of RDA space</a></li>
+  </ul></li>
+  <li><a href="#recreating-fig-1a" id="toc-recreating-fig-1a" class="nav-link" data-scroll-target="#recreating-fig-1a">Recreating Fig 1a</a></li>
+  <li><a href="#recreating-fig-1b" id="toc-recreating-fig-1b" class="nav-link" data-scroll-target="#recreating-fig-1b">Recreating Fig 1b</a></li>
+  <li><a href="#simple-rda-for-outlier-identification" id="toc-simple-rda-for-outlier-identification" class="nav-link" data-scroll-target="#simple-rda-for-outlier-identification">Simple RDA for outlier identification</a>
+  <ul class="collapse">
+  <li><a href="#overlap-among-all-outliers-with-and-without-conditioning-on-population-structure" id="toc-overlap-among-all-outliers-with-and-without-conditioning-on-population-structure" class="nav-link" data-scroll-target="#overlap-among-all-outliers-with-and-without-conditioning-on-population-structure">Overlap among all outliers with and without conditioning on population structure</a></li>
+  <li><a href="#overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure" id="toc-overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure" class="nav-link" data-scroll-target="#overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure">Overlap among RDA (“top”) outliers with and without conditioning on population structure</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="GEA.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -295,18 +360,279 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<!-- ## Offsets -->
-<!-- Capblancq has some discussion -->
-<!-- genetic offset = genomic offset = risk of non-adaptedness = genomic vulnerability -->
-<!-- # Challenge is validating predictions -->
-<!-- for lodgepole pine, common garden and GEA negatively correlated - Fitzpatrick et al 2021 -->
-<!-- \# Adaptive loci - what are they, how to id -->
-<!-- Capblancq has discussion on conditioning approaches -->
-<!-- ### Projecting adaptive landscapes in space -->
-<!-- - genetic based index of adaptation based on Steane -->
-<!-- - predict genotypes and allele frequencies as a function of environmental variation -->
+<section id="instructor-riginos" class="level2">
+<h2 class="anchored" data-anchor-id="instructor-riginos"><em>Instructor: Riginos</em></h2>
+</section>
+<section id="under-contruction" class="level1">
+<h1>Under contruction!!</h1>
+<p>One of the goals of landscape genomics is to find loci that contribute to adaptation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/environment_genotype_phenotype_Rellstab2015.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Rellstab et al 2015 (Image modified from Sork et al 2013)</figcaption>
+</figure>
+</div>
+<p>Tests of selection, especially based on finding loci that show strong correlations with environmental features, can provide lists of candidate loci.</p>
+<p>Given the unfolding climate crisis, there is growing interest in leveraging genetic information to identify populations that are vulnerable (or resilient) to anticipated future climate conditions.</p>
+<p>There are numerous names for this concept:</p>
+<p>(mal)adaptation = risk of non-adaptedness = genomic offset = genomic vulnerability</p>
+<p>The general framework is as follows:</p>
+<p>Capblancq et al.&nbsp;2002</p>
+<p>For example, in the lodgepole pine data used by Capblancq &amp; Forester (2021), they:</p>
+<ol type="1">
+<li><p>used RDAs to identify correlaitons between environmental variables and allele frequencies</p></li>
+<li><p>identify outlier loci showing the strongest associations with environmental variables</p></li>
+<li></li>
+</ol>
+<section id="offsets" class="level2">
+<h2 class="anchored" data-anchor-id="offsets">Offsets</h2>
+<p>Capblancq has some discussion</p>
+<p>(mal)adaptation = genomic offset = risk of non-adaptedness = genomic vulnerability</p>
+</section>
+</section>
+<section id="challenge-is-validating-predictions" class="level1">
+<h1>Challenge is validating predictions</h1>
+<p>for lodgepole pine, common garden and GEA negatively correlated - Fitzpatrick et al 2021</p>
+<p>Adaptive loci - what are they, how to id</p>
+<p>Capblancq has discussion on conditioning approaches</p>
+<section id="projecting-adaptive-landscapes-in-space" class="level3">
+<h3 class="anchored" data-anchor-id="projecting-adaptive-landscapes-in-space">Projecting adaptive landscapes in space</h3>
+<ul>
+<li><p>genetic based index of adaptation based on Steane</p></li>
+<li><p>predict genotypes and allele frequencies as a function of environmental variation</p></li>
+</ul>
+</section>
+</section>
+<section id="refereneces-for-this-tutorial" class="level1">
+<h1>Refereneces for this tutorial</h1>
+<ul>
+<li><p>Capblancq, T., Fitzpatrick, M. C., Bay, R. A., Exposito-Alonso, M., &amp; Keller, S. R. (2020). Genomic prediction of (mal)adaptation across current and future climatic landscapes. Annual Review of Ecology, Evolution, and Systematics, 51(1), 245-269. doi:10.1146/annurev-ecolsys-020720-042553</p></li>
+<li><p>Capblancq, T., &amp; Forester, B. R. (2021). Redundancy analysis: A Swiss Army Knife for landscape genomics. Methods in Ecology and Evolution. doi:10.1111/2041-210x.13722</p></li>
+</ul>
+</section>
+<section id="computer-tutorial---geas-from-rdas" class="level1">
+<h1>Computer tutorial - GEAs from RDAs</h1>
+<p>There are many ways that GEA analyses can be done. As a demonstration of one approach, we will continue with the tutorial from Capblancq &amp; Forrester 2021 using lodgepole pine data. As with the RDA tutorial, original comments from C&amp;F will be</p>
+<blockquote class="blockquote">
+<p>indented like this.</p>
+</blockquote>
+<p>If you remember how RDA works, one of the outputs of the RDA is the loadings (or “scores”) per locus. The goal is to identify the loci that show the strongest association or loadings with environmental attributes. In this example, the loci with the highest loadings to RDA axes (representing a composite of predictors) will be identified.</p>
+<section id="identifying-loci-under-selection" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-loci-under-selection">Identifying loci under selection</h2>
+<p>The first task is to identify loci showing strong associations with environmental features that are <em>candidates</em> for selection. We start by reloading some of the files we worked with in the previous tutorial.</p>
+<section id="load-libraries-and-data-files" class="level3">
+<h3 class="anchored" data-anchor-id="load-libraries-and-data-files">Load libraries and data files</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(terra)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(raster)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggVennDiagram)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># required for pdadapt.R function</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robust)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(qvalue)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"./home/data/gea/"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic data</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"AllFreq.RData"</span>))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"Neutral.RData"</span>))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Spatial data</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Variables<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">paste0</span>(path, <span class="st">"Variables.csv"</span>))</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Coordinates<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">paste0</span>(path, <span class="st">"Coordinates.csv"</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#ras_6190&lt;-terra::rast(paste0(path, "ras_6190.tif"))</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#names(ras_6190) &lt;- c("AHM","bFFP","CMD","DD_0","DD_18","DD18","DD5","eFFP","EMT", "Eref", "EXT", "FFP", "MAP", "MAR", "MAT", "MCMT", "MSP", "MWMT", "NFFD", "PAS", "PPT_sm", "PPT_wt", "RH", "SHM", "Tave_sm", "Tave_wt", "TD")</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#ras_6190&lt;-as.raster(ras_6190)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>The first step was to run an RDA model on the allele frequency matrix using the 9 retained climatic factors as explanatory variables and the first three PCs as conditioning variables to account for neutral population structure.</p>
+</blockquote>
+</section>
+<section id="parial-rda-for-indentfied-environmental-variables" class="level3">
+<h3 class="anchored" data-anchor-id="parial-rda-for-indentfied-environmental-variables">Parial RDA for indentfied environmental variables</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>RDA_env <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS <span class="sc">+</span> <span class="fu">Condition</span>(PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3),  Variables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then had to choose a number of RDA axes to include when conducting the genome scan.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">screeplot</span>(RDA_env, <span class="at">main=</span><span class="st">"Eigenvalues of constrained axes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Looking at the proportion of variance explained by each axis, we decided to use the first two axes in this demonstration, though retaining just the first axis, or axes 1-3 would be other reasonable choices. If selecting only one axis, the <a href="https://popgen.nescent.org/2018-03-27_RDA_GEA.html">axis-based approach</a> mentioned above would be required to identify outliers.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> It can be interesting to calculate the proportion of variance explained by the RDA model and the individual RDA axes when conducting a GEA test (code available <a href="https://popgen.nescent.org/2018-03-27_RDA_GEA.html">here</a>); however having a high proportion of variance explained is not required for GEA testing, which is focused on identifying outlier loci in the ordination space, not maximizing variance explained.</p>
+</blockquote>
+</section>
+<section id="identifying-outliers-based-on-mahalanobis-distances-from-center-of-rda-space" class="level3">
+<h3 class="anchored" data-anchor-id="identifying-outliers-based-on-mahalanobis-distances-from-center-of-rda-space">Identifying outliers based on Mahalanobis distances from center of RDA space</h3>
+<p>Outlier loci will be the most extreme from the center of the distribution - see C&amp;F Fig1a that we will be reproducing here.</p>
+<blockquote class="blockquote">
+<p>For the lodgepole pine data, we will load the <a href="XXX">rdadapt</a> function, described in Capblancq et al.&nbsp;(2018) and use it to conduct the genome scan.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Function rdadapt</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">paste0</span>(path, <span class="st">"rdadapt.R"</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Running the function with K = 2</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>rdadapt_env<span class="ot">&lt;-</span><span class="fu">rdadapt</span>(RDA_env, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>One critical step when conducting a genome scan is to set a pertinent p-value threshold to identify the outlier loci. Here, we used a Bonferroni correction to account for multiple testing.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> the rdadapt function returns both p-values and q-values, which means it is possible to use a FDR (False Discovery Rate) approach instead of a p-value threshold to identify outliers; see <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/mec.13513">Francois et al.&nbsp;2015</a>.</p>
+</blockquote>
+<p>Some strategies for trying to understand other people’s code… this custom function had <strong>no (!)</strong> comments in it. To understand other people’s functions, I try to work through them. Open the file and take a look (all comments are from CR). To understand this function, I define inputs based on our examples, namely, <code>rda&lt;-RDA_env</code> and <code>K&lt;-2</code> and then execute lines 4-11 in the function code piece by piece and try to understand what is going on. (And add my own comments in case I need to go back to the code… )</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## P-values threshold after Bonferroni correction</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>thres_env <span class="ot">&lt;-</span> <span class="fl">0.01</span><span class="sc">/</span><span class="fu">length</span>(rdadapt_env<span class="sc">$</span>p.values)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Identifying the loci that are below the p-value threshold</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>outliers <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Loci =</span> <span class="fu">colnames</span>(AllFreq)[<span class="fu">which</span>(rdadapt_env<span class="sc">$</span>p.values<span class="sc">&lt;</span>thres_env)], </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.value =</span> rdadapt_env<span class="sc">$</span>p.values[<span class="fu">which</span>(rdadapt_env<span class="sc">$</span>p.values<span class="sc">&lt;</span>thres_env)], </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">contig =</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="fu">strsplit</span>(<span class="fu">colnames</span>(AllFreq)[<span class="fu">which</span>(rdadapt_env<span class="sc">$</span>p.values<span class="sc">&lt;</span>thres_env)], <span class="at">split =</span> <span class="st">"_"</span>), </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) x[<span class="dv">1</span>]))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(Creation of <code>outliers</code> code above highlights how subsetting in base R can be difficult to read as a human… tidyverse syntax would be helpful…)</p>
+<blockquote class="blockquote">
+<p>To avoid redundancy among loci that are in strong physical linkage along the genome we only kept the outlier locus with the lowest p-values for each genomic contig.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> To avoid linkage disequilibrium among loci, it is also possible to prune the dataset before running the genome scan. Here we preferred not to to be able to compare our top hit outliers with previously found adaptive loci that were searched for on a non-pruned dataset.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Top hit outlier per contig</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>outliers <span class="ot">&lt;-</span> outliers[<span class="fu">order</span>(outliers<span class="sc">$</span>contig, outliers<span class="sc">$</span>p.value),]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## List of outlier names</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>outliers_rdadapt_env <span class="ot">&lt;-</span> <span class="fu">as.character</span>(outliers<span class="sc">$</span>Loci[<span class="sc">!</span><span class="fu">duplicated</span>(outliers<span class="sc">$</span>contig)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="recreating-fig-1a" class="level2">
+<h2 class="anchored" data-anchor-id="recreating-fig-1a">Recreating Fig 1a</h2>
+<p>Once the outliers have been identified, it can be useful to visualize their distribution in comparison with neutral loci using either an RDA biplot or a Manhattan plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Formatting table for ggplot</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>locus_scores <span class="ot">&lt;-</span> <span class="fu">scores</span>(RDA_env, <span class="at">choices=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>), <span class="at">display=</span><span class="st">"species"</span>, <span class="at">scaling=</span><span class="st">"none"</span>) <span class="co"># vegan references "species", here these are the loci</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Create category for type of loci</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Top outiers are the outliers from the pRDA</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>TAB_loci <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">names =</span> <span class="fu">row.names</span>(locus_scores), locus_scores)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>TAB_loci<span class="sc">$</span>type <span class="ot">&lt;-</span> <span class="st">"Neutral"</span> <span class="co">#make all as neutral </span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>TAB_loci<span class="sc">$</span>type[TAB_loci<span class="sc">$</span>names<span class="sc">%in%</span>outliers<span class="sc">$</span>Loci] <span class="ot">&lt;-</span> <span class="st">"All outliers"</span> <span class="co">#overwrite select types</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>TAB_loci<span class="sc">$</span>type[TAB_loci<span class="sc">$</span>names<span class="sc">%in%</span>outliers_rdadapt_env] <span class="ot">&lt;-</span> <span class="st">"Top outliers"</span> <span class="co">#overwrite select types</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>TAB_loci<span class="sc">$</span>type <span class="ot">&lt;-</span> <span class="fu">factor</span>(TAB_loci<span class="sc">$</span>type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Neutral"</span>, <span class="st">"All outliers"</span>, <span class="st">"Top outliers"</span>)) <span class="co">#make as factor</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>TAB_loci <span class="ot">&lt;-</span> TAB_loci[<span class="fu">order</span>(TAB_loci<span class="sc">$</span>type),] <span class="co">#reorder</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>TAB_var <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">scores</span>(RDA_env, <span class="at">choices=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">display=</span><span class="st">"bp"</span>)) <span class="co"># pull the biplot scores</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Biplot of RDA loci and variables scores</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>, <span class="at">color =</span> <span class="fu">gray</span>(.<span class="dv">80</span>), <span class="at">linewidth=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>, <span class="at">color =</span> <span class="fu">gray</span>(.<span class="dv">80</span>), <span class="at">linewidth=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> TAB_loci, <span class="fu">aes</span>(<span class="at">x=</span>RDA1<span class="sc">*</span><span class="dv">20</span>, <span class="at">y=</span>RDA2<span class="sc">*</span><span class="dv">20</span>, <span class="at">colour =</span> type), <span class="at">size =</span> <span class="fl">1.4</span>) <span class="sc">+</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"gray90"</span>, <span class="st">"#F9A242FF"</span>, <span class="st">"#6B4596FF"</span>)) <span class="sc">+</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> TAB_var, <span class="fu">aes</span>(<span class="at">xend=</span>RDA1, <span class="at">yend=</span>RDA2, <span class="at">x=</span><span class="dv">0</span>, <span class="at">y=</span><span class="dv">0</span>), <span class="at">colour=</span><span class="st">"black"</span>, <span class="at">size=</span><span class="fl">0.15</span>, <span class="at">linetype=</span><span class="dv">1</span>, <span class="at">arrow=</span><span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.02</span>, <span class="st">"npc"</span>))) <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> TAB_var, <span class="fu">aes</span>(<span class="at">x=</span><span class="fl">1.1</span><span class="sc">*</span>RDA1, <span class="at">y=</span><span class="fl">1.1</span><span class="sc">*</span>RDA2, <span class="at">label =</span> <span class="fu">row.names</span>(TAB_var)), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">family =</span> <span class="st">"Times"</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"RDA 1"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"RDA 2"</span>) <span class="sc">+</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="st">"RDA space"</span>) <span class="sc">+</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Locus type"</span>)) <span class="sc">+</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">11</span>, <span class="at">base_family =</span> <span class="st">"Times"</span>) <span class="sc">+</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_blank</span>(), <span class="at">legend.background =</span> <span class="fu">element_blank</span>(), <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), <span class="at">plot.background =</span> <span class="fu">element_blank</span>(), <span class="at">legend.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="fu">rel</span>(.<span class="dv">8</span>)), <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="recreating-fig-1b" class="level2">
+<h2 class="anchored" data-anchor-id="recreating-fig-1b">Recreating Fig 1b</h2>
+<p>Looking at outlies by genomic position in a Mannhatten plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Manhattan plot</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Outliers <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"Neutral"</span>, <span class="fu">length</span>(<span class="fu">colnames</span>(AllFreq)))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Outliers[<span class="fu">colnames</span>(AllFreq)<span class="sc">%in%</span>outliers<span class="sc">$</span>Loci] <span class="ot">&lt;-</span> <span class="st">"All outliers"</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>Outliers[<span class="fu">colnames</span>(AllFreq)<span class="sc">%in%</span>outliers_rdadapt_env] <span class="ot">&lt;-</span> <span class="st">"Top outliers"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Outliers <span class="ot">&lt;-</span> <span class="fu">factor</span>(Outliers, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Neutral"</span>, <span class="st">"All outliers"</span>, <span class="st">"Top outliers"</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>TAB_manhatan <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">pos =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">colnames</span>(AllFreq)), </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">pvalues =</span> rdadapt_env<span class="sc">$</span>p.values, </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                           <span class="at">Outliers =</span> Outliers)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>TAB_manhatan <span class="ot">&lt;-</span> TAB_manhatan[<span class="fu">order</span>(TAB_manhatan<span class="sc">$</span>Outliers),]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot </span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> TAB_manhatan) <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>pos, <span class="at">y=</span><span class="sc">-</span><span class="fu">log10</span>(pvalues), <span class="at">col =</span> Outliers), <span class="at">size=</span><span class="fl">1.4</span>) <span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"gray90"</span>, <span class="st">"#F9A242FF"</span>, <span class="st">"#6B4596FF"</span>)) <span class="sc">+</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Loci"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"-log10(p.values)"</span>) <span class="sc">+</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="sc">-</span><span class="fu">log10</span>(thres_env), <span class="at">linetype=</span><span class="st">"dashed"</span>, <span class="at">color =</span> <span class="fu">gray</span>(.<span class="dv">80</span>), <span class="at">size=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="st">"Manhattan plot"</span>, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Locus type"</span>)) <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">11</span>, <span class="at">base_family =</span> <span class="st">"Times"</span>) <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>, <span class="at">legend.background =</span> <span class="fu">element_blank</span>(), <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(), <span class="at">legend.box.background =</span> <span class="fu">element_blank</span>(), <span class="at">plot.background =</span> <span class="fu">element_blank</span>(), <span class="at">panel.background =</span> <span class="fu">element_blank</span>(), <span class="at">legend.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="fu">rel</span>(.<span class="dv">8</span>)), <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>We identified 557 loci showing extreme association with the environment, reduced to a set of 171 unlinked outliers when retaining only the best hit for each genomic contig.</p>
+</blockquote>
+</section>
+<section id="simple-rda-for-outlier-identification" class="level2">
+<h2 class="anchored" data-anchor-id="simple-rda-for-outlier-identification">Simple RDA for outlier identification</h2>
+<blockquote class="blockquote">
+<p>In this example, we accounted for population structure, as is commonly recommended when conducting genome scans; however, there are cases where this approach can be overly conservative. To investigate this issue in the lodgepole pine data, we compared the candidates identified with the partial RDA to those identified using a simple RDA.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Running a simple RDA model</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>RDA_env_unconstrained <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS,  Variables)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Running the rdadapt function</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>rdadapt_env_unconstrained <span class="ot">&lt;-</span> <span class="fu">rdadapt</span>(RDA_env_unconstrained, <span class="dv">2</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Setting the p-value threshold </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>thres_env <span class="ot">&lt;-</span> <span class="fl">0.01</span><span class="sc">/</span><span class="fu">length</span>(rdadapt_env_unconstrained<span class="sc">$</span>p.values)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Identifying the outliers for the simple RDA</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>outliers_unconstrained <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Loci =</span> <span class="fu">colnames</span>(AllFreq)[<span class="fu">which</span>(rdadapt_env_unconstrained<span class="sc">$</span>p.values<span class="sc">&lt;</span>thres_env)], <span class="at">p.value =</span> rdadapt_env_unconstrained<span class="sc">$</span>p.values[<span class="fu">which</span>(rdadapt_env_unconstrained<span class="sc">$</span>p.values<span class="sc">&lt;</span>thres_env)], <span class="at">contig =</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="fu">strsplit</span>(<span class="fu">colnames</span>(AllFreq)[<span class="fu">which</span>(rdadapt_env_unconstrained<span class="sc">$</span>p.values<span class="sc">&lt;</span>thres_env)], <span class="at">split =</span> <span class="st">"_"</span>), <span class="cf">function</span>(x) x[<span class="dv">1</span>])))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>outliers_unconstrained <span class="ot">&lt;-</span> outliers_unconstrained[<span class="fu">order</span>(outliers_unconstrained<span class="sc">$</span>contig, outliers_unconstrained<span class="sc">$</span>p.value),]</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>outliers_rdadapt_env_unconstrained <span class="ot">&lt;-</span> <span class="fu">as.character</span>(outliers_unconstrained<span class="sc">$</span>Loci[<span class="sc">!</span><span class="fu">duplicated</span>(outliers_unconstrained<span class="sc">$</span>contig)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="overlap-among-all-outliers-with-and-without-conditioning-on-population-structure" class="level3">
+<h3 class="anchored" data-anchor-id="overlap-among-all-outliers-with-and-without-conditioning-on-population-structure">Overlap among all outliers with and without conditioning on population structure</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## For all the outliers</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>list_outliers_RDA_all <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">RDA_constrained =</span> <span class="fu">as.character</span>(outliers<span class="sc">$</span>Loci), <span class="at">RDA_unconstrained =</span> <span class="fu">as.character</span>(outliers_unconstrained<span class="sc">$</span>Loci))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot Venn diagram</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(list_outliers_RDA_all, <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">"partial RDA"</span>, <span class="st">"simple RDA"</span>), <span class="at">lty=</span><span class="st">"solid"</span>, <span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">'gray40'</span>) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"grey"</span>, <span class="st">"grey"</span>, <span class="st">"grey"</span>, <span class="st">"grey"</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>, <span class="at">family =</span> <span class="st">"Times"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(Numbers don’t quite match the publication….)</p>
+</section>
+<section id="overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure" class="level3">
+<h3 class="anchored" data-anchor-id="overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure">Overlap among RDA (“top”) outliers with and without conditioning on population structure</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Only for the top hit locus per contig</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>list_outliers_RDA_top <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">RDA_constrained =</span> outliers_rdadapt_env, <span class="at">RDA_unconstrained =</span> outliers_rdadapt_env_unconstrained)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(list_outliers_RDA_top, <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">"partial RDA"</span>, <span class="st">"simple RDA"</span>), <span class="at">lty=</span><span class="st">"solid"</span>, <span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">'gray40'</span>) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"grey"</span>, <span class="st">"grey"</span>, <span class="st">"grey"</span>, <span class="st">"grey"</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>, <span class="at">family =</span> <span class="st">"Times"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>For all of the following RDA-based analyses we decided to retain only the 91 loci that were detected by both the partial RDA that accounted for population structure and by the simple RDA that did not account for population structure.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>common_outliers_RDA_top <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(intersect, list_outliers_RDA_top)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Notes on interpretation and best practices:</strong> We emphasize that there is no correct answer to the common dilemma of confounded variation in GEA, differentiation-based, and genome-wide association analyses. Instead, researchers must balance their tolerance for false negative and false positive rates, and use an analytical approach that best matches the objectives of the study as well as the potential ability to validate candidate loci. More generally, awareness of the tradeoffs associated with decisions such as population structure correction will allow users to appropriately interpret their results, both statistically and biologically. Decisions about if and how to correct for population structure, how to set outlier thresholds, and how to finalize a set of candidate adaptive markers will depend upon the objectives of the study and the data available (if any) for validation. The approach presented here is not meant to be applied without modification; modeling parameters (including what environmental predictors are used and how they are selected, see variable selection above) and other decisions should be determined based on the ecology of the organism, characteristics of the data set, and goals of the study.</p>
+</blockquote>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

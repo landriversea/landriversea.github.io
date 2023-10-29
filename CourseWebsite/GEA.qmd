@@ -8,45 +8,74 @@ format:
   pdf: default
 ---
 
-*Instructor: Riginos*
----
-
-<!-- ## Offsets -->
-
-# <!-- Capblancq has some discussion -->
-
-<!-- genetic offset = genomic offset = risk of non-adaptedness = genomic vulnerability -->
-
-<!-- # Challenge is validating predictions -->
-
-<!-- for lodgepole pine, common garden and GEA negatively correlated - Fitzpatrick et al 2021 -->
-
-<!-- \# Adaptive loci - what are they, how to id -->
-
-<!-- Capblancq has discussion on conditioning approaches -->
-
-<!-- ### Projecting adaptive landscapes in space -->
-
-<!-- - genetic based index of adaptation based on Steane -->
-
-<!-- - predict genotypes and allele frequencies as a function of environmental variation -->
+## *Instructor: Riginos*
 
 # Under contruction!!
 
+One of the goals of landscape genomics is to find loci that contribute to adaptation.
+
+![Rellstab et al 2015 (Image modified from Sork et al 2013)](images/environment_genotype_phenotype_Rellstab2015.png)
+
+Tests of selection, especially based on finding loci that show strong correlations with environmental features, can provide lists of candidate loci.
+
+Given the unfolding climate crisis, there is growing interest in leveraging genetic information to identify populations that are vulnerable (or resilient) to anticipated future climate conditions.
+
+There are numerous names for this concept:
+
+(mal)adaptation = risk of non-adaptedness = genomic offset = genomic vulnerability
+
+The general framework is as follows:
+
+Capblancq et al. 2002
+
+For example, in the lodgepole pine data used by Capblancq & Forester (2021), they:
+
+1.  used RDAs to identify correlaitons between environmental variables and allele frequencies
+
+2.  identify outlier loci showing the strongest associations with environmental variables
+
+3.  
+
+## Offsets
+
+Capblancq has some discussion
+
+(mal)adaptation = genomic offset = risk of non-adaptedness = genomic vulnerability
+
+# Challenge is validating predictions
+
+for lodgepole pine, common garden and GEA negatively correlated - Fitzpatrick et al 2021
+
+Adaptive loci - what are they, how to id
+
+Capblancq has discussion on conditioning approaches
+
+### Projecting adaptive landscapes in space
+
+-   genetic based index of adaptation based on Steane
+
+-   predict genotypes and allele frequencies as a function of environmental variation
+
+# Refereneces for this tutorial
+
+-   Capblancq, T., Fitzpatrick, M. C., Bay, R. A., Exposito-Alonso, M., & Keller, S. R. (2020). Genomic prediction of (mal)adaptation across current and future climatic landscapes. Annual Review of Ecology, Evolution, and Systematics, 51(1), 245-269. doi:10.1146/annurev-ecolsys-020720-042553
+
+-   Capblancq, T., & Forester, B. R. (2021). Redundancy analysis: A Swiss Army Knife for landscape genomics. Methods in Ecology and Evolution. doi:10.1111/2041-210x.13722
+
 # Computer tutorial - GEAs from RDAs
 
-There are many ways that GEA analyses can be done. As a demonstration of one approach, we will continue with the tutorial from Capblancq & Forrester 2021 using lodgepole pine data. As with the RDA tutorial, original comments from C&F will be 
+There are many ways that GEA analyses can be done. As a demonstration of one approach, we will continue with the tutorial from Capblancq & Forrester 2021 using lodgepole pine data. As with the RDA tutorial, original comments from C&F will be
 
 > indented like this.
 
 If you remember how RDA works, one of the outputs of the RDA is the loadings (or "scores") per locus. The goal is to identify the loci that show the strongest association or loadings with environmental attributes. In this example, the loci with the highest loadings to RDA axes (representing a composite of predictors) will be identified.
 
-
-## Identifying loci under selection 
+## Identifying loci under selection
 
 The first task is to identify loci showing strong associations with environmental features that are *candidates* for selection. We start by reloading some of the files we worked with in the previous tutorial.
 
-### Load libraries and data files 
+### Load libraries and data files
+
 ```{r load libraries and data files}
 #library(terra)
 #library(raster)
@@ -106,7 +135,6 @@ source(paste0(path, "rdadapt.R"))
 rdadapt_env<-rdadapt(RDA_env, 2)
 ```
 
-
 > One critical step when conducting a genome scan is to set a pertinent p-value threshold to identify the outlier loci. Here, we used a Bonferroni correction to account for multiple testing.
 
 > **Note:** the rdadapt function returns both p-values and q-values, which means it is possible to use a FDR (False Discovery Rate) approach instead of a p-value threshold to identify outliers; see [Francois et al. 2015](https://onlinelibrary.wiley.com/doi/full/10.1111/mec.13513).
@@ -128,9 +156,9 @@ outliers <- data.frame(
 
 (Creation of `outliers` code above highlights how subsetting in base R can be difficult to read as a human... tidyverse syntax would be helpful...)
 
->To avoid redundancy among loci that are in strong physical linkage along the genome we only kept the outlier locus with the lowest p-values for each genomic contig.
+> To avoid redundancy among loci that are in strong physical linkage along the genome we only kept the outlier locus with the lowest p-values for each genomic contig.
 
->**Note:** To avoid linkage disequilibrium among loci, it is also possible to prune the dataset before running the genome scan. Here we preferred not to to be able to compare our top hit outliers with previously found adaptive loci that were searched for on a non-pruned dataset.
+> **Note:** To avoid linkage disequilibrium among loci, it is also possible to prune the dataset before running the genome scan. Here we preferred not to to be able to compare our top hit outliers with previously found adaptive loci that were searched for on a non-pruned dataset.
 
 ```{r outlier per contig}
 ## Top hit outlier per contig
@@ -175,6 +203,7 @@ ggplot() +
   theme_bw(base_size = 11, base_family = "Times") +
   theme(panel.background = element_blank(), legend.background = element_blank(), panel.grid = element_blank(), plot.background = element_blank(), legend.text=element_text(size=rel(.8)), strip.text = element_text(size=11))
 ```
+
 ## Recreating Fig 1b
 
 Looking at outlies by genomic position in a Mannhatten plot
@@ -238,6 +267,7 @@ list_outliers_RDA_all <- list(RDA_constrained = as.character(outliers$Loci), RDA
 ggVennDiagram(list_outliers_RDA_all, category.names = c("partial RDA", "simple RDA"), lty="solid", size=0.2) + 
   scale_fill_gradient2(low = "white", high = 'gray40') + scale_color_manual(values = c("grey", "grey", "grey", "grey")) + guides(fill = "none") + theme(text = element_text(size=16, family = "Times"))
 ```
+
 (Numbers don't quite match the publication....)
 
 ### Overlap among RDA ("top") outliers with and without conditioning on population structure
