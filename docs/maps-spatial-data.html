@@ -411,7 +411,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geodata)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"./home/data/spatial/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"/home/data/spatial/"</span> <span class="co">#this is a backup if we need to switch servers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|echo: false</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyterra)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geodata)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdmpredictors)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"./home/data/spatial/"</span> <span class="co">#this is a backup if we need to switch servers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="getting-oriented-with-spatial-data" class="level1">
@@ -422,14 +436,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="examining-and-creating-a-simple-features-objects">Examining and creating a simple features objects</h2>
 <p>To start getting familiar with spatial objects, we will download a simple map of Sweden from <a href="https://www.naturalearthdata.com">natural earth</a>. Take a quick look at this website to get a sense of all the wonderful data that are available here. (You are welcome to make a map of any country you like).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract information from natural earth</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Sweden<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Sweden) </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Surprised? We will come back to this.</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Examine your new object </span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden) <span class="co">#sf and data.frame</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Sweden <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract information from natural earth</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Sweden<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Sweden) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Surprised? We will come back to this.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Examine your new object </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden) <span class="co">#sf and data.frame</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>Sweden <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Checking spatial data using plots (often) is highly recommended. You should also check the class of the object. The challenge question below shows you how to handle data that are imported incorrectly.</p>
 <blockquote class="blockquote">
@@ -450,42 +464,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Besides being an eyesore to look at, you might notice some patterns: the odd entries look a lot like longitude values and the even entries look like latitudes… because they are! This POLYGON is composed of a series of points that are connected to form the Swedish coastline.</p>
 <p>We can get a better feeling for this with a simple example where we construct a series of simple features (this example is borrowed from the <a href="https://r-spatial.github.io/sf/articles/sf1.html">sf vignette</a>). Try to understand what is going on with each bit of code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## multipoints</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">3.2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="fl">4.6</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">4.4</span>), <span class="fu">c</span>(<span class="fl">3.5</span>,<span class="fl">3.8</span>), <span class="fu">c</span>(<span class="fl">3.4</span>,<span class="fl">3.6</span>), <span class="fu">c</span>(<span class="fl">3.9</span>,<span class="fl">4.5</span>))  <span class="co">#makes a matrix of x &amp; y value </span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">st_multipoint</span>(p)  <span class="co">#defining p as multipoint object</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp)  <span class="co">#you should see a series of points </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="do">## linestring</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ls <span class="ot">&lt;-</span> <span class="fu">st_linestring</span>(s1) <span class="co"># defining the linestring</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ls) <span class="co">#you should see a series of lines</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">## multilinestring</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.2</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">4.8</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="fl">4.8</span>))</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">4.4</span>), <span class="fu">c</span>(<span class="fl">0.6</span>,<span class="dv">5</span>))</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>mls <span class="ot">&lt;-</span> <span class="fu">st_multilinestring</span>(<span class="fu">list</span>(s1,s2,s3)) <span class="co">#notice the list function... #... applied to the matrices defining linestrings</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mls)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="do">## multipolygon</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>pol1 <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p1))  </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol1)  </span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>pol2 <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p2))</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol2)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="do">## What happens if we combine polygons?</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>pol <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p1,p2))  <span class="co">#notice again the list function</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol)  <span class="co"># do you see 2 polygons?  </span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># The second polygon is a "hole" in the outer polygon!</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Now make it really messy!</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>))</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.3</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">0.3</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">0.8</span>), <span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.8</span>), <span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.3</span>))[<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,]</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># What do you think the following will look like? </span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your predictions using plot()</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>mpol <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p1,p2), <span class="fu">list</span>(p3,p4), <span class="fu">list</span>(p5))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## multipoints</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">3.2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="fl">4.6</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">4.4</span>), <span class="fu">c</span>(<span class="fl">3.5</span>,<span class="fl">3.8</span>), <span class="fu">c</span>(<span class="fl">3.4</span>,<span class="fl">3.6</span>), <span class="fu">c</span>(<span class="fl">3.9</span>,<span class="fl">4.5</span>))  <span class="co">#makes a matrix of x &amp; y value </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">st_multipoint</span>(p)  <span class="co">#defining p as multipoint object</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp)  <span class="co">#you should see a series of points </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">## linestring</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ls <span class="ot">&lt;-</span> <span class="fu">st_linestring</span>(s1) <span class="co"># defining the linestring</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ls) <span class="co">#you should see a series of lines</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">## multilinestring</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.2</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">4.8</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="fl">4.8</span>))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">4.4</span>), <span class="fu">c</span>(<span class="fl">0.6</span>,<span class="dv">5</span>))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>mls <span class="ot">&lt;-</span> <span class="fu">st_multilinestring</span>(<span class="fu">list</span>(s1,s2,s3)) <span class="co">#notice the list function... #... applied to the matrices defining linestrings</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mls)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="do">## multipolygon</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>pol1 <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p1))  </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol1)  </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>pol2 <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p2))</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol2)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="do">## What happens if we combine polygons?</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>pol <span class="ot">&lt;-</span><span class="fu">st_polygon</span>(<span class="fu">list</span>(p1,p2))  <span class="co">#notice again the list function</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pol)  <span class="co"># do you see 2 polygons?  </span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># The second polygon is a "hole" in the outer polygon!</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Now make it really messy!</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>))</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.3</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">0.3</span>), <span class="fu">c</span>(<span class="fl">3.8</span>,<span class="fl">0.8</span>), <span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.8</span>), <span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">0.3</span>))[<span class="dv">5</span><span class="sc">:</span><span class="dv">1</span>,]</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># What do you think the following will look like? </span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your predictions using plot()</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>mpol <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p1,p2), <span class="fu">list</span>(p3,p4), <span class="fu">list</span>(p5))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Take a look again at your <code>mpol</code> object. As messy as this was to create, this is a pretty simple geometry and is captured by one MULTIPOLYGON entry. Go back now and look at <code>mpol</code> in its string form paying special attention to where the parentheses sit; their locations indicate if you have multiple polygons including holes within polygons.</p>
 <blockquote class="blockquote">
@@ -497,19 +511,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Only rarely do we need to manually create spatial feature. More likely we have data pre-packaged or we need to convert data. Use this <a href="./data/BunyaMountainTrees.csv">link</a> to download a csv file that has data for trees from the Bunya Mountains National Park in Queensland (one of my favorite places to go for a long weekend). These data come from my friend <a href="https://environment.uq.edu.au/profile/21686/john-dwyer">John Dwyer</a> who is an awesome spatial ecologist (but is scared by genetics, sadly).</p>
 <p>Import this csv file making sure to fix the path and file name to match your set up. Before you convert the dataframe to a spatial features object take at look at how it is structured. Repeat this after you convert it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>BunyaMountainTrees<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(path, <span class="st">"BunyaMountainTrees.csv"</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the tibble to a simple features object, with x and y coordinates</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Each row is a tree </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>BunyaMountainTrees<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainTrees, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>BunyaMountainTrees<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(path, <span class="st">"BunyaMountainTrees.csv"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the tibble to a simple features object, with x and y coordinates</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Each row is a tree </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>BunyaMountainTrees<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainTrees, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What will <code>plot(BunyaMountainTrees)</code> look like? Surprised? (Does this remind you of what happened when you plotted Sweden?)</p>
 <p>Try <code>plot(BunyaMountainTrees, max.plot = 28)</code>. Although this might be confusing at first, this is really super cool… you are seeing the various column variables displayed in the appropriate location <em>by individual tree</em>. For now, we can concentrate on the species variable only. Try <code>plot(BunyaMountainTrees["species"])</code>. How cool is that! Let’s make this even better…</p>
 <p>We will focus on ggplot solutions now, because the look nicer and are a bit easier.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BunyaMountainTrees) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BunyaMountainTrees) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p>Challenge 4: Plot species identity for high-subplot 1, scaling the points by maximum tree diameter. <em>Hint: Think about what units max_diam is in.</em></p>
@@ -517,11 +531,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Notice which tree is the largest? It is a <em>Ficus obliqua</em>, the small leaf or strangler fig.&nbsp;Because they wrap around other trees and have buttressed roots, they can get quite wide around.</p>
 <p><img src="images/31581050407_0562c9e6c5_c.jpg" class="img-fluid" alt="Small leafed fig tree"> Now that your data in in the sf format, there are many other things you can do. For example, you could examine the distance between all pairs of trees.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>distances<span class="ot">&lt;-</span><span class="fu">st_distance</span>(BunyaMountainTrees, BunyaMountainTrees) <span class="co">#calculate distances, but this returns a symmetrical matrix</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>distances<span class="ot">&lt;-</span>distances[<span class="fu">lower.tri</span>(distances)] <span class="co">#lower.tri returns T/F values...see if you can follow the subsetting being used here</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">as.data.frame</span>(distances)) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> distances))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>distances<span class="ot">&lt;-</span><span class="fu">st_distance</span>(BunyaMountainTrees, BunyaMountainTrees) <span class="co">#calculate distances, but this returns a symmetrical matrix</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>distances<span class="ot">&lt;-</span>distances[<span class="fu">lower.tri</span>(distances)] <span class="co">#lower.tri returns T/F values...see if you can follow the subsetting being used here</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">as.data.frame</span>(distances)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> distances))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Keep in mind that the data are bounded by the size of the subplot. But it is interesting that you do not get too many trees very close together…why do you think that might be?</p>
 <p>This function is very useful - for example you might want to calculate distances between your sampling locations to look for patterns of isolation by distance. When your data are in an x-y plane, <code>st_distance</code> will return the Euclidean distance. When your data are projected (see next section), then <code>st_distance</code> will calculate the distance on Earth’s sphere. Most of the commands in <code>sf</code> will automatically adjust when your data are spherical. But, it is worth occasionally checking and when you see very odd results, keeping in mind that an inappropriate distance measure could be being used.</p>
@@ -568,15 +582,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Notice “WGS84, zone 56”. (Although N and S are not stated, we can guess that the projection is S since the Bunya Mountains are in the southern hemisphere!) Once you find the projection description, google it, and you will be likely directed to the relevant <a href="#0">EPSG site</a>. Here, we can use either the EPSG number or (scrolling down the page) copy the PROJ.4 text.</p>
 <p>Here is how we assign the correct CRS to `BunyaMountainSites` and also turn it into an sf object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(path, <span class="st">"BunyaMountainSites.csv"</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites_sf<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainSites, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>))  <span class="co">#convert the tibble to an sf object </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(BunyaMountainSites_sf) <span class="ot">&lt;-</span><span class="st">"EPSG:32756"</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(BunyaMountainSites_sf) <span class="ot">&lt;-</span><span class="st">"+proj=utm +zone=56 +south +datum=WGS84 +units=m +no_defs"</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#or we can convert and assign CRS in one step:</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites_sf<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainSites_sf, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs=</span><span class="st">"+proj=utm +zone=56 +south +datum=WGS84 +units=m +no_defs"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(path, <span class="st">"BunyaMountainSites.csv"</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites_sf<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainSites, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>))  <span class="co">#convert the tibble to an sf object </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(BunyaMountainSites_sf) <span class="ot">&lt;-</span><span class="st">"EPSG:32756"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(BunyaMountainSites_sf) <span class="ot">&lt;-</span><span class="st">"+proj=utm +zone=56 +south +datum=WGS84 +units=m +no_defs"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#or we can convert and assign CRS in one step:</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites_sf<span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(BunyaMountainSites_sf, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs=</span><span class="st">"+proj=utm +zone=56 +south +datum=WGS84 +units=m +no_defs"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The website <a href="https://epsg.io">EPSG</a> has lots of searchable information about CRS’s and projections; spend some time looking through their website. (Random trivia: EPSG stands for European Petroleum Survey Group. They created standards that have been widely adopted. EPSG is no longer associated with any industry group but the name persists.)</p>
 </section>
@@ -585,23 +599,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We have succeeded in adding a CRS to our <code>BunyaMountainSites_sf</code> object…but is it correct? A handy quick check would be to plot it on our map of Australia. How can we do this? First, import a map of Australia as you did earlier for Sweden and use the <code>st_crs()</code> function to look at the CRS’s of each object…are they the same?</p>
 <p>To convert the CRS of <code>bunya_sites_sf</code> to match <code>Australia</code> is quite straightforward using the <code>st_transform()</code> function that undertakes a lot of serious geometric calculations for us. We can do this a number of ways:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import map of Australia from natural earth</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Australia<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"australia"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(Australia)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># transform CRS</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="at">crs=</span><span class="dv">4326</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="at">crs=</span><span class="st">"+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="fu">st_crs</span>(Australia))</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#All of these methods are equivalent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import map of Australia from natural earth</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Australia<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"australia"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>) </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(Australia)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># transform CRS</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="at">crs=</span><span class="dv">4326</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="at">crs=</span><span class="st">"+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>BunyaMountainSites.wgs84<span class="ot">&lt;-</span><span class="fu">st_transform</span>(BunyaMountainSites_sf, <span class="fu">st_crs</span>(Australia))</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#All of these methods are equivalent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now to plot these points on the map…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Australia) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span>  <span class="co">#background map needs to be first argument </span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> BunyaMountainSites.wgs84, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">shape =</span> <span class="dv">23</span>, <span class="at">fill =</span> <span class="st">"darkred"</span>) <span class="co">#our sites plotted on top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Australia) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span>  <span class="co">#background map needs to be first argument </span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> BunyaMountainSites.wgs84, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">shape =</span> <span class="dv">23</span>, <span class="at">fill =</span> <span class="st">"darkred"</span>) <span class="co">#our sites plotted on top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Why have I had you play around with this dataset on Australian trees? Because this dataset presents some of the irregularities and problems you might face when finding spatial data. You will often have to do some detective work and guessing to find and assign the correct CRS. Always test by plotting your data!</p>
 <p>Consider three commonly used but different CRS’s:</p>
@@ -616,14 +630,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>And for <em>LAEA</em> centered on the WGS84 datum: <code>LAEA &lt;- "+proj=laea  +lat_0=0 +lon_0=0"</code> (to center in Sweden: <code>laea &lt;- "+proj=laea  +lat_0=16.321998712 +lon_0=62.38583179"</code>)</p>
 <p>To see what those different projections look like, we can got back to our map of Sweden. We can reproject the CRS as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>WGS<span class="ot">&lt;-</span><span class="st">"+proj=longlat +datum=WGS84 +no_defs"</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>SWEREF99 <span class="ot">&lt;-</span> <span class="st">"+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs"</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>LAEA <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=16.321998712 +lon_0=62.38583179"</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>Sweden.SWEREF99 <span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, SWEREF99)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>Sweden.LAEA<span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, LAEA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>WGS<span class="ot">&lt;-</span><span class="st">"+proj=longlat +datum=WGS84 +no_defs"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>SWEREF99 <span class="ot">&lt;-</span> <span class="st">"+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>LAEA <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=16.321998712 +lon_0=62.38583179"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>Sweden.SWEREF99 <span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, SWEREF99)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>Sweden.LAEA<span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, LAEA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p>Challenge 5: Plot your original Sweden WGS and two reprojected maps. Then, change the LAEA projection to be centred on the prime meridien and plot that map again.</p>
@@ -644,65 +658,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To start exploring rasters, we are going download information on world topography (altitude). One the most widely used sources of weather data come from <a href="https://worldclim.org/">WorldClim.org</a> - these include historical and projected future climate data. They are especially useful for people working on terrestrial species and can be accessed using the <code>library(geodata)</code>. Elevation (altitude is also included).</p>
 <p>We can download elevation information for Sweden quite easily:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This will take a few minutes to load.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>elevation<span class="ot">&lt;-</span> <span class="fu">elevation_30s</span>(<span class="at">country=</span><span class="st">"Sweden"</span>, <span class="at">path=</span><span class="fu">tempdir</span>() )</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data =</span> elevation, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> SWE_elv_msk), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"lightgray"</span>, <span class="at">high =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In mid October the worldclim server was down for maintenance, so we will also explore a marine example. This example will extract Sea Surface Temperature (SST) from <a href="https://www.bio-oracle.org/">bio-ORACLE</a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">load_layers</span>(<span class="st">"BO_sstmax"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>SST<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(SST) <span class="co">#now is terra compatible</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This will take a few minutes to load.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>elevation<span class="ot">&lt;-</span> <span class="fu">elevation_30s</span>(<span class="at">country=</span><span class="st">"Sweden"</span>, <span class="at">path=</span><span class="fu">tempdir</span>() )</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>(<span class="at">data =</span> elevation, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> SWE_elv_msk), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"lightgray"</span>, <span class="at">high =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In mid October the worldclim server was down for maintenance, so we will also explore a marine example. This example will extract Sea Surface Temperature (SST) from <a href="https://www.bio-oracle.org/">bio-ORACLE</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>SST <span class="ot">&lt;-</span> <span class="fu">load_layers</span>(<span class="st">"BO_sstmax"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>SST<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(SST) <span class="co">#now is terra compatible</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Which ever raster you have downloaded, examine the structure by calling the name, using <code>summary()</code> and any other tools you like. Do you see some similarity in structure to <code>sf</code> objects? All of these spatial objects include an extent (= maximum and minimal locations, sometimes called the bounding box) and CRS. Notice that the raster additionally includes information on dimensions and resolution. Sometimes the units can be a bit mysterious and may need to do some investigation to understand them.</p>
 <section id="cropping-a-raster" class="level2">
 <h2 class="anchored" data-anchor-id="cropping-a-raster">Cropping a raster</h2>
 <p>Rasters can be manipulated in manners similar to <code>sf</code> objects. In the example that follows, we are going to crop the global SST data to match the spatial extent of our Sweden vector object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first check that both objects have the same crs</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">same.crs</span>(Sweden, SST)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># crop based on the spatial extent of Sweden</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>SST.sw<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">crop</span>(SST, Sweden)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot to check</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST.sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first check that both objects have the same crs</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">same.crs</span>(Sweden, SST)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># crop based on the spatial extent of Sweden</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>SST.sw<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">crop</span>(SST, Sweden)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot to check</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST.sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Obviously that crop is a bit too close. There are many solutions for how to do this, but I will show you a manual solution so you can understand the <em>spatialExtent</em> or <em>bounding box</em> of an spatial object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#diagnose the problem - look at the "bounding box" for the vector object</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_bbox</span>(Sweden)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and look at the "extent" for the raster</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(SST.sw)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Rounding error has resulted in ugliness!</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#manually set the extent to crop</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>SST.sw<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">crop</span>(SST, <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">24</span>, <span class="dv">55</span>, <span class="dv">70</span>))</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot to check</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST.sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#diagnose the problem - look at the "bounding box" for the vector object</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_bbox</span>(Sweden)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and look at the "extent" for the raster</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(SST.sw)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Rounding error has resulted in ugliness!</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#manually set the extent to crop</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>SST.sw<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">crop</span>(SST, <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">24</span>, <span class="dv">55</span>, <span class="dv">70</span>))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot to check</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spatraster</span>(<span class="at">data =</span> SST.sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reprojecting-a-raster" class="level2">
 <h2 class="anchored" data-anchor-id="reprojecting-a-raster">Reprojecting a raster</h2>
 <p>Like vector data, rasters can be reprojected. Try the following code to project <code>SST.sw</code> to the <code>LAEA0</code> projection. Then plot it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>LAEA0 <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=0 +lon_0=0"</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># raster reprojection</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>SST.sw.laea<span class="ot">&lt;-</span><span class="fu">project</span>(SST.sw, LAEA0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>LAEA0 <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=0 +lon_0=0"</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># raster reprojection</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>SST.sw.laea<span class="ot">&lt;-</span><span class="fu">project</span>(SST.sw, LAEA0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Surprised?</p>
 <p>Each time you reproject, however, you alter your raster. Therefore you should try to <strong>avoid doing this too much</strong> and it is generally best practice to reproject your vector data to match your raster’s CRS. (You can reproject vector objects back and forth endlessly without loosing information…why?)</p>
@@ -762,36 +776,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
 <p>Use subsetting commands to look at the first entry under the geometry column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Sweden2<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>)  <span class="co">#extracts information from natural earth</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2)  <span class="co">#note that this is a SpatialPolygonsDataFrame... this is an sp object, but we want an sf object </span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#take a peak at the structure of this class object </span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>Sweden2 <span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(Sweden2 ) <span class="co">#convert to an sf object </span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2 ) <span class="co">#sf and data.frame</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Sweden2<span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">country =</span> <span class="st">"sweden"</span>)  <span class="co">#extracts information from natural earth</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2)  <span class="co">#note that this is a SpatialPolygonsDataFrame... this is an sp object, but we want an sf object </span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#take a peak at the structure of this class object </span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>Sweden2 <span class="ot">&lt;-</span><span class="fu">st_as_sf</span>(Sweden2 ) <span class="co">#convert to an sf object </span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Sweden2 ) <span class="co">#sf and data.frame</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>Sweden2  <span class="co">#tibble-like format!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="challenge-2" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
 <p>Use subsetting commands to look at the first entry under the geometry column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Base solution</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Sweden[[<span class="dv">1</span>,<span class="st">"geometry"</span>]]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Tidy solution</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>Sweden <span class="sc">%&gt;%</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Base solution</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>Sweden[[<span class="dv">1</span>,<span class="st">"geometry"</span>]]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Tidy solution</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>Sweden <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(geometry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="challenge-3" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-3">Challenge 3</h3>
 <p>Make a grey square with a square hole in the middle.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p_outer <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>p_inner<span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p_outer,p_inner)))</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(square, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p_outer <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>p_inner<span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.25</span>), <span class="fu">c</span>(<span class="fl">0.75</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>), <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">st_multipolygon</span>(<span class="fu">list</span>(<span class="fu">list</span>(p_outer,p_inner)))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(square, <span class="at">col=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What happens if you use <code>square &lt;- st_multipolygon(list(list(p_outer), list(p_inner)))</code>? Why?</p>
 </section>
@@ -799,29 +813,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="challenge-4">Challenge 4</h3>
 <p>Plot species identity for high-subplot 1, scaling the points by maximum tree diameter.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BunyaMountainTrees) <span class="sc">+</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species, <span class="at">size=</span> max_diam))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BunyaMountainTrees) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">col=</span>species, <span class="at">size=</span> max_diam))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="challenge-5" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-5">Challenge 5</h3>
 <p>Plot your original Sweden WGS and two reprojected maps. Then, change the LAEA projection to be centred on the prime meridien and plot that map again.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting reprojections</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.SWEREF99) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA) <span class="sc">+</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#LAEA centered on 0,0</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>LAEA0 <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=0 +lon_0=0"</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>Sweden.LAEA0<span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, LAEA0)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA0) <span class="sc">+</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Not as good as centering on the country. Try Australia with LAEA0 if you want to see something truly awful.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting reprojections</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.SWEREF99) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#LAEA centered on 0,0</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>LAEA0 <span class="ot">&lt;-</span> <span class="st">"+proj=laea  +lat_0=0 +lon_0=0"</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>Sweden.LAEA0<span class="ot">&lt;-</span><span class="fu">st_transform</span>(Sweden, LAEA0)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> Sweden.LAEA0) <span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>() </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Not as good as centering on the country. Try Australia with LAEA0 if you want to see something truly awful.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

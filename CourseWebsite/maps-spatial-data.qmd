@@ -44,6 +44,7 @@ In this lesson, we will focus on some common spatial data packages and will be u
 
 ```{r Load libraries}
 #| warning: false
+#| eval: false
 
 library(tidyverse)
 library(ggplot2)
@@ -54,9 +55,26 @@ library(rnaturalearth)
 library(geodata)
 library(sdmpredictors)
 
-path<-"./home/data/spatial/"
+path<-"/home/data/spatial/" #this is a backup if we need to switch servers
 
 ```
+
+```{r}
+#|echo: false
+
+library(tidyverse)
+library(ggplot2)
+library(sf)
+library(terra)
+library(tidyterra)
+library(rnaturalearth)
+library(geodata)
+library(sdmpredictors)
+
+path<-"./home/data/spatial/" #this is a backup if we need to switch servers
+
+```
+
 
 # Getting oriented with spatial data
 

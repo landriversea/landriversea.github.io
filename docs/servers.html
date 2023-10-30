@@ -311,11 +311,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#accessing-the-course-server" id="toc-accessing-the-course-server" class="nav-link active" data-scroll-target="#accessing-the-course-server">Accessing the course server</a>
+  <li><a href="#accessing-the-course-servers" id="toc-accessing-the-course-servers" class="nav-link active" data-scroll-target="#accessing-the-course-servers">Accessing the course servers</a>
+  <ul class="collapse">
+  <li><a href="#lund-university-servers" id="toc-lund-university-servers" class="nav-link" data-scroll-target="#lund-university-servers">Lund University Servers</a>
   <ul class="collapse">
   <li><a href="#rstudio-access" id="toc-rstudio-access" class="nav-link" data-scroll-target="#rstudio-access">Rstudio access</a></li>
   <li><a href="#terminal-access" id="toc-terminal-access" class="nav-link" data-scroll-target="#terminal-access">Terminal access</a></li>
+  </ul></li>
   <li><a href="#directories" id="toc-directories" class="nav-link" data-scroll-target="#directories">Directories</a></li>
+  <li><a href="#amazon-r-server" id="toc-amazon-r-server" class="nav-link" data-scroll-target="#amazon-r-server">Amazon R Server</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -340,12 +344,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="accessing-the-course-server" class="level1">
-<h1>Accessing the course server</h1>
-<p>In this course, many analyses will be performed on a remote server. You will access the server in two ways, using Rstudio in your web browser, and through the command line using a terminal on your local machine.</p>
+<section id="accessing-the-course-servers" class="level1">
+<h1>Accessing the course servers</h1>
+<p>In this course, many analyses will be performed on a remote servers. You will access the server in two ways, using Rstudio in your web browser, and through the command line using a terminal on your local machine.</p>
+<section id="lund-university-servers" class="level2">
+<h2 class="anchored" data-anchor-id="lund-university-servers">Lund University Servers</h2>
 <p>Each of you will be given a user account and password by the instructors. You will use this for both the Rstudio web page and to ssh into the server in the terminal.</p>
-<section id="rstudio-access" class="level2">
-<h2 class="anchored" data-anchor-id="rstudio-access">Rstudio access</h2>
+<section id="rstudio-access" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio-access">Rstudio access</h3>
 <p>To access the Rstudio instance, you can connect directly through your web browser. A link to this will be pinned in the #connections-and-installations Slack channel, as well as written on the board.</p>
 <p>You may see a warning that the connection is not safe, it is safe to bypass this message and continue to Rstudio. Here you can log in with your Rstudio credentials.</p>
 <p><strong>IMPORTANT</strong>: If this is your first time logging into Rstudio on the server for this course, you will need to do the following:</p>
@@ -353,18 +359,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"R_LIBS='/resources/riverlandsea/envs/r-landriversea/lib/R/library'"</span> <span class="op">&gt;&gt;</span> ~/.Renviron</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will make it so you can use packages we have installed for this course. You may need to restart the R session after this step, you can do that by going to the menu bar at the top, and choosing ‘Session &gt; Restart R’. You shouldn’t need to install any packages, as we have prepared the ones used in the course, but please tell us if something is missing so we can install it where everyone can use it.</p>
 </section>
-<section id="terminal-access" class="level2">
-<h2 class="anchored" data-anchor-id="terminal-access">Terminal access</h2>
+<section id="terminal-access" class="level3">
+<h3 class="anchored" data-anchor-id="terminal-access">Terminal access</h3>
 <p>For bash exercises, you will utilize a terminal application that you’ve installed on your computer. If you have trouble with this, you can use the Rstudio webpage, and utilize the ‘Terminal’ tab we used in the initial setup.</p>
 <p>If you’re using your own terminal, you will ssh into the server to run commands there. You can do so with the following command:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> user@server-address</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>user</code> will be the username given to you by the instructors and <code>server-address</code> will be pinned in the #connections-and-installations channel on Slack. You’ll be prompted to trust the connection, and fill in your password. Afterwards, you should see that you are now in your home directory on the server!</p>
+</section>
 </section>
 <section id="directories" class="level2">
 <h2 class="anchored" data-anchor-id="directories">Directories</h2>
 <p>There are a few main directories you’ll need on the server:</p>
 <p><code>~/</code> is your home directory, you can keep your working files here.</p>
 <p><code>/resources/riverlandsea/exercise_data</code> contains the input data files for the exercises.</p>
+</section>
+<section id="amazon-r-server" class="level2">
+<h2 class="anchored" data-anchor-id="amazon-r-server">Amazon R Server</h2>
+<p>For some exercises we might need to use an R Studio interface hosted by Amazon. It will look exactly the same when you log in, but the instructions for logging in will be different. We will go over those instructions during class.</p>
 
 
 </section>

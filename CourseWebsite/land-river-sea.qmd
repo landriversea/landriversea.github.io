@@ -39,11 +39,11 @@ In this course, we will focus on a few topics in landscape genomics aiming to gi
 
 -   Resistance surfaces
 
--   Projecting into the future with generalised dissimilarity modelling, gradient forests
+-   Projecting into the future with generalized dissimilarity modelling, gradient forests
 
 -   Biophysical models of dispersal
 
--   More genotype-environmenta asociations and genomic offsets
+-   More genotype-environment associations and genomic offsets
 
 -   (Time permitting) Landscape genomics and genetic architectures
 
@@ -52,6 +52,9 @@ In this course, we will focus on a few topics in landscape genomics aiming to gi
 -   Sampling design
 
 -   Tests of selection
+
+
+To discuss: Pattern vs. Process, many ways to have different allele frequencies
 
 ------------------------------------------------------------------------
 
@@ -95,9 +98,9 @@ Fundamentally there are three main steps to any landscape genetic/genomic study:
 
 ![Various spatial variables for Northern Europe - Riginos et al 2016](images/Europe_variables_Riginos_etal_2016.png)
 
-![Scales of autocorrelation with Moran's I - Riginos et al 2016](images/Autocorrelation_scales_Riginos_etal_2016.png)
-
 ![Using PCA biplot to visualise correlations - Riginos et al 2016](images/Corellations_Riginos_etal_2016.png)
+
+![Scales of autocorrelation with Moran's I - Riginos et al 2016](images/Autocorrelation_scales_Riginos_etal_2016.png)
 
 Other factors to consider -
 
@@ -123,6 +126,8 @@ Consider three basic habitat types: terrestrial, marine, freshwater
 -   How have human activities modified any of the above factors (spatially, temporally)?
 
 -   (For all of these questions you might decide to break their effects down by different taxonomic groups)
+
+- Nominate one person to report back to the class 
 
 Further reading on related ideas for aquatic habitats:
 
@@ -158,7 +163,7 @@ Many of the methods used in landscape genetics/genomics have their origins in sp
 
 -   Also, get used to thinking about genetic diversity in terms of alpha and beta diversity
 
--   Methodological inspirations for landscape genomics often come from landscape genetics, especially for describing spatial structure. Searching this literature for solutions and inspiration can be fruitful.
+-   Methodological inspirations for landscape genomics often come from landscape ecology, especially for describing spatial structure. Searching this literature for solutions and inspiration can be fruitful.
 
 -   Tools borrowed from landscape ecology help move between different types of data and analyses
 

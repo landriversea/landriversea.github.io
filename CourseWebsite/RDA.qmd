@@ -209,6 +209,8 @@ Original comments by Capblancq & Forester will be indented
 
 > like this!
 
+Note that after publication, the authors discovered some minor errors in their code - the updated results (that should match our analyses) can be found \[here\](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13782).
+
 ## Introduction
 
 > This tutorial provides code and explanation associated with a review of the different applications of RDA in the field of landscape genomics written by Thibaut Capblancq & Brenna Forester (2021) Redundancy Analysis (RDA): a Swiss-army knife for landscape genomics.
