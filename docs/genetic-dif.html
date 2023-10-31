@@ -357,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To perform a PCA on our cichlid data, we will use <code>plink</code> - specifically <a href="https://www.cog-genomics.org/plink/1.9/">version 1.9</a> (although be aware <a href="http://zzz.bwh.harvard.edu/plink/">older</a> and <a href="https://www.cog-genomics.org/plink/2.0/">newer</a> versions are available). Note that <code>plink</code> was originally written with human data in mind and has also subsequently been extended to include some model species. As a result, we need to provide a bit of extra info to get it to work on our dataset.</p>
 <section id="linkage-pruning" class="level3">
 <h3 class="anchored" data-anchor-id="linkage-pruning">Linkage pruning</h3>
-<p>One of the major assumptions of PCA is that the data we use is indpendent - i.e.&nbsp;there are no spurious correlations among the measured variables. This is obviously not the case for most genomic data as allele frequencies are correlated due to physical linkage and linkage disequilibrium. So as a first step, we need to prune our dataset of variants that are in linkage.</p>
+<p>One of the major assumptions of PCA is that the data we use is independent - i.e.&nbsp;there are no spurious correlations among the measured variables. This is obviously not the case for most genomic data as allele frequencies are correlated due to physical linkage and linkage disequilibrium. So as a first step, we need to prune our dataset of variants that are in linkage.</p>
 <p>First things first, we will make a directory called <code>pca</code></p>
 <pre class="shell"><code># move to your home directory
 cd ~

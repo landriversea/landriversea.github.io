@@ -17,6 +17,10 @@ execute:
 
 -   Being used to estimate genetic match/mismatch to future climate conditions
 
+-   Uses distances: it is a link based analysis (second column in Wagner & Fortin diagram)
+
+![Statistical models - Wagner & Fortin 2016](images/statisticalModels_Wagner_Fortin_2016.png)
+
 ## GDM
 
 ### Theory/Background for GDM

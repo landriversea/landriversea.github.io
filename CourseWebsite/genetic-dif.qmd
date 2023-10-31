@@ -20,7 +20,7 @@ To perform a PCA on our cichlid data, we will use `plink` - specifically [versio
 
 ### Linkage pruning
 
-One of the major assumptions of PCA is that the data we use is indpendent - i.e. there are no spurious correlations among the measured variables. This is obviously not the case for most genomic data as allele frequencies are correlated due to physical linkage and linkage disequilibrium. So as a first step, we need to prune our dataset of variants that are in linkage.
+One of the major assumptions of PCA is that the data we use is independent - i.e. there are no spurious correlations among the measured variables. This is obviously not the case for most genomic data as allele frequencies are correlated due to physical linkage and linkage disequilibrium. So as a first step, we need to prune our dataset of variants that are in linkage.
 
 First things first, we will make a directory called `pca`
 

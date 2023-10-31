@@ -8,9 +8,9 @@ format:
   pdf: default
 ---
 
-## *Instructor: Riginos*
+*Instructor: Riginos*
 
-# Under contruction!!
+# Under construction!!
 
 One of the goals of landscape genomics is to find loci that contribute to adaptation.
 
@@ -24,43 +24,107 @@ There are numerous names for this concept:
 
 (mal)adaptation = risk of non-adaptedness = genomic offset = genomic vulnerability
 
-The general framework is as follows:
+## The general genomic offset framework is as follows:
 
-Capblancq et al. 2002
+![GEA framework - Capblancq et al. 2020](images/GEAframework_Capblancq_etal_2020.png)
+
+Capblancq et al. 2020
 
 For example, in the lodgepole pine data used by Capblancq & Forester (2021), they:
 
-1.  used RDAs to identify correlaitons between environmental variables and allele frequencies
+1.  used RDAs to identify correlations between environmental variables and allele frequencies
 
-2.  identify outlier loci showing the strongest associations with environmental variables
+2.  identified outlier loci showing the strongest associations with environmental variables
 
-3.  
+3.  projected locally "adaptive" alleles across the landscape: this is the predicted genetic score per grid cell based on the environmental scores, or *genomic prediction*
 
-## Offsets
+4.  projected the future adaptive value "needed" at each grid cell based on future environment and then calculated the difference between present and future as the *genomic offset*
 
-Capblancq has some discussion
+5.  (look to independent validation)
 
-(mal)adaptation = genomic offset = risk of non-adaptedness = genomic vulnerability
+### More details - *genomic prediction*
 
-# Challenge is validating predictions
+Basic framework:
 
-for lodgepole pine, common garden and GEA negatively correlated - Fitzpatrick et al 2021
+environmental data -\> run through GEA model()-\> predicted genetic values
 
-Adaptive loci - what are they, how to id
+Fitzpatrick and Keller 2015 example using gradient forests on balsam poplar:
 
-Capblancq has discussion on conditioning approaches
+-   Panels A & B are genomic predictions
 
-### Projecting adaptive landscapes in space
+-   Panel C is "distance" of G15 from neutral population structure
 
--   genetic based index of adaptation based on Steane
+![Genomic prediction - Fitzpatrick & Keller 2015](images/genomic_prediction_Fitzpatrick_Keller_2015.png)
 
--   predict genotypes and allele frequencies as a function of environmental variation
+In the C&F example using RDA on lodgepole pine:
 
-# Refereneces for this tutorial
+"Adaptive index" is calculated per grid cell as:
+
+Adaptive index per grid cell = $\sum\limits_{i=1}^{n}a_ib_i$, where
+
+-   $a_i$ is the loading on the RDA axis (the GEA model)
+-   $b_i$ is the environmental variable at that grid cell
+-   $n$ is the number of environmental variables
+
+![Adaptive index - Capblancq & Forester 2022](images/mapping_RDAs_Capblancq_Forester_2021.png)
+
+### More details - *genomic offset*
+
+Basic framework:
+
+GO = predicted genetic values at present - predicted genetic values for future
+
+Fitzpatrick and Keller 2015 example using gradient forests on balsam poplar:
+
+![Genomic offset - Fitzpatrick & Keller 2015](images/genomic_offset_Fitzpatrick_Keller_2015.png)
+
+In the C&F example using RDA on lodgepole pine:
+
+![Genomic offset - Capblancq & Forester 2022](images/genomicoffsets_Capblancq_Forester_2021.png)
+
+### Adding in dispersal ...
+
+(based on Gougherty et al. 2021)
+
+At the landscape level, how different will environments be and how geographically distant?
+
+-   Forward offsets - what is minimal Fst distance from present day to future? Where would present populations need to move to?
+
+-   Reverse offsets - what is minimal Fst distance from future to present? Where would future populations need to come from?
+
+![Concepts of forward and reverse offsets - Gougherty etal 2021](images/Forward_reverse_offsets_Gougherty_etal_2021.png)
+
+![Migration distance to acheive offsets - Gougherty etal 2021](images/Forward_reverse_offsets2_Gougherty_etal_2021.png)
+
+-   Assisted migration would be needed for eastern populations
+
+![Migration distances - Gougherty etal 2021](images/Forward_offset_distances_Gougherty_etal_2021.png)
+
+-   But most forward offset migration could be achieved in 500 km
+
+-   
+
+### Validation
+
+Are we confident that GEA analyses:
+
+1.   Identify important environmental variables for shaping genetic diversity ?
+
+2.  Identify genetic loci that contributed to relevant phenotypes?
+
+-   CF "We found a strongly negative relationship between genomic offset and seedling fitness in the common garden (Height: p-value = 1.2 e- 9 and R 2 = 0.12; Growth rate: p-value = 7.9 e-15and R 2= 0.19"
+
+-   look at Moises Exposito
+
+-   lasky review
+
+# References for this tutorial
 
 -   Capblancq, T., Fitzpatrick, M. C., Bay, R. A., Exposito-Alonso, M., & Keller, S. R. (2020). Genomic prediction of (mal)adaptation across current and future climatic landscapes. Annual Review of Ecology, Evolution, and Systematics, 51(1), 245-269. doi:10.1146/annurev-ecolsys-020720-042553
 
 -   Capblancq, T., & Forester, B. R. (2021). Redundancy analysis: A Swiss Army Knife for landscape genomics. Methods in Ecology and Evolution. doi:10.1111/2041-210x.13722
+
+-   Gougherty, A. V., Keller, S. R., & Fitzpatrick, M. C. (2021). Maladaptation, migration and extirpation fuel climate change risk in a forest tree species. \_Nat Clim Change, 11\_(2), 166-171.
 
 # Computer tutorial - GEAs from RDAs
 

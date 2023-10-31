@@ -16,19 +16,19 @@ format:
 
 ( = environmental associations)
 
-From Monday:
-
 1.  Genome-wide: related to demographic history, ecological speciation/diversification, isolation by environment
+
+![Processes leading to IBE - Wang & Bradburd 2014](images/IsolationByEnvironment1-Wang_and_Bradburd_2014.png)
 
 ![IBE signals - Wang & Bradburd 2014](images/IsolationByEnvironment2-Wang_and_Bradburd_2014.png)
 
-*We will focus on this aspect today*
+Tutorial on RDAs, GDM, and GF mostly sit in this category.
 
 2.  Finding loci contribute to heritable genetic variation of selected traits
 
 ![Rellstab et al 2015 (Image modified from Sork et al 2013)](images/environment_genotype_phenotype_Rellstab2015.png)
 
-We will come back to this topic on Friday.
+There is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as *outlier tests* or *genomic scans* are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - often called *GEA, genotype-environment association* or *EAA, environment association analysis* - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al. 2015 and Storfer et al 2018 have good reviews of the various methods if you are looking for further reading on this topic.)
 
 # Why RDA (and other multivariate methods)?
 
@@ -42,9 +42,15 @@ RDA allows you to have multiple response variables (loci) and multiple predictor
 
 \* Note that your genetic data not conform to expectations of parametric methods, including independence of data points
 
-RDA was developed for community ecology data and has been adopted for genetic analyses. In an ecological analysis, there will be various spatial and environmental predictive variables (*n* sites by *m* predictive varaibles) and biological response variables (typically, species abundance organised in *n* sites by *p* species). Much of the literature about using ordination and multivariate analyses for environmental analyses will be described as ecological communities).
+RDA was developed for community ecology data and has been adopted for genetic analyses. In an ecological analysis, there will be various spatial and environmental predictive variables (*n* sites by *m* predictive variables) and biological response variables (typically, species abundance organised in *n* sites by *p* species). Much of the literature about using ordination and multivariate analyses for environmental analyses will be described as ecological communities).
+
+RDA is an example of methods that focus on **nodes**, following the schematic below.
+
+![Statistical models - Wagner & Fortin 2016](images/statisticalModels_Wagner_Fortin_2016.png)
 
 A key element of multivariate methods (including the RDA family) is ***ordination*** (which falls within the broader descriptor of eigenanalysis).
+
+### Ordination
 
 Ordination allows
 
@@ -62,7 +68,7 @@ Pitfalls on using ordination with genetic data
 
 -   Ordination is pattern description: many processes can yield the same patterns
 
-We focus on RDA as a multivariate method because
+### We focus on RDA as a multivariate method because
 
 -   it is flexible structure is very useful for landscape genomic data
 -   it can describe genome-wide patterns
@@ -70,7 +76,7 @@ We focus on RDA as a multivariate method because
 -   The regression on one matrix on another.
 -   Uses a combination of linear regression and PCA.
 
-RDA can address the following questions (citing Capblancq et al. 2021):
+### RDA can address the following questions (citing Capblancq et al. 2021):
 
 1\. What environmental/spatial processes drive patterns of genetic variation?
 
@@ -83,6 +89,8 @@ RDA can address the following questions (citing Capblancq et al. 2021):
 *RDA takes linear combinations of the explanatory variables (X) and uses them to maximise the variance explained in linear combinations of Y (where X and Y are matrices)*
 
 -   Keep this linearity in mind: it might not be appropriate for your data
+
+### A schematic for how RDA works:
 
 ![Conceptual overview of RDA - From Capblancq et al. 2021](images/RDA_overview_Capblancq_etal2021.png){fig-align="center"}
 
@@ -209,7 +217,7 @@ Original comments by Capblancq & Forester will be indented
 
 > like this!
 
-Note that after publication, the authors discovered some minor errors in their code - the updated results (that should match our analyses) can be found \[here\](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13782).
+Note that after publication, the authors discovered some minor errors in their code - the updated results (that should match our analyses) can be found [here](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13782).
 
 ## Introduction
 
@@ -265,7 +273,9 @@ library(terra)
 library(vegan)
 library(corrplot)
 
-path<-"./home/data/rda/"
+path<-"/home/data/rda/" #if using Amazon server
+#path<-"/resources/riverlandsea/exercise_data/rda" #if using Lund server
+
 
 #Climate data
 ras_6190<-terra::rast(paste0(path, "ras_6190.tif"))
@@ -365,7 +375,7 @@ Whether forward selection is the best approach or not is debatable, but it is th
 ## Null model
 RDA0 <- rda(AllFreq ~ 1,  Variables) 
 
-## Full model
+## Full model - this will take a bit of time to run
 RDAfull <- rda(AllFreq ~ AHM + bFFP + CMD + DD_0 + DD_18 + DD18 + DD5 + eFFP + EMT + Eref + EXT + FFP + MAP + MAR + MAT + MCMT + MSP + MWMT + NFFD + PAS + PPT_sm + PPT_wt + RH + SHM + Tave_sm + Tave_wt + TD, Variables)
 ```
 
@@ -385,18 +395,92 @@ The `vegan` package is very well documented and it is worth spending time learni
 
 > To conduct the selection procedure we used the ordiR2step function of the package vegan and the following stopping criteria: variable significance of p \< 0.01 using 1000 permutations, and the adjusted R2 of the global model.
 
-Because this command will take a long time to run, I suggest that you start it and watch what it is doing, but I have saved the output `mod` for you to import, so you can stop the process to speed things up.
+Because this command will take a long time to run, I suggest that you start it and watch what it is doing, but I have saved the output `mod` for you to import, so you can stop the process to speed things up. In
 
-Interrupt the processing for the sake of time and load the output of the full ordiR2step:
+Interrupt the processing for the sake of time and load the output of the full ordiR2step output after you see the initial round of results:
 
 ```{r load mod}
+## Stepwise procedure with ordiR2step function
+mod <- ordiR2step(RDA0, RDAfull, Pin = 0.01, R2permutations = 1000, R2scope = T) #this will take time to run - about 30 min on my laptop
+
 # load the output
 load(paste0(path, "mod.Rdata"))
+# if you can't load this file, don't worry about it. Read below and move on.
+```
+
+Here is what my screen output looks like when running ordiR2step. It starts by evaluating which of the predictors you supplied explains the greatest amount of variance (MAR) in this case. Once it adds one predictor, it will assess which of the remaining variables should be added (EMT, in this case). It evaluates whether the model fit improves substantially with each variable using the adjusted R2. See `?ordiR2step` for more information.
+
+```         
+Step: R2.adj= 0 
+Call: AllFreq ~ 1 
+ 
+                R2.adjusted
+<All variables> 0.081012244
++ MAR           0.022167460
++ EMT           0.019112369
++ PPT_wt        0.016854043
++ Tave_wt       0.016052084
++ RH            0.015642759
++ MCMT          0.015420933
++ eFFP          0.015105975
++ DD_0          0.014822828
++ NFFD          0.014717984
++ PPT_sm        0.014492755
++ TD            0.014274591
++ MAP           0.013217792
++ DD_18         0.012420377
++ MAT           0.012363359
++ MSP           0.010931973
++ FFP           0.010056901
++ CMD           0.009675979
++ SHM           0.008713027
++ Eref          0.007020628
++ bFFP          0.006082542
++ AHM           0.006006697
++ EXT           0.005173569
++ DD5           0.004382995
++ DD18          0.004240597
++ MWMT          0.003519758
++ Tave_sm       0.003343331
++ PAS           0.002501768
+<none>          0.000000000
+
+      Df    AIC      F Pr(>F)   
++ MAR  1 1782.8 7.3476  0.002 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Step: R2.adj= 0.02216746 
+Call: AllFreq ~ MAR 
+ 
+                R2.adjusted
+<All variables>  0.08101224
++ EMT            0.04451733
++ TD             0.04380193
+(and so on)
 ```
 
 As before, examine the `mod` object in detail. How much variance does RDA1 explain? Is RDA1 dominated by a single environmental variable or spread among variables?
 
 `mod$anova` will give you most of the output shown in Table 1 from C & F. You would just need to do some subtraction to get the R2 for each term - for example, EMT = 0.044517-0.022167 = 0.02235.
+
+```         
+ > mod$anova
+ 
+                 R2.adj Df    AIC      F Pr(>F)   
++ MAR           0.022167  1 1782.8 7.3476  0.002 **
++ EMT           0.044517  1 1777.2 7.5261  0.002 **
++ MWMT          0.054435  1 1775.3 3.9158  0.002 **
++ CMD           0.063109  1 1773.7 3.5645  0.002 **
++ Tave_wt       0.067203  1 1773.4 2.2115  0.002 **
++ DD_18         0.070171  1 1773.5 1.8775  0.002 **
++ MAP           0.071918  1 1774.0 1.5159  0.002 **
++ Eref          0.073516  1 1774.5 1.4708  0.002 **
++ PAS           0.075318  1 1774.9 1.5302  0.002 **
+<All variables> 0.081012                           
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
 
 (And you don't need to report all those decimal places, IMO)
 
@@ -421,7 +505,23 @@ pRDAfull <- rda(AllFreq ~ PC1 + PC2 + PC3 + Longitude + Latitude + MAR + EMT + M
 
 RsquareAdj(pRDAfull)
 
-anova(pRDAfull)
+#anova(pRDAfull) this can take a long time to run - I have saved an output below... it is giving you the significance of the whole model using permutation 
+
+```
+
+```         
+> anova(pRDAfull)
+
+Permutation test for rda under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = AllFreq ~ PC1 + PC2 + PC3 + Longitude + Latitude + MAR + EMT + MWMT + CMD + Tave_wt + DD_18 + MAP + Eref + PAS, data = Variables)
+          Df Variance      F Pr(>F)    
+Model     14    84.62 3.2586  0.001 ***
+Residual 266   493.41                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 ```
 
 These values and the subsequent models correspond to Table 2. (There might be some minor discrepancies due to data preparation and permutation based tests.) For some reason, in Table 2, R2 rather than adjusted R2 is reported. You should use adjusted R2: it is penalized by the number of predictor variables (somewhat analogous to AIC).
@@ -513,7 +613,7 @@ The above tutorial was conducted on populations, but if your sampling is at the 
 
 ### Using link based predictors
 
-In a standard analyses as conducted in C&F's tutorial, the predictive variables have site or node based attributes - that is a one-to-one relationship between populations (or individuals) and predictors. Sometimes, however, you might be focused on link attributes such as the geographic distance between sites.
+In a standard analyses as conducted in C&F's tutorial, the predictive variables have site or node based attributes: that is, a one-to-one relationship between populations (or individuals) and predictors. Sometimes, however, you might be focused on link attributes such as the geographic distance between sites.
 
 If this is the case, you should organise your distances as a square matrix with dimensions equal to the number of populations. *Principal coordinates analysis* (PCoA) = metric multidimensional scaling can then be used to undertake ordination based on these pairwise distances. You will then need to decide how many axis of the PCoA to use as your predictors in the RDA. For example, say you wanted to get geographic distances based on projected locations. If this is the case, PCoA1 and PCoA2 are likely to be sufficient to capture most of the variation. Note that a PCoA on Euclidean distances is the same as a PCA.
 
@@ -545,13 +645,15 @@ plot(xygrid.mem, SpORcoords = xygrid)
 
 # Looking at MEMS for lodgepole pine data
 pine.mem<-dbmem(Coordinates[,c(2,3)], MEM.autocor = "positive", store.listw = TRUE)
-plot(pine.mem, SpORcoords = Coordinates[,c(2,3)])
+plot(pine.mem, SpORcoords = Coordinates[,c(2,3)]) #This is a horribly ugly plot. 
 
 ```
 
+(If anyone figures out how to make this look better, please post in slack or email me and you will become famous in future tutorials - you can extract the MEM values from `pine.mem and use them as a color palette and then just place them in xy space from Coodinates`.
+
 You could play with using the first few MEMs in modified RDAs of the pine data. Remove longitude and latitude if you do this.
 
-If you plan to use MEMs in your own research, you will want to investigate much further. Right now, this code demonstrate how you can make them so you have a basic understanding of what they are when you read about MEMs in paper. A good place to start would be by following the [adespatial tutorial](https://cran.r-project.org/web/packages/adespatial/vignettes/tutorial.html).
+If you plan to use MEMs in your own research, you will want to investigate much further. Right now, this code demonstrate how you can make them so you have a basic understanding of what they are when you read about MEMs in papers. A good place to start would be by following the [adespatial tutorial](https://cran.r-project.org/web/packages/adespatial/vignettes/tutorial.html).
 
 ```{r save key files}
 #| echo: false

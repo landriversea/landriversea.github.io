@@ -317,7 +317,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#geas-genotype-by-environment-associations" id="toc-geas-genotype-by-environment-associations" class="nav-link" data-scroll-target="#geas-genotype-by-environment-associations">GEAs: Genotype-by-environment associations</a></li>
   </ul></li>
-  <li><a href="#why-rda-and-other-multivariate-methods" id="toc-why-rda-and-other-multivariate-methods" class="nav-link" data-scroll-target="#why-rda-and-other-multivariate-methods">Why RDA (and other multivariate methods)?</a></li>
+  <li><a href="#why-rda-and-other-multivariate-methods" id="toc-why-rda-and-other-multivariate-methods" class="nav-link" data-scroll-target="#why-rda-and-other-multivariate-methods">Why RDA (and other multivariate methods)?</a>
+  <ul class="collapse">
+  <li><a href="#ordination" id="toc-ordination" class="nav-link" data-scroll-target="#ordination">Ordination</a></li>
+  <li><a href="#we-focus-on-rda-as-a-multivariate-method-because" id="toc-we-focus-on-rda-as-a-multivariate-method-because" class="nav-link" data-scroll-target="#we-focus-on-rda-as-a-multivariate-method-because">We focus on RDA as a multivariate method because</a></li>
+  <li><a href="#rda-can-address-the-following-questions-citing-capblancq-et-al.-2021" id="toc-rda-can-address-the-following-questions-citing-capblancq-et-al.-2021" class="nav-link" data-scroll-target="#rda-can-address-the-following-questions-citing-capblancq-et-al.-2021">RDA can address the following questions (citing Capblancq et al.&nbsp;2021):</a></li>
+  <li><a href="#a-schematic-for-how-rda-works" id="toc-a-schematic-for-how-rda-works" class="nav-link" data-scroll-target="#a-schematic-for-how-rda-works">A schematic for how RDA works:</a></li>
+  </ul></li>
   <li><a href="#review-of-unconstrained-ordination-pca-pcoa" id="toc-review-of-unconstrained-ordination-pca-pcoa" class="nav-link" data-scroll-target="#review-of-unconstrained-ordination-pca-pcoa">Review of unconstrained ordination (PCA &amp; PCoA)</a>
   <ul class="collapse">
   <li><a href="#pca---principal-components-analysis" id="toc-pca---principal-components-analysis" class="nav-link" data-scroll-target="#pca---principal-components-analysis">PCA - principal components analysis</a></li>
@@ -400,17 +406,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="geas-genotype-by-environment-associations" class="level2">
 <h2 class="anchored" data-anchor-id="geas-genotype-by-environment-associations">GEAs: Genotype-by-environment associations</h2>
 <p>( = environmental associations)</p>
-<p>From Monday:</p>
 <ol type="1">
 <li>Genome-wide: related to demographic history, ecological speciation/diversification, isolation by environment</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/IsolationByEnvironment1-Wang_and_Bradburd_2014.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Processes leading to IBE - Wang &amp; Bradburd 2014</figcaption>
+</figure>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/IsolationByEnvironment2-Wang_and_Bradburd_2014.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">IBE signals - Wang &amp; Bradburd 2014</figcaption>
 </figure>
 </div>
-<p><em>We will focus on this aspect today</em></p>
+<p>Tutorial on RDAs, GDM, and GF mostly sit in this category.</p>
 <ol start="2" type="1">
 <li>Finding loci contribute to heritable genetic variation of selected traits</li>
 </ol>
@@ -420,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption class="figure-caption">Rellstab et al 2015 (Image modified from Sork et al 2013)</figcaption>
 </figure>
 </div>
-<p>We will come back to this topic on Friday.</p>
+<p>There is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as <em>outlier tests</em> or <em>genomic scans</em> are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - often called <em>GEA, genotype-environment association</em> or <em>EAA, environment association analysis</em> - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al.&nbsp;2015 and Storfer et al 2018 have good reviews of the various methods if you are looking for further reading on this topic.)</p>
 </section>
 </section>
 <section id="why-rda-and-other-multivariate-methods" class="level1">
@@ -458,8 +469,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>* Note that your genetic data not conform to expectations of parametric methods, including independence of data points</p>
-<p>RDA was developed for community ecology data and has been adopted for genetic analyses. In an ecological analysis, there will be various spatial and environmental predictive variables (<em>n</em> sites by <em>m</em> predictive varaibles) and biological response variables (typically, species abundance organised in <em>n</em> sites by <em>p</em> species). Much of the literature about using ordination and multivariate analyses for environmental analyses will be described as ecological communities).</p>
+<p>RDA was developed for community ecology data and has been adopted for genetic analyses. In an ecological analysis, there will be various spatial and environmental predictive variables (<em>n</em> sites by <em>m</em> predictive variables) and biological response variables (typically, species abundance organised in <em>n</em> sites by <em>p</em> species). Much of the literature about using ordination and multivariate analyses for environmental analyses will be described as ecological communities).</p>
+<p>RDA is an example of methods that focus on <strong>nodes</strong>, following the schematic below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/statisticalModels_Wagner_Fortin_2016.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Statistical models - Wagner &amp; Fortin 2016</figcaption>
+</figure>
+</div>
 <p>A key element of multivariate methods (including the RDA family) is <strong><em>ordination</em></strong> (which falls within the broader descriptor of eigenanalysis).</p>
+<section id="ordination" class="level3">
+<h3 class="anchored" data-anchor-id="ordination">Ordination</h3>
 <p>Ordination allows</p>
 <ul>
 <li><p>Compression and visualization of complex data</p></li>
@@ -472,7 +492,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Uneven sampling can skew results</p></li>
 <li><p>Ordination is pattern description: many processes can yield the same patterns</p></li>
 </ul>
-<p>We focus on RDA as a multivariate method because</p>
+</section>
+<section id="we-focus-on-rda-as-a-multivariate-method-because" class="level3">
+<h3 class="anchored" data-anchor-id="we-focus-on-rda-as-a-multivariate-method-because">We focus on RDA as a multivariate method because</h3>
 <ul>
 <li>it is flexible structure is very useful for landscape genomic data</li>
 <li>it can describe genome-wide patterns</li>
@@ -480,7 +502,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The regression on one matrix on another.</li>
 <li>Uses a combination of linear regression and PCA.</li>
 </ul>
-<p>RDA can address the following questions (citing Capblancq et al.&nbsp;2021):</p>
+</section>
+<section id="rda-can-address-the-following-questions-citing-capblancq-et-al.-2021" class="level3">
+<h3 class="anchored" data-anchor-id="rda-can-address-the-following-questions-citing-capblancq-et-al.-2021">RDA can address the following questions (citing Capblancq et al.&nbsp;2021):</h3>
 <p>1. What environmental/spatial processes drive patterns of genetic variation?</p>
 <p>2. What is the genetic basis of local adaptation to the environment?</p>
 <p>3. How is adaptive genetic variation distributed across landscapes?</p>
@@ -489,12 +513,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Keep this linearity in mind: it might not be appropriate for your data</li>
 </ul>
+</section>
+<section id="a-schematic-for-how-rda-works" class="level3">
+<h3 class="anchored" data-anchor-id="a-schematic-for-how-rda-works">A schematic for how RDA works:</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/RDA_overview_Capblancq_etal2021.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Conceptual overview of RDA - From Capblancq et al.&nbsp;2021</figcaption>
 </figure>
 </div>
+</section>
 </section>
 <section id="review-of-unconstrained-ordination-pca-pcoa" class="level1">
 <h1>Review of unconstrained ordination (PCA &amp; PCoA)</h1>
@@ -659,7 +687,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>like this!</p>
 </blockquote>
-<p>Note that after publication, the authors discovered some minor errors in their code - the updated results (that should match our analyses) can be found [here](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13782).</p>
+<p>Note that after publication, the authors discovered some minor errors in their code - the updated results (that should match our analyses) can be found <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13782">here</a>.</p>
 </section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -720,23 +748,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"./home/data/rda/"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Climate data</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ras_6190<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(<span class="fu">paste0</span>(path, <span class="st">"ras_6190.tif"</span>))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ras_6190) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AHM"</span>,<span class="st">"bFFP"</span>,<span class="st">"CMD"</span>,<span class="st">"DD_0"</span>,<span class="st">"DD_18"</span>,<span class="st">"DD18"</span>,<span class="st">"DD5"</span>,<span class="st">"eFFP"</span>,<span class="st">"EMT"</span>, <span class="st">"Eref"</span>, <span class="st">"EXT"</span>, <span class="st">"FFP"</span>, <span class="st">"MAP"</span>, <span class="st">"MAR"</span>, <span class="st">"MAT"</span>, <span class="st">"MCMT"</span>, <span class="st">"MSP"</span>, <span class="st">"MWMT"</span>, <span class="st">"NFFD"</span>, <span class="st">"PAS"</span>, <span class="st">"PPT_sm"</span>, <span class="st">"PPT_wt"</span>, <span class="st">"RH"</span>, <span class="st">"SHM"</span>, <span class="st">"Tave_sm"</span>, <span class="st">"Tave_wt"</span>, <span class="st">"TD"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic data</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"AllFreq.RData"</span>))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"Neutral.RData"</span>))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Sampling sites</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">paste0</span>(path, <span class="st">"PlSeedlots.csv"</span>), <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> T, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidy up the coordinates data and check them</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> Coordinates[<span class="fu">match</span>(<span class="fu">row.names</span>(AllFreq), Coordinates<span class="sc">$</span>id2, <span class="at">nomatch =</span> <span class="dv">0</span>),]</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Coordinates) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Population"</span>, <span class="st">"Latitude"</span>, <span class="st">"Longitude"</span>, <span class="st">"Elevation"</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Coordinates[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"/home/data/rda/"</span> <span class="co">#if using Amazon server</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#path&lt;-"/resources/riverlandsea/exercise_data/rda" #if using Lund server</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Climate data</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ras_6190<span class="ot">&lt;-</span>terra<span class="sc">::</span><span class="fu">rast</span>(<span class="fu">paste0</span>(path, <span class="st">"ras_6190.tif"</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ras_6190) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AHM"</span>,<span class="st">"bFFP"</span>,<span class="st">"CMD"</span>,<span class="st">"DD_0"</span>,<span class="st">"DD_18"</span>,<span class="st">"DD18"</span>,<span class="st">"DD5"</span>,<span class="st">"eFFP"</span>,<span class="st">"EMT"</span>, <span class="st">"Eref"</span>, <span class="st">"EXT"</span>, <span class="st">"FFP"</span>, <span class="st">"MAP"</span>, <span class="st">"MAR"</span>, <span class="st">"MAT"</span>, <span class="st">"MCMT"</span>, <span class="st">"MSP"</span>, <span class="st">"MWMT"</span>, <span class="st">"NFFD"</span>, <span class="st">"PAS"</span>, <span class="st">"PPT_sm"</span>, <span class="st">"PPT_wt"</span>, <span class="st">"RH"</span>, <span class="st">"SHM"</span>, <span class="st">"Tave_sm"</span>, <span class="st">"Tave_wt"</span>, <span class="st">"TD"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic data</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"AllFreq.RData"</span>))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"Neutral.RData"</span>))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Sampling sites</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">paste0</span>(path, <span class="st">"PlSeedlots.csv"</span>), <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> T, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidy up the coordinates data and check them</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Coordinates <span class="ot">&lt;-</span> Coordinates[<span class="fu">match</span>(<span class="fu">row.names</span>(AllFreq), Coordinates<span class="sc">$</span>id2, <span class="at">nomatch =</span> <span class="dv">0</span>),]</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Coordinates) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Population"</span>, <span class="st">"Latitude"</span>, <span class="st">"Longitude"</span>, <span class="st">"Elevation"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Coordinates[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -808,7 +838,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Null model</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>RDA0 <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> <span class="dv">1</span>,  Variables) </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Full model</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Full model - this will take a bit of time to run</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>RDAfull <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> AHM <span class="sc">+</span> bFFP <span class="sc">+</span> CMD <span class="sc">+</span> DD_0 <span class="sc">+</span> DD_18 <span class="sc">+</span> DD18 <span class="sc">+</span> DD5 <span class="sc">+</span> eFFP <span class="sc">+</span> EMT <span class="sc">+</span> Eref <span class="sc">+</span> EXT <span class="sc">+</span> FFP <span class="sc">+</span> MAP <span class="sc">+</span> MAR <span class="sc">+</span> MAT <span class="sc">+</span> MCMT <span class="sc">+</span> MSP <span class="sc">+</span> MWMT <span class="sc">+</span> NFFD <span class="sc">+</span> PAS <span class="sc">+</span> PPT_sm <span class="sc">+</span> PPT_wt <span class="sc">+</span> RH <span class="sc">+</span> SHM <span class="sc">+</span> Tave_sm <span class="sc">+</span> Tave_wt <span class="sc">+</span> TD, Variables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Examine the structure of <code>RDA0</code> by just typing <code>RDA0</code> and also <code>summary(RDA0)</code>. There is a lot of information but the structure is essentially a PCA, since we did not define any explanatory variables. As before, the “Species scores” are your column variables, which are loci in this case. The “Site scores” are row variables or populations.</p>
@@ -822,14 +852,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>To conduct the selection procedure we used the ordiR2step function of the package vegan and the following stopping criteria: variable significance of p &lt; 0.01 using 1000 permutations, and the adjusted R2 of the global model.</p>
 </blockquote>
-<p>Because this command will take a long time to run, I suggest that you start it and watch what it is doing, but I have saved the output <code>mod</code> for you to import, so you can stop the process to speed things up.</p>
-<p>Interrupt the processing for the sake of time and load the output of the full ordiR2step:</p>
+<p>Because this command will take a long time to run, I suggest that you start it and watch what it is doing, but I have saved the output <code>mod</code> for you to import, so you can stop the process to speed things up. In</p>
+<p>Interrupt the processing for the sake of time and load the output of the full ordiR2step output after you see the initial round of results:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the output</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"mod.Rdata"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Stepwise procedure with ordiR2step function</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">ordiR2step</span>(RDA0, RDAfull, <span class="at">Pin =</span> <span class="fl">0.01</span>, <span class="at">R2permutations =</span> <span class="dv">1000</span>, <span class="at">R2scope =</span> T) <span class="co">#this will take time to run - about 30 min on my laptop</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load the output</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"mod.Rdata"</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># if you can't load this file, don't worry about it. Read below and move on.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Here is what my screen output looks like when running ordiR2step. It starts by evaluating which of the predictors you supplied explains the greatest amount of variance (MAR) in this case. Once it adds one predictor, it will assess which of the remaining variables should be added (EMT, in this case). It evaluates whether the model fit improves substantially with each variable using the adjusted R2. See <code>?ordiR2step</code> for more information.</p>
+<pre><code>Step: R2.adj= 0 
+Call: AllFreq ~ 1 
+ 
+                R2.adjusted
+&lt;All variables&gt; 0.081012244
++ MAR           0.022167460
++ EMT           0.019112369
++ PPT_wt        0.016854043
++ Tave_wt       0.016052084
++ RH            0.015642759
++ MCMT          0.015420933
++ eFFP          0.015105975
++ DD_0          0.014822828
++ NFFD          0.014717984
++ PPT_sm        0.014492755
++ TD            0.014274591
++ MAP           0.013217792
++ DD_18         0.012420377
++ MAT           0.012363359
++ MSP           0.010931973
++ FFP           0.010056901
++ CMD           0.009675979
++ SHM           0.008713027
++ Eref          0.007020628
++ bFFP          0.006082542
++ AHM           0.006006697
++ EXT           0.005173569
++ DD5           0.004382995
++ DD18          0.004240597
++ MWMT          0.003519758
++ Tave_sm       0.003343331
++ PAS           0.002501768
+&lt;none&gt;          0.000000000
+
+      Df    AIC      F Pr(&gt;F)   
++ MAR  1 1782.8 7.3476  0.002 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Step: R2.adj= 0.02216746 
+Call: AllFreq ~ MAR 
+ 
+                R2.adjusted
+&lt;All variables&gt;  0.08101224
++ EMT            0.04451733
++ TD             0.04380193
+(and so on)</code></pre>
 <p>As before, examine the <code>mod</code> object in detail. How much variance does RDA1 explain? Is RDA1 dominated by a single environmental variable or spread among variables?</p>
 <p><code>mod$anova</code> will give you most of the output shown in Table 1 from C &amp; F. You would just need to do some subtraction to get the R2 for each term - for example, EMT = 0.044517-0.022167 = 0.02235.</p>
+<pre><code> &gt; mod$anova
+ 
+                 R2.adj Df    AIC      F Pr(&gt;F)   
++ MAR           0.022167  1 1782.8 7.3476  0.002 **
++ EMT           0.044517  1 1777.2 7.5261  0.002 **
++ MWMT          0.054435  1 1775.3 3.9158  0.002 **
++ CMD           0.063109  1 1773.7 3.5645  0.002 **
++ Tave_wt       0.067203  1 1773.4 2.2115  0.002 **
++ DD_18         0.070171  1 1773.5 1.8775  0.002 **
++ MAP           0.071918  1 1774.0 1.5159  0.002 **
++ Eref          0.073516  1 1774.5 1.4708  0.002 **
++ PAS           0.075318  1 1774.9 1.5302  0.002 **
+&lt;All variables&gt; 0.081012                           
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
 <p>(And you don’t need to report all those decimal places, IMO)</p>
 <p>From C &amp; F:</p>
 <blockquote class="blockquote">
@@ -848,13 +945,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="full-model">Full model</h3>
 <p>Build the full model with population structure, geography, and environmental variables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Full model</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>pRDAfull <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3 <span class="sc">+</span> Longitude <span class="sc">+</span> Latitude <span class="sc">+</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS,  Variables)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RsquareAdj</span>(pRDAfull)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(pRDAfull)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Full model</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pRDAfull <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3 <span class="sc">+</span> Longitude <span class="sc">+</span> Latitude <span class="sc">+</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS,  Variables)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RsquareAdj</span>(pRDAfull)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#anova(pRDAfull) this can take a long time to run - I have saved an output below... it is giving you the significance of the whole model using permutation </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<pre><code>&gt; anova(pRDAfull)
+
+Permutation test for rda under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: rda(formula = AllFreq ~ PC1 + PC2 + PC3 + Longitude + Latitude + MAR + EMT + MWMT + CMD + Tave_wt + DD_18 + MAP + Eref + PAS, data = Variables)
+          Df Variance      F Pr(&gt;F)    
+Model     14    84.62 3.2586  0.001 ***
+Residual 266   493.41                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
 <p>These values and the subsequent models correspond to Table 2. (There might be some minor discrepancies due to data preparation and permutation based tests.) For some reason, in Table 2, R2 rather than adjusted R2 is reported. You should use adjusted R2: it is penalized by the number of predictor variables (somewhat analogous to AIC).</p>
 </section>
 <section id="climate-model" class="level3">
@@ -862,13 +971,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The climate model is the first of a series of <em>conditioned</em> models. This structure estimates the variance of constrained variables, given conditioning on series of other variables. In this instance, the model is exploring the effect of environmental predictors conditioned upon geography and neutral population structure.</p>
 <p>Conditioned models are also called <em>partial RDAs</em>. The conditioned variables show up in the regression model following the “|”: Climate model is <span class="math inline">\(F \sim clim | geog + struct)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pure climate model</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pRDAclim <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS <span class="sc">+</span> <span class="fu">Condition</span>(Longitude <span class="sc">+</span> Latitude <span class="sc">+</span> PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3),  Variables)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RsquareAdj</span>(pRDAclim)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># can skip to save time </span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#anova(pRDAclim)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pure climate model</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pRDAclim <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS <span class="sc">+</span> <span class="fu">Condition</span>(Longitude <span class="sc">+</span> Latitude <span class="sc">+</span> PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3),  Variables)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RsquareAdj</span>(pRDAclim)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># can skip to save time </span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#anova(pRDAclim)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Take a look at <code>pRDAclim</code> and you will see how Inertia is partitioned among various categories. Information from this model is feeding into the second row of Table 2.</p>
 <ul>
@@ -881,24 +990,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="population-structure-model">Population structure model</h3>
 <p>Similarly a partial RDA can be undertaken for population structure…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pure neutral population structure model  </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pRDAstruct <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3 <span class="sc">+</span> <span class="fu">Condition</span>(Longitude <span class="sc">+</span> Latitude <span class="sc">+</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS),  Variables)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RsquareAdj</span>(pRDAstruct)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#anova(pRDAstruct)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pure neutral population structure model  </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>pRDAstruct <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3 <span class="sc">+</span> <span class="fu">Condition</span>(Longitude <span class="sc">+</span> Latitude <span class="sc">+</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS),  Variables)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RsquareAdj</span>(pRDAstruct)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#anova(pRDAstruct)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="geography" class="level3">
 <h3 class="anchored" data-anchor-id="geography">Geography</h3>
 <p>And another pRDA for geography</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Pure geography model </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>pRDAgeog <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> Longitude <span class="sc">+</span> Latitude <span class="sc">+</span> <span class="fu">Condition</span>(MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS <span class="sc">+</span> PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3),  Variables)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RsquareAdj</span>(pRDAgeog)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#anova(pRDAgeog)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Pure geography model </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>pRDAgeog <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> Longitude <span class="sc">+</span> Latitude <span class="sc">+</span> <span class="fu">Condition</span>(MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS <span class="sc">+</span> PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3),  Variables)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">RsquareAdj</span>(pRDAgeog)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#anova(pRDAgeog)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p>To replicate Table 2 in the manuscript, we extract the following from the above results:</p>
@@ -915,15 +1024,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Note:</strong> It is interesting to look at the degree of correlation among variables using a correlogram:</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#explore other options</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(Variables[, <span class="fu">c</span>(<span class="st">"PC1"</span>,<span class="st">"PC2"</span>,<span class="st">"PC3"</span>,<span class="st">"Longitude"</span>,<span class="st">"Latitude"</span>,<span class="st">"MAR"</span>,<span class="st">"EMT"</span>,<span class="st">"MWMT"</span>,<span class="st">"CMD"</span>,<span class="st">"Tave_wt"</span>,<span class="st">"DD_18"</span>,<span class="st">"MAP"</span>,<span class="st">"Eref"</span>,<span class="st">"PAS"</span>)]), <span class="at">type=</span><span class="st">"upper"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#explore other options</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(Variables[, <span class="fu">c</span>(<span class="st">"PC1"</span>,<span class="st">"PC2"</span>,<span class="st">"PC3"</span>,<span class="st">"Longitude"</span>,<span class="st">"Latitude"</span>,<span class="st">"MAR"</span>,<span class="st">"EMT"</span>,<span class="st">"MWMT"</span>,<span class="st">"CMD"</span>,<span class="st">"Tave_wt"</span>,<span class="st">"DD_18"</span>,<span class="st">"MAP"</span>,<span class="st">"Eref"</span>,<span class="st">"PAS"</span>)]), <span class="at">type=</span><span class="st">"upper"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Notes on interpretation and best practices:</strong> In this case, the largest proportion of genetic variance could not be uniquely attributed to any of the three sets of predictors, a common occurrence given the ubiquitous nature of spatial autocorrelation in environmental and genetic data sets. This confounded effect reflects a high degree of collinearity among explanatory variables. This is critical information given that most landscape genomic studies look for correlation between climatic and genetic variation (i.e., GEA) and either assume no collinearity or, on the contrary, totally remove this commonly explained variation. In the first case, GEA detections could potentially be subject to high false positive rates, while in the latter case detections might show high false negative rates. Selecting an appropriate approach to account for demographic history and geographic distance is of major importance when searching for selection in the genome. Variance partitioning can be a useful step to explore the (statistical) association among available descriptors, to better understand the covariation of environmental and genetic gradients, and to determine how much overall genetic variation is shaped by environmental, geographic, and demographic factors before conducting further landscape genomics study.</p>
 </blockquote>
 <p>Another way to look for correlations is to use variance inflation factors, where the square root of the value &gt; 2 indicates multicollinearity.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">vif.cca</span>(pRDAfull))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">vif.cca</span>(pRDAfull))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(Not really a good sign!)</p>
 </section>
@@ -939,7 +1048,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="using-link-based-predictors" class="level3">
 <h3 class="anchored" data-anchor-id="using-link-based-predictors">Using link based predictors</h3>
-<p>In a standard analyses as conducted in C&amp;F’s tutorial, the predictive variables have site or node based attributes - that is a one-to-one relationship between populations (or individuals) and predictors. Sometimes, however, you might be focused on link attributes such as the geographic distance between sites.</p>
+<p>In a standard analyses as conducted in C&amp;F’s tutorial, the predictive variables have site or node based attributes: that is, a one-to-one relationship between populations (or individuals) and predictors. Sometimes, however, you might be focused on link attributes such as the geographic distance between sites.</p>
 <p>If this is the case, you should organise your distances as a square matrix with dimensions equal to the number of populations. <em>Principal coordinates analysis</em> (PCoA) = metric multidimensional scaling can then be used to undertake ordination based on these pairwise distances. You will then need to decide how many axis of the PCoA to use as your predictors in the RDA. For example, say you wanted to get geographic distances based on projected locations. If this is the case, PCoA1 and PCoA2 are likely to be sufficient to capture most of the variation. Note that a PCoA on Euclidean distances is the same as a PCA.</p>
 <p>The procedure of incorporating PCoA axes from a distance matrix in RDA is sometimes called <em>distance-based redundancy analyses</em>, dbRDA.</p>
 </section>
@@ -951,25 +1060,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The code below draws upon <code>adespatial</code> and <code>spdep</code> that were developed by authors involved in the key theory related to MEMs. These packages, however, are a bit out of date and so in the future you will want to see if there are updates.</p>
 <p>The first bit of code shows MEMs for a simple spatial grid so you can build up your inference. The second bit of code shows how you would find MEMs for the irregular lodgepole pine data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ade4)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adespatial)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adegraphics)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstration of MEMs on a grid</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>xygrid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xygrid)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>xygrid.mem<span class="ot">&lt;-</span><span class="fu">dbmem</span>(xygrid,<span class="at">store.listw =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xygrid.mem, <span class="at">SpORcoords =</span> xygrid)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Looking at MEMS for lodgepole pine data</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>pine.mem<span class="ot">&lt;-</span><span class="fu">dbmem</span>(Coordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)], <span class="at">MEM.autocor =</span> <span class="st">"positive"</span>, <span class="at">store.listw =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pine.mem, <span class="at">SpORcoords =</span> Coordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ade4)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adespatial)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adegraphics)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstration of MEMs on a grid</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>xygrid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xygrid)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>xygrid.mem<span class="ot">&lt;-</span><span class="fu">dbmem</span>(xygrid,<span class="at">store.listw =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xygrid.mem, <span class="at">SpORcoords =</span> xygrid)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Looking at MEMS for lodgepole pine data</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>pine.mem<span class="ot">&lt;-</span><span class="fu">dbmem</span>(Coordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)], <span class="at">MEM.autocor =</span> <span class="st">"positive"</span>, <span class="at">store.listw =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pine.mem, <span class="at">SpORcoords =</span> Coordinates[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]) <span class="co">#This is a horribly ugly plot. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>(If anyone figures out how to make this look better, please post in slack or email me and you will become famous in future tutorials - you can extract the MEM values from <code>pine.mem and use them as a color palette and then just place them in xy space from Coodinates</code>.</p>
 <p>You could play with using the first few MEMs in modified RDAs of the pine data. Remove longitude and latitude if you do this.</p>
-<p>If you plan to use MEMs in your own research, you will want to investigate much further. Right now, this code demonstrate how you can make them so you have a basic understanding of what they are when you read about MEMs in paper. A good place to start would be by following the <a href="https://cran.r-project.org/web/packages/adespatial/vignettes/tutorial.html">adespatial tutorial</a>.</p>
+<p>If you plan to use MEMs in your own research, you will want to investigate much further. Right now, this code demonstrate how you can make them so you have a basic understanding of what they are when you read about MEMs in papers. A good place to start would be by following the <a href="https://cran.r-project.org/web/packages/adespatial/vignettes/tutorial.html">adespatial tutorial</a>.</p>
 <hr>
 </section>
 </section>

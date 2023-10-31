@@ -53,7 +53,6 @@ In this course, we will focus on a few topics in landscape genomics aiming to gi
 
 -   Tests of selection
 
-
 To discuss: Pattern vs. Process, many ways to have different allele frequencies
 
 ------------------------------------------------------------------------
@@ -127,7 +126,7 @@ Consider three basic habitat types: terrestrial, marine, freshwater
 
 -   (For all of these questions you might decide to break their effects down by different taxonomic groups)
 
-- Nominate one person to report back to the class 
+-   Nominate one person to report back to the class
 
 Further reading on related ideas for aquatic habitats:
 
@@ -174,24 +173,6 @@ Alpha and beta diversity:
 Statistical models for representing relationships among and between locations:
 
 ![Statistical models - Wagner & Fortin 2016](images/statisticalModels_Wagner_Fortin_2016.png)
-
-## GEAs: Genotype-by-environment associations
-
-( = environmental associations)
-
-1.  Genome-wide: related to demographic history, ecological speciation/diversification, isolation by environment
-
-![Processes leading to IBE - Wang & Bradburd 2014](images/IsolationByEnvironment1-Wang_and_Bradburd_2014.png)
-
-![IBE signals - Wang & Bradburd 2014](images/IsolationByEnvironment2-Wang_and_Bradburd_2014.png)
-
-Tutorial on RDAs, GDM, and GF mostly sit in this category.
-
-2.  Finding loci contribute to heritable genetic variation of selected traits
-
-![Rellstab et al 2015 (Image modified from Sork et al 2013)](images/environment_genotype_phenotype_Rellstab2015.png)
-
-There is a huge literature on the topic of finding candidate loci for environmental selection that we cannot cover in one week. Population genetic tests of selection such as *outlier tests* or *genomic scans* are frequently used. There are also tests of selection that specifically look for associations of individual loci to environmental attributes - often called *GEA, genotype-environment association* or *EAA, environment association analysis* - this will be more of our focus given that we are studying landscape genomics. We will come back to this topic on Friday. (Rellstab et al. 2015 and Storfer et al 2018 have good reviews of the various methods if you are looking for further reading on this topic.)
 
 # Sampling strategies and goals
 
