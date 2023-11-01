@@ -7,4 +7,4 @@ The module is aimed to give a brief background in population genetics.
 
 This module will be taught by Kerstin Johannesson. No background reading is required for this module.
 
-The lecture slides can be found [here](./pdfs/Popgenintro_seascape course.pdf).
+The lecture slides can be found [here](./pdfs/Popgenintro_seascape%20course.pdf).

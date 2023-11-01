@@ -18,6 +18,8 @@ One of the goals of landscape genomics is to find loci that contribute to adapta
 
 Tests of selection, especially based on finding loci that show strong correlations with environmental features, can provide lists of candidate loci.
 
+Simulations indicate that RDA-based methods of identifying outliers perform well as tests of environmentally induced selection (Forester et al 2016).
+
 Given the unfolding climate crisis, there is growing interest in leveraging genetic information to identify populations that are vulnerable (or resilient) to anticipated future climate conditions.
 
 There are numerous names for this concept:
@@ -102,21 +104,19 @@ At the landscape level, how different will environments be and how geographicall
 
 -   But most forward offset migration could be achieved in 500 km
 
--   
-
 ### Validation
 
 Are we confident that GEA analyses:
 
-1.   Identify important environmental variables for shaping genetic diversity ?
+1.  Can identify important environmental variables for shaping genetic diversity ?
+
+ - Cautiously, yes
 
 2.  Identify genetic loci that contributed to relevant phenotypes?
 
--   CF "We found a strongly negative relationship between genomic offset and seedling fitness in the common garden (Height: p-value = 1.2 e- 9 and R 2 = 0.12; Growth rate: p-value = 7.9 e-15and R 2= 0.19"
+-   Limited empirical studies that compare results across methods (plants, mostly) - some consistent results for individual loci (that likely have large effects)
 
--   look at Moises Exposito
-
--   lasky review
+See Lasky et al 2023 for a good review.
 
 # References for this tutorial
 
@@ -124,7 +124,12 @@ Are we confident that GEA analyses:
 
 -   Capblancq, T., & Forester, B. R. (2021). Redundancy analysis: A Swiss Army Knife for landscape genomics. Methods in Ecology and Evolution. doi:10.1111/2041-210x.13722
 
+-   Forester, B. R., Jones, M. R., Joost, S., Landguth, E. L., & Lasky, J. R. (2016). Detecting spatial genetic signatures of local adaptation in heterogeneous landscapes. Molecular Ecology, 25(1), 104-120. doi: 10.1111/mec.13476
+
 -   Gougherty, A. V., Keller, S. R., & Fitzpatrick, M. C. (2021). Maladaptation, migration and extirpation fuel climate change risk in a forest tree species. \_Nat Clim Change, 11\_(2), 166-171.
+
+- Lasky, J. R., Josephs, E. B., & Morris, G. P. (2023). Genotype-environment associations to reveal the molecular basis of environmental adaptation. Plant Cell, 35, 125-138. doi:10.1093/plcell/koac267
+
 
 # Computer tutorial - GEAs from RDAs
 
@@ -141,34 +146,36 @@ The first task is to identify loci showing strong associations with environmenta
 ### Load libraries and data files
 
 ```{r load libraries and data files}
-#library(terra)
-#library(raster)
 library(vegan)
 library(ggplot2)
 library(ggVennDiagram)
 
 # required for pdadapt.R function
 library(robust)
+
+# To install qvalue on your own device: 
+#if (!require("BiocManager", quietly = TRUE))
+#    install.packages("BiocManager")
+#BiocManager::install("qvalue")
+
 library(qvalue)
 
-path<-"./home/data/gea/"
+path<-"/home/data/gea/"
 
 # Genetic data
 load(paste0(path, "AllFreq.RData"))
 load(paste0(path, "Neutral.RData"))
 
-# Spatial data
+# Spatial data - files that you made in RDA workshop
 Variables<-read.csv(paste0(path, "Variables.csv"))
 Coordinates<-read.csv(paste0(path, "Coordinates.csv"))
-#ras_6190<-terra::rast(paste0(path, "ras_6190.tif"))
-#names(ras_6190) <- c("AHM","bFFP","CMD","DD_0","DD_18","DD18","DD5","eFFP","EMT", "Eref", "EXT", "FFP", "MAP", "MAR", "MAT", "MCMT", "MSP", "MWMT", "NFFD", "PAS", "PPT_sm", "PPT_wt", "RH", "SHM", "Tave_sm", "Tave_wt", "TD")
-#ras_6190<-as.raster(ras_6190)
+
 
 ```
 
 > The first step was to run an RDA model on the allele frequency matrix using the 9 retained climatic factors as explanatory variables and the first three PCs as conditioning variables to account for neutral population structure.
 
-### Parial RDA for indentfied environmental variables
+### Partial RDA for identified environmental variables
 
 ```{r run RDA for retained variables}
 
@@ -216,6 +223,7 @@ outliers <- data.frame(
   contig = unlist(lapply(strsplit(colnames(AllFreq)[which(rdadapt_env$p.values<thres_env)], split = "_"), 
   function(x) x[1]))
   )
+# that is one ungly piece of code...
 ```
 
 (Creation of `outliers` code above highlights how subsetting in base R can be difficult to read as a human... tidyverse syntax would be helpful...)
@@ -332,7 +340,7 @@ ggVennDiagram(list_outliers_RDA_all, category.names = c("partial RDA", "simple R
   scale_fill_gradient2(low = "white", high = 'gray40') + scale_color_manual(values = c("grey", "grey", "grey", "grey")) + guides(fill = "none") + theme(text = element_text(size=16, family = "Times"))
 ```
 
-(Numbers don't quite match the publication....)
+(Numbers don't quite match the publication - note that the authors did publish a short correction that maybe takes care of this)
 
 ### Overlap among RDA ("top") outliers with and without conditioning on population structure
 
@@ -350,3 +358,9 @@ common_outliers_RDA_top <- Reduce(intersect, list_outliers_RDA_top)
 ```
 
 > **Notes on interpretation and best practices:** We emphasize that there is no correct answer to the common dilemma of confounded variation in GEA, differentiation-based, and genome-wide association analyses. Instead, researchers must balance their tolerance for false negative and false positive rates, and use an analytical approach that best matches the objectives of the study as well as the potential ability to validate candidate loci. More generally, awareness of the tradeoffs associated with decisions such as population structure correction will allow users to appropriately interpret their results, both statistically and biologically. Decisions about if and how to correct for population structure, how to set outlier thresholds, and how to finalize a set of candidate adaptive markers will depend upon the objectives of the study and the data available (if any) for validation. The approach presented here is not meant to be applied without modification; modeling parameters (including what environmental predictors are used and how they are selected, see variable selection above) and other decisions should be determined based on the ecology of the organism, characteristics of the data set, and goals of the study.
+
+## Spatial projection to make map figures
+
+I was really hoping that I could get C&F's code working to allow you to recreate their Fig 3. Unfortunately the combination of changes to spatial packages and data files that are not completely reproducible has made this task much more difficult than I anticipated.
+
+If you are interested in undertaking these analyses in the future, you are welcome to reach out to me. I will be setting up similar analyses in my own research and thus should have working examples in a few months - I would be happy to share examples and code with participants in this course.  - Cynthia

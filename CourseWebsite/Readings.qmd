@@ -108,13 +108,13 @@ See activities and links on [bash tutorial webpage](basic-bash.qmd).
 
 -   Beninde, J., Wittische, J., & Frantz, A. C. (2023). Quantifying uncertainty in inferences of landscape genetic resistance due to choice of individual-based genetic distance metric. *Molecular Ecology Resources*. doi:10.1111/1755-0998.13831
 
--   Peterman, W. E. (2018). ResistanceGA: An R package for the optimization of resistance surfaces using genetic algorithms. *Methods in Ecology and Evolution, 9*(6), 1638-1647. doi:papers3://publication/doi/10.1111/2041-210X.12984
+-   Peterman, W. E. (2018). ResistanceGA: An R package for the optimization of resistance surfaces using genetic algorithms. *Methods in Ecology and Evolution, 9*(6), 1638-1647. doi:10.1111/2041-210X.12984
 
 #### Future projections with GDM & GFs
 
 ##### Required
 
--   Fitzpatrick, M. C., & Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. Ecol Lett, 18(1), 1-16. doi:papers3://publication/doi/10.1111/ele.12376
+-   Fitzpatrick, M. C., & Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. Ecol Lett, 18(1), 1-16. doi: 10.1111/ele.12376
 
 ##### Optional
 
@@ -128,7 +128,7 @@ See activities and links on [bash tutorial webpage](basic-bash.qmd).
 
 ##### Required
 
--   Jahnke, M., Jonsson, P. R., Moksnes, P. O., Loo, L. O., Nilsson Jacobi, M., & Olsen, J. L. (2017). Seascape genetics and biophysical connectivity modelling support conservation of the seagrass *Zostera marina* in the Skagerrak-Kattegat region of the eastern North Sea. Evolutionary Applications, 1-46. doi:papers3://publication/doi/10.1111/eva.12589 *Comprehensive review of studies pairing seascape genetic data with biophysical models*
+-   Jahnke, M., Jonsson, P. R., Moksnes, P. O., Loo, L. O., Nilsson Jacobi, M., & Olsen, J. L. (2017). Seascape genetics and biophysical connectivity modelling support conservation of the seagrass *Zostera marina* in the Skagerrak-Kattegat region of the eastern North Sea. Evolutionary Applications, 1-46. doi:10.1111/eva.12589 *Comprehensive review of studies pairing seascape genetic data with biophysical models*
 
 ##### Optional
 

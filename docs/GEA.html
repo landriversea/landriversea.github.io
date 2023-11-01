@@ -329,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#identifying-loci-under-selection" id="toc-identifying-loci-under-selection" class="nav-link" data-scroll-target="#identifying-loci-under-selection">Identifying loci under selection</a>
   <ul class="collapse">
   <li><a href="#load-libraries-and-data-files" id="toc-load-libraries-and-data-files" class="nav-link" data-scroll-target="#load-libraries-and-data-files">Load libraries and data files</a></li>
-  <li><a href="#parial-rda-for-indentfied-environmental-variables" id="toc-parial-rda-for-indentfied-environmental-variables" class="nav-link" data-scroll-target="#parial-rda-for-indentfied-environmental-variables">Parial RDA for indentfied environmental variables</a></li>
+  <li><a href="#partial-rda-for-identified-environmental-variables" id="toc-partial-rda-for-identified-environmental-variables" class="nav-link" data-scroll-target="#partial-rda-for-identified-environmental-variables">Partial RDA for identified environmental variables</a></li>
   <li><a href="#identifying-outliers-based-on-mahalanobis-distances-from-center-of-rda-space" id="toc-identifying-outliers-based-on-mahalanobis-distances-from-center-of-rda-space" class="nav-link" data-scroll-target="#identifying-outliers-based-on-mahalanobis-distances-from-center-of-rda-space">Identifying outliers based on Mahalanobis distances from center of RDA space</a></li>
   </ul></li>
   <li><a href="#recreating-fig-1a" id="toc-recreating-fig-1a" class="nav-link" data-scroll-target="#recreating-fig-1a">Recreating Fig 1a</a></li>
@@ -339,6 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#overlap-among-all-outliers-with-and-without-conditioning-on-population-structure" id="toc-overlap-among-all-outliers-with-and-without-conditioning-on-population-structure" class="nav-link" data-scroll-target="#overlap-among-all-outliers-with-and-without-conditioning-on-population-structure">Overlap among all outliers with and without conditioning on population structure</a></li>
   <li><a href="#overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure" id="toc-overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure" class="nav-link" data-scroll-target="#overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure">Overlap among RDA (“top”) outliers with and without conditioning on population structure</a></li>
   </ul></li>
+  <li><a href="#spatial-projection-to-make-map-figures" id="toc-spatial-projection-to-make-map-figures" class="nav-link" data-scroll-target="#spatial-projection-to-make-map-figures">Spatial projection to make map figures</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="GEA.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -374,6 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>Tests of selection, especially based on finding loci that show strong correlations with environmental features, can provide lists of candidate loci.</p>
+<p>Simulations indicate that RDA-based methods of identifying outliers perform well as tests of environmentally induced selection (Forester et al 2016).</p>
 <p>Given the unfolding climate crisis, there is growing interest in leveraging genetic information to identify populations that are vulnerable (or resilient) to anticipated future climate conditions.</p>
 <p>There are numerous names for this concept:</p>
 <p>(mal)adaptation = risk of non-adaptedness = genomic offset = genomic vulnerability</p>
@@ -473,22 +475,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <ul>
-<li><p>But most forward offset migration could be achieved in 500 km</p></li>
-<li></li>
+<li>But most forward offset migration could be achieved in 500 km</li>
 </ul>
 </section>
 <section id="validation" class="level3">
 <h3 class="anchored" data-anchor-id="validation">Validation</h3>
 <p>Are we confident that GEA analyses:</p>
 <ol type="1">
-<li><p>Identify important environmental variables for shaping genetic diversity ?</p></li>
-<li><p>Identify genetic loci that contributed to relevant phenotypes?</p></li>
+<li>Can identify important environmental variables for shaping genetic diversity ?</li>
 </ol>
 <ul>
-<li><p>CF “We found a strongly negative relationship between genomic offset and seedling fitness in the common garden (Height: p-value = 1.2 e- 9 and R 2 = 0.12; Growth rate: p-value = 7.9 e-15and R 2= 0.19”</p></li>
-<li><p>look at Moises Exposito</p></li>
-<li><p>lasky review</p></li>
+<li>Cautiously, yes</li>
 </ul>
+<ol start="2" type="1">
+<li>Identify genetic loci that contributed to relevant phenotypes?</li>
+</ol>
+<ul>
+<li>Limited empirical studies that compare results across methods (plants, mostly) - some consistent results for individual loci (that likely have large effects)</li>
+</ul>
+<p>See Lasky et al 2023 for a good review.</p>
 </section>
 </section>
 </section>
@@ -497,7 +502,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Capblancq, T., Fitzpatrick, M. C., Bay, R. A., Exposito-Alonso, M., &amp; Keller, S. R. (2020). Genomic prediction of (mal)adaptation across current and future climatic landscapes. Annual Review of Ecology, Evolution, and Systematics, 51(1), 245-269. doi:10.1146/annurev-ecolsys-020720-042553</p></li>
 <li><p>Capblancq, T., &amp; Forester, B. R. (2021). Redundancy analysis: A Swiss Army Knife for landscape genomics. Methods in Ecology and Evolution. doi:10.1111/2041-210x.13722</p></li>
+<li><p>Forester, B. R., Jones, M. R., Joost, S., Landguth, E. L., &amp; Lasky, J. R. (2016). Detecting spatial genetic signatures of local adaptation in heterogeneous landscapes. Molecular Ecology, 25(1), 104-120. doi: 10.1111/mec.13476</p></li>
 <li><p>Gougherty, A. V., Keller, S. R., &amp; Fitzpatrick, M. C. (2021). Maladaptation, migration and extirpation fuel climate change risk in a forest tree species. _Nat Clim Change, 11_(2), 166-171.</p></li>
+<li><p>Lasky, J. R., Josephs, E. B., &amp; Morris, G. P. (2023). Genotype-environment associations to reveal the molecular basis of environmental adaptation. Plant Cell, 35, 125-138. doi:10.1093/plcell/koac267</p></li>
 </ul>
 </section>
 <section id="computer-tutorial---geas-from-rdas" class="level1">
@@ -513,35 +520,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="load-libraries-and-data-files" class="level3">
 <h3 class="anchored" data-anchor-id="load-libraries-and-data-files">Load libraries and data files</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(terra)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(raster)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggVennDiagram)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># required for pdadapt.R function</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robust)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(qvalue)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"./home/data/gea/"</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggVennDiagram)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># required for pdadapt.R function</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robust)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># To install qvalue on your own device: </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#if (!require("BiocManager", quietly = TRUE))</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#    install.packages("BiocManager")</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#BiocManager::install("qvalue")</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic data</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"AllFreq.RData"</span>))</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"Neutral.RData"</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(qvalue)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"/home/data/gea/"</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Spatial data</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Variables<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">paste0</span>(path, <span class="st">"Variables.csv"</span>))</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Coordinates<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">paste0</span>(path, <span class="st">"Coordinates.csv"</span>))</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#ras_6190&lt;-terra::rast(paste0(path, "ras_6190.tif"))</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#names(ras_6190) &lt;- c("AHM","bFFP","CMD","DD_0","DD_18","DD18","DD5","eFFP","EMT", "Eref", "EXT", "FFP", "MAP", "MAR", "MAT", "MCMT", "MSP", "MWMT", "NFFD", "PAS", "PPT_sm", "PPT_wt", "RH", "SHM", "Tave_sm", "Tave_wt", "TD")</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#ras_6190&lt;-as.raster(ras_6190)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Genetic data</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"AllFreq.RData"</span>))</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">paste0</span>(path, <span class="st">"Neutral.RData"</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Spatial data - files that you made in RDA workshop</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Variables<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">paste0</span>(path, <span class="st">"Variables.csv"</span>))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Coordinates<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">paste0</span>(path, <span class="st">"Coordinates.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p>The first step was to run an RDA model on the allele frequency matrix using the 9 retained climatic factors as explanatory variables and the first three PCs as conditioning variables to account for neutral population structure.</p>
 </blockquote>
 </section>
-<section id="parial-rda-for-indentfied-environmental-variables" class="level3">
-<h3 class="anchored" data-anchor-id="parial-rda-for-indentfied-environmental-variables">Parial RDA for indentfied environmental variables</h3>
+<section id="partial-rda-for-identified-environmental-variables" class="level3">
+<h3 class="anchored" data-anchor-id="partial-rda-for-identified-environmental-variables">Partial RDA for identified environmental variables</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>RDA_env <span class="ot">&lt;-</span> <span class="fu">rda</span>(AllFreq <span class="sc">~</span> MAR <span class="sc">+</span> EMT <span class="sc">+</span> MWMT <span class="sc">+</span> CMD <span class="sc">+</span> Tave_wt <span class="sc">+</span> DD_18 <span class="sc">+</span> MAP <span class="sc">+</span> Eref <span class="sc">+</span> PAS <span class="sc">+</span> <span class="fu">Condition</span>(PC1 <span class="sc">+</span> PC2 <span class="sc">+</span> PC3),  Variables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -586,7 +594,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.value =</span> rdadapt_env<span class="sc">$</span>p.values[<span class="fu">which</span>(rdadapt_env<span class="sc">$</span>p.values<span class="sc">&lt;</span>thres_env)], </span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">contig =</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="fu">strsplit</span>(<span class="fu">colnames</span>(AllFreq)[<span class="fu">which</span>(rdadapt_env<span class="sc">$</span>p.values<span class="sc">&lt;</span>thres_env)], <span class="at">split =</span> <span class="st">"_"</span>), </span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) x[<span class="dv">1</span>]))</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># that is one ungly piece of code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(Creation of <code>outliers</code> code above highlights how subsetting in base R can be difficult to read as a human… tidyverse syntax would be helpful…)</p>
 <blockquote class="blockquote">
@@ -699,7 +708,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(list_outliers_RDA_all, <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">"partial RDA"</span>, <span class="st">"simple RDA"</span>), <span class="at">lty=</span><span class="st">"solid"</span>, <span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">'gray40'</span>) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"grey"</span>, <span class="st">"grey"</span>, <span class="st">"grey"</span>, <span class="st">"grey"</span>)) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">16</span>, <span class="at">family =</span> <span class="st">"Times"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(Numbers don’t quite match the publication….)</p>
+<p>(Numbers don’t quite match the publication - note that the authors did publish a short correction that maybe takes care of this)</p>
 </section>
 <section id="overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure" class="level3">
 <h3 class="anchored" data-anchor-id="overlap-among-rda-top-outliers-with-and-without-conditioning-on-population-structure">Overlap among RDA (“top”) outliers with and without conditioning on population structure</h3>
@@ -718,9 +727,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>Notes on interpretation and best practices:</strong> We emphasize that there is no correct answer to the common dilemma of confounded variation in GEA, differentiation-based, and genome-wide association analyses. Instead, researchers must balance their tolerance for false negative and false positive rates, and use an analytical approach that best matches the objectives of the study as well as the potential ability to validate candidate loci. More generally, awareness of the tradeoffs associated with decisions such as population structure correction will allow users to appropriately interpret their results, both statistically and biologically. Decisions about if and how to correct for population structure, how to set outlier thresholds, and how to finalize a set of candidate adaptive markers will depend upon the objectives of the study and the data available (if any) for validation. The approach presented here is not meant to be applied without modification; modeling parameters (including what environmental predictors are used and how they are selected, see variable selection above) and other decisions should be determined based on the ecology of the organism, characteristics of the data set, and goals of the study.</p>
 </blockquote>
-
-
 </section>
+</section>
+<section id="spatial-projection-to-make-map-figures" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-projection-to-make-map-figures">Spatial projection to make map figures</h2>
+<p>I was really hoping that I could get C&amp;F’s code working to allow you to recreate their Fig 3. Unfortunately the combination of changes to spatial packages and data files that are not completely reproducible has made this task much more difficult than I anticipated.</p>
+<p>If you are interested in undertaking these analyses in the future, you are welcome to reach out to me. I will be setting up similar analyses in my own research and thus should have working examples in a few months - I would be happy to share examples and code with participants in this course. - Cynthia</p>
+
+
 </section>
 </section>
 

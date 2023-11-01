@@ -17,7 +17,7 @@ execute:
 
 -   Being used to estimate genetic match/mismatch to future climate conditions
 
--   Uses distances: it is a link based analysis (second column in Wagner & Fortin diagram)
+-   GDM uses distances: it is a link based analysis (second column in Wagner & Fortin diagram)
 
 ![Statistical models - Wagner & Fortin 2016](images/statisticalModels_Wagner_Fortin_2016.png)
 
@@ -29,7 +29,7 @@ execute:
 
 GDM is *non* linear extension of matrix regression that uses dissimilarities in both predictor and response variables:
 
--   Basic linear model: $d_{ij} = a_0 + \sum_{p=1}^na_p|x_{pi}-x_{pj}|$
+-   Basic linear model: $d_{ij} = a_0 + \displaystyle\sum_{p=1}^{n} a_p|x_{pi}-x_{pj}|$
 
 Modified to account for two aspects of non linearity:
 
@@ -49,13 +49,13 @@ Modified to account for two aspects of non linearity:
 
 -   GLM equation is now changed to include functions for x
 
-    -   $\eta = a_0 + \sum_{p=1}^n|f_p(x_{pi})-f_p(x_{pj})|$
+    -   $\eta = a_0 + \displaystyle\sum_{p=1}^n|f_p(x_{pi})-f_p(x_{pj})|$
 
 -   an I-spline basis function is used as a function
 
-    -   $f_p(x_p)= \sum_{k=1}^{m_p}a _{pk}I_{pk}(x_p)$ (k splines per predictor)
+    -   $f_p(x_p)= \displaystyle\sum_{k=1}^{m_p}a _{pk}I_{pk}(x_p)$ (k splines per predictor)
 
--   So, GLM becomes: $\eta = a_0 + \sum_{p=1}^n\sum_{k=1}^{m_p}a_{pk}|I_{pk}(x_{pi})-I_{pk}(x_{pj})|$
+-   So, GLM becomes: $\eta = a_0 + \displaystyle\sum_{p=1}^n\displaystyle\sum_{k=1}^{m_p}a_{pk}|I_{pk}(x_{pi})-I_{pk}(x_{pj})|$
 
 #### Fitting a GDM model
 
@@ -246,9 +246,11 @@ All data from: Fitzpatrick, M. C., & Keller, S. R. (2015). Ecological genomics m
 #| warning: false
 
 #install.packages("gradientForest", repos="http://R-Forge.R-project.org")
-library(gdm) #notice the warnings, we can talk about this
+library(gdm) #you might get some warnings, we can talk about this
 library(gradientForest)
 library(raster)
+
+path<-"/home/data/gdm/"
 
 ```
 
@@ -272,7 +274,7 @@ The datafile should be preloaded, otherwise download from [here](data/poplarFst.
 #| output: false
 
 # import GDM ready table
-gdmData <- read.csv("./data/poplarFst.ENV.data.4.GDM.csv")
+gdmData <- read.csv(paste0(path, "poplarFst.ENV.data.4.GDM.csv"))
 
 
 # build individual SNP datasets
@@ -282,6 +284,7 @@ GI5 <- gdmData[,c(3,6:24)] # GIGANTEA-5 (GI5)
 
 # fit and plot GDM for reference SNPs
 gdmRef <- gdm(SNPs_ref, geo=TRUE) #gives warning but works
+# The authors have already used the formatsitepair function to prepare their data
 gdmRef$explained # From F&K2015: "GDM explained more than 63% of the deviance in turnover in genetic composition of reference"
 
 plot(gdmRef)
@@ -316,7 +319,7 @@ The datafile should be preloaded, otherwise download from [here](data/poplarSNP.
 ```{r GF}
 #| output: false
 
-gfData <- read.csv("./data/poplarSNP.ENV.data.4.GF.csv")
+gfData <- read.csv(paste0(path, "poplarSNP.ENV.data.4.GF.csv"))
 
 envGF <- gfData[,3:13] # get climate & MEM variables
 
@@ -338,7 +341,7 @@ gfGI5 <- gradientForest(cbind(envGF, GI5), predictor.vars=colnames(envGF),
 
 plot(gfRef, plot.type="O") # values that feed into Fig1
 plot(gfRef, plot.type = "C")  # Fig2 
-plot(gfRef, plot.type = "S")
+plot(gfRef, plot.type = "S")  #ignore warnings
 
      
 #can do the same for GI5

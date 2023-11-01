@@ -390,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Focus on beta-diversity or turnover, show rates of biological change in similar (non linear) manners</p></li>
 <li><p>Can predict genetic diversity across landscapes - environmental and geographic predictors can act as <em>surrogates</em> for turnover in genetic diversity (species distribution modeling makes the same assumption)</p></li>
 <li><p>Being used to estimate genetic match/mismatch to future climate conditions</p></li>
-<li><p>Uses distances: it is a link based analysis (second column in Wagner &amp; Fortin diagram)</p></li>
+<li><p>GDM uses distances: it is a link based analysis (second column in Wagner &amp; Fortin diagram)</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="managing-non-linearity">Managing non linearity</h4>
 <p>GDM is <em>non</em> linear extension of matrix regression that uses dissimilarities in both predictor and response variables:</p>
 <ul>
-<li>Basic linear model: <span class="math inline">\(d_{ij} = a_0 + \sum_{p=1}^na_p|x_{pi}-x_{pj}|\)</span></li>
+<li>Basic linear model: <span class="math inline">\(d_{ij} = a_0 + \displaystyle\sum_{p=1}^{n} a_p|x_{pi}-x_{pj}|\)</span></li>
 </ul>
 <p>Modified to account for two aspects of non linearity:</p>
 <ol type="1">
@@ -428,13 +428,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>GLM equation is now changed to include functions for x</p>
 <ul>
-<li><span class="math inline">\(\eta = a_0 + \sum_{p=1}^n|f_p(x_{pi})-f_p(x_{pj})|\)</span></li>
+<li><span class="math inline">\(\eta = a_0 + \displaystyle\sum_{p=1}^n|f_p(x_{pi})-f_p(x_{pj})|\)</span></li>
 </ul></li>
 <li><p>an I-spline basis function is used as a function</p>
 <ul>
-<li><span class="math inline">\(f_p(x_p)= \sum_{k=1}^{m_p}a _{pk}I_{pk}(x_p)\)</span> (k splines per predictor)</li>
+<li><span class="math inline">\(f_p(x_p)= \displaystyle\sum_{k=1}^{m_p}a _{pk}I_{pk}(x_p)\)</span> (k splines per predictor)</li>
 </ul></li>
-<li><p>So, GLM becomes: <span class="math inline">\(\eta = a_0 + \sum_{p=1}^n\sum_{k=1}^{m_p}a_{pk}|I_{pk}(x_{pi})-I_{pk}(x_{pj})|\)</span></p></li>
+<li><p>So, GLM becomes: <span class="math inline">\(\eta = a_0 + \displaystyle\sum_{p=1}^n\displaystyle\sum_{k=1}^{m_p}a_{pk}|I_{pk}(x_{pi})-I_{pk}(x_{pj})|\)</span></p></li>
 </ul>
 </section>
 <section id="fitting-a-gdm-model" class="level4">
@@ -666,9 +666,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>All data from: Fitzpatrick, M. C., &amp; Keller, S. R. (2015). Ecological genomics meets community-level modelling of biodiversity: mapping the genomic landscape of current and future environmental adaptation. Ecol Lett, 18(1), 1-16.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("gradientForest", repos="http://R-Forge.R-project.org")</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdm) <span class="co">#notice the warnings, we can talk about this</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdm) <span class="co">#you might get some warnings, we can talk about this</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gradientForest)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>path<span class="ot">&lt;-</span><span class="st">"/home/data/gdm/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="gdm-1" class="level2">
@@ -685,7 +687,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The datafile should be preloaded, otherwise download from <a href="data/poplarFst.ENV.data.4.GDM.csv">here</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import GDM ready table</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gdmData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/poplarFst.ENV.data.4.GDM.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gdmData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(path, <span class="st">"poplarFst.ENV.data.4.GDM.csv"</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># build individual SNP datasets</span></span>
@@ -695,15 +697,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot GDM for reference SNPs</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>gdmRef <span class="ot">&lt;-</span> <span class="fu">gdm</span>(SNPs_ref, <span class="at">geo=</span><span class="cn">TRUE</span>) <span class="co">#gives warning but works</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>gdmRef<span class="sc">$</span>explained <span class="co"># From F&amp;K2015: "GDM explained more than 63% of the deviance in turnover in genetic composition of reference"</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmRef)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>refSplines <span class="ot">&lt;-</span> <span class="fu">isplineExtract</span>(gdmRef) <span class="co"># extract spline data for custom plotting</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot GDM for GI5 SNPs</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>gdmGI5 <span class="ot">&lt;-</span> <span class="fu">gdm</span>(GI5, <span class="at">geo=</span><span class="cn">TRUE</span>) <span class="co">#ignore warning</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>gdmGI5<span class="sc">$</span>explained</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmGI5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The authors have already used the formatsitepair function to prepare their data</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>gdmRef<span class="sc">$</span>explained <span class="co"># From F&amp;K2015: "GDM explained more than 63% of the deviance in turnover in genetic composition of reference"</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmRef)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>refSplines <span class="ot">&lt;-</span> <span class="fu">isplineExtract</span>(gdmRef) <span class="co"># extract spline data for custom plotting</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># fit and plot GDM for GI5 SNPs</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>gdmGI5 <span class="ot">&lt;-</span> <span class="fu">gdm</span>(GI5, <span class="at">geo=</span><span class="cn">TRUE</span>) <span class="co">#ignore warning</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>gdmGI5<span class="sc">$</span>explained</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gdmGI5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You will recognize some of the plots from Figure 3. Notice how variable the spline functions can be.</p>
 </section>
@@ -722,7 +725,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As before, we focus on the reference and GIGANTEA-5 (GI5) datasets. And make individual dataframes to feed into the analyses.</p>
 <p>The datafile should be preloaded, otherwise download from <a href="data/poplarSNP.ENV.data.4.GF.csv">here</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gfData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/poplarSNP.ENV.data.4.GF.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gfData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste0</span>(path, <span class="st">"poplarSNP.ENV.data.4.GF.csv"</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>envGF <span class="ot">&lt;-</span> gfData[,<span class="dv">3</span><span class="sc">:</span><span class="dv">13</span>] <span class="co"># get climate &amp; MEM variables</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -744,7 +747,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type=</span><span class="st">"O"</span>) <span class="co"># values that feed into Fig1</span></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"C"</span>)  <span class="co"># Fig2 </span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"S"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gfRef, <span class="at">plot.type =</span> <span class="st">"S"</span>)  <span class="co">#ignore warnings</span></span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>     </span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#can do the same for GI5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
