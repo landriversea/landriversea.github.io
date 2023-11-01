@@ -35,6 +35,7 @@ website:
       - section: "Wednesday"
         contents:   
           - sims_demo.qmd
+          - fastsimcoal.qmd
       - section: "Thursday"
         contents:  
          - resistance.qmd
