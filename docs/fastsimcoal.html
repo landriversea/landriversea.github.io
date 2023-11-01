@@ -326,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="fastsimcoal.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -420,7 +420,7 @@ fastsimcoal2 -t ${PREFIX}.tpl -e ${PREFIX}.est -m -0 -C 10 -n 10000 -L 40 -s 0 -
 <p>To find the best run, i.e.&nbsp;the run with the highest likelihood, or better the smallest difference between the maximum possible likelihood (<code>MaxObsLhood</code>) and the obtained likelihood (<code>MaxEstLhood</code>), we can check the <code>.bestlhoods</code> files.</p>
 <pre class="shell"><code>cat run{1..5}/${PREFIX}/${PREFIX}.bestlhoods | grep -v MaxObsLhood | awk '{print NR,$8}' | sort -k 2</code></pre>
 <p>Note that <code>NR</code> in awk prints out the line number which here corresponds to the run number. <code>$8</code> is the <code>MaxEstLhood</code> column and thus the likelihood we want to compare across different runs.</p>
-<p>[Joana Meier](https://www.sanger.ac.uk/person/meier-joana/ has written a <a href="https://github.com/speciationgenomics/scripts/raw/master/fsc-selectbestrun.sh">script</a> for you that automatically extracts the files of the best run and copies them into a new folder which it calls <code>bestrun</code>. A copy of that script is available in the course resources directory so we will copy it to our run folder directory and run it like so:</p>
+<p><a href="https://www.sanger.ac.uk/person/meier-joana/">Joana Meier</a> has written a <a href="https://github.com/speciationgenomics/scripts/raw/master/fsc-selectbestrun.sh">script</a> for you that automatically extracts the files of the best run and copies them into a new folder which it calls <code>bestrun</code>. A copy of that script is available in the course resources directory so we will copy it to our run folder directory and run it like so:</p>
 <p>Just run it in the directory where all the folders run are located and run it:</p>
 <pre class="shell"><code>cd ~/fastsimcoal2/early_geneflow
 cp /resources/riverlandsea/exercise_data/fastsimcoal2/fsc-selectbestrun.sh .
@@ -430,22 +430,29 @@ cp /resources/riverlandsea/exercise_data/fastsimcoal2/fsc-selectbestrun.sh .
 <p><em>Click here to see a possible solution.</em></p>
 <p>Early Geneflow (this is the model expalined in the example, gene flow right after the split and then no gene flow anymore, e.g.&nbsp;speciation with gene flow and then no gene flow anymore as reproductive isolation becomes strong):</p>
 <ul>
-<li><a href="https://github.com/speciationgenomics/data/blob/master/early_geneflow.tp"></a></li>
-<li><a href="https://github.com/speciationgenomics/data/blob/master/early_geneflow.est"></a></li>
+<li><a href="https://github.com/speciationgenomics/data/blob/master/early_geneflow.tp">https://github.com/speciationgenomics/data/blob/master/early_geneflow.tp</a></li>
+<li><a href="https://github.com/speciationgenomics/data/blob/master/early_geneflow.est">https://github.com/speciationgenomics/data/blob/master/early_geneflow.est</a></li>
 </ul>
 <p>No geneflow:</p>
 <ul>
-<li><a href="https://github.com/speciationgenomics/data/blob/master/no_geneflow.tpl"></a></li>
-<li><a href="https://github.com/speciationgenomics/data/blob/master/no_geneflow.est"></a></li>
+<li><a href="https://github.com/speciationgenomics/data/blob/master/no_geneflow.tpl">https://github.com/speciationgenomics/data/blob/master/no_geneflow.tpl</a></li>
+<li><a href="https://github.com/speciationgenomics/data/blob/master/no_geneflow.est">https://github.com/speciationgenomics/data/blob/master/no_geneflow.est</a></li>
 </ul>
 <p>Recent gene flow (no gene flow intially after the split but gene flow in recent times, e.g.&nbsp;secondary contact scenario)</p>
 <ul>
-<li><a href="https://github.com/speciationgenomics/data/blob/master/recent_geneflow.tpl"></a></li>
-<li><a href="https://github.com/speciationgenomics/data/blob/master/recent_geneflow.est"></a></li>
+<li><a href="https://github.com/speciationgenomics/data/blob/master/recent_geneflow.tpl">https://github.com/speciationgenomics/data/blob/master/recent_geneflow.tpl</a></li>
+<li><a href="https://github.com/speciationgenomics/data/blob/master/recent_geneflow.est">https://github.com/speciationgenomics/data/blob/master/recent_geneflow.est</a></li>
 </ul>
-Different gene flow matrices (higher or lower gene flow right after the split than recently, e.g.&nbsp;initially higher gene flow then lower gene flow as reproductive isolation accumulates): <a href="https://github.com/speciationgenomics/data/blob/master/diff_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/diff_geneflow.est"> est</a> <br> <br> Constant gene flow (same gene flow strengths since the split until now): <a href="https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.est"> est</a>
-<p></p>
-
+<p>Different gene flow matrices (higher or lower gene flow right after the split than recently, e.g.&nbsp;initially higher gene flow then lower gene flow as reproductive isolation accumulates):</p>
+<ul>
+<li><p><a href="https://github.com/speciationgenomics/data/blob/master/diff_geneflow.tpl">https://github.com/speciationgenomics/data/blob/master/diff_geneflow.tpl</a></p></li>
+<li><p><a href="https://github.com/speciationgenomics/data/blob/master/diff_geneflow.est">https://github.com/speciationgenomics/data/blob/master/diff_geneflow.est</a></p></li>
+</ul>
+<p>Constant gene flow (same gene flow strengths since the split until now):</p>
+<ul>
+<li><p><a href="https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.tpl">https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.tpl</a></p></li>
+<li><p><a href="https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.est">https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.est</a></p></li>
+</ul>
 </section>
 <section id="model-comparison-with-aic" class="level3">
 <h3 class="anchored" data-anchor-id="model-comparison-with-aic">Model comparison with AIC</h3>
@@ -492,21 +499,21 @@ done</code></pre>
 <pre class="shell"><code>cd ~/fastsimcoal2/
 cp -r /resources/riverlandsea/exercise_data/fastsimcoal2/extramodels</code></pre>
 <p>Now, let’s access the R Studio sderver and plot the likelihoods.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the likelihoods</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>early_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"early_geneflow.lhoods"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ongoing_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"ongoing_geneflow.lhoods"</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>diff_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"diff_geneflow.lhoods"</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>recent_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"recent_geneflow.lhoods"</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>no_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"no_geneflow.lhoods"</span>)</span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the likelihoods</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>early_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"early_geneflow.lhoods"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ongoing_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"ongoing_geneflow.lhoods"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>diff_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"diff_geneflow.lhoods"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>recent_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"recent_geneflow.lhoods"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>no_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">"no_geneflow.lhoods"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the likelihoods</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the likelihoods</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="at">range =</span> <span class="dv">0</span>,diff_geneflow,recent_geneflow,early_geneflow,ongoing_geneflow,</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        no_geneflow, <span class="at">ylab=</span><span class="st">"Likelihood"</span>,<span class="at">xaxt=</span><span class="st">"n"</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"early+recent"</span>,<span class="st">"recent"</span>,<span class="st">"early"</span>,<span class="st">"constant"</span>,<span class="st">"no"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="at">range =</span> <span class="dv">0</span>,diff_geneflow,recent_geneflow,early_geneflow,ongoing_geneflow,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        no_geneflow, <span class="at">ylab=</span><span class="st">"Likelihood"</span>,<span class="at">xaxt=</span><span class="st">"n"</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"early+recent"</span>,<span class="st">"recent"</span>,<span class="st">"early"</span>,<span class="st">"constant"</span>,<span class="st">"no"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Similarly, we should compare the AIC values and see if AIC suggests that the second-best model is significantly less good than the best model. Given that we already used the calculateAIC.r script to compute AIC values, this can easily be done.</p>
 <pre class="shell"><code>for i in */bestrun/*AIC
 do
