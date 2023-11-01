@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<head>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
 
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.3.353" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="author" content="Mark Ravinet">
 
-<meta name="author" content="Mark Ravinet" />
-
-<title>Land, River and Seascape Genomics – Slendr simulations</title>
+<title>Land, River and Seascape Genomics - Slendr simulations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,7 +57,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<!-- htmldependencies:E3FAD763 -->
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,38 +95,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="/index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Land, River and Seascape Genomics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
-  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="/index.html" rel="" target="">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/Teachers.html" rel="" target="">
+    <a class="nav-link" href="./Teachers.html" rel="" target="">
  <span class="menu-text">Meet your teachers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/Readings.html" rel="" target="">
+    <a class="nav-link" href="./Readings.html" rel="" target="">
  <span class="menu-text">Readings</span></a>
   </li>  
 </ul>
@@ -123,16 +135,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <h1 class="quarto-secondary-nav-title"></h1>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sims_demo.html">Wednesday</a></li><li class="breadcrumb-item"><a href="./sims_demo.html">Slendr simulations</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -162,19 +169,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/Basic-Population-Genetics.html" class="sidebar-item-text sidebar-link">
+  <a href="./Basic-Population-Genetics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic pop gen</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/basicR.html" class="sidebar-item-text sidebar-link">
+  <a href="./basicR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/basic-bash.html" class="sidebar-item-text sidebar-link">
+  <a href="./basic-bash.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic Bash</span></a>
   </div>
 </li>
@@ -191,14 +198,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/land-river-sea.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Land, river, & seascape genomics</span></a>
+  <a href="./land-river-sea.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Land, river, &amp; seascape genomics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/maps-spatial-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Maps & spatial data</span></a>
+  <a href="./maps-spatial-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maps &amp; spatial data</span></a>
   </div>
 </li>
       </ul>
@@ -214,13 +221,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/genetic-dif.html" class="sidebar-item-text sidebar-link">
+  <a href="./genetic-dif.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Genetic differentiation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/RDA.html" class="sidebar-item-text sidebar-link">
+  <a href="./RDA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to RDA as a flexible tool</span></a>
   </div>
 </li>
@@ -237,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/sims_demo.html" class="sidebar-item-text sidebar-link active">
+  <a href="./sims_demo.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Slendr simulations</span></a>
   </div>
 </li>
@@ -254,19 +261,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/resistance.html" class="sidebar-item-text sidebar-link">
+  <a href="./resistance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resistance surfaces</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/GDM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Future projections with GDM & GFs</span></a>
+  <a href="./GDM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Future projections with GDM &amp; GFs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/biophysical.html" class="sidebar-item-text sidebar-link">
+  <a href="./biophysical.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Biophysical models</span></a>
   </div>
 </li>
@@ -283,14 +290,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/GEA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">More GEA: genetic offsets & maladaptation</span></a>
+  <a href="./GEA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More GEA: genetic offsets &amp; maladaptation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/g_architectures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Genomic architectures & landscape genomics</span></a>
+  <a href="./g_architectures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Genomic architectures &amp; landscape genomics</span></a>
   </div>
 </li>
       </ul>
@@ -298,10 +305,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" ></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction---slendr" id="toc-introduction---slendr" class="nav-link active" data-scroll-target="#introduction---slendr">Introduction - slendr</a></li>
+  <li><a href="#setting-up" id="toc-setting-up" class="nav-link" data-scroll-target="#setting-up">Setting up</a></li>
+  <li><a href="#a-simple-non-spatial-simulation-with-two-populations" id="toc-a-simple-non-spatial-simulation-with-two-populations" class="nav-link" data-scroll-target="#a-simple-non-spatial-simulation-with-two-populations">A simple non-spatial simulation with two populations</a>
+  <ul class="collapse">
+  <li><a href="#running-a-simulation" id="toc-running-a-simulation" class="nav-link" data-scroll-target="#running-a-simulation">Running a simulation</a></li>
+  <li><a href="#processing-simulations---a-simple-example" id="toc-processing-simulations---a-simple-example" class="nav-link" data-scroll-target="#processing-simulations---a-simple-example">Processing simulations - a simple example</a></li>
+  </ul></li>
+  <li><a href="#a-simple-simulation-pipeline" id="toc-a-simple-simulation-pipeline" class="nav-link" data-scroll-target="#a-simple-simulation-pipeline">A simple simulation pipeline</a>
+  <ul class="collapse">
+  <li><a href="#adding-to-the-model-gene-flow" id="toc-adding-to-the-model-gene-flow" class="nav-link" data-scroll-target="#adding-to-the-model-gene-flow">Adding to the model: gene flow</a></li>
+  <li><a href="#adding-to-the-model-resizing-a-population" id="toc-adding-to-the-model-resizing-a-population" class="nav-link" data-scroll-target="#adding-to-the-model-resizing-a-population">Adding to the model: resizing a population</a></li>
+  </ul></li>
+  <li><a href="#spatial-models" id="toc-spatial-models" class="nav-link" data-scroll-target="#spatial-models">Spatial models</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-the-spatial-context" id="toc-setting-up-the-spatial-context" class="nav-link" data-scroll-target="#setting-up-the-spatial-context">Setting up the spatial context</a></li>
+  <li><a href="#building-a-spatial-model" id="toc-building-a-spatial-model" class="nav-link" data-scroll-target="#building-a-spatial-model">Building a spatial model</a></li>
+  <li><a href="#optional-extra---animating-your-model" id="toc-optional-extra---animating-your-model" class="nav-link" data-scroll-target="#optional-extra---animating-your-model">Optional extra - animating your model</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="sims_demo.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -328,138 +358,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 </header>
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction---slendr" id="toc-introduction---slendr">Introduction - slendr</a></li>
-  <li><a href="#setting-up" id="toc-setting-up">Setting up</a></li>
-  <li><a href="#a-simple-non-spatial-simulation-with-two-populations" id="toc-a-simple-non-spatial-simulation-with-two-populations">A simple non-spatial simulation with two populations</a>
-  <ul>
-  <li><a href="#running-a-simulation" id="toc-running-a-simulation">Running a simulation</a></li>
-  <li><a href="#processing-simulations---a-simple-example" id="toc-processing-simulations---a-simple-example">Processing simulations - a simple example</a></li>
-  </ul></li>
-  <li><a href="#a-simple-simulation-pipeline" id="toc-a-simple-simulation-pipeline">A simple simulation pipeline</a>
-  <ul>
-  <li><a href="#adding-to-the-model-gene-flow" id="toc-adding-to-the-model-gene-flow">Adding to the model: gene flow</a></li>
-  <li><a href="#adding-to-the-model-resizing-a-population" id="toc-adding-to-the-model-resizing-a-population">Adding to the model: resizing a population</a></li>
-  </ul></li>
-  <li><a href="#spatial-models" id="toc-spatial-models">Spatial models</a>
-  <ul>
-  <li><a href="#setting-up-the-spatial-context" id="toc-setting-up-the-spatial-context">Setting up the spatial context</a></li>
-  <li><a href="#building-a-spatial-model" id="toc-building-a-spatial-model">Building a spatial model</a></li>
-  <li><a href="#optional-extra---animating-your-model" id="toc-optional-extra---animating-your-model">Optional extra - animating your model</a></li>
-  </ul></li>
-  <li><a href="#fastsimcoal" id="toc-fastsimcoal">fastsimcoal</a>
-  <ul>
-  <li><a href="#preparing-the-input-files" id="toc-preparing-the-input-files">Preparing the input files</a></li>
-  <li><a href="#observed-sfs" id="toc-observed-sfs">Observed SFS</a></li>
-  <li><a href="#template-file" id="toc-template-file">Template file</a></li>
-  <li><a href="#estimation-file" id="toc-estimation-file">Estimation file</a></li>
-  <li><a href="#running-fastsimcoal2" id="toc-running-fastsimcoal2">Running fastsimcoal2</a>
-  <ul>
-  <li><a href="#finding-the-best-parameter-estimates" id="toc-finding-the-best-parameter-estimates">Finding the best parameter estimates</a></li>
-  <li><a href="#model-comparison-with-aic" id="toc-model-comparison-with-aic">Model comparison with AIC</a></li>
-  <li><a href="#visualize-the-model-fit" id="toc-visualize-the-model-fit">Visualize the model fit</a></li>
-  <li><a href="#model-comparison-with-likelihood-distributions" id="toc-model-comparison-with-likelihood-distributions">Model comparison with Likelihood distributions</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
+
 <section id="introduction---slendr" class="level2">
-<h2>Introduction - slendr</h2>
+<h2 class="anchored" data-anchor-id="introduction---slendr">Introduction - slendr</h2>
 <p><a href="https://www.slendr.net/"><code>slendr</code></a> is a recently developed and extensively well-managed R package that acts as a front end for demographic simulations with both <code>msprime</code> and <code>SLiM</code>. It massively simplifies the process of running these programs, making them easy to interface with via <code>R</code> - so if you’re not great at <code>python</code> (like me!) you can easily use <code>R</code> instead. It is also very flexible and because it is built on top of the extremely efficient simulation programs, it is very fast and lightweight.</p>
 <p>Much of the information in this tutorial is based on the original <code>slendr</code>](https://www.slendr.net/) tutorial docs - I would strongly recommend referring to these as they are the definitive source for learning how to start to using the package.</p>
 </section>
 <section id="setting-up" class="level2">
-<h2>Setting up</h2>
+<h2 class="anchored" data-anchor-id="setting-up">Setting up</h2>
 <p>First we need to load the packages we will need for this session. They have already been installed, so this will not take long.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(slendr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(slendr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that if you install <code>slendr</code> on your own machine, you will need it to setup all the back-end it uses to interact with python etc. We will not do this today because it is already configured for you. However to ensure you know how to do this, you simply run</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setup_env</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setup_env</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Even if <code>slendr</code> is setup, it is always a good idea to initiate the environment, to ensure everything is working properly ahead of analyses. Do this like so:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">init_env</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">init_env</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we’re ready to begin simulating!</p>
 </section>
 <section id="a-simple-non-spatial-simulation-with-two-populations" class="level2">
-<h2>A simple non-spatial simulation with two populations</h2>
+<h2 class="anchored" data-anchor-id="a-simple-non-spatial-simulation-with-two-populations">A simple non-spatial simulation with two populations</h2>
 <p><code>slendr</code> allows you to combine some simple and logically named R functions into a complex demographic model. The easiest way to learn how to do this is to simply use these functions! Here we will simulate two populations. The second splits from the first 30,000 generations ago.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Population a with 30,000 individuals, arising 50000 generations ago</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;a&quot;</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Population a with 30,000 individuals, arising 50000 generations ago</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"a"</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Population b with 15,000 individuals, arising 30,000 generations ago</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;b&quot;</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> <span class="dv">15000</span>)</span></code></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"b"</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> <span class="dv">15000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Be sure to check what these populations look like in the R environment. Just call them as objects to see.</p>
-<p>Since we are keeping this model very simple in order to learn, all we need to do next is compile the model - all components are combined (i.e. pop size etc) into a single R object.</p>
+<p>Since we are keeping this model very simple in order to learn, all we need to do next is compile the model - all components are combined (i.e.&nbsp;pop size etc) into a single R object.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">populations =</span> <span class="fu">list</span>(a, b),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">generation_time =</span> <span class="dv">1</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">&quot;backward&quot;</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"backward"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that here we specify the direction of this model is “backwards” - i.e. we are performing a coalescent (backwards-in-time) simulation.</p>
+<p>Note that here we specify the direction of this model is “backwards” - i.e.&nbsp;we are performing a coalescent (backwards-in-time) simulation.</p>
 <p>One really nice feature of <code>slendr</code> is that it allows you to plot the model to ensure you have specified it correctly.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If everything looks as it should, we are ready to begin simulating.</p>
 <section id="running-a-simulation" class="level3">
-<h3>Running a simulation</h3>
+<h3 class="anchored" data-anchor-id="running-a-simulation">Running a simulation</h3>
 <p>Next up, we need to set our sampling scheme. Here we will take 30 individuals from each of our two populations:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">schedule_sampling</span>(model, <span class="at">times =</span> <span class="dv">0</span>, <span class="fu">list</span>(a, <span class="dv">30</span>), <span class="fu">list</span>(b, <span class="dv">30</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">schedule_sampling</span>(model, <span class="at">times =</span> <span class="dv">0</span>, <span class="fu">list</span>(a, <span class="dv">30</span>), <span class="fu">list</span>(b, <span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that this function is called <code>schedule_sampling</code> - this is because it allows you to set the timing of sampling (i.e. you can sample at different temporal points across the model) and also the location - actually spatially if you wish. But more on that later.</p>
+<p>Note that this function is called <code>schedule_sampling</code> - this is because it allows you to set the timing of sampling (i.e.&nbsp;you can sample at different temporal points across the model) and also the location - actually spatially if you wish. But more on that later.</p>
 <p>With this setup, we can run the simulation. We will use <code>msprime</code> because this is a coalescent simulation over many thousands of generations and therefore it is much more efficient and fast.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ts <span class="ot">&lt;-</span> <span class="fu">msprime</span>(model, <span class="at">samples =</span> samples, <span class="at">sequence_length =</span> <span class="dv">1000</span>, <span class="at">recombination_rate =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ts <span class="ot">&lt;-</span> <span class="fu">msprime</span>(model, <span class="at">samples =</span> samples, <span class="at">sequence_length =</span> <span class="dv">1000</span>, <span class="at">recombination_rate =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This should only take a few seconds. Note we have simulated a 1000 bp seuqence here with no recombination, but we could easily alter this if we wanted to. Next we should take a look at the simulation output.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ts </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ts </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So far this doesn’t show a great deal, other than the fact that it is a tree-sequence stored temporarily on our computer. To get at what the simulation actually shows, we need to process it.</p>
 </section>
 <section id="processing-simulations---a-simple-example" class="level3">
-<h3>Processing simulations - a simple example</h3>
+<h3 class="anchored" data-anchor-id="processing-simulations---a-simple-example">Processing simulations - a simple example</h3>
 <p>Right now our simulation output is a tree sequence of 60 individuals, 30 from population a and 30 from population b. But we might want to calculate some population genetic statistics on this dataset. So here work towards calculating <em>F</em><sub>ST</sub>.</p>
-<p>First of all, we need to set up our populations - i.e. let the pipeline know which individuals are in each population. This is easy enough to do with built in functions and some <code>tidyR</code>.</p>
+<p>First of all, we need to set up our populations - i.e.&nbsp;let the pipeline know which individuals are in each population. This is easy enough to do with built in functions and some <code>tidyR</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a_pop <span class="ot">&lt;-</span> <span class="fu">ts_samples</span>(ts) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pop <span class="sc">==</span> a) <span class="sc">%&gt;%</span> .<span class="sc">$</span>name</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>b_pop <span class="ot">&lt;-</span> <span class="fu">ts_samples</span>(ts) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pop <span class="sc">==</span> b) <span class="sc">%&gt;%</span> .<span class="sc">$</span>name</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a_pop <span class="ot">&lt;-</span> <span class="fu">ts_samples</span>(ts) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pop <span class="sc">==</span> a) <span class="sc">%&gt;%</span> .<span class="sc">$</span>name</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>b_pop <span class="ot">&lt;-</span> <span class="fu">ts_samples</span>(ts) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pop <span class="sc">==</span> b) <span class="sc">%&gt;%</span> .<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next we need to add mutations to our tree sequence. One of the reasons msprime is so fast is that it records only the tree sequence or genealogy - mutations can be added after the fact in order to ensure the simulation is extremely efficient. Here we will add simulations using a basic SNP mutation rate.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ts_m <span class="ot">&lt;-</span> <span class="fu">ts_mutate</span>(ts, <span class="at">mutation_rate =</span> <span class="dv">1</span><span class="sc">*</span><span class="dv">10</span><span class="sc">^-</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ts_m <span class="ot">&lt;-</span> <span class="fu">ts_mutate</span>(ts, <span class="at">mutation_rate =</span> <span class="dv">1</span><span class="sc">*</span><span class="dv">10</span><span class="sc">^-</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now with mutations added and our populations defined, we can use the <code>tskit</code> functions (all denoted in the package by starting with <code>ts_</code>) to calculate <em>F</em><sub>ST</sub>. This is extremly fast and there are a large number of different functions to calculate different statistics.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_fst</span>(ts_m, <span class="at">sample_sets =</span> <span class="fu">list</span>(<span class="at">a =</span> a_pop, <span class="at">b =</span> b_pop))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_fst</span>(ts_m, <span class="at">sample_sets =</span> <span class="fu">list</span>(<span class="at">a =</span> a_pop, <span class="at">b =</span> b_pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can also calculate diversity using the <code>ts_diversity</code> function - <strong>nb</strong> this is per site - to get <code>pi</code> for the sequence, you would need to divide this value by the length (1000 in this case).</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_diversity</span>(ts_m, <span class="at">sample_sets =</span> <span class="fu">list</span>(<span class="at">a =</span> a_pop, <span class="at">b =</span> b_pop),</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">mode =</span> <span class="st">&quot;site&quot;</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_diversity</span>(ts_m, <span class="at">sample_sets =</span> <span class="fu">list</span>(<span class="at">a =</span> a_pop, <span class="at">b =</span> b_pop),</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">mode =</span> <span class="st">"site"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So there we have it - two population genetic statistic estimates for a simple 2-population model, all calculated in a single R framework at high speed. If we placed all the commands we used together in an single R script, we could have run this all in seconds, using very little hard drive space.</p>
 </section>
 </section>
 <section id="a-simple-simulation-pipeline" class="level2">
-<h2>A simple simulation pipeline</h2>
+<h2 class="anchored" data-anchor-id="a-simple-simulation-pipeline">A simple simulation pipeline</h2>
 <p>Running a single simulation is useful for learning but it isn’t that helpful as a standalone tool. Instead, we can combine the code we’ve learned to examine how the variaton in population parameters might influence the statistics we calculate. Here we will run the model we created above for different population sizes for population B (from 1000 to 15000) - how does it alter our estimate of <em>F</em><sub>ST</sub>?</p>
 <p>This code might look complex - but it is almost everything we covered above!</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set our sequence to simulate across</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set our sequence to simulate across</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pop_sizes <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1000</span>, <span class="dv">15000</span>, <span class="at">by =</span> <span class="dv">1000</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run our model within an sapply command</span></span>
@@ -467,15 +460,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set the sampling scheme</span></span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  samples <span class="ot">&lt;-</span> <span class="fu">schedule_sampling</span>(model, <span class="at">times =</span> <span class="dv">0</span>, <span class="fu">list</span>(a, <span class="dv">30</span>), <span class="fu">list</span>(b, <span class="dv">30</span>))</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Population a</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;a&quot;</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"a"</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Population b </span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;b&quot;</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> x)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"b"</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> x)</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compile model</span></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">populations =</span> <span class="fu">list</span>(a, b),</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">generation_time =</span> <span class="dv">1</span>,</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="st">&quot;backward&quot;</span>,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="st">"backward"</span>,</span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># run the model</span></span>
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  ts <span class="ot">&lt;-</span> <span class="fu">msprime</span>(model, <span class="at">samples =</span> samples, <span class="at">sequence_length =</span> <span class="dv">1000</span>, <span class="at">recombination_rate =</span> <span class="dv">0</span>)</span>
@@ -487,43 +480,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate fst</span></span>
 <span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">ts_fst</span>(ts_m, <span class="at">sample_sets =</span> <span class="fu">list</span>(<span class="at">a =</span> a_pop, <span class="at">b =</span> b_pop))</span>
 <span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  y<span class="sc">$</span>Fst</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can then combine our results into a <code>data.frame</code> and plot the results using <code>ggplot</code> to see how they vary across the parameters.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a data.frame or tibble</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a data.frame or tibble</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">data.frame</span>(<span class="at">pop_sizes =</span> pop_sizes, <span class="at">fst =</span> fst_i))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the output</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims, <span class="fu">aes</span>(pop_sizes, fst)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims, <span class="fu">aes</span>(pop_sizes, fst)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Quite clearly from this simple simulation we can see that as the populations size of B increases, so does the magnitude of <em>F</em><sub>ST</sub> between the two populations.</p>
 <section id="adding-to-the-model-gene-flow" class="level3">
-<h3>Adding to the model: gene flow</h3>
+<h3 class="anchored" data-anchor-id="adding-to-the-model-gene-flow">Adding to the model: gene flow</h3>
 <p>The model we have been using so far is very simple - it is basically a 2-deme isolation model. But what if we want to add gene flow between our two populations? We can do this very easily using the <code>gene_flow</code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gf <span class="ot">&lt;-</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gf <span class="ot">&lt;-</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="fu">gene_flow</span>(<span class="at">from =</span> a, <span class="at">to =</span> b, <span class="at">rate =</span> <span class="fl">0.2</span>, <span class="at">start =</span> <span class="dv">10000</span>, <span class="at">end =</span> <span class="dv">0</span>),</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">gene_flow</span>(<span class="at">from =</span> b, <span class="at">to =</span> a, <span class="at">rate =</span> <span class="fl">0.2</span>, <span class="at">start =</span> <span class="dv">10000</span>, <span class="at">end =</span> <span class="dv">0</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we have ensured that we are simulating gene flow that is symmetric between our two populations at a rate of 0.2 between populations. This starts 10,000 generations in the past and continues until the present day. We have defined these two events in and combined them into a <code>list</code> called <code>gf</code></p>
 <p>Next we compile our model, but this time include a gene flow term.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">populations =</span> <span class="fu">list</span>(a, b),</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_flow =</span> gf,</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">generation_time =</span> <span class="dv">1</span>,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">&quot;backward&quot;</span>,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"backward"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And as before, we can plot the model to see what it looks like:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As before, we can run our model and see how it alters our estimates of <em>F</em><sub>ST</sub> and diversity. We need to rerun our model, populate it with mutations, define our populations and then calculate the statistics.</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># run the model</span></span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># run the model</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  ts <span class="ot">&lt;-</span> <span class="fu">msprime</span>(model, <span class="at">samples =</span> samples, <span class="at">sequence_length =</span> <span class="dv">1000</span>, <span class="at">recombination_rate =</span> <span class="dv">0</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add the mutations</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  ts_m <span class="ot">&lt;-</span> <span class="fu">ts_mutate</span>(ts, <span class="at">mutation_rate =</span> <span class="dv">1</span><span class="sc">*</span><span class="dv">10</span><span class="sc">^-</span><span class="dv">4</span>)</span>
@@ -534,11 +527,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ts_fst</span>(ts_m, <span class="at">sample_sets =</span> <span class="fu">list</span>(<span class="at">a =</span> a_pop, <span class="at">b =</span> b_pop))</span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate diversity</span></span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ts_diversity</span>(ts_m, <span class="at">sample_sets =</span> <span class="fu">list</span>(<span class="at">a =</span> a_pop, <span class="at">b =</span> b_pop),</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">mode =</span> <span class="st">&quot;site&quot;</span>)</span></code></pre></div>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">mode =</span> <span class="st">"site"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Yet again, a single value is interesting but it doesn’t tell us too much. So we will do what we did previously - rerunning our model but altering the population size of population B. <strong>However</strong>, this time we will see how gene flow influences our inference!</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set our sequence to simulate across</span></span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set our sequence to simulate across</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>pop_sizes <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1000</span>, <span class="dv">15000</span>, <span class="at">by =</span> <span class="dv">1000</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run our model within an sapply command</span></span>
@@ -546,16 +539,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set the sampling scheme</span></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  samples <span class="ot">&lt;-</span> <span class="fu">schedule_sampling</span>(model, <span class="at">times =</span> <span class="dv">0</span>, <span class="fu">list</span>(a, <span class="dv">30</span>), <span class="fu">list</span>(b, <span class="dv">30</span>))</span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Population a</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;a&quot;</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"a"</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Population b </span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;b&quot;</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> x)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"b"</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> x)</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compile model - note the inclusion of gene flow</span></span>
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a> model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">populations =</span> <span class="fu">list</span>(a, b),</span>
 <span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_flow =</span> gf,</span>
 <span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">generation_time =</span> <span class="dv">1</span>,</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">&quot;backward&quot;</span>,</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"backward"</span>,</span>
 <span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># run the model</span></span>
@@ -568,144 +561,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate fst</span></span>
 <span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">ts_fst</span>(ts_m, <span class="at">sample_sets =</span> <span class="fu">list</span>(<span class="at">a =</span> a_pop, <span class="at">b =</span> b_pop))</span>
 <span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  y<span class="sc">$</span>Fst</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can add the output of the simulations from this run to our previous simulations (those without gene flow) and see the difference</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combine everything into a tibble</span></span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combine everything into a tibble</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">data.frame</span>(sims, fst_g))</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># alter names! you will see why shortly </span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sims) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pop_sizes&quot;</span>, <span class="st">&quot;isolation&quot;</span>, <span class="st">&quot;gene_flow&quot;</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sims) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pop_sizes"</span>, <span class="st">"isolation"</span>, <span class="st">"gene_flow"</span>)</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot to allow easy plotting</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>sims_p <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(sims, <span class="sc">-</span>pop_sizes, <span class="at">names_to =</span> <span class="st">&quot;model&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;fst&quot;</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>sims_p <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(sims, <span class="sc">-</span>pop_sizes, <span class="at">names_to =</span> <span class="st">"model"</span>, <span class="at">values_to =</span> <span class="st">"fst"</span>)</span>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the output</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_p, <span class="fu">aes</span>(pop_sizes, fst, <span class="at">colour =</span> model)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_p, <span class="fu">aes</span>(pop_sizes, fst, <span class="at">colour =</span> model)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This shows that changing the population size of b has the same result in both models (i.e. <em>F</em><sub>ST</sub> decreases with increasing pop size) but that <em>F</em><sub>ST</sub> is lower in the gene flow model - as we would expect!</p>
+<p>This shows that changing the population size of b has the same result in both models (i.e.&nbsp;<em>F</em><sub>ST</sub> decreases with increasing pop size) but that <em>F</em><sub>ST</sub> is lower in the gene flow model - as we would expect!</p>
 </section>
 <section id="adding-to-the-model-resizing-a-population" class="level3">
-<h3>Adding to the model: resizing a population</h3>
+<h3 class="anchored" data-anchor-id="adding-to-the-model-resizing-a-population">Adding to the model: resizing a population</h3>
 <p>As well as gene flow events, we can also resize populations so that they experience bottlenecks or growth over time. Yet again, <code>slendr</code> makes this very straightforward. All we need to do is pipe our population declaration to a <code>resize</code> function when we declare populations.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Population a with 30,000 individuals, arising 50000 generations ago</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;a&quot;</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Population a with 30,000 individuals, arising 50000 generations ago</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"a"</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Population b with 15,000 individuals, arising 30,000 generations ago</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;b&quot;</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> <span class="dv">15000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resize</span>(<span class="at">N =</span> <span class="dv">2000</span>, <span class="at">how =</span> <span class="st">&quot;step&quot;</span>, <span class="at">time =</span> <span class="dv">5000</span>, <span class="at">end =</span> <span class="dv">0</span>)</span></code></pre></div>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"b"</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> <span class="dv">15000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resize</span>(<span class="at">N =</span> <span class="dv">2000</span>, <span class="at">how =</span> <span class="st">"step"</span>, <span class="at">time =</span> <span class="dv">5000</span>, <span class="at">end =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Remember because we are working with coalescent models, we are working backwards in time. So here we set population b to start with a population size of 2000 at time 0 and this then increases to the ancestral population size 5000 generations in the past. Importantly we set the <code>how</code> for this resize to <code>step</code> - i.e. it will just change suddenly.</p>
+<p>Remember because we are working with coalescent models, we are working backwards in time. So here we set population b to start with a population size of 2000 at time 0 and this then increases to the ancestral population size 5000 generations in the past. Importantly we set the <code>how</code> for this resize to <code>step</code> - i.e.&nbsp;it will just change suddenly.</p>
 <p>Then we need to just declare our model again. For simplicity here, we’ll do this without gene flow.</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">populations =</span> <span class="fu">list</span>(a, b),</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">generation_time =</span> <span class="dv">1</span>,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">&quot;backward&quot;</span>,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"backward"</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we can plot it to see how this looks!</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And what if we had set this to happen exponentially, rather than a sudden step?</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Population a with 30,000 individuals, arising 50000 generations ago</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;a&quot;</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Population a with 30,000 individuals, arising 50000 generations ago</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"a"</span>, <span class="at">time =</span> <span class="dv">50000</span>, <span class="at">N =</span> <span class="dv">30000</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Population b with 15,000 individuals, arising 30,000 generations ago</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">&quot;b&quot;</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> <span class="dv">15000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resize</span>(<span class="at">N =</span> <span class="dv">2000</span>, <span class="at">how =</span> <span class="st">&quot;exponential&quot;</span>, <span class="at">time =</span> <span class="dv">5000</span>, <span class="at">end =</span> <span class="dv">0</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">population</span>(<span class="st">"b"</span>, <span class="at">parent =</span> a, <span class="at">time =</span> <span class="dv">30000</span>, <span class="at">N =</span> <span class="dv">15000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resize</span>(<span class="at">N =</span> <span class="dv">2000</span>, <span class="at">how =</span> <span class="st">"exponential"</span>, <span class="at">time =</span> <span class="dv">5000</span>, <span class="at">end =</span> <span class="dv">0</span>)</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># recompile the model</span></span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">populations =</span> <span class="fu">list</span>(a, b),</span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">generation_time =</span> <span class="dv">1</span>,</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">&quot;backward&quot;</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"backward"</span>,</span>
 <span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the model</span></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model)</span></code></pre></div>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We won’t include the resizing in our simulation pipeline above because next we will try to develop a simple spatial simulation - this will be a very useful tool for landscape genomics!</p>
 </section>
 </section>
 <section id="spatial-models" class="level2">
-<h2>Spatial models</h2>
+<h2 class="anchored" data-anchor-id="spatial-models">Spatial models</h2>
 <p>So far, our models have all been relatively basic with no spatial context. But what if adding a spatial context helped make them more realistic? This is a very difficult and complex topic but it is the main motivation behind the development of <code>slendr</code> - again another reason to refer to <a href="https://www.slendr.net/">its excellent and extensive website</a>.</p>
 <section id="setting-up-the-spatial-context" class="level3">
-<h3>Setting up the spatial context</h3>
+<h3 class="anchored" data-anchor-id="setting-up-the-spatial-context">Setting up the spatial context</h3>
 <p>We will try to take our basic model and put it in a spatial context in order to get a flavour of the kind of things you can do with <code>slendr</code>. The very first thing we will do is define a map that we will use - we use the <code>world</code> function to do this - and we simply set the longitude (<code>xrange</code>) and latitude (<code>yrange</code>) to do this.</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">world</span>(</span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">world</span>(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xrange =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">13</span>, <span class="dv">70</span>), <span class="co"># min-max longitude</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">yrange =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">65</span>),  <span class="co"># min-max latitude</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">crs =</span> <span class="st">&quot;EPSG:3035&quot;</span>    <span class="co"># coordinate reference system (CRS) for West Eurasia</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">crs =</span> <span class="st">"EPSG:3035"</span>    <span class="co"># coordinate reference system (CRS) for West Eurasia</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With this set, we can then plot the map using the <code>plot_map</code> function from <code>slendr</code> to make an easy map as a background for simulations.</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(map)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next we will create two regions on our map - one over the UK, the other over Europe.</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># anatolia</span></span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># anatolia</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>anatolia <span class="ot">&lt;-</span> <span class="fu">region</span>(</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Anatolia&quot;</span>, map,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Anatolia"</span>, map,</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">polygon =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">35</span>), <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">35</span>), <span class="fu">c</span>(<span class="dv">42</span>, <span class="dv">40</span>),</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">43</span>), <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">40</span>), <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">38</span>))</span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># europe</span></span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>europe <span class="ot">&lt;-</span> <span class="fu">region</span>(</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Europe&quot;</span>, map,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Europe"</span>, map,</span>
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">polygon =</span> <span class="fu">list</span>(</span>
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">35</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">36</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">38</span>), <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">35</span>), <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">35</span>),</span>
 <span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">45</span>), <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">52</span>), <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>), <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">48</span>)</span>
 <span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(anatolia, europe)</span></code></pre></div>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(anatolia, europe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So here we have a map with two polygons imposed on the top that define regions. With this spatial structure set up, we can now start to build a model that is anchored in this geographical context.</p>
 </section>
 <section id="building-a-spatial-model" class="level3">
-<h3>Building a spatial model</h3>
-<p>As with our simpler, non-spatial models, we can start to specify our model using the same functions as previously - i.e. <code>population</code>, except this time we actually incorporate the map data.</p>
+<h3 class="anchored" data-anchor-id="building-a-spatial-model">Building a spatial model</h3>
+<p>As with our simpler, non-spatial models, we can start to specify our model using the same functions as previously - i.e.&nbsp;<code>population</code>, except this time we actually incorporate the map data.</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># european population</span></span>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># european population</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>eur <span class="ot">&lt;-</span> <span class="fu">population</span>(</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&quot;eur&quot;</span>, <span class="at">time =</span> <span class="dv">6000</span>, <span class="at">N =</span> <span class="dv">2000</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"eur"</span>, <span class="at">time =</span> <span class="dv">6000</span>, <span class="at">N =</span> <span class="dv">2000</span>,</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">polygon =</span> europe, <span class="at">map =</span> map</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># check it by plotting!</span></span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(eur)</span>
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># anatolian population</span></span>
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>ana <span class="ot">&lt;-</span> <span class="fu">population</span>( <span class="co"># Anatolian pop</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&quot;ana&quot;</span>, <span class="at">time =</span> <span class="dv">6000</span>, <span class="at">N =</span> <span class="dv">3000</span>,</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"ana"</span>, <span class="at">time =</span> <span class="dv">6000</span>, <span class="at">N =</span> <span class="dv">3000</span>,</span>
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">center =</span> <span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">38</span>), <span class="at">radius =</span> <span class="fl">500e3</span>, <span class="at">polygon =</span> anatolia, <span class="at">map =</span> map</span>
 <span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
 <span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_range</span>( <span class="co"># expand the range by 2.500 km</span></span>
 <span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="fl">2500e3</span>, <span class="at">start =</span> <span class="dv">5000</span>, <span class="at">end =</span> <span class="dv">3000</span>, <span class="at">overlap =</span> <span class="fl">0.5</span>,</span>
 <span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">polygon =</span> <span class="fu">join</span>(europe, anatolia)</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that the arguments <code>map</code> and <code>polygon</code> allow us to specify the map and polygon we have already defined - it is these arguments which give our population its spatial rooting.</p>
 <p>With this done, we can now replot these polygons and you will see we have defined the ranges of the populations within the polygons - here they are explicitly bounded to the landscape. We will see why this is important shortly.</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(ana)</span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(ana)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot both together</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(eur, ana) <span class="co"># showing an expansion into europe</span></span></code></pre></div>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(eur, ana) <span class="co"># showing an expansion into europe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With our populations defined, we can also set out some gene flow events. We will do this exactly the same way we did with our non-spatial model earlier.</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will not work</span></span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will not work</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>gf <span class="ot">&lt;-</span> <span class="fu">gene_flow</span>(<span class="at">from =</span> ana, <span class="at">to =</span> eur, <span class="at">rate =</span> <span class="fl">0.1</span>, <span class="at">start =</span> <span class="dv">5000</span>, <span class="at">end =</span> <span class="dv">4000</span>, <span class="at">overlap =</span> T)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this will </span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>gf <span class="ot">&lt;-</span> <span class="fu">gene_flow</span>(<span class="at">from =</span> ana, <span class="at">to =</span> eur, <span class="at">rate =</span> <span class="fl">0.1</span>, <span class="at">start =</span> <span class="dv">3000</span>, <span class="at">end =</span> <span class="dv">2000</span>, <span class="at">overlap =</span> T)</span></code></pre></div>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>gf <span class="ot">&lt;-</span> <span class="fu">gene_flow</span>(<span class="at">from =</span> ana, <span class="at">to =</span> eur, <span class="at">rate =</span> <span class="fl">0.1</span>, <span class="at">start =</span> <span class="dv">3000</span>, <span class="at">end =</span> <span class="dv">2000</span>, <span class="at">overlap =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The main difference here however is that we have now added an <code>overlap</code> argument. This is basically a requirement that populations must spatially overlap in order to to exchange genes.</p>
 <p>With this done, we can then compile our model. The principle here is the same as with our non-spatial model but with some additional arguments. We will learn about these after we have run the command. Also, ensure population names are correct!</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compile model</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>model_dir <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">&quot;_tutorial-model&quot;</span>)</span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compile model</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>model_dir <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">tempfile</span>(), <span class="st">"_tutorial-model"</span>)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">compile_model</span>(</span>
@@ -718,204 +711,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> model_dir</span>
 <span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model, <span class="at">proportions =</span> T) <span class="co"># to check</span></span></code></pre></div>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model, <span class="at">proportions =</span> T) <span class="co"># to check</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So what additional arguments have we added here that differs from our previous model compliation in the non-spatial examples?</p>
 <ul>
 <li>Firstly we have the <code>resolution</code> argument. This is simply the resolution of the map to simulate on and how much a single pixel represents. Here we have set it to 100,000 units.</li>
 <li>Next we have <code>competition</code> - this is the maximum distance between two individuals where they can influence each others fitness via competition. Here it is set to 130,000 which basically menas individuals influence each other only if the occur right next to one another on the map.</li>
-<li>We also have <code>mating</code> - this sets the mating choice distance, i.e. the maximum distance an individual will find a mate over; set to 100,000 here, it means individuals look for mates in close proximity.</li>
+<li>We also have <code>mating</code> - this sets the mating choice distance, i.e.&nbsp;the maximum distance an individual will find a mate over; set to 100,000 here, it means individuals look for mates in close proximity.</li>
 <li>Last we have <code>dispersal</code> which is fairly self-explanatory as dispersal distance. In the context of our model, it determines how far an individual can move before contributing to next generation.</li>
 </ul>
 <p>Note that we also specify a <code>path</code> to set a model directory, just so we can look at the files SLiM writes to the directory should we need to.</p>
 <p>Finally we use <code>plot_model</code> to make sure the model is doing what we expect. If we are satisfied with this, we can now run it using <code>slim</code>. Note that this is a large difference from our non-spatial models which used <code>msprime</code>. SliM is a forward in time simulator which allows it to incorporate selection and spatial dynamics. <a href="https://messerlab.org/slim/">It is extremely powerful</a> and I would strongly recommend you investigate it in more detail!</p>
 <p>However one disadvantage of SLiM is that it is slower than <code>msprime</code> - this menas our simulation will take a bit longer to complete… but not too long!</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set locations file</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>locations_file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">&quot;.gz&quot;</span>)</span>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set locations file</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>locations_file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".gz"</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># run the simulations</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>ts <span class="ot">&lt;-</span> <span class="fu">slim</span>(model, <span class="at">sequence_length =</span> <span class="dv">1000</span>, <span class="at">recombination_rate =</span> <span class="dv">0</span>, <span class="at">method =</span> <span class="st">&quot;batch&quot;</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>ts <span class="ot">&lt;-</span> <span class="fu">slim</span>(model, <span class="at">sequence_length =</span> <span class="dv">1000</span>, <span class="at">recombination_rate =</span> <span class="dv">0</span>, <span class="at">method =</span> <span class="st">"batch"</span>,</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">locations =</span> locations_file)</span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the tree sequence</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>ts</span></code></pre></div>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>ts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And with that, we’re done. Hopefully this has given you a taste of what is possible with <code>slendr</code>. There is so much more you could do and many ways to extend and expand these models. It is well worth spending some time with this excellent R package!</p>
 </section>
 <section id="optional-extra---animating-your-model" class="level3">
-<h3>Optional extra - animating your model</h3>
+<h3 class="anchored" data-anchor-id="optional-extra---animating-your-model">Optional extra - animating your model</h3>
 <p>This actually doesn’t work on our RStudio Server <strong>but</strong> it should work locally. This is just an optional example that allows you to see some of the ways <code>slendr</code> allows you to explore your simulations and models.</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># animate the model</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">animate_model</span>(<span class="at">model =</span> model, <span class="at">file =</span> locations_file, <span class="at">steps =</span> <span class="dv">50</span>, <span class="at">width =</span> <span class="dv">700</span>, <span class="at">height =</span> <span class="dv">400</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># animate the model</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">animate_model</span>(<span class="at">model =</span> model, <span class="at">file =</span> locations_file, <span class="at">steps =</span> <span class="dv">50</span>, <span class="at">width =</span> <span class="dv">700</span>, <span class="at">height =</span> <span class="dv">400</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="fastsimcoal" class="level1">
-<h1>fastsimcoal</h1>
-<p>Firstly before proceeding I want make it clear that this tutorial was originally designed by my colleague and friend, <a href="https://www.sanger.ac.uk/person/meier-joana/">Joana Meier</a> and has been adapted from <a href="https://speciationgenomics.github.io/fastsimcoal2/">here</a> for this course. The depth of this tutorial would not have been possible without her input!</p>
-<p><code>fastsimcoal2</code> is an extremely flexible demographic modelling software developed by <a href="http://www.cmpg.iee.unibe.ch/about_us/team/researchers/prof_dr_excoffier_laurent/index_eng.html">Laurent Excoffier and his group at University of Bern</a>. It uses the site frequency spectrum (SFS) to fit model parameters to the observed data by performing coalescent simulations. You can find the manual and more information <a href="http://cmpg.unibe.ch/software/fastsimcoal2/">here</a>.</p>
-<p>It is worth noting that this is a complex piece of software to run and it takes a lot of time to master. However it is really worth taking your time with it and exploring the manual. It is extremely well documented (which is rare for a program like this).</p>
-<section id="preparing-the-input-files" class="level3">
-<h3>Preparing the input files</h3>
-<p>To run <code>fastsimcoal2</code> we need three input files which are all named in a consistent way. They are all just plain text files.</p>
-<ul>
-<li>observed SFS - <code>${PREFIX}_jointDAFpop1_0.obs</code></li>
-<li>template file defining the demographic model - <code>${PREFIX}.tpl</code></li>
-<li>estimation file defining the parameters - <code>${PREFIX}.est</code></li>
-</ul>
-</section>
-<section id="observed-sfs" class="level3">
-<h3>Observed SFS</h3>
-<p>The observed SFS can be a derived SFS (i.e. also known as DAF or an unfolded SFS) if the ancestral state is unknown or a minor allele frequency SFS (i.e. MAF or folded SFS) if you do know the ancestral state. <code>fastsimcoal2</code> will identify the kind of SFS by its name suffix and the command flag <code>-m</code> or <code>-d</code>. For a single population, it expects the name <code>${PREFIX}_DAFpop0.obs</code> or <code>${PREFIX}_MAFpop0.obs</code>.</p>
-<p>For two populations, the file names should end with <code>jointDAFpop1_0.obs</code> or <code>jointMAFpop1_0.obs</code>. If more than two observed populations are used, pairwise MAFs or DAFs can be provided following the naming scheme above or a multidimensional SFS can be used ending with <code>_DSFS.obs</code> or <code>_MSFS.obs</code> and specifying the <code>-multiSFS</code> flag when running the program. See the <a href="http://cmpg.unibe.ch/software/fastsimcoal2/">fastsimcoal2 manual</a> for further details. The <code>.obs</code> file can be generated with <code>Arlequin</code>, <code>angsd</code>, <code>easySFS</code> (as in this <a href="https://speciationgenomics.github.io/easysfs/">tutorial</a>) or several other tools.</p>
-</section>
-<section id="template-file" class="level3">
-<h3>Template file</h3>
-<p>The template file describes the demographic model and the parameters of interest. Values that should be estimated (i.e. model parameters such as migration rate, splitting time etc) are given as different keywords. It is best practise to use capital letters for parameter names and it is important to avoid any names that are part of another parameter name or a function (e.g. <code>log</code>, <code>min</code>, <code>FREQ</code>).</p>
-<p>As fastsimcoal2 is a coalescent simulator, all models need to be specified <strong>backwards in time</strong>. This means that the most recent event is specified first. The template file is best produced by modifying an example <code>tpl</code> file in a text editor.</p>
-<p>In this tutorial, we will first write a model of two species that diverged in the face of gene flow and then evolved complete reproductive isolation. Unfortunately, we do not have a good estimate for the mutation rate, but we have an estimate for the (maximum possible) splitting time. So here we will set the split between the populations to 6000 generations.</p>
-<p><strong>Question:</strong> Why do we need to fix a parameter (e.g. splitting time) if we do not have a reliable mutation rate estimate?</p>
-</section>
-<section id="estimation-file" class="level3">
-<h3>Estimation file</h3>
-<p>All keywords introduced in the template file need to be defined in the estimation file. For each keyword, the parameter distribution (uniform or log-uniform) and search range (min and max) are given on a single line. Each parameter can be an integer or a float, as specified by a first indicator variable.</p>
-<p>Lastly, complex parameters can be used to compute parameter values with simple operations such as computing the ratio between two simple parameters or specifying a parameter as the minimum of two parameters. In addition, for each simple or complex parameter, you need to specify if the parameter value should be written into an output file or not.</p>
-<p>As with the template file, the estimation file is best produced by modifying an example <code>est</code> file in a text editor.</p>
-</section>
-<section id="running-fastsimcoal2" class="level2">
-<h2>Running fastsimcoal2</h2>
-<p>Once we have all input files ready, it is time to run <code>fastsimcoal2</code>. In addition to the input files, we need to specify how many simulations and iterations <code>fastsimcoal2</code> should perform, when to stop and how many threads (i.e. CPUs) can be used in parallel.</p>
-<p>Let’s run <code>fastsimcoal2</code> with our model of two populations. First we make a <code>fastsimcoal2</code> directory and within that a directory, an additional one for our model of <code>early_geneflow</code>:</p>
-<pre class="shell"><code>cd ~
-mkdir fastsimcoal2
-cd fastsimcoal2
-mkdir early_geneflow</code></pre>
-<p>Next, we will move inside this directory and copy over the files we need</p>
-<pre class="shell"><code>cd ~/fastsimcoal2/early_geneflow
-cp /resources/riverlandsea/exercise_data/fastsimcoal2/early_geneflow/* .</code></pre>
-<p>This should mean we have our observed SFS, our template file and our estimation file. We are now ready to run <code>fastsimcoal2</code> - we will set a <code>PREFIX</code> variable to make our command here a bit easier to write. This will help downstream too!</p>
-<pre class="shell"><code>PREFIX=&quot;early_geneflow&quot;
-fastsimcoal2 -t ${PREFIX}.tpl -e ${PREFIX}.est -m -0 -C 10 -n 10000 -L 40 -s 0 -M</code></pre>
-<p>This command runs <code>fastsimcoal2</code> using a MAF (<code>-m</code>) while ignoring monomorphic sites (<code>-0</code>) and SFS entries with less than 10 SNPs (<code>-C</code>). This means that entries with less than 10 SNPs are pooled together. This option is useful when there are many entries in the observed SFS with few SNPs and with a limited number of SNPS to avoid overfitting.</p>
-<p><code>fastsimcoal2</code> will also perform (<code>-n</code>) 10,000 coalescent simulations to approximate the expected SFS in each cycle and will run (<code>-L</code>) 40 optimization (ECM) cycles to estimate the parameters. The number of ECM cycles should be at least 20, better between 50 and 100. The number of coalescent simulations should ideally be something between 200,000 and 1,000,000 but to make it faster, we are now only running 10,000 simulations. We also specify (<code>-M</code>) that we want to perform parameter estimation. With <code>-s 0</code>, we can tell <code>fastsimcoal2</code> to output SNPs.</p>
-<p>Once <code>fastsimcoal2</code> is finished, we can have a look at the output files. It produced a folder called <code>${PREFIX}</code> which contains a number of new files. The most relevant files are the following:</p>
-<ul>
-<li><code>${PREFIX}.bestlhoods:</code> a file with the Maximum likelihood estimates for each parameter specified “output” in the <code>est</code> file and the model likelihoods.</li>
-<li><code>${PREFIX}._jointMAFpop1_0.txt</code>: a file with the expected SFS obtained with the parameters that maximized the likelihood during optimization. This is needed to visually check the fit of the expected SFS to the observed SFS. This file has the same suffix as the observed SFS provided.</li>
-<li><code>${PREFIX}.simparam</code>: a file with an example of the settings to run the simulations. This is useful to check when you have errors. Many times errors in specification of models can be detected in this file.</li>
-<li><code>${PREFIX}_maxL.par</code>: The model specification file with the best parameter estimates. It is basically the tpl file with the keywords replaced by estimated values. This file is useful if you want to simulate data under the best model using Arlequin.</li>
-</ul>
-<p>Note, the bestlhoods file contains two different likelihoods: <code>MaxObsLhood</code> is the maximum possible value for the likelihood if there was a perfect fit of the expected to the observed SFS, i.e. if the expected SFS was the relative observed SFS. <code>MaxEstLhood</code> is the maximum likelihood estimated according to the model parameters. It is obtained by using the observed SFS as the expected SFS when computing the likelihood, i.e., returning the value of the likelihood if there was a perfect fit between the expected and observed SFS.</p>
-<p>The better the fit, the smaller the difference between <code>MaxObsLhood</code> and <code>MaxEstLhood</code>.</p>
-<section id="finding-the-best-parameter-estimates" class="level3">
-<h3>Finding the best parameter estimates</h3>
-<p><code>fastsimcoal2</code> should not just be run once because it might not find the global optimum of the best combination of parameter estimates right away. It is better to run it 100 times or more. Of these runs, we then go on to select the one with the highest likelihood which is the run with the best fitting parameter estimates for this model.</p>
-<p>Due to time constraints, we will only run this model 5 times and we will do so within a <code>for</code> loop. Note, that here we have added the flag <code>-q</code> for “quiet” which reduces the amount of information <code>fastsimcoal2</code> writes to stdout. Pay attention the <code>cd</code> commands here as they ensure that the analyses are done in the correct directory.</p>
-<pre class="shell"><code> for i in {1..5}
- do
-   mkdir run$i
-   cp ${PREFIX}.tpl ${PREFIX}.est ${PREFIX}_jointMAFpop1_0.obs run$i&quot;/&quot;
-   cd run$i
-   fastsimcoal2 -t ${PREFIX}.tpl -e ${PREFIX}.est -m -0 -C 10 -n 100 -L 40 -s0 -M -q
-   cd ..
- done</code></pre>
-<p>To find the best run, i.e. the run with the highest likelihood, or better the smallest difference between the maximum possible likelihood (<code>MaxObsLhood</code>) and the obtained likelihood (<code>MaxEstLhood</code>), we can check the <code>.bestlhoods</code> files.</p>
-<pre class="shell"><code>cat run{1..5}/${PREFIX}/${PREFIX}.bestlhoods | grep -v MaxObsLhood | awk &#39;{print NR,$8}&#39; | sort -k 2</code></pre>
-<p>Note that <code>NR</code> in awk prints out the line number which here corresponds to the run number. <code>$8</code> is the <code>MaxEstLhood</code> column and thus the likelihood we want to compare across different runs.</p>
-<p>[Joana Meier](https://www.sanger.ac.uk/person/meier-joana/ has written a <a href="https://github.com/speciationgenomics/scripts/raw/master/fsc-selectbestrun.sh">script</a> for you that automatically extracts the files of the best run and copies them into a new folder which it calls <code>bestrun</code>. A copy of that script is available in the course resources directory so we will copy it to our run folder directory and run it like so:</p>
-<p>Just run it in the directory where all the folders run are located and run it:</p>
-<pre class="shell"><code>cd ~/fastsimcoal2/early_geneflow
-cp /resources/riverlandsea/exercise_data/fastsimcoal2/fsc-selectbestrun.sh .
-./fsc-selectbestrun.sh</code></pre>
-<p>Now modify the <code>$PREFIX.tpl</code> and <code>$PREFIX.est</code> files to specify different models and also rename the SFS to <code>${PREFIX}_jointDAFpop1_0.txt</code>. Then run <code>fastsimcoal2</code>for all models to see which one shows the best fit to the observed SFS.</p>
-<p><img src="./images/modeling/models.png" class="img-fluid" /></p>
-<details>
-<summary>
-Click here to see a possible solution.
-</summary>
-<p>
-Early Geneflow (this is the model expalined in the example, gene flow right after the split and then no gene flow anymore, e.g. speciation with gene flow and then no gene flow anymore as reproductive isolation becomes strong): <a href="https://github.com/speciationgenomics/data/blob/master/early_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/early_geneflow.est"> est</a> <br/> <br/> No geneflow: <a href="https://github.com/speciationgenomics/data/blob/master/no_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/no_geneflow.est"> est</a> <br/> <br/> Recent geneflow (no gene flow intially after the split but gene flow in recent times, e.g. secondary contact scenario) <a href="https://github.com/speciationgenomics/data/blob/master/recent_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/recent_geneflow.est"> est</a> <br/> <br/> Different gene flow matrices (higher or lower gene flow right after the split than recently, e.g. initially higher gene flow then lower gene flow as reproductive isolation accumulates): <a href="https://github.com/speciationgenomics/data/blob/master/diff_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/diff_geneflow.est"> est</a> <br/> <br/> Constant gene flow (same gene flow strengths since the split until now): <a href="https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.tpl"> tpl</a> <a href="https://github.com/speciationgenomics/data/blob/master/ongoing_geneflow.est"> est</a>
-</p>
-</details>
-</section>
-<section id="model-comparison-with-aic" class="level3">
-<h3>Model comparison with AIC</h3>
-<p>In order to find the best model, the likelihoods of the best run of each model should be compared. Comparing raw likelihoods is problematic, because a model with more parameters will always tend to result in a better fit to the data. Therefore, the <a href="https://en.wikipedia.org/wiki/Akaike_information_criterion">Akaike information criterium</a> or AIC is typically calculated to determine if the models differ in their likelihoods accounting for the number of parameters in each model. To perform, this, we can use a <a href="https://github.com/speciationgenomics/scripts/blob/master/calculateAIC.sh">script</a> that is mostly based on R code by <a href="http://ce3c.ciencias.ulisboa.pt/member/vitorsousa">Vitor Sousa</a>. We will move into our <code>bestrun</code> directory and run this script</p>
-<pre class="shell"><code>cd bestrun/
-cp /resources/riverlandsea/exercise_data/fastsimcoal2/calculateAIC.sh .
-./calculateAIC.sh early_geneflow</code></pre>
-<p>This script generates a file <code>${PREFIX}.AIC</code> which contains the delta likelihood and the AIC value for that run.</p>
-</section>
-<section id="visualize-the-model-fit" class="level3">
-<h3>Visualize the model fit</h3>
-<p>To visualize the fit of the simulated SFS to the data, we can use an <code>R</code> script that David Marques wrote - <code>SFStools.r</code> - which you can download <a href="https://github.com/marqueda/SFS-scripts/">here</a>.</p>
-<p>To visualize the model with the best parameter estimates, we can use one of Joana Meier’s R scripts - <a href="https://github.com/speciationgenomics/scripts/blob/master/plotModel.r">plotModel.r</a>. There are also other options <a href="http://cmpg.unibe.ch/software/fastsimcoal27/additionalScripts.html">here</a>. However for the ease of this practical, both are available in the resources directory. We will copy them over and then run them.</p>
-<pre class="shell"><code>cp /resources/riverlandsea/exercise_data/fastsimcoal2/*.r .
-Rscript SFStools.r -t print2D -i early_geneflow
-Rscript plotModel.r -p early_geneflow -l NyerMak,PundMak</code></pre>
-<p>Now, we will download the PDFs genertated and take a look at them.</p>
-</section>
-<section id="model-comparison-with-likelihood-distributions" class="level3">
-<h3>Model comparison with Likelihood distributions</h3>
-<p>One drawback of the composite likelihoods in model tests based on AIC is that it can overestimate the support for the most likely model if the SNPs are not independent (here they are not LD-pruned). Another way to infer if the models are really different and do not just differ because of stochasticity in the likelihood approximation, is to get likelihood distributions for each model. This is done by running each model with the best parameter values multple times (ideally about 100 times). The likelihoods will differ because <code>fastsimcoal2</code> does not compute the likelihood but rather approximates it with simulations. If the ranges of likelihoods of two models overlap, it means that they do not differ significantly, i.e. provide an equally good fit to the observed data.</p>
-<p>Let’s recompute the likelihood for the best run for the <code>early_geneflow</code> model.</p>
-<pre class="shell"><code>
-PREFIX=&quot;early_geneflow&quot;
-cd ~/fastsimcoal/$PREFIX/bestrun
 
-# create temporary obs file with name _maxL_MSFS.obs
-cp ${PREFIX}_jointMAFpop1_0.obs ${PREFIX}_maxL_jointMAFpop1_0.obs
 
-# Run fastsimcoal 20 times (in reality better 100 times) to get the likelihood of the observed SFS under the best parameter values with 1 mio simulated SFS.
-for i in {1..20}
-do
- fastsimcoal2 -i ${PREFIX}_maxL.par -n1000000 -m -q -0
- # Fastsimcoal will generate a new folder called ${model}_maxL and write files in there
-
- # collect the lhood values (Note that &gt;&gt; appends to the file, whereas &gt; would overwrite it)
- sed -n &#39;2,3p&#39; ${PREFIX}_maxL/${PREFIX}_maxL.lhoods  &gt;&gt; ${PREFIX}.lhoods
-
- # delete the folder with results
- rm -r ${PREFIX}_maxL/
-done</code></pre>
-<p>We would now repeat this for different models: ongoing gene flow, a model without gene flow, a model of secondary contact (recent gene flow) and a model with different amounts of gene flow in the past and in recent times.</p>
-<p>Due to time constraints, we will give you the results of these models. They are in the same format as the folder we generated for the model with early gene flow. Load them into your own directory. Note, the <code>-r</code> flag stands for “recursive” and allows to also copy directories and their contents.</p>
-<pre class="shell"><code>cd ~/fastsimcoal2/
-cp -r /resources/riverlandsea/exercise_data/fastsimcoal2/extramodels</code></pre>
-<p>Now, let’s access the R Studio sderver and plot the likelihoods.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the likelihoods</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>early_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">&quot;early_geneflow.lhoods&quot;</span>)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>ongoing_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">&quot;ongoing_geneflow.lhoods&quot;</span>)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>diff_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">&quot;diff_geneflow.lhoods&quot;</span>)</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>recent_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">&quot;recent_geneflow.lhoods&quot;</span>)</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>no_geneflow<span class="ot">&lt;-</span><span class="fu">scan</span>(<span class="st">&quot;no_geneflow.lhoods&quot;</span>)</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the likelihoods</span></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="at">range =</span> <span class="dv">0</span>,diff_geneflow,recent_geneflow,early_geneflow,ongoing_geneflow,</span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>        no_geneflow, <span class="at">ylab=</span><span class="st">&quot;Likelihood&quot;</span>,<span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;early+recent&quot;</span>,<span class="st">&quot;recent&quot;</span>,<span class="st">&quot;early&quot;</span>,<span class="st">&quot;constant&quot;</span>,<span class="st">&quot;no&quot;</span>))</span></code></pre></div>
-<p>Similarly, we should compare the AIC values and see if AIC suggests that the second-best model is significantly less good than the best model. Given that we already used the calculateAIC.r script to compute AIC values, this can easily be done.</p>
-<pre class="shell"><code>for i in */bestrun/*AIC
-do
-echo -e `basename $i`&quot;\t&quot;`tail -n $i` &gt;&gt; allmodels.AIC
-done</code></pre>
-<p>And we’re done for this tutorial! It is worth noting that linkage among SNPs can actually distort the AIC and likelihood calculations. As a result it is best practice to perform block-bootstrapping to account for this. We don’t have time to implement that here but you can refer to the <a href="https://speciationgenomics.github.io/fastsimcoal2/">original version</a> of this tutorial which does have a guide for how to achieve this.</p>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Land, River and Seascape Genomics</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Land, River and Seascape Genomics</span> <span class="hidden" data-render-id="quarto-int-next">Resistance surfaces</span> <span class="hidden" data-render-id="quarto-int-prev">Intro to RDA as a flexible tool</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-1">Sunday</span> <span class="hidden" data-render-id="quarto-int-sidebar:/Basic-Population-Genetics.html">Basic pop gen</span> <span class="hidden" data-render-id="quarto-int-sidebar:/basicR.html">Basic R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/basic-bash.html">Basic Bash</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-2">Monday</span> <span class="hidden" data-render-id="quarto-int-sidebar:/land-river-sea.html">Land, river, &amp; seascape genomics</span> <span class="hidden" data-render-id="quarto-int-sidebar:/maps-spatial-data.html">Maps &amp; spatial data</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-3">Tuesday</span> <span class="hidden" data-render-id="quarto-int-sidebar:/genetic-dif.html">Genetic differentiation</span> <span class="hidden" data-render-id="quarto-int-sidebar:/RDA.html">Intro to RDA as a flexible tool</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-4">Wednesday</span> <span class="hidden" data-render-id="quarto-int-sidebar:/sims_demo.html">Slendr simulations</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-5">Thursday</span> <span class="hidden" data-render-id="quarto-int-sidebar:/resistance.html">Resistance surfaces</span> <span class="hidden" data-render-id="quarto-int-sidebar:/GDM.html">Future projections with GDM &amp; GFs</span> <span class="hidden" data-render-id="quarto-int-sidebar:/biophysical.html">Biophysical models</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-6">Friday</span> <span class="hidden" data-render-id="quarto-int-sidebar:/GEA.html">More GEA: genetic offsets &amp; maladaptation</span> <span class="hidden" data-render-id="quarto-int-sidebar:/g_architectures.html">Genomic architectures &amp; landscape genomics</span> <span class="hidden" data-render-id="quarto-int-navbar:Home">Home</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Meet your teachers">Meet your teachers</span> <span class="hidden" data-render-id="quarto-int-navbar:/Teachers.html">/Teachers.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Readings">Readings</span> <span class="hidden" data-render-id="quarto-int-navbar:/Readings.html">/Readings.html</span> <span class="hidden" data-render-id="quarto-breadcrumbs-796c163589f295373e171842f37265d5">Wednesday</span> <span class="hidden" data-render-id="quarto-breadcrumbs-0ade02f294c3e0206404273482821e39">Slendr simulations</span></p>
-</div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden" data-render-id="quarto-metatitle">Land, River and Seascape Genomics - Slendr simulations</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Land, River and Seascape Genomics - Slendr simulations</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Land, River and Seascape Genomics - Slendr simulations</span> <span class="hidden" data-render-id="quarto-metasitename">Land, River and Seascape Genomics</span> <span class="hidden" data-render-id="quarto-twittercarddesc"></span> <span class="hidden" data-render-id="quarto-ogcardddesc"></span></p>
-</div>
-</section>
 </section>
 </section>
 
 </main> <!-- /main -->
-<script id = "quarto-html-after-body" type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1150,6 +982,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
-</body>
 
-</html>
+
+</body></html>
