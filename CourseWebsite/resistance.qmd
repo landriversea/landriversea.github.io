@@ -2,6 +2,8 @@
 title: "Resistance surfaces"
 ---
 
-# Installation instruction - resistance GA for the Thursday morning session on resistance surfaces
+# Resistance surfaces
 
 To install on your own computer before Thursday - see [instructions](pdfs/Installation_instructions_ResistanceGA.txt)
+
+See Slack channel for files and lecture slides.

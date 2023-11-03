@@ -10,7 +10,7 @@ format:
 
 *Instructor: Riginos*
 
-# Under construction!!
+# Applying GEAs - the genomic offset concept
 
 One of the goals of landscape genomics is to find loci that contribute to adaptation.
 
@@ -24,7 +24,7 @@ Given the unfolding climate crisis, there is growing interest in leveraging gene
 
 There are numerous names for this concept:
 
-(mal)adaptation = risk of non-adaptedness = genomic offset = genomic vulnerability
+*(mal)adaptation = risk of non-adaptedness = genomic offset = genomic vulnerability*
 
 ## The general genomic offset framework is as follows:
 
@@ -52,9 +52,9 @@ environmental data -\> run through GEA model()-\> predicted genetic values
 
 Fitzpatrick and Keller 2015 example using gradient forests on balsam poplar:
 
--   Panels A & B are genomic predictions
+-   Panels A & B are genomic predictions of present genotype-environment matching
 
--   Panel C is "distance" of G15 from neutral population structure
+-   Panel C is the "distance" of G15 from neutral population structure
 
 ![Genomic prediction - Fitzpatrick & Keller 2015](images/genomic_prediction_Fitzpatrick_Keller_2015.png)
 
@@ -74,7 +74,7 @@ Adaptive index per grid cell = $\sum\limits_{i=1}^{n}a_ib_i$, where
 
 Basic framework:
 
-GO = predicted genetic values at present - predicted genetic values for future
+GO = \|predicted genetic values at present - predicted genetic values for future\|
 
 Fitzpatrick and Keller 2015 example using gradient forests on balsam poplar:
 
@@ -110,11 +110,11 @@ Are we confident that GEA analyses:
 
 1.  Can identify important environmental variables for shaping genetic diversity ?
 
- - Cautiously, yes
+-   Cautiously, yes
 
 2.  Identify genetic loci that contributed to relevant phenotypes?
 
--   Limited empirical studies that compare results across methods (plants, mostly) - some consistent results for individual loci (that likely have large effects)
+-   There are few empirical studies that compare results across methods (plants, mostly) - some consistent results for individual loci (that likely have large effects)
 
 See Lasky et al 2023 for a good review.
 
@@ -128,8 +128,21 @@ See Lasky et al 2023 for a good review.
 
 -   Gougherty, A. V., Keller, S. R., & Fitzpatrick, M. C. (2021). Maladaptation, migration and extirpation fuel climate change risk in a forest tree species. \_Nat Clim Change, 11\_(2), 166-171.
 
-- Lasky, J. R., Josephs, E. B., & Morris, G. P. (2023). Genotype-environment associations to reveal the molecular basis of environmental adaptation. Plant Cell, 35, 125-138. doi:10.1093/plcell/koac267
+-   Lasky, J. R., Josephs, E. B., & Morris, G. P. (2023). Genotype-environment associations to reveal the molecular basis of environmental adaptation. Plant Cell, 35, 125-138. doi:10.1093/plcell/koac267
 
+# Discussion Activity 
+
+Small group discussion questions:
+
+1.  Review concepts of genotype-environment association analyses (what methods did you learn in this course?), genomic prediction and genomic offset - make sure everyone understands the frameworks. List the steps.
+
+2.  Looking at each step, what *assumptions* are being made. Do you think those assumptions are reasonable? (You might think about assumptions that are especially relevant to your study organism)
+
+3.  What experiments/additional studies would constitute validation of a GEA? (assume resources and time are not limiting)
+
+4.  In a new study system (decide on a hypothetical organism to discuss), you have undertaken either an environment-by-phenotype or a genotype-by-phenotype analysis (see first figure from this lecture). Are there concepts from GEA and genomic offsets that could augment your study? (think about independent tests or spatial insights)
+
+5.  For your hypothetical organism, is there a way that you could use information from either resistance surface analysis or biophysical modelling to refine your analysis describing the spatial patterns of future genetic maladaptation?
 
 # Computer tutorial - GEAs from RDAs
 
@@ -363,4 +376,4 @@ common_outliers_RDA_top <- Reduce(intersect, list_outliers_RDA_top)
 
 I was really hoping that I could get C&F's code working to allow you to recreate their Fig 3. Unfortunately the combination of changes to spatial packages and data files that are not completely reproducible has made this task much more difficult than I anticipated.
 
-If you are interested in undertaking these analyses in the future, you are welcome to reach out to me. I will be setting up similar analyses in my own research and thus should have working examples in a few months - I would be happy to share examples and code with participants in this course.  - Cynthia
+If you are interested in undertaking these analyses in the future, you are welcome to reach out to me. I will be setting up similar analyses in my own research and thus should have working examples in a few months - I would be happy to share examples and code with participants in this course. - Cynthia

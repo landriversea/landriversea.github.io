@@ -319,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#under-construction" id="toc-under-construction" class="nav-link active" data-scroll-target="#under-construction">Under construction!!</a>
+  <li><a href="#applying-geas---the-genomic-offset-concept" id="toc-applying-geas---the-genomic-offset-concept" class="nav-link active" data-scroll-target="#applying-geas---the-genomic-offset-concept">Applying GEAs - the genomic offset concept</a>
   <ul class="collapse">
   <li><a href="#the-general-genomic-offset-framework-is-as-follows" id="toc-the-general-genomic-offset-framework-is-as-follows" class="nav-link" data-scroll-target="#the-general-genomic-offset-framework-is-as-follows">The general genomic offset framework is as follows:</a>
   <ul class="collapse">
@@ -330,6 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   <li><a href="#references-for-this-tutorial" id="toc-references-for-this-tutorial" class="nav-link" data-scroll-target="#references-for-this-tutorial">References for this tutorial</a></li>
+  <li><a href="#discussion-activity" id="toc-discussion-activity" class="nav-link" data-scroll-target="#discussion-activity">Discussion Activity</a></li>
   <li><a href="#computer-tutorial---geas-from-rdas" id="toc-computer-tutorial---geas-from-rdas" class="nav-link" data-scroll-target="#computer-tutorial---geas-from-rdas">Computer tutorial - GEAs from RDAs</a>
   <ul class="collapse">
   <li><a href="#identifying-loci-under-selection" id="toc-identifying-loci-under-selection" class="nav-link" data-scroll-target="#identifying-loci-under-selection">Identifying loci under selection</a>
@@ -371,8 +372,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p><em>Instructor: Riginos</em></p>
-<section id="under-construction" class="level1">
-<h1>Under construction!!</h1>
+<section id="applying-geas---the-genomic-offset-concept" class="level1">
+<h1>Applying GEAs - the genomic offset concept</h1>
 <p>One of the goals of landscape genomics is to find loci that contribute to adaptation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -384,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Simulations indicate that RDA-based methods of identifying outliers perform well as tests of environmentally induced selection (Forester et al 2016).</p>
 <p>Given the unfolding climate crisis, there is growing interest in leveraging genetic information to identify populations that are vulnerable (or resilient) to anticipated future climate conditions.</p>
 <p>There are numerous names for this concept:</p>
-<p>(mal)adaptation = risk of non-adaptedness = genomic offset = genomic vulnerability</p>
+<p><em>(mal)adaptation = risk of non-adaptedness = genomic offset = genomic vulnerability</em></p>
 <section id="the-general-genomic-offset-framework-is-as-follows" class="level2">
 <h2 class="anchored" data-anchor-id="the-general-genomic-offset-framework-is-as-follows">The general genomic offset framework is as follows:</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -408,8 +409,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>environmental data -&gt; run through GEA model()-&gt; predicted genetic values</p>
 <p>Fitzpatrick and Keller 2015 example using gradient forests on balsam poplar:</p>
 <ul>
-<li><p>Panels A &amp; B are genomic predictions</p></li>
-<li><p>Panel C is “distance” of G15 from neutral population structure</p></li>
+<li><p>Panels A &amp; B are genomic predictions of present genotype-environment matching</p></li>
+<li><p>Panel C is the “distance” of G15 from neutral population structure</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -435,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="more-details---genomic-offset" class="level3">
 <h3 class="anchored" data-anchor-id="more-details---genomic-offset">More details - <em>genomic offset</em></h3>
 <p>Basic framework:</p>
-<p>GO = predicted genetic values at present - predicted genetic values for future</p>
+<p>GO = |predicted genetic values at present - predicted genetic values for future|</p>
 <p>Fitzpatrick and Keller 2015 example using gradient forests on balsam poplar:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -497,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Identify genetic loci that contributed to relevant phenotypes?</li>
 </ol>
 <ul>
-<li>Limited empirical studies that compare results across methods (plants, mostly) - some consistent results for individual loci (that likely have large effects)</li>
+<li>There are few empirical studies that compare results across methods (plants, mostly) - some consistent results for individual loci (that likely have large effects)</li>
 </ul>
 <p>See Lasky et al 2023 for a good review.</p>
 </section>
@@ -512,6 +513,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Gougherty, A. V., Keller, S. R., &amp; Fitzpatrick, M. C. (2021). Maladaptation, migration and extirpation fuel climate change risk in a forest tree species. _Nat Clim Change, 11_(2), 166-171.</p></li>
 <li><p>Lasky, J. R., Josephs, E. B., &amp; Morris, G. P. (2023). Genotype-environment associations to reveal the molecular basis of environmental adaptation. Plant Cell, 35, 125-138. doi:10.1093/plcell/koac267</p></li>
 </ul>
+</section>
+<section id="discussion-activity" class="level1">
+<h1>Discussion Activity</h1>
+<p>Small group discussion questions:</p>
+<ol type="1">
+<li><p>Review concepts of genotype-environment association analyses (what methods did you learn in this course?), genomic prediction and genomic offset - make sure everyone understands the frameworks. List the steps.</p></li>
+<li><p>Looking at each step, what <em>assumptions</em> are being made. Do you think those assumptions are reasonable? (You might think about assumptions that are especially relevant to your study organism)</p></li>
+<li><p>What experiments/additional studies would constitute validation of a GEA? (assume resources and time are not limiting)</p></li>
+<li><p>In a new study system (decide on a hypothetical organism to discuss), you have undertaken either an environment-by-phenotype or a genotype-by-phenotype analysis (see first figure from this lecture). Are there concepts from GEA and genomic offsets that could augment your study? (think about independent tests or spatial insights)</p></li>
+<li><p>For your hypothetical organism, is there a way that you could use information from either resistance surface analysis or biophysical modelling to refine your analysis describing the spatial patterns of future genetic maladaptation?</p></li>
+</ol>
 </section>
 <section id="computer-tutorial---geas-from-rdas" class="level1">
 <h1>Computer tutorial - GEAs from RDAs</h1>

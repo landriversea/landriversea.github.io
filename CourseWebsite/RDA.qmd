@@ -35,7 +35,7 @@ There is a huge literature on the topic of finding candidate loci for environmen
 RDA allows you to have multiple response variables (loci) and multiple predictors (spatial or environmental attributes)
 
 | Predictive variables | Response variables | Appropriate family of methods \* |
-|----------------------|--------------------|----------------------------------|
+|---------------------|-------------------|--------------------------------|
 | One                  | One                | Univariate/Simple regression     |
 | Many                 | One                | Multiple regression              |
 | Many                 | Many               | Multivariate regression          |
