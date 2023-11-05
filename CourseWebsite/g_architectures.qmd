@@ -1,3 +1,7 @@
 ---
 title: "Genomic architectures & landscape genomics"
 ---
+
+# Co-created by all students and instructors
+
+![](images/LandscapeGenomics.drawio.png){fig-align="center"}

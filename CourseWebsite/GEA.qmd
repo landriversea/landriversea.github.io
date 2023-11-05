@@ -130,7 +130,7 @@ See Lasky et al 2023 for a good review.
 
 -   Lasky, J. R., Josephs, E. B., & Morris, G. P. (2023). Genotype-environment associations to reveal the molecular basis of environmental adaptation. Plant Cell, 35, 125-138. doi:10.1093/plcell/koac267
 
-# Discussion Activity 
+# Discussion Activity
 
 Small group discussion questions:
 

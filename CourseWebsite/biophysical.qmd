@@ -4,4 +4,4 @@ title: "Biophysical models"
 
 # Guest lecture by Per Jonsson
 
-Copies of lecture slides on the Slack channel
+Copies of [lecture slides](pdfs/Biophysical%20models%20231102_Handouts.pdf).

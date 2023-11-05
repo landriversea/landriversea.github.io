@@ -135,7 +135,7 @@ Arrivals and light evening meal
 
 12.00-14.00     Lunch + walk & talk
 
-14.00-17.00     [(Time permiting) Landscape genomics and genetic architectures](g_architectures.qmd)
+14.00-17.00     [Wrap up and synthesis](g_architectures.qmd)
 
 17.00-18.00     Dinner
 
@@ -144,3 +144,5 @@ Arrivals and light evening meal
 ### Saturday 4th November
 
 Departures in the morning -sorry to see you go!
+
+![](images/Course_participants.jpg)

@@ -235,7 +235,14 @@
     "href": "index.html#friday-3rd-november",
     "title": "About the course",
     "section": "Friday 3rd November",
-    "text": "Friday 3rd November\n(meals and breaks same schedule as Sunday)\n09.00-12.00     More GEAs and genomic offsets (Cynthia)\n12.00-14.00     Lunch + walk & talk\n14.00-17.00     (Time permiting) Landscape genomics and genetic architectures\n17.00-18.00     Dinner\n19.00-23.00     Inhouse pub\n\nSaturday 4th November\nDepartures in the morning -sorry to see you go!"
+    "text": "Friday 3rd November\n(meals and breaks same schedule as Sunday)\n09.00-12.00     More GEAs and genomic offsets (Cynthia)\n12.00-14.00     Lunch + walk & talk\n14.00-17.00     Wrap up and synthesis\n17.00-18.00     Dinner\n19.00-23.00     Inhouse pub\n\nSaturday 4th November\nDepartures in the morning -sorry to see you go!"
+  },
+  {
+    "objectID": "g_architectures.html",
+    "href": "g_architectures.html",
+    "title": "Genomic architectures & landscape genomics",
+    "section": "",
+    "text": "Co-created by all students and instructors"
   },
   {
     "objectID": "servers.html",
@@ -578,7 +585,7 @@
     "href": "biophysical.html",
     "title": "Biophysical models",
     "section": "",
-    "text": "Guest lecture by Per Jonsson\nCopies of lecture slides on the Slack channel"
+    "text": "Guest lecture by Per Jonsson\nCopies of lecture slides."
   },
   {
     "objectID": "resistance.html",
